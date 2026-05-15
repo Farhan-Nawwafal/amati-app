@@ -1,0 +1,1657 @@
+user_id,chapter_id,name,current_level,status_chapter,avg_score,total_attempts,total_subchapters_done,total_subchapter
+S0591,CT00006,Data dan Diagram,beginner,not started,68.96837338687517,5.0,1.0,6
+S0655,CT00003,Rasio,beginner,done,65.78740671322339,3.0,2.0,3
+S0655,CT00003,Rasio,beginner,done,83.87291088980557,5.0,2.0,3
+S0655,CT00003,Rasio,beginner,done,94.84725255271836,4.0,1.0,3
+S0655,CT00003,Rasio,beginner,done,78.54550584217824,2.0,3.0,3
+S0617,CT00004,Bentuk Aljabar,intermediate,not started,80.15057620049056,2.0,1.0,3
+S0966,CT00005,Kesebangunan,intermediate,done,61.450047976753524,4.0,3.0,3
+S0900,CT00001,Bilangan Bulat,intermediate,done,93.12211236065143,2.0,1.0,3
+S0337,CT00004,Bentuk Aljabar,advanced,done,60.42,8.0,1.0,3
+S0759,CT00004,Bentuk Aljabar,beginner,in-progress,91.12958936155452,2.0,2.0,3
+S0360,CT00004,Bentuk Aljabar,beginner,done,83.28042714934998,2.0,1.0,3
+S0264,CT00006,Data dan Diagram,beginner,done,94.59244699859025,5.0,2.0,6
+S0774,CT00003,Rasio,advanced,not started,60.75529776303958,3.0,2.0,3
+S0423,CT00004,Bentuk Aljabar,intermediate,in-progress,72.59,1.0,1.0,3
+S0072,CT00002,Bilangan Rasional,advanced,in-progress,70.40842511352974,5.0,2.0,3
+S0052,CT00002,Bilangan Rasional,beginner,not started,96.29,1.0,3.0,3
+S0165,CT00004,Bentuk Aljabar,beginner,done,81.7095115217064,5.0,1.0,3
+S0133,CT00002,Bilangan Rasional,beginner,in-progress,67.68350981349575,3.0,2.0,3
+S0816,CT00004,Bentuk Aljabar,beginner,not started,93.2733290539615,2.0,3.0,3
+S0067,CT00004,Bentuk Aljabar,beginner,in-progress,69.075,2.0,3.0,3
+S0480,CT00004,Bentuk Aljabar,intermediate,in-progress,0.2,1.0,1.0,3
+S0769,CT00001,Bilangan Bulat,advanced,done,88.69024357322668,4.0,3.0,3
+S0722,CT00005,Kesebangunan,beginner,done,73.46300195292471,4.0,1.0,3
+S0760,CT00002,Bilangan Rasional,advanced,done,71.82233708809206,5.0,1.0,3
+S0433,CT00001,Bilangan Bulat,advanced,in-progress,57.59,1.0,1.0,3
+S0767,CT00006,Data dan Diagram,advanced,in-progress,70.290390456151,2.0,3.0,6
+S0109,CT00003,Rasio,advanced,in-progress,91.33532314964842,1.0,1.0,3
+S0422,CT00004,Bentuk Aljabar,beginner,done,65.73234907448125,4.0,3.0,3
+S0422,CT00004,Bentuk Aljabar,beginner,done,81.40922367643205,2.0,3.0,3
+S0422,CT00004,Bentuk Aljabar,beginner,done,94.7402367896296,3.0,3.0,3
+S0422,CT00004,Bentuk Aljabar,beginner,done,78.06779633540125,5.0,2.0,3
+S0330,CT00005,Kesebangunan,advanced,not started,71.09483837452846,3.0,1.0,3
+S0585,CT00002,Bilangan Rasional,beginner,in-progress,89.48951110550178,5.0,2.0,3
+S0488,CT00002,Bilangan Rasional,intermediate,done,80.0547329795989,2.0,1.0,3
+S0634,CT00001,Bilangan Bulat,beginner,not started,70.05,1.0,2.0,3
+S0498,CT00002,Bilangan Rasional,beginner,done,84.31883592138627,3.0,3.0,3
+S0299,CT00005,Kesebangunan,advanced,done,85.49372225616152,2.0,1.0,3
+S0047,CT00004,Bentuk Aljabar,advanced,done,40.36,1.0,1.0,3
+S0769,CT00005,Kesebangunan,beginner,in-progress,61.529504277304056,4.0,2.0,3
+S0564,CT00004,Bentuk Aljabar,beginner,in-progress,93.25038006975538,2.0,2.0,3
+S0617,CT00002,Bilangan Rasional,advanced,in-progress,89.93015879470936,5.0,2.0,3
+S0287,CT00006,Data dan Diagram,beginner,done,60.70502091448532,3.0,1.0,6
+S0941,CT00002,Bilangan Rasional,advanced,in-progress,64.21664799717037,3.0,2.0,3
+S0460,CT00003,Rasio,beginner,not started,73.46323063418171,3.0,1.0,3
+S0180,CT00006,Data dan Diagram,advanced,in-progress,56.55,1.0,4.0,6
+S0664,CT00004,Bentuk Aljabar,intermediate,DONE,90.8730582547806,4.0,1.0,3
+S0074,CT00001,Bilangan Bulat,beginner,not started,70.67536189120351,5.0,2.0,3
+S0640,CT00003,Rasio,intermediate,in-progress,65.71200237289953,1.0,2.0,3
+S0764,CT00004,Bentuk Aljabar,advanced,done,87.03617257617432,4.0,3.0,3
+S0949,CT00001,Bilangan Bulat,intermediate,done,64.91052109792814,3.0,2.0,3
+S0374,CT00002,Bilangan Rasional,advanced,not started,71.74120964422328,4.0,2.0,3
+S0105,CT00003,Rasio,advanced,in-progress,63.22854248026584,2.0,2.0,3
+S0815,CT00002,Bilangan Rasional,intermediate,DONE,89.06231790470757,4.0,2.0,3
+S0744,CT00004,Bentuk Aljabar,beginner,in-progress,66.9385979592938,2.0,2.0,3
+S0363,CT00002,Bilangan Rasional,advanced,in-progress,75.85859033648416,1.0,1.0,3
+S0877,CT00004,Bentuk Aljabar,advanced,not started,80.33869864714858,5.0,3.0,3
+S0329,CT00006,Data dan Diagram,advanced,not started,75.26821647338585,5.0,1.0,6
+S0997,CT00003,Rasio,beginner,done,93.27118865407556,3.0,3.0,3
+S0009,CT00003,Rasio,advanced,in-progress,78.32736200970903,4.0,2.0,3
+S0013,CT00005,Kesebangunan,beginner,not started,39.41,1.0,3.0,3
+S0428,CT00002,Bilangan Rasional,advanced,in-progress,66.38868043552918,5.0,3.0,3
+S0428,CT00002,Bilangan Rasional,advanced,in-progress,86.31946321250953,1.0,1.0,3
+S0428,CT00002,Bilangan Rasional,advanced,in-progress,66.16955403461735,4.0,3.0,3
+S0428,CT00002,Bilangan Rasional,advanced,in-progress,72.71957370575774,2.0,1.0,3
+S0194,CT00003,Rasio,advanced,not started,60.22109924618294,1.0,1.0,3
+S0888,CT00006,Data dan Diagram,intermediate,in-progress,74.36692120017027,4.0,2.0,6
+S0873,CT00004,Bentuk Aljabar,beginner,not started,72.97873353930653,2.0,2.0,3
+S0486,CT00006,Data dan Diagram,advanced,done,72.065,2.0,1.0,6
+S0663,CT00006,Data dan Diagram,intermediate,in-progress,64.73356857142882,2.0,6.0,6
+S0859,CT00002,Bilangan Rasional,beginner,not started,89.35066924752823,1.0,2.0,3
+S0424,CT00001,Bilangan Bulat,advanced,in-progress,76.48992186197694,2.0,1.0,3
+S0638,CT00001,Bilangan Bulat,intermediate,in-progress,60.7,1.0,2.0,3
+S0142,CT00002,Bilangan Rasional,beginner,done,83.38566185736673,5.0,1.0,3
+S0022,CT00006,Data dan Diagram,beginner,done,81.0827715332858,5.0,6.0,6
+S0677,CT00002,Bilangan Rasional,advanced,in-progress,74.29194019486607,1.0,3.0,3
+S0432,CT00005,Kesebangunan,advanced,in-progress,66.59,1.0,1.0,3
+S0362,CT00001,Bilangan Bulat,intermediate,in-progress,68.79083797890569,3.0,2.0,3
+S0633,CT00004,Bentuk Aljabar,advanced,done,78.04935880752548,1.0,3.0,3
+S0633,CT00004,Bentuk Aljabar,advanced,done,66.49036398195392,2.0,2.0,3
+S0633,CT00004,Bentuk Aljabar,advanced,done,78.13541332803801,1.0,2.0,3
+S0633,CT00004,Bentuk Aljabar,advanced,done,73.61789439923506,2.0,3.0,3
+S0646,CT00002,Bilangan Rasional,beginner,not started,56.065000000000005,2.0,2.0,3
+S0061,CT00004,Bentuk Aljabar,intermediate,done,62.924785276068135,2.0,1.0,3
+S0044,CT00001,Bilangan Bulat,beginner,done,67.51286252115798,5.0,3.0,3
+S0646,CT00004,Bentuk Aljabar,advanced,not started,66.86468956885676,3.0,1.0,3
+S0973,CT00005,Kesebangunan,beginner,done,34.595,2.0,1.0,3
+S0938,CT00001,Bilangan Bulat,intermediate,not started,81.81591999614912,3.0,1.0,3
+S0638,CT00005,Kesebangunan,intermediate,done,77.16679671712609,2.0,1.0,3
+S0228,CT00004,Bentuk Aljabar,advanced,in-progress,54.97,2.0,1.0,3
+S0324,CT00002,Bilangan Rasional,intermediate,not started,90.05535116478514,4.0,2.0,3
+S0491,CT00004,Bentuk Aljabar,intermediate,in-progress,61.806067079656124,5.0,3.0,3
+S0830,CT00005,Kesebangunan,beginner,in-progress,83.33652706321232,4.0,1.0,3
+S0460,CT00004,Bentuk Aljabar,beginner,done,68.64304765841386,3.0,3.0,3
+S0969,CT00003,Rasio,advanced,not started,68.95396903771555,5.0,3.0,3
+S0778,CT00002,Bilangan Rasional,intermediate,in-progress,37.285,2.0,1.0,3
+S0885,CT00004,Bentuk Aljabar,advanced,not started,87.33489571590049,2.0,3.0,3
+S0867,CT00004,Bentuk Aljabar,intermediate,done,94.06328252647585,5.0,2.0,3
+S0009,CT00006,Data dan Diagram,advanced,not started,69.53999999999999,2.0,5.0,6
+S0260,CT00005,Kesebangunan,intermediate,in-progress,74.43853820852888,3.0,2.0,3
+S0715,CT00003,Rasio,intermediate,done,47.17,1.0,1.0,3
+S0715,CT00003,Rasio,intermediate,done,47.17,1.0,3.0,3
+S0715,CT00003,Rasio,intermediate,done,47.17,1.0,2.0,3
+S0715,CT00003,Rasio,intermediate,done,47.17,1.0,2.0,3
+S0928,CT00004,Bentuk Aljabar,advanced,in-progress,74.74211288487156,5.0,3.0,3
+S0248,CT00003,Rasio,intermediate,done,69.59541219570451,4.0,1.0,3
+S0716,CT00005,Kesebangunan,intermediate,done,53.02,1.0,1.0,3
+S0158,CT00002,Bilangan Rasional,advanced,not started,83.05447876675866,4.0,1.0,3
+S0075,CT00001,Bilangan Bulat,advanced,done,54.84,1.0,2.0,3
+S0078,CT00001,Bilangan Bulat,beginner,in-progress,72.13121697456903,2.0,1.0,3
+S0878,CT00005,Kesebangunan,beginner,in-progress,71.34531634155508,4.0,2.0,3
+S0158,CT00006,Data dan Diagram,advanced,not started,74.1999033592994,5.0,2.0,6
+S0124,CT00003,Rasio,advanced,not started,87.60613479038234,2.0,2.0,3
+S0379,CT00004,Bentuk Aljabar,beginner,in-progress,72.60858769725452,3.0,1.0,3
+S0811,CT00006,Data dan Diagram,advanced,not started,56.65,1.0,5.0,6
+S0003,CT00005,Kesebangunan,intermediate,done,74.59296868254222,4.0,3.0,3
+S0279,CT00003,Rasio,intermediate,in-progress,82.8251416180153,3.0,3.0,3
+S0101,CT00004,Bentuk Aljabar,intermediate,in-progress,67.92,1.0,1.0,3
+S0217,CT00003,Rasio,intermediate,not started,94.84159826354761,3.0,3.0,3
+S0217,CT00003,Rasio,intermediate,not started,61.069133614516474,2.0,3.0,3
+S0217,CT00003,Rasio,intermediate,not started,69.81190542902584,3.0,3.0,3
+S0217,CT00003,Rasio,intermediate,not started,71.9054483605488,4.0,3.0,3
+S0700,CT00004,Bentuk Aljabar,intermediate,done,79.62749080765147,3.0,3.0,3
+S0483,CT00006,Data dan Diagram,intermediate,done,80.23231442608301,5.0,3.0,6
+S0221,CT00006,Data dan Diagram,beginner,not started,72.15,1.0,6.0,6
+S0502,CT00002,Bilangan Rasional,beginner,done,92.40815381554295,1.0,3.0,3
+S0815,CT00002,Bilangan Rasional,beginner,in-progress,73.01370277776071,4.0,2.0,3
+S0367,CT00002,Bilangan Rasional,advanced,in-progress,50.9,1.0,3.0,3
+S0800,CT00001,Bilangan Bulat,beginner,done,71.72562357692748,3.0,3.0,3
+S0056,CT00003,Rasio,advanced,not started,94.15,1.0,3.0,3
+S0077,CT00003,Rasio,advanced,in-progress,77.65098415537045,2.0,3.0,3
+S0077,CT00003,Rasio,advanced,in-progress,79.8015735268172,5.0,3.0,3
+S0077,CT00003,Rasio,advanced,in-progress,88.7736596179851,3.0,3.0,3
+S0077,CT00003,Rasio,advanced,in-progress,69.43614953741346,1.0,1.0,3
+S0988,CT00005,Kesebangunan,intermediate,not started,89.8604546130945,3.0,2.0,3
+S0287,CT00001,Bilangan Bulat,beginner,in-progress,69.67911584284676,2.0,1.0,3
+S0958,CT00001,Bilangan Bulat,beginner,in-progress,78.8379029867534,3.0,3.0,3
+S0812,CT00001,Bilangan Bulat,beginner,in-progress,70.94058361176855,3.0,1.0,3
+S0724,CT00004,Bentuk Aljabar,advanced,done,12.87,1.0,3.0,3
+S0660,CT00004,Bentuk Aljabar,intermediate,done,66.24666666666667,3.0,2.0,3
+S0090,CT00002,Bilangan Rasional,beginner,in-progress,69.21477461651051,1.0,3.0,3
+S0409,CT00001,Bilangan Bulat,intermediate,in-progress,70.69674357161831,1.0,2.0,3
+S0293,CT00002,Bilangan Rasional,advanced,DONE,75.70248132490434,4.0,3.0,3
+S0380,CT00003,Rasio,beginner,done,91.52682342034332,2.0,1.0,3
+S0304,CT00005,Kesebangunan,advanced,not started,61.08646743283754,2.0,2.0,3
+S0240,CT00002,Bilangan Rasional,beginner,in-progress,88.73006762329813,5.0,1.0,3
+S0941,CT00002,Bilangan Rasional,beginner,done,86.03714094279806,5.0,2.0,3
+S0821,CT00001,Bilangan Bulat,beginner,not started,68.86,1.0,1.0,3
+S0682,CT00006,Data dan Diagram,intermediate,not started,91.57907419543331,2.0,1.0,6
+S0514,CT00006,Data dan Diagram,advanced,not started,87.66336229589245,2.0,2.0,6
+S0885,CT00006,Data dan Diagram,intermediate,in-progress,8.39,1.0,4.0,6
+S0385,CT00003,Rasio,intermediate,done,53.08,1.0,1.0,3
+S0385,CT00003,Rasio,intermediate,done,53.08,1.0,3.0,3
+S0385,CT00003,Rasio,intermediate,done,53.08,1.0,3.0,3
+S0385,CT00003,Rasio,intermediate,done,53.08,1.0,2.0,3
+S0681,CT00003,Rasio,intermediate,done,88.10224479612474,5.0,1.0,3
+S0137,CT00003,Rasio,advanced,not started,43.9,1.0,1.0,3
+S0497,CT00003,Rasio,advanced,in-progress,63.325,2.0,2.0,3
+S0432,CT00003,Rasio,intermediate,in-progress,15.42,1.0,2.0,3
+S0663,CT00005,Kesebangunan,beginner,not started,79.38452476955192,2.0,3.0,3
+S0486,CT00003,Rasio,advanced,done,71.7702767044068,2.0,3.0,3
+S0692,CT00003,Rasio,intermediate,not started,82.79813413510135,2.0,3.0,3
+S0615,CT00004,Bentuk Aljabar,intermediate,done,21.78,1.0,2.0,3
+S0741,CT00006,Data dan Diagram,beginner,done,70.02,1.0,1.0,6
+S0347,CT00004,Bentuk Aljabar,intermediate,not started,37.95,1.0,1.0,3
+S0150,CT00003,Rasio,intermediate,done,81.22492041380913,3.0,2.0,3
+S0925,CT00005,Kesebangunan,advanced,in-progress,63.0339748131097,3.0,3.0,3
+S0163,CT00005,Kesebangunan,beginner,done,64.29443787817277,4.0,1.0,3
+S0153,CT00006,Data dan Diagram,advanced,in-progress,90.93614340172236,4.0,6.0,6
+S0236,CT00005,Kesebangunan,beginner,not started,56.28,2.0,3.0,3
+S0786,CT00003,Rasio,intermediate,in-progress,76.6892450392522,2.0,1.0,3
+S0115,CT00004,Bentuk Aljabar,beginner,in-progress,84.44299564788076,4.0,3.0,3
+S0115,CT00004,Bentuk Aljabar,beginner,in-progress,78.57363679757525,2.0,1.0,3
+S0115,CT00004,Bentuk Aljabar,beginner,in-progress,84.33615307158976,5.0,3.0,3
+S0115,CT00004,Bentuk Aljabar,beginner,in-progress,90.1799324302374,5.0,3.0,3
+S0381,CT00006,Data dan Diagram,intermediate,DONE,75.29243331715605,2.0,4.0,6
+S0319,CT00001,Bilangan Bulat,intermediate,in-progress,61.67520546587502,4.0,1.0,3
+S0841,CT00005,Kesebangunan,advanced,done,94.03481648073242,3.0,3.0,3
+S0256,CT00003,Rasio,beginner,in-progress,69.61717889640843,2.0,1.0,3
+S0624,CT00002,Bilangan Rasional,beginner,done,78.19,1.0,3.0,3
+S0441,CT00002,Bilangan Rasional,advanced,not started,81.44842027585548,4.0,1.0,3
+S0580,CT00005,Kesebangunan,beginner,not started,73.37698680691454,2.0,3.0,3
+S0385,CT00006,Data dan Diagram,intermediate,not started,74.47179786186908,1.0,2.0,6
+S0886,CT00002,Bilangan Rasional,advanced,not started,69.18320849834222,4.0,2.0,3
+S0686,CT00005,Kesebangunan,advanced,done,44.65,1.0,3.0,3
+S0056,CT00003,Rasio,beginner,DONE,94.15,1.0,2.0,3
+S0702,CT00001,Bilangan Bulat,beginner,done,87.82854639232106,5.0,3.0,3
+S0389,CT00006,Data dan Diagram,advanced,not started,37.35,1.0,1.0,6
+S0601,CT00003,Rasio,advanced,in-progress,66.44691036107919,5.0,1.0,3
+S0069,CT00005,Kesebangunan,beginner,in-progress,71.59608915881975,3.0,2.0,3
+S0775,CT00002,Bilangan Rasional,beginner,not started,77.37502402773069,1.0,3.0,3
+S0070,CT00004,Bentuk Aljabar,intermediate,done,43.48,1.0,1.0,3
+S0418,CT00006,Data dan Diagram,beginner,not started,81.98656395683278,5.0,6.0,6
+S0201,CT00003,Rasio,intermediate,done,94.107272602459,1.0,2.0,3
+S0328,CT00004,Bentuk Aljabar,advanced,not started,63.39,2.0,2.0,3
+S0715,CT00003,Rasio,beginner,done,47.17,1.0,1.0,3
+S0576,CT00005,Kesebangunan,advanced,done,74.44,1.0,1.0,3
+S0341,CT00002,Bilangan Rasional,advanced,in-progress,87.37113931320425,3.0,2.0,3
+S0441,CT00006,Data dan Diagram,beginner,in-progress,36.73,8.0,3.0,6
+S0111,CT00001,Bilangan Bulat,advanced,not started,94.92954060013318,1.0,1.0,3
+S0387,CT00006,Data dan Diagram,advanced,not started,76.94128765212764,1.0,1.0,6
+S0203,CT00003,Rasio,beginner,in-progress,83.56572368801396,1.0,2.0,3
+S0783,CT00004,Bentuk Aljabar,advanced,not started,61.88728387439175,1.0,3.0,3
+S0729,CT00005,Kesebangunan,intermediate,not started,68.31,1.0,2.0,3
+S0991,CT00006,Data dan Diagram,beginner,in-progress,71.35474953594982,1.0,4.0,6
+S0518,CT00006,Data dan Diagram,advanced,done,61.22,1.0,2.0,6
+S0846,CT00005,Kesebangunan,advanced,in-progress,65.12561478438967,3.0,3.0,3
+S0693,CT00002,Bilangan Rasional,intermediate,in-progress,81.33784924742757,3.0,1.0,3
+S0079,CT00003,Rasio,beginner,in-progress,76.54425002034114,5.0,1.0,3
+S0986,CT00006,Data dan Diagram,advanced,done,77.6046175238138,2.0,6.0,6
+S0267,CT00004,Bentuk Aljabar,advanced,done,85.3805808614691,5.0,1.0,3
+S0197,CT00005,Kesebangunan,advanced,not started,66.57576035575627,2.0,1.0,3
+S0469,CT00004,Bentuk Aljabar,advanced,in-progress,42.48,1.0,1.0,3
+S0500,CT00002,Bilangan Rasional,beginner,not started,79.35,2.0,1.0,3
+S0713,CT00003,Rasio,intermediate,not started,91.40755507806722,4.0,2.0,3
+S0814,CT00005,Kesebangunan,intermediate,not started,78.77990387164718,1.0,1.0,3
+S0121,CT00004,Bentuk Aljabar,beginner,in-progress,75.45,1.0,2.0,3
+S0988,CT00005,Kesebangunan,intermediate,in-progress,71.67100711602446,2.0,2.0,3
+S0228,CT00004,Bentuk Aljabar,beginner,done,54.97,2.0,1.0,3
+S0512,CT00005,Kesebangunan,intermediate,not started,86.3654056322246,1.0,2.0,3
+S0386,CT00006,Data dan Diagram,beginner,not started,25.42,1.0,4.0,6
+S0266,CT00006,Data dan Diagram,beginner,done,78.35334629516129,4.0,4.0,6
+S0541,CT00002,Bilangan Rasional,advanced,in-progress,94.31564368255289,5.0,2.0,3
+S0369,CT00003,Rasio,advanced,in-progress,85.44745742469783,3.0,2.0,3
+S0814,CT00004,Bentuk Aljabar,advanced,in-progress,93.63973044062959,3.0,1.0,3
+S0368,CT00001,Bilangan Bulat,advanced,not started,80.16652867335111,4.0,1.0,3
+S0686,CT00003,Rasio,advanced,DONE,63.714292392754416,5.0,1.0,3
+S0108,CT00004,Bentuk Aljabar,advanced,not started,75.73786903896004,3.0,1.0,3
+S0990,CT00004,Bentuk Aljabar,beginner,in-progress,56.41888888888889,9.0,2.0,3
+S0528,CT00001,Bilangan Bulat,advanced,not started,73.88291792533721,5.0,1.0,3
+S0807,CT00002,Bilangan Rasional,beginner,not started,88.53143268196959,5.0,1.0,3
+S0385,CT00006,Data dan Diagram,intermediate,not started,64.46988857300678,1.0,2.0,6
+S0847,CT00001,Bilangan Bulat,beginner,not started,65.29183435719727,4.0,1.0,3
+S0270,CT00004,Bentuk Aljabar,advanced,done,81.82729104726593,5.0,2.0,3
+S0692,CT00003,Rasio,intermediate,in-progress,79.23023775077809,3.0,1.0,3
+S0342,CT00003,Rasio,advanced,not started,64.96276094724115,2.0,1.0,3
+S0149,CT00005,Kesebangunan,intermediate,done,76.14142956894102,4.0,2.0,3
+S0655,CT00004,Bentuk Aljabar,beginner,done,64.1425147214643,2.0,1.0,3
+S0467,CT00005,Kesebangunan,intermediate,not started,82.14015012096506,1.0,1.0,3
+S0942,CT00006,Data dan Diagram,beginner,done,76.65442135816498,3.0,3.0,6
+S0942,CT00006,Data dan Diagram,beginner,done,67.76246041018557,3.0,2.0,6
+S0942,CT00006,Data dan Diagram,beginner,done,93.5987552490264,2.0,3.0,6
+S0942,CT00006,Data dan Diagram,beginner,done,88.2728130410178,5.0,6.0,6
+S0846,CT00006,Data dan Diagram,advanced,not started,22.82,1.0,6.0,6
+S0810,CT00005,Kesebangunan,advanced,done,82.3970311093143,5.0,3.0,3
+S0412,CT00001,Bilangan Bulat,advanced,in-progress,62.14337466144498,1.0,1.0,3
+S0566,CT00004,Bentuk Aljabar,advanced,not started,36.97,1.0,1.0,3
+S0432,CT00004,Bentuk Aljabar,intermediate,not started,70.69278131582082,2.0,3.0,3
+S0941,CT00003,Rasio,intermediate,in-progress,66.02403496466624,4.0,1.0,3
+S0452,CT00006,Data dan Diagram,intermediate,in-progress,82.8121080089243,4.0,1.0,6
+S0926,CT00005,Kesebangunan,advanced,in-progress,89.94283933546055,5.0,1.0,3
+S0005,CT00005,Kesebangunan,intermediate,done,88.1139334607677,1.0,1.0,3
+S0835,CT00001,Bilangan Bulat,beginner,done,89.29348886046203,5.0,3.0,3
+S0813,CT00006,Data dan Diagram,advanced,in-progress,64.7278223821076,1.0,5.0,6
+S0408,CT00005,Kesebangunan,beginner,in-progress,88.53888055395383,4.0,1.0,3
+S0610,CT00002,Bilangan Rasional,beginner,not started,71.67334501051087,5.0,2.0,3
+S0519,CT00001,Bilangan Bulat,advanced,not started,85.03973860696955,1.0,3.0,3
+S0347,CT00001,Bilangan Bulat,beginner,in-progress,60.01422508148209,5.0,3.0,3
+S0837,CT00005,Kesebangunan,beginner,not started,19.92,1.0,1.0,3
+S0659,CT00006,Data dan Diagram,intermediate,done,76.90042772556315,3.0,1.0,6
+S0011,CT00001,Bilangan Bulat,intermediate,DONE,58.72,1.0,3.0,3
+S0923,CT00003,Rasio,intermediate,in-progress,93.11341015382541,2.0,1.0,3
+S0771,CT00001,Bilangan Bulat,intermediate,DONE,65.75773472984348,4.0,2.0,3
+S0156,CT00006,Data dan Diagram,beginner,not started,82.84801826641164,3.0,1.0,6
+S0887,CT00004,Bentuk Aljabar,intermediate,done,62.22000828355444,3.0,2.0,3
+S0887,CT00004,Bentuk Aljabar,intermediate,done,75.27282561148496,4.0,3.0,3
+S0887,CT00004,Bentuk Aljabar,intermediate,done,87.87801491142125,2.0,1.0,3
+S0887,CT00004,Bentuk Aljabar,intermediate,done,84.48983678542353,1.0,3.0,3
+S0403,CT00004,Bentuk Aljabar,beginner,done,86.51713433619841,2.0,1.0,3
+S0871,CT00001,Bilangan Bulat,advanced,in-progress,62.728191257651034,4.0,3.0,3
+S0410,CT00001,Bilangan Bulat,beginner,done,56.78,1.0,1.0,3
+S0526,CT00001,Bilangan Bulat,advanced,not started,60.14635788904153,5.0,2.0,3
+S0880,CT00001,Bilangan Bulat,beginner,in-progress,86.01160298929537,5.0,2.0,3
+S0816,CT00002,Bilangan Rasional,beginner,not started,62.59,1.0,1.0,3
+S0864,CT00004,Bentuk Aljabar,advanced,not started,91.46614656075322,3.0,3.0,3
+S0401,CT00001,Bilangan Bulat,intermediate,done,94.55511350356537,1.0,1.0,3
+S0108,CT00002,Bilangan Rasional,intermediate,in-progress,60.04689395026063,5.0,3.0,3
+S0179,CT00002,Bilangan Rasional,intermediate,not started,88.27,1.0,1.0,3
+S0392,CT00006,Data dan Diagram,intermediate,done,79.65443053431298,5.0,2.0,6
+S0392,CT00006,Data dan Diagram,intermediate,done,80.426225221629,3.0,2.0,6
+S0392,CT00006,Data dan Diagram,intermediate,done,85.32487246287717,2.0,2.0,6
+S0392,CT00006,Data dan Diagram,intermediate,done,81.16304893492622,2.0,2.0,6
+S0309,CT00006,Data dan Diagram,beginner,in-progress,77.04615128406954,1.0,4.0,6
+S0598,CT00005,Kesebangunan,beginner,in-progress,91.71846829460407,3.0,1.0,3
+S0730,CT00003,Rasio,intermediate,in-progress,90.47280000396364,4.0,2.0,3
+S0937,CT00004,Bentuk Aljabar,beginner,done,6.02,1.0,3.0,3
+S0966,CT00004,Bentuk Aljabar,intermediate,in-progress,66.38006190437538,5.0,3.0,3
+S0457,CT00001,Bilangan Bulat,advanced,done,87.3951225043419,1.0,3.0,3
+S0983,CT00004,Bentuk Aljabar,advanced,done,81.1144209554307,2.0,2.0,3
+S0666,CT00004,Bentuk Aljabar,advanced,not started,69.0839172966665,2.0,3.0,3
+S0768,CT00001,Bilangan Bulat,advanced,not started,4.87,1.0,3.0,3
+S0287,CT00002,Bilangan Rasional,intermediate,not started,60.286657690864445,2.0,2.0,3
+S0684,CT00005,Kesebangunan,advanced,done,87.35246916775625,3.0,1.0,3
+S0404,CT00003,Rasio,advanced,in-progress,63.01733986593515,5.0,2.0,3
+S0034,CT00003,Rasio,intermediate,done,56.01,1.0,2.0,3
+S0426,CT00004,Bentuk Aljabar,beginner,in-progress,85.4497305315486,4.0,1.0,3
+S0977,CT00005,Kesebangunan,advanced,in-progress,28.13,1.0,3.0,3
+S0123,CT00006,Data dan Diagram,intermediate,done,40.21,2.0,6.0,6
+S0465,CT00004,Bentuk Aljabar,intermediate,done,86.51058687537393,1.0,2.0,3
+S0774,CT00001,Bilangan Bulat,intermediate,in-progress,78.63652959845368,3.0,1.0,3
+S0753,CT00002,Bilangan Rasional,advanced,done,86.66368771758917,4.0,1.0,3
+S0425,CT00002,Bilangan Rasional,intermediate,not started,72.06981424871476,1.0,2.0,3
+S0037,CT00003,Rasio,beginner,done,66.19216047697785,2.0,1.0,3
+S0085,CT00004,Bentuk Aljabar,intermediate,done,35.91,1.0,1.0,3
+S0450,CT00004,Bentuk Aljabar,beginner,not started,36.35,1.0,3.0,3
+S0087,CT00004,Bentuk Aljabar,beginner,done,97.13,8.0,2.0,3
+S0168,CT00003,Rasio,beginner,not started,92.25083348102058,4.0,3.0,3
+S0635,CT00004,Bentuk Aljabar,advanced,done,77.13416077788729,4.0,1.0,3
+S0185,CT00002,Bilangan Rasional,intermediate,not started,82.13900803243878,2.0,3.0,3
+S0029,CT00004,Bentuk Aljabar,advanced,DONE,27.55,1.0,1.0,3
+S0856,CT00006,Data dan Diagram,intermediate,in-progress,81.73116122648796,5.0,1.0,6
+S0069,CT00004,Bentuk Aljabar,advanced,not started,76.18135529348774,2.0,3.0,3
+S0987,CT00006,Data dan Diagram,beginner,in-progress,86.04948820337609,2.0,2.0,6
+S0377,CT00002,Bilangan Rasional,advanced,DONE,77.47341894850658,2.0,2.0,3
+S0481,CT00003,Rasio,beginner,done,33.96,2.0,2.0,3
+S0249,CT00005,Kesebangunan,beginner,not started,73.56490312994602,3.0,1.0,3
+S0771,CT00004,Bentuk Aljabar,advanced,in-progress,74.2396861921069,5.0,2.0,3
+S0863,CT00001,Bilangan Bulat,beginner,done,65.99,1.0,1.0,3
+S0268,CT00004,Bentuk Aljabar,intermediate,in-progress,62.32117877834655,3.0,2.0,3
+S0550,CT00006,Data dan Diagram,beginner,not started,33.665,2.0,2.0,6
+S0516,CT00005,Kesebangunan,intermediate,done,65.07284009202347,3.0,1.0,3
+S0787,CT00005,Kesebangunan,advanced,not started,76.82108320725447,4.0,1.0,3
+S0846,CT00005,Kesebangunan,advanced,not started,60.28605113265725,5.0,2.0,3
+S0300,CT00006,Data dan Diagram,advanced,not started,79.74850918822374,4.0,3.0,6
+S0300,CT00006,Data dan Diagram,advanced,not started,89.88304233476242,5.0,1.0,6
+S0300,CT00006,Data dan Diagram,advanced,not started,68.84713129391542,1.0,4.0,6
+S0300,CT00006,Data dan Diagram,advanced,not started,68.06488459201722,3.0,4.0,6
+S0704,CT00004,Bentuk Aljabar,beginner,done,71.31471334238756,5.0,3.0,3
+S0655,CT00004,Bentuk Aljabar,advanced,done,68.82647537848541,5.0,3.0,3
+S0555,CT00005,Kesebangunan,advanced,not started,60.0792406097363,1.0,3.0,3
+S0248,CT00001,Bilangan Bulat,advanced,in-progress,94.78097582959529,2.0,2.0,3
+S0511,CT00006,Data dan Diagram,intermediate,done,73.03236735995148,2.0,1.0,6
+S0842,CT00001,Bilangan Bulat,advanced,done,85.32158914659283,5.0,2.0,3
+S0895,CT00004,Bentuk Aljabar,intermediate,not started,67.95,1.0,2.0,3
+S0314,CT00004,Bentuk Aljabar,advanced,not started,90.90876142194156,2.0,1.0,3
+S0309,CT00002,Bilangan Rasional,beginner,in-progress,64.76561136154474,5.0,1.0,3
+S0582,CT00003,Rasio,intermediate,DONE,72.70540879262511,4.0,2.0,3
+S0718,CT00002,Bilangan Rasional,beginner,in-progress,70.32359246793226,5.0,1.0,3
+S0280,CT00006,Data dan Diagram,beginner,not started,82.53738432614276,1.0,4.0,6
+S0380,CT00005,Kesebangunan,advanced,in-progress,29.3,1.0,3.0,3
+S0970,CT00002,Bilangan Rasional,intermediate,done,39.72,1.0,1.0,3
+S0802,CT00001,Bilangan Bulat,beginner,done,64.54735311222099,1.0,1.0,3
+S0784,CT00004,Bentuk Aljabar,beginner,done,63.13677470131238,4.0,1.0,3
+S0047,CT00006,Data dan Diagram,intermediate,in-progress,76.9712544557701,2.0,1.0,6
+S0337,CT00004,Bentuk Aljabar,intermediate,not started,60.42,8.0,1.0,3
+S0524,CT00003,Rasio,intermediate,not started,72.56592399620823,2.0,2.0,3
+S0950,CT00002,Bilangan Rasional,advanced,in-progress,77.10916643845874,3.0,1.0,3
+S0431,CT00002,Bilangan Rasional,beginner,DONE,89.5,1.0,3.0,3
+S0345,CT00002,Bilangan Rasional,beginner,not started,74.60091164680952,1.0,2.0,3
+S0695,CT00002,Bilangan Rasional,intermediate,in-progress,54.18,2.0,2.0,3
+S0282,CT00003,Rasio,advanced,not started,73.17314972791422,4.0,3.0,3
+S0465,CT00006,Data dan Diagram,beginner,not started,78.48,1.0,1.0,6
+S0279,CT00002,Bilangan Rasional,intermediate,done,68.66326323472389,2.0,1.0,3
+S0862,CT00005,Kesebangunan,intermediate,in-progress,86.84,1.0,3.0,3
+S0991,CT00005,Kesebangunan,advanced,not started,61.911786125825635,1.0,2.0,3
+S0742,CT00001,Bilangan Bulat,intermediate,done,71.7058453002643,4.0,1.0,3
+S0357,CT00006,Data dan Diagram,advanced,in-progress,80.61813582023271,3.0,5.0,6
+S0881,CT00006,Data dan Diagram,advanced,in-progress,82.14578877749128,4.0,5.0,6
+S0749,CT00001,Bilangan Bulat,intermediate,not started,42.08,1.0,1.0,3
+S0740,CT00003,Rasio,intermediate,done,91.92416488602616,4.0,1.0,3
+S0393,CT00004,Bentuk Aljabar,intermediate,in-progress,83.82920586033306,4.0,2.0,3
+S0695,CT00003,Rasio,advanced,in-progress,91.36072009088188,3.0,1.0,3
+S0881,CT00003,Rasio,advanced,in-progress,78.09487815949187,2.0,3.0,3
+S0121,CT00006,Data dan Diagram,advanced,done,83.43424816704002,3.0,1.0,6
+S0051,CT00002,Bilangan Rasional,advanced,in-progress,66.4,1.0,1.0,3
+S0190,CT00002,Bilangan Rasional,beginner,not started,75.66007844860466,2.0,2.0,3
+S0035,CT00001,Bilangan Bulat,beginner,in-progress,36.3,1.0,1.0,3
+S0265,CT00006,Data dan Diagram,beginner,done,63.31246926151047,3.0,4.0,6
+S0157,CT00001,Bilangan Bulat,beginner,DONE,41.37,1.0,1.0,3
+S0053,CT00005,Kesebangunan,advanced,in-progress,85.02356403119097,1.0,2.0,3
+S0190,CT00006,Data dan Diagram,intermediate,in-progress,41.78,1.0,6.0,6
+S0473,CT00003,Rasio,beginner,not started,64.31696000367164,2.0,3.0,3
+S0839,CT00006,Data dan Diagram,advanced,in-progress,75.17117281914456,1.0,1.0,6
+S0993,CT00001,Bilangan Bulat,advanced,in-progress,45.62,8.0,2.0,3
+S0721,CT00001,Bilangan Bulat,intermediate,DONE,92.35077420504811,2.0,3.0,3
+S0270,CT00005,Kesebangunan,beginner,in-progress,74.48725392636693,5.0,1.0,3
+S0160,CT00006,Data dan Diagram,advanced,in-progress,60.28520247248171,2.0,2.0,6
+S0991,CT00002,Bilangan Rasional,beginner,done,82.64139397195572,4.0,2.0,3
+S0991,CT00002,Bilangan Rasional,beginner,done,74.98200580360249,4.0,2.0,3
+S0991,CT00002,Bilangan Rasional,beginner,done,74.98794170546661,5.0,2.0,3
+S0991,CT00002,Bilangan Rasional,beginner,done,77.2020914291107,5.0,2.0,3
+S0903,CT00001,Bilangan Bulat,beginner,not started,65.71734240917147,4.0,2.0,3
+S0707,CT00002,Bilangan Rasional,beginner,in-progress,7.21,1.0,2.0,3
+S0128,CT00002,Bilangan Rasional,advanced,in-progress,64.38,1.0,2.0,3
+S0831,CT00002,Bilangan Rasional,beginner,done,92.41,1.0,1.0,3
+S0171,CT00002,Bilangan Rasional,advanced,in-progress,92.7433685643478,2.0,1.0,3
+S0822,CT00005,Kesebangunan,advanced,not started,87.12560712152332,1.0,3.0,3
+S0001,CT00002,Bilangan Rasional,intermediate,in-progress,93.77814186015854,1.0,1.0,3
+S0925,CT00002,Bilangan Rasional,advanced,done,93.0,1.0,1.0,3
+S0024,CT00005,Kesebangunan,beginner,in-progress,94.75463774192842,5.0,1.0,3
+S0181,CT00005,Kesebangunan,advanced,not started,89.76788001666179,5.0,3.0,3
+S0181,CT00005,Kesebangunan,advanced,not started,69.25133855713406,4.0,3.0,3
+S0181,CT00005,Kesebangunan,advanced,not started,89.84266836191236,5.0,3.0,3
+S0181,CT00005,Kesebangunan,advanced,not started,85.35084856114506,1.0,2.0,3
+S0574,CT00006,Data dan Diagram,beginner,not started,70.70628378238902,1.0,4.0,6
+S0193,CT00006,Data dan Diagram,beginner,done,63.31813741818211,5.0,2.0,6
+S0798,CT00004,Bentuk Aljabar,beginner,in-progress,22.5,1.0,2.0,3
+S0463,CT00006,Data dan Diagram,advanced,in-progress,91.35311237253475,2.0,2.0,6
+S0490,CT00002,Bilangan Rasional,advanced,not started,33.2,1.0,3.0,3
+S0422,CT00002,Bilangan Rasional,beginner,done,73.84627542924538,1.0,2.0,3
+S0223,CT00001,Bilangan Bulat,advanced,in-progress,73.40345308175355,1.0,1.0,3
+S0895,CT00004,Bentuk Aljabar,advanced,done,67.95,1.0,2.0,3
+S0404,CT00003,Rasio,intermediate,done,71.89244510403546,3.0,3.0,3
+S0482,CT00005,Kesebangunan,beginner,done,64.50371943257696,2.0,3.0,3
+S0544,CT00003,Rasio,intermediate,not started,68.7791733047866,2.0,3.0,3
+S0174,CT00002,Bilangan Rasional,beginner,in-progress,70.26,1.0,2.0,3
+S0744,CT00004,Bentuk Aljabar,intermediate,not started,78.38729807379454,4.0,1.0,3
+S0841,CT00002,Bilangan Rasional,intermediate,not started,63.57,2.0,2.0,3
+S0484,CT00006,Data dan Diagram,beginner,done,94.80616291025598,1.0,1.0,6
+S0142,CT00006,Data dan Diagram,beginner,DONE,61.05,1.0,1.0,6
+S0848,CT00002,Bilangan Rasional,beginner,in-progress,56.48,1.0,3.0,3
+S0138,CT00004,Bentuk Aljabar,beginner,in-progress,62.192464558066355,2.0,1.0,3
+S0901,CT00003,Rasio,advanced,in-progress,86.21774407812184,4.0,3.0,3
+S0173,CT00003,Rasio,advanced,in-progress,94.75581417527371,2.0,1.0,3
+S0121,CT00006,Data dan Diagram,beginner,done,91.9147298648943,3.0,2.0,6
+S0121,CT00006,Data dan Diagram,beginner,done,83.6972704369486,1.0,4.0,6
+S0121,CT00006,Data dan Diagram,beginner,done,76.69580689833624,5.0,5.0,6
+S0121,CT00006,Data dan Diagram,beginner,done,84.89579807461693,4.0,3.0,6
+S0299,CT00004,Bentuk Aljabar,beginner,DONE,89.50866336783797,4.0,1.0,3
+S0900,CT00005,Kesebangunan,advanced,done,74.68633353800142,1.0,1.0,3
+S0328,CT00003,Rasio,intermediate,not started,81.14042469549118,2.0,2.0,3
+S0615,CT00001,Bilangan Bulat,beginner,in-progress,11.81,1.0,1.0,3
+S0167,CT00005,Kesebangunan,intermediate,DONE,91.7967623160256,4.0,2.0,3
+S0101,CT00005,Kesebangunan,advanced,not started,59.95,1.0,3.0,3
+S0477,CT00002,Bilangan Rasional,intermediate,not started,71.40642918543155,2.0,2.0,3
+S0697,CT00004,Bentuk Aljabar,advanced,done,77.39640344560019,5.0,2.0,3
+S0400,CT00002,Bilangan Rasional,advanced,in-progress,65.02910591846872,2.0,2.0,3
+S0755,CT00002,Bilangan Rasional,intermediate,in-progress,66.31826475918054,3.0,3.0,3
+S0719,CT00001,Bilangan Bulat,intermediate,in-progress,67.77615371796378,3.0,2.0,3
+S0094,CT00005,Kesebangunan,intermediate,done,93.7532558704103,2.0,3.0,3
+S0442,CT00003,Rasio,advanced,in-progress,84.67677328366753,2.0,2.0,3
+S0810,CT00001,Bilangan Bulat,advanced,done,79.91505790808772,2.0,1.0,3
+S0455,CT00002,Bilangan Rasional,intermediate,done,22.46,1.0,1.0,3
+S0023,CT00004,Bentuk Aljabar,advanced,DONE,88.34676307186595,3.0,3.0,3
+S0713,CT00005,Kesebangunan,intermediate,not started,90.78762878976495,1.0,1.0,3
+S0149,CT00001,Bilangan Bulat,advanced,done,76.99142964636079,3.0,2.0,3
+S0775,CT00004,Bentuk Aljabar,advanced,in-progress,75.56578067140465,3.0,3.0,3
+S0899,CT00006,Data dan Diagram,intermediate,not started,66.11218624661377,4.0,1.0,6
+S0880,CT00004,Bentuk Aljabar,advanced,in-progress,36.88,2.0,3.0,3
+S0006,CT00001,Bilangan Bulat,advanced,not started,66.80008544043022,3.0,3.0,3
+S0306,CT00004,Bentuk Aljabar,beginner,DONE,36.91,1.0,1.0,3
+S0425,CT00003,Rasio,beginner,done,60.539001534767785,1.0,1.0,3
+S0812,CT00003,Rasio,beginner,in-progress,63.503373145921465,3.0,3.0,3
+S0289,CT00003,Rasio,intermediate,done,94.78271828874355,3.0,1.0,3
+S0182,CT00002,Bilangan Rasional,beginner,not started,82.45921890447867,4.0,1.0,3
+S0520,CT00004,Bentuk Aljabar,intermediate,in-progress,64.2201848493558,2.0,1.0,3
+S0549,CT00001,Bilangan Bulat,advanced,in-progress,80.32018743332158,2.0,2.0,3
+S0656,CT00006,Data dan Diagram,advanced,in-progress,73.76853750442498,1.0,5.0,6
+S0235,CT00002,Bilangan Rasional,beginner,done,33.83,1.0,1.0,3
+S0130,CT00003,Rasio,advanced,in-progress,63.408330648219746,2.0,2.0,3
+S0155,CT00001,Bilangan Bulat,advanced,in-progress,83.26420341370716,3.0,3.0,3
+S0568,CT00004,Bentuk Aljabar,advanced,not started,61.170966022863006,3.0,3.0,3
+S0174,CT00003,Rasio,intermediate,in-progress,75.47385142423654,2.0,2.0,3
+S0816,CT00003,Rasio,advanced,done,63.477221335591054,2.0,2.0,3
+S0977,CT00005,Kesebangunan,beginner,not started,28.13,1.0,3.0,3
+S0955,CT00002,Bilangan Rasional,beginner,not started,67.17020561844407,4.0,1.0,3
+S0766,CT00001,Bilangan Bulat,intermediate,not started,76.6107120773022,2.0,2.0,3
+S0061,CT00003,Rasio,advanced,not started,27.795,2.0,3.0,3
+S0371,CT00002,Bilangan Rasional,intermediate,in-progress,90.74214782527007,4.0,3.0,3
+S0101,CT00005,Kesebangunan,beginner,in-progress,59.95,1.0,1.0,3
+S0227,CT00003,Rasio,advanced,done,75.24034509376568,4.0,2.0,3
+S0182,CT00005,Kesebangunan,beginner,in-progress,54.17,1.0,2.0,3
+S0175,CT00003,Rasio,beginner,done,79.07619002703831,4.0,1.0,3
+S0806,CT00006,Data dan Diagram,advanced,in-progress,3.79,1.0,6.0,6
+S0221,CT00001,Bilangan Bulat,beginner,in-progress,84.21970003165089,3.0,1.0,3
+S0638,CT00004,Bentuk Aljabar,beginner,done,66.24744125564258,1.0,1.0,3
+S0326,CT00001,Bilangan Bulat,advanced,done,92.4242363109579,1.0,2.0,3
+S0922,CT00006,Data dan Diagram,advanced,not started,77.23874109773158,3.0,1.0,6
+S0338,CT00001,Bilangan Bulat,beginner,done,69.6539342281149,1.0,2.0,3
+S0155,CT00001,Bilangan Bulat,intermediate,done,78.2947285174771,2.0,3.0,3
+S0955,CT00001,Bilangan Bulat,intermediate,in-progress,67.22134220225787,5.0,3.0,3
+S0747,CT00004,Bentuk Aljabar,intermediate,in-progress,84.80807015540624,1.0,3.0,3
+S0049,CT00001,Bilangan Bulat,beginner,not started,69.34570691311873,4.0,1.0,3
+S0401,CT00002,Bilangan Rasional,intermediate,not started,62.92494501543555,4.0,2.0,3
+S0199,CT00004,Bentuk Aljabar,advanced,done,7.72,1.0,1.0,3
+S0731,CT00001,Bilangan Bulat,advanced,not started,27.57,8.0,2.0,3
+S0626,CT00002,Bilangan Rasional,intermediate,done,77.94425384434709,5.0,3.0,3
+S0692,CT00003,Rasio,intermediate,in-progress,80.83932383771425,4.0,2.0,3
+S0416,CT00006,Data dan Diagram,intermediate,in-progress,81.628987973686,4.0,1.0,6
+S0666,CT00003,Rasio,advanced,done,53.94,1.0,3.0,3
+S0988,CT00005,Kesebangunan,intermediate,done,74.75337763810778,1.0,1.0,3
+S0959,CT00005,Kesebangunan,beginner,not started,90.90250379341653,3.0,2.0,3
+S0570,CT00003,Rasio,beginner,in-progress,71.48,1.0,3.0,3
+S0244,CT00006,Data dan Diagram,advanced,in-progress,2.19,1.0,5.0,6
+S0976,CT00005,Kesebangunan,beginner,done,73.33515950504832,2.0,3.0,3
+S0521,CT00001,Bilangan Bulat,advanced,in-progress,74.93211044876158,2.0,3.0,3
+S0350,CT00001,Bilangan Bulat,advanced,in-progress,84.09881885629801,3.0,3.0,3
+S0466,CT00006,Data dan Diagram,intermediate,not started,78.67816506412726,1.0,3.0,6
+S0330,CT00002,Bilangan Rasional,intermediate,in-progress,77.10633963427924,2.0,1.0,3
+S0306,CT00004,Bentuk Aljabar,intermediate,DONE,36.91,1.0,2.0,3
+S0364,CT00005,Kesebangunan,intermediate,not started,93.76410736377682,3.0,1.0,3
+S0386,CT00004,Bentuk Aljabar,intermediate,not started,46.69555555555556,9.0,2.0,3
+S0655,CT00006,Data dan Diagram,beginner,in-progress,34.64,3.0,2.0,6
+S0022,CT00002,Bilangan Rasional,beginner,in-progress,69.63,1.0,2.0,3
+S0137,CT00006,Data dan Diagram,intermediate,in-progress,75.7809744635156,3.0,6.0,6
+S0611,CT00001,Bilangan Bulat,beginner,not started,84.56676473731626,2.0,1.0,3
+S0392,CT00004,Bentuk Aljabar,intermediate,done,74.9409646997302,3.0,3.0,3
+S0192,CT00004,Bentuk Aljabar,intermediate,in-progress,86.62570625259133,1.0,3.0,3
+S0681,CT00004,Bentuk Aljabar,intermediate,done,85.14786032274874,4.0,1.0,3
+S0359,CT00002,Bilangan Rasional,advanced,done,91.5591853216381,2.0,2.0,3
+S0426,CT00004,Bentuk Aljabar,advanced,not started,89.37281237671637,2.0,2.0,3
+S0423,CT00005,Kesebangunan,intermediate,not started,64.76336455771879,4.0,2.0,3
+S0693,CT00001,Bilangan Bulat,advanced,done,61.0953301892615,5.0,1.0,3
+S0935,CT00004,Bentuk Aljabar,advanced,not started,75.00969666603133,4.0,1.0,3
+S0788,CT00002,Bilangan Rasional,beginner,not started,31.71,1.0,3.0,3
+S0680,CT00001,Bilangan Bulat,advanced,in-progress,74.95956739943726,3.0,2.0,3
+S0202,CT00001,Bilangan Bulat,advanced,done,84.09340571549475,2.0,3.0,3
+S0232,CT00005,Kesebangunan,advanced,done,23.71,2.0,1.0,3
+S0252,CT00001,Bilangan Bulat,advanced,not started,62.891481034420494,1.0,1.0,3
+S0625,CT00001,Bilangan Bulat,intermediate,in-progress,9.26,1.0,1.0,3
+S0874,CT00003,Rasio,intermediate,done,40.44,1.0,3.0,3
+S0350,CT00001,Bilangan Bulat,beginner,in-progress,61.67870149417884,3.0,3.0,3
+S0174,CT00006,Data dan Diagram,advanced,not started,86.07746634744119,4.0,6.0,6
+S0341,CT00001,Bilangan Bulat,intermediate,done,83.34889754285066,4.0,1.0,3
+S0154,CT00004,Bentuk Aljabar,advanced,in-progress,65.10563344682289,5.0,2.0,3
+S0868,CT00002,Bilangan Rasional,beginner,not started,89.0971354299569,4.0,3.0,3
+S0254,CT00004,Bentuk Aljabar,intermediate,in-progress,38.855,2.0,3.0,3
+S0603,CT00005,Kesebangunan,advanced,done,66.50068547291797,5.0,1.0,3
+S0885,CT00005,Kesebangunan,advanced,DONE,83.72,1.0,3.0,3
+S0425,CT00002,Bilangan Rasional,advanced,done,68.14057804069871,3.0,3.0,3
+S0256,CT00001,Bilangan Bulat,advanced,done,94.19821547653035,4.0,2.0,3
+S0707,CT00004,Bentuk Aljabar,advanced,in-progress,83.84642072962254,2.0,1.0,3
+S0328,CT00002,Bilangan Rasional,intermediate,not started,78.22709009821696,1.0,1.0,3
+S0104,CT00003,Rasio,intermediate,done,72.55433608978534,5.0,1.0,3
+S0916,CT00002,Bilangan Rasional,intermediate,in-progress,33.38,2.0,2.0,3
+S0402,CT00005,Kesebangunan,intermediate,in-progress,31.73,1.0,3.0,3
+S0401,CT00004,Bentuk Aljabar,beginner,DONE,63.622107086716895,5.0,2.0,3
+S0811,CT00004,Bentuk Aljabar,advanced,DONE,29.05,1.0,2.0,3
+S0987,CT00005,Kesebangunan,intermediate,done,90.58063128116774,4.0,1.0,3
+S0987,CT00005,Kesebangunan,intermediate,done,81.85234899435184,4.0,2.0,3
+S0987,CT00005,Kesebangunan,intermediate,done,87.64309903651528,5.0,1.0,3
+S0987,CT00005,Kesebangunan,intermediate,done,75.85514346536453,2.0,1.0,3
+S0057,CT00005,Kesebangunan,intermediate,in-progress,94.21227517923073,1.0,1.0,3
+S0811,CT00006,Data dan Diagram,advanced,in-progress,56.65,1.0,6.0,6
+S0385,CT00002,Bilangan Rasional,intermediate,in-progress,95.26,1.0,2.0,3
+S0007,CT00002,Bilangan Rasional,intermediate,in-progress,80.75462930235304,5.0,2.0,3
+S0838,CT00003,Rasio,beginner,in-progress,76.03,1.0,3.0,3
+S0675,CT00001,Bilangan Bulat,advanced,in-progress,52.04,1.0,3.0,3
+S0328,CT00004,Bentuk Aljabar,advanced,in-progress,63.39,2.0,2.0,3
+S0544,CT00002,Bilangan Rasional,beginner,in-progress,59.91,3.0,2.0,3
+S0723,CT00006,Data dan Diagram,advanced,in-progress,87.94639058503324,4.0,3.0,6
+S0658,CT00004,Bentuk Aljabar,intermediate,done,16.695,2.0,1.0,3
+S0300,CT00005,Kesebangunan,intermediate,DONE,76.84255664307011,1.0,1.0,3
+S0407,CT00005,Kesebangunan,advanced,done,87.81270374282566,2.0,3.0,3
+S0911,CT00001,Bilangan Bulat,beginner,done,17.16,1.0,2.0,3
+S0098,CT00004,Bentuk Aljabar,intermediate,not started,76.21569781533341,5.0,1.0,3
+S0640,CT00005,Kesebangunan,intermediate,not started,45.52,2.0,1.0,3
+S0248,CT00006,Data dan Diagram,intermediate,not started,79.24665637356307,4.0,5.0,6
+S0123,CT00003,Rasio,beginner,done,88.26900732138535,5.0,1.0,3
+S0095,CT00003,Rasio,advanced,in-progress,16.66,1.0,3.0,3
+S0503,CT00006,Data dan Diagram,intermediate,not started,4.9,1.0,2.0,6
+S0160,CT00002,Bilangan Rasional,beginner,in-progress,86.3762289611777,2.0,1.0,3
+S0870,CT00001,Bilangan Bulat,advanced,in-progress,46.71,1.0,2.0,3
+S0214,CT00003,Rasio,beginner,in-progress,67.14397327294128,3.0,2.0,3
+S0914,CT00006,Data dan Diagram,advanced,not started,91.11029747048838,3.0,4.0,6
+S0984,CT00006,Data dan Diagram,beginner,in-progress,69.99858110670964,1.0,6.0,6
+S0113,CT00005,Kesebangunan,intermediate,done,69.2917735414457,4.0,1.0,3
+S0709,CT00004,Bentuk Aljabar,intermediate,not started,88.88632645879267,2.0,3.0,3
+S0600,CT00003,Rasio,advanced,not started,28.29,1.0,2.0,3
+S0104,CT00002,Bilangan Rasional,advanced,DONE,67.3098380349283,1.0,1.0,3
+S0779,CT00006,Data dan Diagram,beginner,in-progress,68.92468330556679,1.0,1.0,6
+S0559,CT00006,Data dan Diagram,beginner,not started,86.03707871002368,3.0,2.0,6
+S0364,CT00001,Bilangan Bulat,advanced,done,61.54,1.0,1.0,3
+S0631,CT00006,Data dan Diagram,beginner,done,69.71897157241861,1.0,1.0,6
+S0304,CT00005,Kesebangunan,advanced,in-progress,90.35131254640368,1.0,2.0,3
+S0304,CT00005,Kesebangunan,advanced,in-progress,75.27630479548424,1.0,3.0,3
+S0304,CT00005,Kesebangunan,advanced,in-progress,77.07768811693386,5.0,1.0,3
+S0304,CT00005,Kesebangunan,advanced,in-progress,91.73483383382148,4.0,1.0,3
+S0377,CT00002,Bilangan Rasional,advanced,done,80.25171892201958,2.0,3.0,3
+S0040,CT00005,Kesebangunan,intermediate,in-progress,75.64857299028442,2.0,1.0,3
+S0856,CT00001,Bilangan Bulat,advanced,in-progress,67.68225271914228,1.0,2.0,3
+S0789,CT00006,Data dan Diagram,advanced,done,88.08533205074264,1.0,1.0,6
+S0194,CT00003,Rasio,beginner,DONE,72.07007573107985,1.0,1.0,3
+S0849,CT00006,Data dan Diagram,beginner,not started,89.55357952202733,1.0,3.0,6
+S0834,CT00005,Kesebangunan,beginner,not started,89.72194273362109,1.0,2.0,3
+S0776,CT00001,Bilangan Bulat,advanced,done,70.63130087417083,2.0,1.0,3
+S0038,CT00004,Bentuk Aljabar,intermediate,not started,88.47694507475865,3.0,1.0,3
+S0678,CT00003,Rasio,intermediate,done,83.10499816844106,5.0,2.0,3
+S0283,CT00002,Bilangan Rasional,advanced,done,35.63,1.0,1.0,3
+S0875,CT00005,Kesebangunan,advanced,DONE,69.09020916210673,5.0,2.0,3
+S0817,CT00006,Data dan Diagram,beginner,not started,81.82971322712659,2.0,3.0,6
+S0927,CT00006,Data dan Diagram,intermediate,done,89.20564714494598,3.0,2.0,6
+S0475,CT00004,Bentuk Aljabar,intermediate,not started,60.522524325611954,1.0,1.0,3
+S0108,CT00004,Bentuk Aljabar,beginner,done,63.86750093197334,1.0,3.0,3
+S0046,CT00004,Bentuk Aljabar,intermediate,done,61.75667019249073,1.0,3.0,3
+S0324,CT00003,Rasio,beginner,done,91.58610611480691,4.0,1.0,3
+S0145,CT00006,Data dan Diagram,advanced,done,79.62092443447722,5.0,2.0,6
+S0145,CT00006,Data dan Diagram,advanced,done,72.30759788500508,3.0,1.0,6
+S0145,CT00006,Data dan Diagram,advanced,done,93.44285447772847,3.0,5.0,6
+S0145,CT00006,Data dan Diagram,advanced,done,78.48240728194263,2.0,2.0,6
+S1000,CT00004,Bentuk Aljabar,intermediate,in-progress,85.17180249591163,4.0,1.0,3
+S0530,CT00004,Bentuk Aljabar,beginner,not started,15.55,1.0,1.0,3
+S0847,CT00006,Data dan Diagram,advanced,not started,70.46087523685017,3.0,1.0,6
+S0663,CT00003,Rasio,intermediate,not started,69.28113657653033,2.0,2.0,3
+S0697,CT00002,Bilangan Rasional,intermediate,done,81.9340142360706,5.0,2.0,3
+S0277,CT00006,Data dan Diagram,beginner,in-progress,78.97693096442771,5.0,4.0,6
+S0118,CT00005,Kesebangunan,beginner,done,49.78,1.0,2.0,3
+S0532,CT00001,Bilangan Bulat,advanced,not started,74.26595140789755,1.0,2.0,3
+S0055,CT00001,Bilangan Bulat,intermediate,not started,84.60312716004353,2.0,1.0,3
+S0212,CT00001,Bilangan Bulat,advanced,not started,77.99559768567303,3.0,2.0,3
+S0107,CT00001,Bilangan Bulat,beginner,not started,73.9252272843472,2.0,3.0,3
+S0003,CT00006,Data dan Diagram,intermediate,not started,72.85350884259607,3.0,1.0,6
+S0025,CT00002,Bilangan Rasional,advanced,in-progress,63.93963435539377,5.0,2.0,3
+S0110,CT00003,Rasio,advanced,not started,53.42,1.0,2.0,3
+S0439,CT00004,Bentuk Aljabar,beginner,not started,42.86,1.0,3.0,3
+S0046,CT00003,Rasio,intermediate,in-progress,75.39043265229539,2.0,3.0,3
+S0034,CT00004,Bentuk Aljabar,advanced,in-progress,21.37,1.0,1.0,3
+S0776,CT00004,Bentuk Aljabar,intermediate,DONE,87.4445855255286,5.0,2.0,3
+S0805,CT00004,Bentuk Aljabar,beginner,not started,83.94514081260145,5.0,3.0,3
+S0553,CT00001,Bilangan Bulat,advanced,in-progress,64.12687354261149,1.0,2.0,3
+S0769,CT00004,Bentuk Aljabar,intermediate,not started,82.82506629284777,2.0,1.0,3
+S0826,CT00002,Bilangan Rasional,beginner,not started,13.7,1.0,3.0,3
+S0358,CT00003,Rasio,advanced,done,88.83682491018126,5.0,1.0,3
+S0927,CT00002,Bilangan Rasional,advanced,not started,74.21,1.0,2.0,3
+S0288,CT00006,Data dan Diagram,advanced,in-progress,91.3900520761822,4.0,3.0,6
+S0171,CT00003,Rasio,advanced,not started,12.03,1.0,2.0,3
+S0903,CT00003,Rasio,intermediate,in-progress,93.40028906633333,4.0,2.0,3
+S0236,CT00005,Kesebangunan,beginner,done,56.28,2.0,1.0,3
+S0098,CT00005,Kesebangunan,beginner,done,97.76,1.0,1.0,3
+S0563,CT00005,Kesebangunan,advanced,in-progress,63.68089366628453,4.0,2.0,3
+S0741,CT00002,Bilangan Rasional,advanced,not started,29.17,1.0,2.0,3
+S0976,CT00001,Bilangan Bulat,beginner,in-progress,52.50333333333333,3.0,3.0,3
+S0227,CT00005,Kesebangunan,intermediate,in-progress,91.80317774041434,3.0,2.0,3
+S0545,CT00005,Kesebangunan,intermediate,in-progress,92.443500891425,2.0,1.0,3
+S0617,CT00004,Bentuk Aljabar,beginner,done,92.24127232812307,4.0,1.0,3
+S0756,CT00002,Bilangan Rasional,beginner,in-progress,85.18951117277615,1.0,3.0,3
+S0751,CT00004,Bentuk Aljabar,intermediate,done,65.34423378893358,5.0,1.0,3
+S0089,CT00003,Rasio,beginner,not started,90.63050172476915,5.0,2.0,3
+S0089,CT00003,Rasio,beginner,not started,62.251214128595734,2.0,1.0,3
+S0089,CT00003,Rasio,beginner,not started,80.73647121545692,1.0,1.0,3
+S0089,CT00003,Rasio,beginner,not started,89.58221776261172,2.0,2.0,3
+S0106,CT00005,Kesebangunan,intermediate,done,66.41981518555231,2.0,3.0,3
+S0950,CT00004,Bentuk Aljabar,advanced,done,92.47780689040724,1.0,2.0,3
+S0145,CT00005,Kesebangunan,beginner,not started,87.10922545593165,5.0,1.0,3
+S0210,CT00001,Bilangan Bulat,advanced,in-progress,96.72,1.0,3.0,3
+S0411,CT00004,Bentuk Aljabar,beginner,not started,69.29146561486698,2.0,3.0,3
+S0627,CT00004,Bentuk Aljabar,beginner,in-progress,93.80475715181055,4.0,3.0,3
+S0154,CT00004,Bentuk Aljabar,intermediate,done,85.90422995943631,1.0,2.0,3
+S0557,CT00001,Bilangan Bulat,advanced,in-progress,77.56,1.0,2.0,3
+S0557,CT00001,Bilangan Bulat,advanced,in-progress,77.56,1.0,1.0,3
+S0557,CT00001,Bilangan Bulat,advanced,in-progress,77.56,1.0,1.0,3
+S0557,CT00001,Bilangan Bulat,advanced,in-progress,77.56,1.0,3.0,3
+S0617,CT00001,Bilangan Bulat,beginner,in-progress,77.89,1.0,2.0,3
+S0082,CT00004,Bentuk Aljabar,beginner,in-progress,60.881884644875626,4.0,1.0,3
+S0862,CT00005,Kesebangunan,advanced,in-progress,86.84,1.0,2.0,3
+S0024,CT00002,Bilangan Rasional,advanced,in-progress,69.59526238463211,1.0,2.0,3
+S0399,CT00006,Data dan Diagram,beginner,done,61.500715871517265,1.0,1.0,6
+S0008,CT00005,Kesebangunan,advanced,in-progress,22.06,1.0,2.0,3
+S0958,CT00001,Bilangan Bulat,advanced,not started,61.127955889392936,2.0,3.0,3
+S0387,CT00006,Data dan Diagram,advanced,done,69.95777525802573,4.0,1.0,6
+S0770,CT00004,Bentuk Aljabar,advanced,in-progress,64.73287257881807,2.0,3.0,3
+S0136,CT00003,Rasio,intermediate,in-progress,77.86893395864328,3.0,1.0,3
+S0526,CT00002,Bilangan Rasional,intermediate,done,85.89,1.0,2.0,3
+S0754,CT00006,Data dan Diagram,advanced,not started,73.58,1.0,4.0,6
+S0502,CT00002,Bilangan Rasional,advanced,done,60.442989216235524,1.0,2.0,3
+S0731,CT00001,Bilangan Bulat,intermediate,in-progress,27.57,8.0,1.0,3
+S0160,CT00002,Bilangan Rasional,advanced,in-progress,87.48464038054682,2.0,1.0,3
+S0166,CT00001,Bilangan Bulat,advanced,in-progress,64.73322515264108,3.0,2.0,3
+S0749,CT00001,Bilangan Bulat,advanced,in-progress,42.08,1.0,2.0,3
+S0234,CT00006,Data dan Diagram,intermediate,in-progress,86.8778860063737,3.0,5.0,6
+S0234,CT00006,Data dan Diagram,intermediate,in-progress,61.33985311388398,3.0,2.0,6
+S0234,CT00006,Data dan Diagram,intermediate,in-progress,69.7456507772276,2.0,4.0,6
+S0234,CT00006,Data dan Diagram,intermediate,in-progress,61.332563558372584,1.0,3.0,6
+S0566,CT00001,Bilangan Bulat,beginner,done,60.36299139147468,1.0,2.0,3
+S0259,CT00002,Bilangan Rasional,advanced,not started,86.70853755499927,2.0,1.0,3
+S0753,CT00004,Bentuk Aljabar,beginner,done,64.50317936858802,5.0,2.0,3
+S0450,CT00003,Rasio,advanced,done,33.61,1.0,3.0,3
+S0380,CT00003,Rasio,intermediate,not started,65.23976298766154,2.0,1.0,3
+S0066,CT00005,Kesebangunan,beginner,in-progress,78.28487697918519,2.0,3.0,3
+S0447,CT00006,Data dan Diagram,advanced,not started,75.29204785429624,2.0,5.0,6
+S0856,CT00002,Bilangan Rasional,advanced,in-progress,94.3116320227254,1.0,3.0,3
+S0856,CT00002,Bilangan Rasional,advanced,in-progress,70.23782112171823,2.0,2.0,3
+S0364,CT00004,Bentuk Aljabar,intermediate,done,71.03856526725389,1.0,1.0,3
+S0134,CT00002,Bilangan Rasional,advanced,not started,74.82151589104124,1.0,1.0,3
+S0867,CT00006,Data dan Diagram,beginner,in-progress,90.71478082916592,3.0,1.0,6
+S0197,CT00002,Bilangan Rasional,advanced,done,65.16844476835291,3.0,2.0,3
+S0293,CT00003,Rasio,beginner,in-progress,81.89308798150844,3.0,3.0,3
+S0095,CT00004,Bentuk Aljabar,intermediate,in-progress,85.98818743878142,3.0,3.0,3
+S0189,CT00006,Data dan Diagram,intermediate,in-progress,62.82949911192679,5.0,1.0,6
+S0004,CT00002,Bilangan Rasional,intermediate,not started,9.25,1.0,3.0,3
+S0096,CT00004,Bentuk Aljabar,beginner,in-progress,92.81811322414,1.0,1.0,3
+S0788,CT00006,Data dan Diagram,intermediate,done,86.60566896855383,4.0,1.0,6
+S0449,CT00003,Rasio,advanced,in-progress,73.10710117384417,3.0,1.0,3
+S0185,CT00003,Rasio,advanced,not started,62.159370887128084,3.0,1.0,3
+S0044,CT00006,Data dan Diagram,intermediate,not started,84.86,2.0,1.0,6
+S0151,CT00004,Bentuk Aljabar,advanced,in-progress,85.62619810642838,1.0,1.0,3
+S0066,CT00005,Kesebangunan,intermediate,in-progress,63.653118505695865,3.0,2.0,3
+S0994,CT00004,Bentuk Aljabar,beginner,not started,13.0,1.0,3.0,3
+S0954,CT00004,Bentuk Aljabar,advanced,in-progress,75.64771776482748,4.0,2.0,3
+S0442,CT00004,Bentuk Aljabar,intermediate,not started,60.61,1.0,3.0,3
+S0598,CT00006,Data dan Diagram,beginner,in-progress,64.88326417391801,1.0,5.0,6
+S0349,CT00001,Bilangan Bulat,advanced,not started,56.33,8.0,2.0,3
+S0539,CT00004,Bentuk Aljabar,intermediate,in-progress,94.33539016470814,5.0,3.0,3
+S0765,CT00006,Data dan Diagram,advanced,not started,89.49762101661875,5.0,5.0,6
+S0996,CT00002,Bilangan Rasional,beginner,done,67.3147931871241,5.0,1.0,3
+S0472,CT00003,Rasio,intermediate,in-progress,0.04,1.0,2.0,3
+S0409,CT00004,Bentuk Aljabar,intermediate,DONE,75.90904716318401,5.0,1.0,3
+S0669,CT00003,Rasio,beginner,in-progress,63.350921942634564,5.0,1.0,3
+S0144,CT00006,Data dan Diagram,intermediate,DONE,62.70254912147153,4.0,6.0,6
+S0394,CT00006,Data dan Diagram,advanced,not started,97.89,1.0,5.0,6
+S0521,CT00004,Bentuk Aljabar,beginner,in-progress,67.40970396751042,2.0,2.0,3
+S0985,CT00003,Rasio,intermediate,done,43.545,2.0,1.0,3
+S0848,CT00004,Bentuk Aljabar,intermediate,done,23.865,2.0,1.0,3
+S0884,CT00001,Bilangan Bulat,advanced,done,62.282718101476135,3.0,1.0,3
+S0264,CT00001,Bilangan Bulat,advanced,not started,39.39,1.0,2.0,3
+S0063,CT00003,Rasio,advanced,in-progress,64.56558385082037,1.0,1.0,3
+S0993,CT00004,Bentuk Aljabar,intermediate,not started,93.09175395437562,4.0,3.0,3
+S0837,CT00005,Kesebangunan,beginner,not started,19.92,1.0,1.0,3
+S0187,CT00001,Bilangan Bulat,beginner,done,21.94,1.0,1.0,3
+S0709,CT00001,Bilangan Bulat,intermediate,done,42.91,1.0,3.0,3
+S0997,CT00006,Data dan Diagram,intermediate,done,89.96320978728609,2.0,3.0,6
+S0786,CT00004,Bentuk Aljabar,beginner,not started,4.31,1.0,1.0,3
+S0195,CT00005,Kesebangunan,advanced,not started,58.64666666666667,3.0,2.0,3
+S0140,CT00005,Kesebangunan,beginner,done,89.30966437522139,3.0,2.0,3
+S0851,CT00006,Data dan Diagram,beginner,not started,90.37035285195657,1.0,5.0,6
+S0336,CT00001,Bilangan Bulat,intermediate,not started,81.67,1.0,2.0,3
+S0618,CT00004,Bentuk Aljabar,intermediate,not started,79.57786405564163,2.0,2.0,3
+S0994,CT00002,Bilangan Rasional,beginner,in-progress,37.88,1.0,3.0,3
+S0563,CT00001,Bilangan Bulat,beginner,not started,87.29171012086063,1.0,2.0,3
+S0385,CT00003,Rasio,advanced,in-progress,53.08,1.0,2.0,3
+S0918,CT00004,Bentuk Aljabar,advanced,in-progress,63.781732210038925,2.0,1.0,3
+S0025,CT00005,Kesebangunan,advanced,not started,56.09,1.0,3.0,3
+S0400,CT00006,Data dan Diagram,advanced,in-progress,63.83544652486957,3.0,1.0,6
+S0271,CT00003,Rasio,intermediate,in-progress,89.33655943826636,5.0,2.0,3
+S0844,CT00005,Kesebangunan,intermediate,done,7.42,1.0,1.0,3
+S0974,CT00003,Rasio,advanced,not started,88.05626349548288,4.0,1.0,3
+S0231,CT00005,Kesebangunan,intermediate,in-progress,39.31,1.0,1.0,3
+S0980,CT00005,Kesebangunan,advanced,not started,82.70303372407317,3.0,1.0,3
+S0742,CT00002,Bilangan Rasional,intermediate,in-progress,68.72418781363916,4.0,1.0,3
+S0762,CT00005,Kesebangunan,advanced,in-progress,93.30032121238574,4.0,1.0,3
+S0102,CT00006,Data dan Diagram,beginner,in-progress,68.56,1.0,6.0,6
+S0638,CT00006,Data dan Diagram,intermediate,in-progress,71.07370211317497,2.0,1.0,6
+S0511,CT00001,Bilangan Bulat,advanced,in-progress,78.08598041117884,1.0,2.0,3
+S0480,CT00006,Data dan Diagram,advanced,not started,74.62466083267265,4.0,3.0,6
+S0192,CT00006,Data dan Diagram,advanced,done,54.06,1.0,2.0,6
+S0233,CT00004,Bentuk Aljabar,advanced,not started,89.73024798924364,5.0,2.0,3
+S0739,CT00001,Bilangan Bulat,beginner,not started,91.10695294120603,5.0,3.0,3
+S0193,CT00001,Bilangan Bulat,advanced,in-progress,69.91683274538269,3.0,3.0,3
+S0587,CT00005,Kesebangunan,beginner,DONE,81.92,1.0,2.0,3
+S0432,CT00003,Rasio,advanced,done,15.42,1.0,2.0,3
+S0004,CT00001,Bilangan Bulat,advanced,not started,82.60795776910354,3.0,1.0,3
+S0521,CT00003,Rasio,beginner,in-progress,68.77,1.0,3.0,3
+S0348,CT00004,Bentuk Aljabar,advanced,done,32.63,1.0,2.0,3
+S0417,CT00006,Data dan Diagram,advanced,not started,87.80539687470099,5.0,2.0,6
+S0923,CT00002,Bilangan Rasional,intermediate,in-progress,82.80714526236764,4.0,1.0,3
+S0301,CT00002,Bilangan Rasional,intermediate,done,61.60134853375274,4.0,2.0,3
+S0869,CT00001,Bilangan Bulat,beginner,not started,36.89,1.0,1.0,3
+S0571,CT00002,Bilangan Rasional,beginner,done,67.82598434532065,2.0,1.0,3
+S0510,CT00002,Bilangan Rasional,intermediate,in-progress,67.63485230233687,5.0,3.0,3
+S0489,CT00002,Bilangan Rasional,beginner,in-progress,50.24,1.0,3.0,3
+S0057,CT00003,Rasio,advanced,in-progress,88.66037040742214,4.0,2.0,3
+S0181,CT00005,Kesebangunan,intermediate,done,80.1379681370955,5.0,1.0,3
+S0831,CT00003,Rasio,beginner,in-progress,69.66292497187847,1.0,3.0,3
+S0086,CT00003,Rasio,intermediate,in-progress,67.56154072760526,4.0,3.0,3
+S0571,CT00002,Bilangan Rasional,advanced,not started,92.4460435632189,2.0,1.0,3
+S0241,CT00001,Bilangan Bulat,advanced,not started,92.99819714938403,5.0,2.0,3
+S0740,CT00002,Bilangan Rasional,intermediate,in-progress,96.9,1.0,3.0,3
+S0805,CT00003,Rasio,intermediate,not started,73.0478032766953,2.0,2.0,3
+S0462,CT00002,Bilangan Rasional,beginner,in-progress,85.50570329664524,4.0,1.0,3
+S0119,CT00005,Kesebangunan,advanced,not started,47.92,1.0,3.0,3
+S0865,CT00003,Rasio,advanced,done,84.76708703669209,2.0,2.0,3
+S0198,CT00002,Bilangan Rasional,intermediate,in-progress,79.62811132847469,5.0,1.0,3
+S0211,CT00006,Data dan Diagram,advanced,in-progress,85.29,1.0,6.0,6
+S0404,CT00001,Bilangan Bulat,intermediate,not started,0.6,1.0,2.0,3
+S0463,CT00006,Data dan Diagram,advanced,in-progress,90.113991715968,2.0,6.0,6
+S0879,CT00006,Data dan Diagram,intermediate,in-progress,72.28839465583094,1.0,6.0,6
+S0409,CT00002,Bilangan Rasional,advanced,not started,65.69986592732616,4.0,3.0,3
+S0234,CT00001,Bilangan Bulat,advanced,in-progress,92.32,1.0,3.0,3
+S0907,CT00004,Bentuk Aljabar,intermediate,done,71.07175920006019,3.0,2.0,3
+S0821,CT00004,Bentuk Aljabar,intermediate,done,65.49504058576731,3.0,3.0,3
+S0534,CT00004,Bentuk Aljabar,beginner,DONE,61.748137158612444,5.0,2.0,3
+S0753,CT00002,Bilangan Rasional,beginner,done,63.8724166135477,4.0,1.0,3
+S0427,CT00001,Bilangan Bulat,advanced,done,86.6110136188899,5.0,1.0,3
+S0562,CT00004,Bentuk Aljabar,advanced,in-progress,88.8714295418834,2.0,3.0,3
+S0439,CT00003,Rasio,beginner,not started,12.2,8.0,2.0,3
+S0427,CT00003,Rasio,intermediate,not started,89.77134411974677,1.0,3.0,3
+S0887,CT00004,Bentuk Aljabar,advanced,done,72.60628109785733,2.0,1.0,3
+S0542,CT00006,Data dan Diagram,intermediate,in-progress,62.36508503319613,5.0,5.0,6
+S0213,CT00006,Data dan Diagram,beginner,DONE,67.32644720387489,5.0,1.0,6
+S0253,CT00001,Bilangan Bulat,advanced,not started,10.92,1.0,1.0,3
+S0204,CT00002,Bilangan Rasional,intermediate,not started,38.45,2.0,1.0,3
+S0575,CT00002,Bilangan Rasional,intermediate,in-progress,93.33758278056696,3.0,2.0,3
+S0015,CT00002,Bilangan Rasional,beginner,not started,77.09,1.0,3.0,3
+S1000,CT00003,Rasio,intermediate,not started,78.23999382972801,5.0,3.0,3
+S0389,CT00003,Rasio,beginner,in-progress,89.8728490237108,2.0,1.0,3
+S0420,CT00003,Rasio,beginner,not started,68.22127586137786,3.0,3.0,3
+S0336,CT00001,Bilangan Bulat,beginner,in-progress,81.67,1.0,2.0,3
+S0147,CT00002,Bilangan Rasional,advanced,in-progress,90.214010844081,4.0,3.0,3
+S0307,CT00006,Data dan Diagram,beginner,done,70.57,1.0,1.0,6
+S0488,CT00002,Bilangan Rasional,advanced,DONE,65.10074135979045,4.0,1.0,3
+S0113,CT00003,Rasio,intermediate,done,83.50503029180892,1.0,1.0,3
+S0489,CT00006,Data dan Diagram,advanced,not started,72.54404497443943,3.0,5.0,6
+S0606,CT00005,Kesebangunan,advanced,in-progress,77.3122849791254,3.0,2.0,3
+S0915,CT00005,Kesebangunan,beginner,done,64.22415468965004,2.0,3.0,3
+S0622,CT00003,Rasio,beginner,not started,84.541370960804,2.0,2.0,3
+S0437,CT00006,Data dan Diagram,beginner,in-progress,90.29857031655987,3.0,1.0,6
+S0543,CT00004,Bentuk Aljabar,beginner,in-progress,70.60024443495985,1.0,1.0,3
+S0543,CT00004,Bentuk Aljabar,beginner,in-progress,93.25179849877428,5.0,3.0,3
+S0543,CT00004,Bentuk Aljabar,beginner,in-progress,90.75915635262308,2.0,2.0,3
+S0543,CT00004,Bentuk Aljabar,beginner,in-progress,78.15295216949585,5.0,2.0,3
+S0841,CT00003,Rasio,beginner,done,70.23103895113768,2.0,2.0,3
+S0922,CT00001,Bilangan Bulat,intermediate,done,28.27,1.0,1.0,3
+S0875,CT00006,Data dan Diagram,intermediate,done,70.72507805503895,4.0,4.0,6
+S0688,CT00004,Bentuk Aljabar,beginner,not started,67.7610283071318,4.0,3.0,3
+S0685,CT00001,Bilangan Bulat,intermediate,in-progress,4.46,1.0,1.0,3
+S0770,CT00001,Bilangan Bulat,intermediate,DONE,81.97097007161656,3.0,1.0,3
+S0746,CT00001,Bilangan Bulat,advanced,in-progress,63.4,1.0,1.0,3
+S0410,CT00003,Rasio,intermediate,in-progress,68.11733283425437,1.0,3.0,3
+S0309,CT00001,Bilangan Bulat,advanced,done,84.1550560049856,2.0,2.0,3
+S0237,CT00003,Rasio,advanced,in-progress,68.06468879607091,3.0,3.0,3
+S0459,CT00002,Bilangan Rasional,intermediate,done,66.35,1.0,2.0,3
+S0152,CT00002,Bilangan Rasional,intermediate,done,67.22514168119409,1.0,2.0,3
+S0115,CT00001,Bilangan Bulat,advanced,done,36.18,1.0,2.0,3
+S0612,CT00006,Data dan Diagram,advanced,in-progress,82.61748707817527,1.0,3.0,6
+S0205,CT00001,Bilangan Bulat,intermediate,done,60.16603417521711,5.0,3.0,3
+S0984,CT00001,Bilangan Bulat,beginner,in-progress,74.09990598381157,3.0,1.0,3
+S0457,CT00005,Kesebangunan,intermediate,in-progress,87.723107196915,4.0,2.0,3
+S0861,CT00003,Rasio,beginner,in-progress,62.351919297940846,3.0,2.0,3
+S0510,CT00003,Rasio,advanced,done,81.57459393553768,4.0,3.0,3
+S0565,CT00004,Bentuk Aljabar,beginner,in-progress,7.66,2.0,2.0,3
+S0726,CT00005,Kesebangunan,advanced,not started,85.07064296702302,2.0,2.0,3
+S0542,CT00006,Data dan Diagram,advanced,in-progress,82.7778223560615,5.0,6.0,6
+S0379,CT00004,Bentuk Aljabar,beginner,in-progress,82.92023373845657,4.0,1.0,3
+S0943,CT00003,Rasio,advanced,in-progress,92.69479828034991,3.0,2.0,3
+S0982,CT00005,Kesebangunan,intermediate,in-progress,32.54,1.0,2.0,3
+S0267,CT00001,Bilangan Bulat,advanced,in-progress,86.53,1.0,3.0,3
+S0273,CT00003,Rasio,intermediate,done,85.43388937121674,3.0,1.0,3
+S0649,CT00004,Bentuk Aljabar,intermediate,DONE,77.25241161449296,5.0,2.0,3
+S0336,CT00004,Bentuk Aljabar,intermediate,done,75.01742316031478,3.0,1.0,3
+S0021,CT00003,Rasio,advanced,in-progress,87.37925011976685,2.0,1.0,3
+S0310,CT00005,Kesebangunan,intermediate,in-progress,88.97518035464421,3.0,3.0,3
+S0123,CT00003,Rasio,intermediate,in-progress,85.77648167145801,4.0,1.0,3
+S0964,CT00001,Bilangan Bulat,advanced,done,94.70294874849839,4.0,2.0,3
+S0931,CT00003,Rasio,intermediate,done,3.08,1.0,2.0,3
+S0175,CT00004,Bentuk Aljabar,advanced,DONE,69.62527706274953,1.0,1.0,3
+S0093,CT00002,Bilangan Rasional,advanced,done,78.30800873382366,1.0,2.0,3
+S0498,CT00003,Rasio,beginner,done,80.33320569612013,3.0,3.0,3
+S0458,CT00004,Bentuk Aljabar,advanced,DONE,80.6690524695614,2.0,3.0,3
+S0198,CT00005,Kesebangunan,intermediate,done,69.46670863907099,1.0,2.0,3
+S0754,CT00001,Bilangan Bulat,beginner,in-progress,78.81952110762788,1.0,1.0,3
+S0734,CT00005,Kesebangunan,intermediate,not started,78.47439635145905,2.0,1.0,3
+S0602,CT00001,Bilangan Bulat,intermediate,in-progress,69.77572322913257,4.0,2.0,3
+S0638,CT00004,Bentuk Aljabar,intermediate,done,66.63019543048055,2.0,1.0,3
+S0404,CT00005,Kesebangunan,intermediate,in-progress,73.72581025249332,2.0,1.0,3
+S0846,CT00006,Data dan Diagram,beginner,not started,22.82,1.0,1.0,6
+S0265,CT00002,Bilangan Rasional,intermediate,in-progress,81.69808790483843,1.0,3.0,3
+S0265,CT00002,Bilangan Rasional,intermediate,in-progress,86.96682729493331,5.0,2.0,3
+S0265,CT00002,Bilangan Rasional,intermediate,in-progress,88.50011193316783,1.0,2.0,3
+S0265,CT00002,Bilangan Rasional,intermediate,in-progress,79.90449339098967,1.0,1.0,3
+S0273,CT00001,Bilangan Bulat,beginner,done,60.235314686047225,3.0,3.0,3
+S0797,CT00004,Bentuk Aljabar,intermediate,in-progress,86.06516360162767,4.0,1.0,3
+S0894,CT00003,Rasio,intermediate,done,79.61757986482563,5.0,3.0,3
+S0474,CT00004,Bentuk Aljabar,intermediate,done,65.4530479030431,3.0,2.0,3
+S0723,CT00003,Rasio,advanced,in-progress,60.710135428139225,1.0,1.0,3
+S0107,CT00003,Rasio,intermediate,DONE,86.93146261350977,1.0,2.0,3
+S0796,CT00005,Kesebangunan,beginner,done,68.1327995531409,2.0,3.0,3
+S0839,CT00006,Data dan Diagram,advanced,in-progress,94.65137190981167,1.0,1.0,6
+S0097,CT00004,Bentuk Aljabar,intermediate,in-progress,64.9491185328979,1.0,3.0,3
+S0018,CT00005,Kesebangunan,advanced,not started,36.12,1.0,1.0,3
+S0037,CT00006,Data dan Diagram,intermediate,in-progress,29.68,2.0,1.0,6
+S0958,CT00001,Bilangan Bulat,beginner,in-progress,88.81058068345206,2.0,3.0,3
+S0611,CT00004,Bentuk Aljabar,intermediate,done,76.272797584378,5.0,3.0,3
+S0789,CT00003,Rasio,advanced,in-progress,67.13991842684261,5.0,3.0,3
+S0017,CT00004,Bentuk Aljabar,beginner,not started,92.57994304671625,5.0,2.0,3
+S0256,CT00003,Rasio,intermediate,in-progress,83.607151545642,2.0,1.0,3
+S0387,CT00005,Kesebangunan,advanced,not started,60.36288106577718,3.0,1.0,3
+S0062,CT00004,Bentuk Aljabar,intermediate,not started,83.35364411049551,1.0,1.0,3
+S0982,CT00003,Rasio,beginner,done,82.71087920598053,3.0,1.0,3
+S0814,CT00003,Rasio,advanced,not started,67.08608064261448,1.0,3.0,3
+S0121,CT00006,Data dan Diagram,beginner,in-progress,69.14693053124711,5.0,6.0,6
+S0295,CT00005,Kesebangunan,advanced,not started,61.679839617312226,4.0,3.0,3
+S0984,CT00001,Bilangan Bulat,intermediate,not started,85.9750368134871,1.0,2.0,3
+S0603,CT00002,Bilangan Rasional,intermediate,done,18.45,1.0,3.0,3
+S0309,CT00003,Rasio,intermediate,DONE,70.91895790100874,1.0,1.0,3
+S0048,CT00002,Bilangan Rasional,intermediate,in-progress,84.60085762833131,3.0,2.0,3
+S0247,CT00006,Data dan Diagram,advanced,in-progress,5.06,1.0,1.0,6
+S0032,CT00001,Bilangan Bulat,beginner,done,83.89488675218566,4.0,1.0,3
+S0270,CT00006,Data dan Diagram,advanced,done,13.54,1.0,1.0,6
+S0574,CT00004,Bentuk Aljabar,intermediate,not started,36.69,1.0,1.0,3
+S0234,CT00006,Data dan Diagram,intermediate,in-progress,77.72278370576105,5.0,2.0,6
+S0005,CT00002,Bilangan Rasional,advanced,not started,93.46053765719196,4.0,1.0,3
+S0595,CT00003,Rasio,beginner,in-progress,76.42761815885973,4.0,1.0,3
+S0648,CT00005,Kesebangunan,intermediate,not started,73.91279335737615,2.0,3.0,3
+S0046,CT00003,Rasio,beginner,done,71.23566734853458,4.0,1.0,3
+S0768,CT00002,Bilangan Rasional,advanced,done,71.29305204096573,1.0,3.0,3
+S0791,CT00006,Data dan Diagram,intermediate,not started,64.8164167651275,2.0,6.0,6
+S0684,CT00003,Rasio,advanced,done,63.12,1.0,1.0,3
+S0449,CT00006,Data dan Diagram,advanced,not started,87.90618508745251,3.0,4.0,6
+S0732,CT00006,Data dan Diagram,beginner,in-progress,77.81771951984987,5.0,2.0,6
+S0302,CT00004,Bentuk Aljabar,advanced,in-progress,94.7692660232317,5.0,1.0,3
+S0310,CT00004,Bentuk Aljabar,advanced,in-progress,42.41,1.0,3.0,3
+S0091,CT00001,Bilangan Bulat,beginner,not started,85.97565983256169,1.0,3.0,3
+S0389,CT00002,Bilangan Rasional,intermediate,not started,81.64822335947171,4.0,2.0,3
+S0247,CT00001,Bilangan Bulat,beginner,DONE,84.68914160629772,4.0,3.0,3
+S0725,CT00003,Rasio,intermediate,done,52.03,1.0,1.0,3
+S0731,CT00006,Data dan Diagram,intermediate,DONE,84.5572956766391,4.0,2.0,6
+S0336,CT00006,Data dan Diagram,intermediate,done,92.85489443964553,3.0,6.0,6
+S0277,CT00004,Bentuk Aljabar,beginner,done,86.45627282129128,4.0,2.0,3
+S0277,CT00004,Bentuk Aljabar,beginner,done,78.43413749934487,1.0,2.0,3
+S0277,CT00004,Bentuk Aljabar,beginner,done,63.050667030822595,3.0,1.0,3
+S0277,CT00004,Bentuk Aljabar,beginner,done,72.67253018019679,1.0,3.0,3
+S0718,CT00001,Bilangan Bulat,beginner,in-progress,64.34894124662584,4.0,3.0,3
+S0285,CT00002,Bilangan Rasional,intermediate,done,70.32010960310862,1.0,2.0,3
+S0454,CT00006,Data dan Diagram,advanced,in-progress,38.93,1.0,5.0,6
+S0259,CT00003,Rasio,intermediate,done,94.22330871716377,4.0,3.0,3
+S0205,CT00001,Bilangan Bulat,beginner,in-progress,81.07596591672333,1.0,1.0,3
+S0421,CT00005,Kesebangunan,intermediate,in-progress,76.8,1.0,1.0,3
+S0843,CT00002,Bilangan Rasional,advanced,in-progress,36.760000000000005,2.0,1.0,3
+S0621,CT00005,Kesebangunan,beginner,done,64.71833860127477,4.0,1.0,3
+S0918,CT00001,Bilangan Bulat,intermediate,done,86.49731629430653,1.0,3.0,3
+S0446,CT00006,Data dan Diagram,advanced,not started,86.92438012406177,2.0,1.0,6
+S0736,CT00003,Rasio,intermediate,not started,88.0823081922868,2.0,2.0,3
+S0980,CT00005,Kesebangunan,advanced,in-progress,73.53791427529711,1.0,1.0,3
+S0815,CT00001,Bilangan Bulat,beginner,not started,63.7,1.0,1.0,3
+S0293,CT00003,Rasio,beginner,not started,76.5774781774092,5.0,3.0,3
+S0594,CT00004,Bentuk Aljabar,beginner,in-progress,87.14540464742537,5.0,2.0,3
+S0777,CT00001,Bilangan Bulat,advanced,not started,78.92928052649575,1.0,3.0,3
+S0495,CT00002,Bilangan Rasional,advanced,in-progress,70.76230855827667,2.0,2.0,3
+S0786,CT00004,Bentuk Aljabar,intermediate,DONE,4.31,1.0,1.0,3
+S0795,CT00006,Data dan Diagram,beginner,in-progress,61.10512974202888,1.0,4.0,6
+S0629,CT00002,Bilangan Rasional,advanced,in-progress,19.69,1.0,3.0,3
+S0333,CT00002,Bilangan Rasional,intermediate,in-progress,21.29,1.0,2.0,3
+S0841,CT00003,Rasio,beginner,in-progress,89.94697733695382,3.0,1.0,3
+S0801,CT00004,Bentuk Aljabar,beginner,not started,56.89000000000001,3.0,2.0,3
+S0945,CT00002,Bilangan Rasional,beginner,not started,57.44,1.0,3.0,3
+S0015,CT00002,Bilangan Rasional,intermediate,not started,77.09,1.0,1.0,3
+S0674,CT00005,Kesebangunan,intermediate,in-progress,68.65960380261747,2.0,3.0,3
+S0510,CT00003,Rasio,advanced,done,72.50988229113692,5.0,2.0,3
+S0359,CT00002,Bilangan Rasional,beginner,in-progress,72.15521684091642,3.0,3.0,3
+S0144,CT00006,Data dan Diagram,advanced,not started,89.68974279893449,4.0,2.0,6
+S0510,CT00001,Bilangan Bulat,advanced,done,81.84891958347866,2.0,3.0,3
+S0080,CT00003,Rasio,advanced,in-progress,64.41391829346244,4.0,1.0,3
+S0078,CT00003,Rasio,intermediate,done,90.12546474027494,2.0,3.0,3
+S0455,CT00004,Bentuk Aljabar,advanced,done,11.26,1.0,1.0,3
+S0820,CT00005,Kesebangunan,advanced,done,88.07092749647819,1.0,3.0,3
+S0408,CT00005,Kesebangunan,advanced,done,70.82300646627458,2.0,3.0,3
+S0695,CT00001,Bilangan Bulat,beginner,done,72.8393876216519,2.0,1.0,3
+S0784,CT00006,Data dan Diagram,beginner,done,12.88,1.0,2.0,6
+S0975,CT00006,Data dan Diagram,intermediate,in-progress,79.09439044106115,1.0,3.0,6
+S0219,CT00006,Data dan Diagram,advanced,done,86.69556309360215,3.0,1.0,6
+S0188,CT00004,Bentuk Aljabar,advanced,in-progress,38.645,2.0,3.0,3
+S0543,CT00002,Bilangan Rasional,intermediate,done,33.81,1.0,3.0,3
+S0362,CT00005,Kesebangunan,beginner,in-progress,89.95684324225891,3.0,1.0,3
+S0743,CT00003,Rasio,advanced,in-progress,61.59552387847302,1.0,3.0,3
+S0389,CT00001,Bilangan Bulat,intermediate,done,90.53230982800011,5.0,3.0,3
+S0250,CT00003,Rasio,intermediate,not started,28.77,1.0,1.0,3
+S0308,CT00003,Rasio,beginner,done,90.4775970500887,3.0,3.0,3
+S0768,CT00004,Bentuk Aljabar,intermediate,in-progress,73.21998556836259,5.0,1.0,3
+S0019,CT00004,Bentuk Aljabar,beginner,in-progress,91.55052659561778,2.0,1.0,3
+S0609,CT00005,Kesebangunan,beginner,DONE,91.1239996436959,4.0,1.0,3
+S0718,CT00001,Bilangan Bulat,advanced,in-progress,75.89646574372568,2.0,1.0,3
+S0857,CT00002,Bilangan Rasional,intermediate,in-progress,67.09816947387556,4.0,1.0,3
+S0638,CT00001,Bilangan Bulat,beginner,not started,60.7,1.0,2.0,3
+S0932,CT00006,Data dan Diagram,advanced,in-progress,62.30676800224762,5.0,4.0,6
+S0771,CT00006,Data dan Diagram,advanced,done,72.19087729002287,3.0,2.0,6
+S0771,CT00006,Data dan Diagram,advanced,done,74.27293594005283,3.0,2.0,6
+S0771,CT00006,Data dan Diagram,advanced,done,82.79695315406474,5.0,2.0,6
+S0771,CT00006,Data dan Diagram,advanced,done,66.05319385216016,3.0,2.0,6
+S0089,CT00004,Bentuk Aljabar,beginner,not started,62.81918980187545,1.0,1.0,3
+S0535,CT00004,Bentuk Aljabar,beginner,done,79.10390182329311,1.0,2.0,3
+S0708,CT00001,Bilangan Bulat,advanced,not started,14.26,1.0,1.0,3
+S0942,CT00003,Rasio,advanced,in-progress,64.19416837770872,3.0,2.0,3
+S0942,CT00003,Rasio,advanced,in-progress,72.7557308457437,3.0,2.0,3
+S0942,CT00003,Rasio,advanced,in-progress,67.99252551763962,5.0,2.0,3
+S0942,CT00003,Rasio,advanced,in-progress,74.27871582342713,3.0,2.0,3
+S0751,CT00001,Bilangan Bulat,advanced,not started,91.34142515246165,3.0,2.0,3
+S0489,CT00002,Bilangan Rasional,beginner,in-progress,50.24,1.0,1.0,3
+S0687,CT00003,Rasio,advanced,done,82.45855475813221,3.0,2.0,3
+S0666,CT00001,Bilangan Bulat,advanced,DONE,67.92674675387892,4.0,3.0,3
+S0867,CT00005,Kesebangunan,advanced,not started,85.4174291619631,5.0,1.0,3
+S0050,CT00002,Bilangan Rasional,beginner,in-progress,93.64834466015185,3.0,2.0,3
+S0685,CT00006,Data dan Diagram,intermediate,in-progress,70.30902996423995,5.0,3.0,6
+S0385,CT00005,Kesebangunan,advanced,in-progress,43.62,1.0,1.0,3
+S0474,CT00002,Bilangan Rasional,advanced,done,83.84,1.0,1.0,3
+S0689,CT00005,Kesebangunan,beginner,done,92.17580708263802,2.0,1.0,3
+S0282,CT00006,Data dan Diagram,intermediate,in-progress,92.46707597127163,4.0,6.0,6
+S0664,CT00006,Data dan Diagram,intermediate,done,62.035,2.0,1.0,6
+S0487,CT00005,Kesebangunan,advanced,in-progress,71.21270153741895,5.0,2.0,3
+S0517,CT00001,Bilangan Bulat,advanced,in-progress,88.56,1.0,1.0,3
+S0786,CT00001,Bilangan Bulat,beginner,done,91.62722993088774,1.0,2.0,3
+S0169,CT00001,Bilangan Bulat,intermediate,not started,23.79,1.0,1.0,3
+S0834,CT00005,Kesebangunan,beginner,done,93.49353681440718,1.0,2.0,3
+S0833,CT00001,Bilangan Bulat,advanced,not started,60.887031801815084,5.0,1.0,3
+S0798,CT00005,Kesebangunan,advanced,not started,60.07291895749905,4.0,2.0,3
+S0833,CT00005,Kesebangunan,beginner,done,25.51,1.0,1.0,3
+S0577,CT00006,Data dan Diagram,advanced,in-progress,59.52,1.0,6.0,6
+S0264,CT00006,Data dan Diagram,advanced,in-progress,79.86268576225113,4.0,3.0,6
+S0405,CT00003,Rasio,beginner,done,65.74008273592544,4.0,2.0,3
+S0920,CT00001,Bilangan Bulat,beginner,not started,86.35873248117855,3.0,2.0,3
+S0080,CT00003,Rasio,beginner,done,93.44218991338863,1.0,2.0,3
+S0865,CT00005,Kesebangunan,intermediate,done,75.18472367362268,4.0,1.0,3
+S0107,CT00001,Bilangan Bulat,beginner,done,62.56335563104909,5.0,1.0,3
+S0364,CT00004,Bentuk Aljabar,advanced,in-progress,73.35872116362162,3.0,3.0,3
+S0909,CT00006,Data dan Diagram,intermediate,done,93.2818084966435,1.0,1.0,6
+S0692,CT00001,Bilangan Bulat,beginner,DONE,67.51354987956856,3.0,1.0,3
+S0304,CT00001,Bilangan Bulat,beginner,in-progress,87.46289188405372,5.0,3.0,3
+S0027,CT00005,Kesebangunan,beginner,not started,93.53365193909409,4.0,2.0,3
+S0880,CT00001,Bilangan Bulat,advanced,not started,71.06326617227752,2.0,1.0,3
+S0702,CT00001,Bilangan Bulat,intermediate,done,93.25243177462787,3.0,2.0,3
+S0638,CT00005,Kesebangunan,advanced,done,90.22358193657965,4.0,1.0,3
+S0692,CT00006,Data dan Diagram,beginner,done,73.22987427613528,3.0,1.0,6
+S0459,CT00003,Rasio,advanced,in-progress,32.72,1.0,2.0,3
+S0139,CT00002,Bilangan Rasional,advanced,not started,63.19115142877002,4.0,3.0,3
+S0971,CT00002,Bilangan Rasional,intermediate,not started,92.74265341834511,1.0,2.0,3
+S0485,CT00005,Kesebangunan,advanced,not started,94.46686957115641,3.0,1.0,3
+S0068,CT00001,Bilangan Bulat,beginner,done,1.4,1.0,3.0,3
+S0362,CT00002,Bilangan Rasional,beginner,in-progress,92.892257520708,2.0,2.0,3
+S0362,CT00002,Bilangan Rasional,beginner,in-progress,89.0349695427194,5.0,1.0,3
+S0362,CT00002,Bilangan Rasional,beginner,in-progress,75.64586690286534,1.0,1.0,3
+S0362,CT00002,Bilangan Rasional,beginner,in-progress,91.56020137091261,3.0,3.0,3
+S0061,CT00003,Rasio,advanced,not started,27.795,2.0,2.0,3
+S0474,CT00005,Kesebangunan,beginner,done,91.01970327937872,3.0,2.0,3
+S0719,CT00004,Bentuk Aljabar,advanced,in-progress,18.49,1.0,3.0,3
+S0576,CT00001,Bilangan Bulat,advanced,done,69.60576133079067,1.0,2.0,3
+S0525,CT00001,Bilangan Bulat,advanced,not started,88.65040639724882,4.0,3.0,3
+S0205,CT00005,Kesebangunan,advanced,in-progress,69.4386491454603,2.0,1.0,3
+S0550,CT00003,Rasio,intermediate,not started,89.01,1.0,3.0,3
+S0515,CT00001,Bilangan Bulat,intermediate,in-progress,18.88,8.0,2.0,3
+S0152,CT00005,Kesebangunan,beginner,in-progress,67.37291745468606,3.0,1.0,3
+S0981,CT00001,Bilangan Bulat,intermediate,done,65.76291912076475,1.0,1.0,3
+S0799,CT00004,Bentuk Aljabar,advanced,not started,66.97763265909691,4.0,2.0,3
+S0746,CT00006,Data dan Diagram,advanced,done,88.8,1.0,3.0,6
+S0938,CT00001,Bilangan Bulat,intermediate,in-progress,92.94898081171773,1.0,3.0,3
+S0119,CT00001,Bilangan Bulat,beginner,in-progress,45.78,1.0,2.0,3
+S0069,CT00005,Kesebangunan,advanced,done,79.15557322306498,3.0,2.0,3
+S0241,CT00002,Bilangan Rasional,beginner,not started,87.96740417637923,2.0,1.0,3
+S0163,CT00006,Data dan Diagram,advanced,done,79.56,1.0,5.0,6
+S0234,CT00005,Kesebangunan,beginner,in-progress,7.31,1.0,1.0,3
+S0972,CT00005,Kesebangunan,intermediate,not started,54.79,1.0,2.0,3
+S0436,CT00003,Rasio,beginner,not started,92.07279614090126,3.0,1.0,3
+S0361,CT00003,Rasio,intermediate,in-progress,78.90265124999095,2.0,3.0,3
+S0100,CT00003,Rasio,advanced,done,64.67575992999167,4.0,3.0,3
+S0977,CT00003,Rasio,beginner,in-progress,10.79,1.0,3.0,3
+S0928,CT00005,Kesebangunan,intermediate,in-progress,41.41,1.0,3.0,3
+S0348,CT00006,Data dan Diagram,advanced,in-progress,97.31,1.0,3.0,6
+S0755,CT00005,Kesebangunan,beginner,done,91.55827697339461,2.0,1.0,3
+S0799,CT00003,Rasio,beginner,not started,62.78686139771669,3.0,1.0,3
+S0940,CT00001,Bilangan Bulat,advanced,in-progress,74.79,1.0,3.0,3
+S0015,CT00003,Rasio,intermediate,done,64.64061353402099,4.0,3.0,3
+S0067,CT00003,Rasio,advanced,in-progress,68.98349307470625,5.0,1.0,3
+S0409,CT00001,Bilangan Bulat,beginner,done,64.13190054991298,5.0,1.0,3
+S0300,CT00002,Bilangan Rasional,advanced,done,20.5,1.0,1.0,3
+S0851,CT00003,Rasio,intermediate,DONE,73.29141052374911,3.0,3.0,3
+S0784,CT00005,Kesebangunan,beginner,done,80.66226865548214,3.0,1.0,3
+S0880,CT00006,Data dan Diagram,intermediate,done,4.34,1.0,1.0,6
+S0990,CT00002,Bilangan Rasional,intermediate,done,82.45648306338524,5.0,1.0,3
+S0574,CT00001,Bilangan Bulat,beginner,not started,68.34654977886302,2.0,1.0,3
+S0508,CT00002,Bilangan Rasional,advanced,done,78.12312025047675,5.0,2.0,3
+S0234,CT00002,Bilangan Rasional,beginner,not started,66.7330935206666,4.0,3.0,3
+S0759,CT00001,Bilangan Bulat,intermediate,not started,94.06823672832434,1.0,1.0,3
+S0055,CT00003,Rasio,intermediate,done,93.13787141003769,2.0,1.0,3
+S0791,CT00006,Data dan Diagram,advanced,not started,93.90705308025917,5.0,2.0,6
+S0730,CT00001,Bilangan Bulat,beginner,not started,81.08361117458168,1.0,3.0,3
+S0087,CT00006,Data dan Diagram,advanced,in-progress,77.51605345208249,5.0,3.0,6
+S0069,CT00002,Bilangan Rasional,intermediate,not started,76.10155325870998,1.0,3.0,3
+S0242,CT00005,Kesebangunan,beginner,not started,76.03868402298512,3.0,3.0,3
+S0314,CT00003,Rasio,advanced,not started,71.49616658408031,4.0,1.0,3
+S0095,CT00001,Bilangan Bulat,advanced,not started,13.45,1.0,2.0,3
+S0613,CT00003,Rasio,intermediate,in-progress,85.89045286069354,4.0,2.0,3
+S0364,CT00003,Rasio,advanced,not started,81.01241689635464,5.0,1.0,3
+S0364,CT00003,Rasio,advanced,not started,94.3742331132922,2.0,2.0,3
+S0364,CT00003,Rasio,advanced,not started,94.94668135705965,4.0,3.0,3
+S0364,CT00003,Rasio,advanced,not started,74.34204383401749,3.0,2.0,3
+S0712,CT00004,Bentuk Aljabar,advanced,done,60.622981241457495,3.0,3.0,3
+S0952,CT00002,Bilangan Rasional,advanced,not started,77.94,1.0,1.0,3
+S0107,CT00004,Bentuk Aljabar,beginner,in-progress,71.18,1.0,1.0,3
+S0106,CT00002,Bilangan Rasional,advanced,done,81.00220307836416,3.0,1.0,3
+S0498,CT00001,Bilangan Bulat,advanced,in-progress,79.19420885346041,3.0,2.0,3
+S0233,CT00004,Bentuk Aljabar,advanced,in-progress,75.21218269483552,1.0,2.0,3
+S0211,CT00001,Bilangan Bulat,advanced,in-progress,18.89,1.0,1.0,3
+S0319,CT00006,Data dan Diagram,beginner,done,92.97521782676857,4.0,6.0,6
+S0206,CT00006,Data dan Diagram,intermediate,done,62.0253374479135,2.0,1.0,6
+S0275,CT00005,Kesebangunan,intermediate,done,68.62823754148725,4.0,2.0,3
+S0062,CT00006,Data dan Diagram,beginner,DONE,67.03799283801514,3.0,3.0,6
+S0428,CT00004,Bentuk Aljabar,beginner,in-progress,90.97259364110721,1.0,2.0,3
+S0879,CT00003,Rasio,intermediate,done,64.54043431298462,5.0,1.0,3
+S0314,CT00005,Kesebangunan,intermediate,done,68.79162410798995,2.0,2.0,3
+S0301,CT00001,Bilangan Bulat,advanced,not started,79.90688059290873,1.0,1.0,3
+S0898,CT00003,Rasio,beginner,DONE,63.87337379695516,4.0,3.0,3
+S0233,CT00006,Data dan Diagram,intermediate,done,90.66616194732231,3.0,2.0,6
+S0233,CT00006,Data dan Diagram,intermediate,done,90.89286260884458,5.0,4.0,6
+S0233,CT00006,Data dan Diagram,intermediate,done,68.70193776038126,1.0,5.0,6
+S0233,CT00006,Data dan Diagram,intermediate,done,88.07073531363257,1.0,5.0,6
+S0862,CT00004,Bentuk Aljabar,advanced,not started,71.74000000000001,2.0,2.0,3
+S0042,CT00002,Bilangan Rasional,beginner,done,76.2305716045145,1.0,1.0,3
+S0394,CT00004,Bentuk Aljabar,beginner,not started,54.46,1.0,2.0,3
+S0765,CT00003,Rasio,advanced,not started,88.43600812395185,5.0,3.0,3
+S0480,CT00005,Kesebangunan,advanced,done,82.95149262768045,5.0,2.0,3
+S0376,CT00001,Bilangan Bulat,intermediate,not started,16.85,1.0,1.0,3
+S0976,CT00001,Bilangan Bulat,beginner,not started,52.50333333333333,3.0,2.0,3
+S0347,CT00004,Bentuk Aljabar,beginner,DONE,37.95,1.0,3.0,3
+S0308,CT00004,Bentuk Aljabar,beginner,not started,88.24243809690472,3.0,1.0,3
+S0073,CT00002,Bilangan Rasional,advanced,done,63.96,1.0,2.0,3
+S0205,CT00002,Bilangan Rasional,advanced,done,59.38,1.0,3.0,3
+S0078,CT00006,Data dan Diagram,beginner,done,91.55718953456875,1.0,6.0,6
+S0078,CT00006,Data dan Diagram,beginner,done,80.49220699024778,4.0,2.0,6
+S0078,CT00006,Data dan Diagram,beginner,done,74.64854159130043,2.0,4.0,6
+S0078,CT00006,Data dan Diagram,beginner,done,82.63972717556504,1.0,2.0,6
+S0041,CT00004,Bentuk Aljabar,intermediate,not started,94.29192541886638,4.0,1.0,3
+S0040,CT00002,Bilangan Rasional,intermediate,not started,82.77871673206513,1.0,2.0,3
+S0954,CT00006,Data dan Diagram,advanced,in-progress,7.91,1.0,1.0,6
+S0186,CT00006,Data dan Diagram,intermediate,in-progress,79.12191697112269,2.0,6.0,6
+S0026,CT00006,Data dan Diagram,advanced,in-progress,65.64059344535808,1.0,1.0,6
+S0952,CT00003,Rasio,intermediate,done,77.55849582642611,1.0,3.0,3
+S0351,CT00004,Bentuk Aljabar,beginner,in-progress,64.58045507051216,4.0,2.0,3
+S0876,CT00001,Bilangan Bulat,intermediate,done,66.98609831137384,1.0,1.0,3
+S0672,CT00004,Bentuk Aljabar,advanced,not started,7.44,1.0,3.0,3
+S0142,CT00002,Bilangan Rasional,intermediate,done,65.03662454303429,4.0,1.0,3
+S0134,CT00002,Bilangan Rasional,advanced,done,89.57485034906765,1.0,1.0,3
+S0072,CT00001,Bilangan Bulat,intermediate,not started,67.08564353872009,4.0,2.0,3
+S0582,CT00005,Kesebangunan,beginner,done,68.56928423624753,3.0,1.0,3
+S0730,CT00006,Data dan Diagram,intermediate,done,60.28988277235706,4.0,5.0,6
+S0388,CT00002,Bilangan Rasional,beginner,in-progress,94.55862727293672,5.0,1.0,3
+S0832,CT00006,Data dan Diagram,beginner,done,41.27,1.0,5.0,6
+S0081,CT00002,Bilangan Rasional,intermediate,in-progress,74.405,2.0,3.0,3
+S0251,CT00004,Bentuk Aljabar,beginner,done,77.39040330279336,2.0,1.0,3
+S0872,CT00002,Bilangan Rasional,beginner,in-progress,63.75075493271846,5.0,3.0,3
+S0755,CT00005,Kesebangunan,advanced,in-progress,64.84845476584069,2.0,1.0,3
+S0443,CT00001,Bilangan Bulat,intermediate,in-progress,80.1805168230712,3.0,3.0,3
+S0083,CT00002,Bilangan Rasional,advanced,not started,8.71,1.0,1.0,3
+S0713,CT00006,Data dan Diagram,beginner,in-progress,89.82271208625943,1.0,5.0,6
+S0463,CT00006,Data dan Diagram,advanced,done,90.92238548512,1.0,3.0,6
+S0675,CT00003,Rasio,advanced,in-progress,74.32093394767335,3.0,2.0,3
+S0675,CT00003,Rasio,advanced,in-progress,71.97025062925543,4.0,1.0,3
+S0675,CT00003,Rasio,advanced,in-progress,88.4347057030227,5.0,1.0,3
+S0675,CT00003,Rasio,advanced,in-progress,77.50879259711797,1.0,2.0,3
+S0158,CT00005,Kesebangunan,advanced,in-progress,67.9349214338185,3.0,3.0,3
+S0478,CT00003,Rasio,advanced,in-progress,57.3,1.0,2.0,3
+S0564,CT00003,Rasio,intermediate,in-progress,76.27874880741854,5.0,3.0,3
+S0106,CT00006,Data dan Diagram,advanced,in-progress,89.33,1.0,1.0,6
+S0428,CT00003,Rasio,intermediate,not started,68.360533426169,1.0,3.0,3
+S0310,CT00001,Bilangan Bulat,advanced,done,70.68353860126831,4.0,2.0,3
+S0834,CT00002,Bilangan Rasional,beginner,not started,69.06219668706025,3.0,2.0,3
+S0712,CT00004,Bentuk Aljabar,intermediate,in-progress,89.40006514537112,1.0,3.0,3
+S0996,CT00002,Bilangan Rasional,advanced,not started,82.70249058477393,1.0,1.0,3
+S0471,CT00006,Data dan Diagram,beginner,in-progress,74.15903410638353,5.0,3.0,6
+S0490,CT00002,Bilangan Rasional,intermediate,in-progress,33.2,1.0,1.0,3
+S0268,CT00006,Data dan Diagram,advanced,not started,83.74110003824498,3.0,5.0,6
+S0312,CT00004,Bentuk Aljabar,beginner,in-progress,79.28999467683005,5.0,3.0,3
+S0793,CT00002,Bilangan Rasional,intermediate,DONE,6.05,1.0,1.0,3
+S0015,CT00002,Bilangan Rasional,intermediate,not started,77.09,1.0,2.0,3
+S0396,CT00005,Kesebangunan,intermediate,done,27.14,1.0,2.0,3
+S0177,CT00006,Data dan Diagram,beginner,in-progress,67.31556757918241,1.0,5.0,6
+S0324,CT00002,Bilangan Rasional,advanced,in-progress,74.26117000041579,4.0,2.0,3
+S0652,CT00001,Bilangan Bulat,beginner,in-progress,84.33404431876197,5.0,2.0,3
+S0369,CT00005,Kesebangunan,intermediate,in-progress,72.74403917418124,4.0,3.0,3
+S0816,CT00006,Data dan Diagram,intermediate,not started,40.41,1.0,5.0,6
+S0253,CT00006,Data dan Diagram,beginner,in-progress,63.02,1.0,6.0,6
+S0557,CT00001,Bilangan Bulat,advanced,not started,77.56,1.0,1.0,3
+S0180,CT00002,Bilangan Rasional,intermediate,in-progress,61.13413167859767,3.0,1.0,3
+S0868,CT00001,Bilangan Bulat,advanced,in-progress,88.18890661561595,2.0,1.0,3
+S0253,CT00004,Bentuk Aljabar,intermediate,not started,80.7634240626719,2.0,2.0,3
+S0811,CT00003,Rasio,intermediate,in-progress,72.10868548899025,1.0,3.0,3
+S0538,CT00001,Bilangan Bulat,beginner,not started,93.82640650794235,2.0,3.0,3
+S0013,CT00006,Data dan Diagram,advanced,not started,88.25,1.0,6.0,6
+S0075,CT00004,Bentuk Aljabar,advanced,in-progress,75.23322768697714,5.0,3.0,3
+S0391,CT00003,Rasio,beginner,not started,87.74349153414255,4.0,3.0,3
+S0968,CT00006,Data dan Diagram,advanced,DONE,77.66751548577399,1.0,1.0,6
+S0968,CT00006,Data dan Diagram,advanced,DONE,66.1107054123547,5.0,4.0,6
+S0968,CT00006,Data dan Diagram,advanced,DONE,94.38491372367731,5.0,4.0,6
+S0968,CT00006,Data dan Diagram,advanced,DONE,90.94857849550763,1.0,1.0,6
+S0856,CT00001,Bilangan Bulat,advanced,not started,66.9455314186292,2.0,1.0,3
+S0654,CT00002,Bilangan Rasional,beginner,DONE,79.90049448319664,1.0,3.0,3
+S0718,CT00005,Kesebangunan,beginner,in-progress,65.07734362325749,3.0,3.0,3
+S0285,CT00002,Bilangan Rasional,advanced,in-progress,61.34289523350001,3.0,1.0,3
+S0620,CT00003,Rasio,beginner,not started,92.15784116711289,4.0,2.0,3
+S0505,CT00005,Kesebangunan,advanced,not started,85.03395601967495,4.0,1.0,3
+S0953,CT00006,Data dan Diagram,intermediate,done,78.05503158294447,4.0,3.0,6
+S0133,CT00002,Bilangan Rasional,advanced,done,85.97407909629987,4.0,3.0,3
+S0911,CT00003,Rasio,advanced,in-progress,93.11469176687828,5.0,2.0,3
+S0837,CT00005,Kesebangunan,advanced,in-progress,19.92,1.0,2.0,3
+S0084,CT00002,Bilangan Rasional,intermediate,done,77.06951484591261,2.0,2.0,3
+S0906,CT00005,Kesebangunan,beginner,done,74.72877062647083,2.0,2.0,3
+S0026,CT00002,Bilangan Rasional,advanced,not started,69.84960160976973,1.0,2.0,3
+S0141,CT00004,Bentuk Aljabar,intermediate,done,71.24729179028219,4.0,2.0,3
+S0111,CT00005,Kesebangunan,advanced,done,76.59605518394713,3.0,2.0,3
+S0184,CT00006,Data dan Diagram,advanced,done,66.30686449334273,1.0,5.0,6
+S0254,CT00002,Bilangan Rasional,advanced,in-progress,85.71252375751111,4.0,3.0,3
+S0749,CT00002,Bilangan Rasional,advanced,not started,86.11552526791036,1.0,3.0,3
+S0631,CT00002,Bilangan Rasional,intermediate,not started,85.56412951615017,5.0,2.0,3
+S0924,CT00002,Bilangan Rasional,advanced,not started,53.71,1.0,1.0,3
+S0735,CT00001,Bilangan Bulat,advanced,done,9.32,1.0,1.0,3
+S0155,CT00003,Rasio,advanced,in-progress,75.65191696941949,2.0,3.0,3
+S0703,CT00001,Bilangan Bulat,intermediate,in-progress,75.54097660346427,4.0,3.0,3
+S0422,CT00003,Rasio,intermediate,not started,73.3918998301439,2.0,2.0,3
+S0684,CT00005,Kesebangunan,advanced,not started,80.08463427184293,4.0,2.0,3
+S0998,CT00001,Bilangan Bulat,intermediate,not started,73.66857418428224,4.0,2.0,3
+S0528,CT00004,Bentuk Aljabar,beginner,done,66.21118190056903,2.0,3.0,3
+S0533,CT00003,Rasio,intermediate,not started,79.77026955748086,4.0,3.0,3
+S0192,CT00004,Bentuk Aljabar,beginner,not started,61.97859144632306,3.0,1.0,3
+S0909,CT00006,Data dan Diagram,advanced,done,74.59700421908738,5.0,1.0,6
+S0796,CT00005,Kesebangunan,intermediate,done,78.19739203119822,4.0,1.0,3
+S0323,CT00002,Bilangan Rasional,advanced,done,88.22476875302297,3.0,1.0,3
+S0124,CT00002,Bilangan Rasional,beginner,not started,72.20461873475818,2.0,3.0,3
+S0380,CT00005,Kesebangunan,intermediate,done,29.3,1.0,3.0,3
+S0683,CT00004,Bentuk Aljabar,intermediate,not started,83.93554168046084,4.0,1.0,3
+S0213,CT00004,Bentuk Aljabar,advanced,done,64.18095833794492,4.0,2.0,3
+S0466,CT00004,Bentuk Aljabar,intermediate,not started,62.1170161492887,3.0,1.0,3
+S0285,CT00003,Rasio,beginner,done,90.91868205094772,2.0,2.0,3
+S0581,CT00001,Bilangan Bulat,advanced,in-progress,31.45,8.0,2.0,3
+S0335,CT00006,Data dan Diagram,advanced,DONE,62.17311523661347,3.0,3.0,6
+S0642,CT00005,Kesebangunan,intermediate,in-progress,19.275,2.0,2.0,3
+S0875,CT00006,Data dan Diagram,intermediate,not started,85.30625928199042,2.0,1.0,6
+S0737,CT00005,Kesebangunan,beginner,done,78.14977551598362,3.0,3.0,3
+S0347,CT00006,Data dan Diagram,beginner,in-progress,92.40555555555557,9.0,1.0,6
+S0354,CT00003,Rasio,intermediate,in-progress,77.54714949566139,3.0,1.0,3
+S0104,CT00004,Bentuk Aljabar,beginner,not started,66.72999999999999,2.0,1.0,3
+S0406,CT00003,Rasio,advanced,not started,72.96280685064478,2.0,1.0,3
+S0307,CT00006,Data dan Diagram,beginner,done,70.57,1.0,1.0,6
+S0625,CT00004,Bentuk Aljabar,beginner,DONE,28.45,1.0,1.0,3
+S0753,CT00001,Bilangan Bulat,advanced,not started,80.215,2.0,2.0,3
+S0094,CT00004,Bentuk Aljabar,intermediate,not started,83.32382640727147,4.0,1.0,3
+S0671,CT00004,Bentuk Aljabar,intermediate,DONE,46.43,8.0,3.0,3
+S0763,CT00005,Kesebangunan,beginner,in-progress,67.32371797835835,1.0,3.0,3
+S0734,CT00003,Rasio,intermediate,done,68.91172458441369,4.0,1.0,3
+S0694,CT00003,Rasio,beginner,in-progress,73.54091096766103,3.0,1.0,3
+S0407,CT00003,Rasio,advanced,in-progress,68.98853827010018,4.0,1.0,3
+S0157,CT00003,Rasio,intermediate,in-progress,80.84869950995746,2.0,3.0,3
+S0784,CT00002,Bilangan Rasional,advanced,not started,61.53675002464229,4.0,2.0,3
+S0941,CT00002,Bilangan Rasional,advanced,done,72.9773149801601,4.0,1.0,3
+S0605,CT00006,Data dan Diagram,beginner,done,83.89939842942863,3.0,1.0,6
+S0794,CT00006,Data dan Diagram,beginner,done,90.13619280500924,2.0,1.0,6
+S0839,CT00005,Kesebangunan,beginner,done,89.33043056915812,3.0,2.0,3
+S0829,CT00003,Rasio,advanced,done,72.0882414653718,2.0,1.0,3
+S0911,CT00001,Bilangan Bulat,intermediate,in-progress,17.16,1.0,3.0,3
+S0444,CT00003,Rasio,intermediate,in-progress,95.48,8.0,2.0,3
+S0444,CT00003,Rasio,intermediate,in-progress,95.48,8.0,2.0,3
+S0444,CT00003,Rasio,intermediate,in-progress,95.48,8.0,2.0,3
+S0444,CT00003,Rasio,intermediate,in-progress,95.48,8.0,2.0,3
+S0851,CT00006,Data dan Diagram,intermediate,in-progress,81.61647278205906,1.0,2.0,6
+S0449,CT00001,Bilangan Bulat,beginner,in-progress,80.90694469375894,3.0,3.0,3
+S0382,CT00002,Bilangan Rasional,advanced,in-progress,65.77393069125678,2.0,1.0,3
+S0676,CT00003,Rasio,beginner,done,75.69621104997472,4.0,1.0,3
+S0656,CT00006,Data dan Diagram,beginner,done,87.02756361985693,5.0,6.0,6
+S0651,CT00004,Bentuk Aljabar,beginner,done,77.53751886270918,1.0,2.0,3
+S0999,CT00001,Bilangan Bulat,beginner,done,90.39792505379667,2.0,1.0,3
+S0083,CT00001,Bilangan Bulat,intermediate,not started,64.23189992871424,2.0,3.0,3
+S0464,CT00003,Rasio,advanced,done,9.88,1.0,2.0,3
+S0983,CT00004,Bentuk Aljabar,beginner,in-progress,66.96741266546283,3.0,3.0,3
+S0983,CT00004,Bentuk Aljabar,beginner,in-progress,64.90161418740342,1.0,1.0,3
+S0983,CT00004,Bentuk Aljabar,beginner,in-progress,87.10169161278183,4.0,2.0,3
+S0983,CT00004,Bentuk Aljabar,beginner,in-progress,69.78526999675249,2.0,1.0,3
+S0019,CT00003,Rasio,advanced,done,77.59,1.0,3.0,3
+S0101,CT00004,Bentuk Aljabar,beginner,not started,67.92,1.0,3.0,3
+S0090,CT00006,Data dan Diagram,intermediate,not started,61.61,1.0,2.0,6
+S0183,CT00006,Data dan Diagram,advanced,in-progress,46.505,2.0,3.0,6
+S0545,CT00004,Bentuk Aljabar,intermediate,not started,28.59,1.0,2.0,3
+S0026,CT00001,Bilangan Bulat,beginner,done,30.72,1.0,2.0,3
+S0814,CT00005,Kesebangunan,beginner,DONE,63.66741681084374,4.0,3.0,3
+S0022,CT00004,Bentuk Aljabar,advanced,in-progress,99.63,1.0,3.0,3
+S0234,CT00003,Rasio,intermediate,in-progress,66.99350067691107,5.0,2.0,3
+S0940,CT00004,Bentuk Aljabar,beginner,in-progress,84.12124357077673,3.0,1.0,3
+S0030,CT00004,Bentuk Aljabar,advanced,done,76.46373704580002,1.0,1.0,3
+S0812,CT00003,Rasio,advanced,DONE,90.41433334671544,3.0,1.0,3
+S0812,CT00003,Rasio,advanced,DONE,75.74998044589321,4.0,3.0,3
+S0812,CT00003,Rasio,advanced,DONE,67.5056387921205,2.0,1.0,3
+S0812,CT00003,Rasio,advanced,DONE,71.41040474808526,5.0,3.0,3
+S0324,CT00004,Bentuk Aljabar,advanced,done,69.09843593955874,2.0,1.0,3
+S0036,CT00003,Rasio,advanced,done,65.6367745385487,2.0,2.0,3
+S0220,CT00003,Rasio,beginner,DONE,85.59449489091261,1.0,1.0,3
+S0249,CT00003,Rasio,intermediate,not started,18.16,1.0,1.0,3
+S0047,CT00005,Kesebangunan,beginner,done,94.97894177134475,5.0,2.0,3
+S0617,CT00005,Kesebangunan,intermediate,not started,30.46,2.0,2.0,3
+S0936,CT00003,Rasio,beginner,in-progress,61.241154484959516,3.0,3.0,3
+S0231,CT00006,Data dan Diagram,intermediate,in-progress,26.41,1.0,6.0,6
+S0121,CT00003,Rasio,advanced,done,90.11940531957504,1.0,2.0,3
+S0329,CT00002,Bilangan Rasional,intermediate,in-progress,68.36171967875588,3.0,3.0,3
+S0639,CT00002,Bilangan Rasional,intermediate,in-progress,74.58076644883397,5.0,3.0,3
+S0980,CT00001,Bilangan Bulat,advanced,done,82.66165532467008,2.0,3.0,3
+S0590,CT00002,Bilangan Rasional,beginner,done,86.51,1.0,1.0,3
+S0023,CT00006,Data dan Diagram,intermediate,done,78.46376299193402,5.0,2.0,6
+S0322,CT00002,Bilangan Rasional,advanced,not started,94.61409838614918,2.0,1.0,3
+S0642,CT00001,Bilangan Bulat,beginner,in-progress,52.52,1.0,1.0,3
+S0890,CT00001,Bilangan Bulat,advanced,in-progress,68.92497608445638,4.0,2.0,3
+S0503,CT00003,Rasio,beginner,not started,65.0674049699315,1.0,3.0,3
+S0161,CT00005,Kesebangunan,advanced,done,82.73810426281864,2.0,1.0,3
+S0073,CT00001,Bilangan Bulat,beginner,not started,83.79771717456306,1.0,1.0,3
+S0985,CT00003,Rasio,intermediate,DONE,43.545,2.0,1.0,3
+S0076,CT00004,Bentuk Aljabar,intermediate,in-progress,39.38,1.0,2.0,3
+S0098,CT00006,Data dan Diagram,advanced,in-progress,66.50425838173226,5.0,6.0,6
+S0829,CT00005,Kesebangunan,intermediate,done,72.17101172695223,4.0,2.0,3
+S0295,CT00006,Data dan Diagram,beginner,DONE,98.61,1.0,6.0,6
+S0936,CT00004,Bentuk Aljabar,intermediate,in-progress,32.16,8.0,1.0,3
+S0817,CT00006,Data dan Diagram,advanced,DONE,86.22492527094958,1.0,3.0,6
+S0750,CT00002,Bilangan Rasional,intermediate,in-progress,69.01,1.0,2.0,3
+S0156,CT00002,Bilangan Rasional,advanced,in-progress,86.99453504726016,4.0,1.0,3
+S0963,CT00005,Kesebangunan,intermediate,done,66.42829901443345,2.0,2.0,3
+S0303,CT00003,Rasio,beginner,done,68.37381063835345,1.0,1.0,3
+S0748,CT00002,Bilangan Rasional,beginner,not started,86.27552051623279,5.0,2.0,3
+S0294,CT00003,Rasio,intermediate,not started,70.735,2.0,1.0,3
+S0952,CT00001,Bilangan Bulat,beginner,in-progress,65.58,1.0,2.0,3
+S0648,CT00001,Bilangan Bulat,intermediate,done,71.75853244861277,3.0,1.0,3
+S0187,CT00004,Bentuk Aljabar,beginner,not started,65.87240218471683,2.0,1.0,3
+S0647,CT00002,Bilangan Rasional,beginner,not started,80.86629302968416,3.0,2.0,3
+S0279,CT00005,Kesebangunan,beginner,not started,94.52799447954486,1.0,2.0,3
+S0388,CT00005,Kesebangunan,advanced,done,63.058571459748826,4.0,2.0,3
+S0824,CT00003,Rasio,beginner,in-progress,75.7525010727503,5.0,2.0,3
+S0418,CT00004,Bentuk Aljabar,advanced,done,60.57106431770655,5.0,2.0,3
+S0122,CT00006,Data dan Diagram,beginner,in-progress,89.51990808994034,3.0,3.0,6
+S0970,CT00006,Data dan Diagram,advanced,done,61.78539016401476,4.0,6.0,6
+S0802,CT00003,Rasio,beginner,done,2.76,1.0,1.0,3
+S0517,CT00003,Rasio,advanced,done,50.13,2.0,2.0,3
+S0430,CT00001,Bilangan Bulat,beginner,not started,76.7369386930825,5.0,3.0,3
+S0965,CT00004,Bentuk Aljabar,beginner,in-progress,68.25946579507092,2.0,1.0,3
+S0099,CT00005,Kesebangunan,beginner,in-progress,76.35429229219454,1.0,1.0,3
+S0189,CT00001,Bilangan Bulat,intermediate,done,36.17,1.0,2.0,3
+S0961,CT00003,Rasio,beginner,in-progress,63.78,1.0,1.0,3
+S0212,CT00002,Bilangan Rasional,beginner,not started,69.64401590346077,2.0,3.0,3
+S0968,CT00001,Bilangan Bulat,advanced,not started,76.95705346166335,4.0,3.0,3
+S0016,CT00001,Bilangan Bulat,advanced,in-progress,68.7556456054123,1.0,3.0,3
+S0180,CT00002,Bilangan Rasional,intermediate,not started,91.81249368113713,3.0,2.0,3
+S0321,CT00002,Bilangan Rasional,advanced,in-progress,79.02943675732016,5.0,2.0,3
+S0901,CT00004,Bentuk Aljabar,beginner,not started,86.71058343024413,1.0,2.0,3
+S0046,CT00002,Bilangan Rasional,advanced,done,45.13,1.0,1.0,3
+S0196,CT00004,Bentuk Aljabar,beginner,done,86.91,1.0,2.0,3
+S0625,CT00005,Kesebangunan,advanced,not started,91.67,1.0,3.0,3
+S0133,CT00003,Rasio,beginner,done,90.75378958883883,1.0,3.0,3
+S0071,CT00005,Kesebangunan,advanced,in-progress,72.68150211542311,4.0,2.0,3
+S0670,CT00002,Bilangan Rasional,beginner,done,75.57075627407332,4.0,1.0,3
+S0584,CT00006,Data dan Diagram,intermediate,not started,74.09,1.0,2.0,6
+S0584,CT00006,Data dan Diagram,intermediate,not started,74.09,1.0,3.0,6
+S0584,CT00006,Data dan Diagram,intermediate,not started,74.09,1.0,4.0,6
+S0584,CT00006,Data dan Diagram,intermediate,not started,74.09,1.0,2.0,6
+S0140,CT00002,Bilangan Rasional,intermediate,not started,51.05,1.0,2.0,3
+S0276,CT00001,Bilangan Bulat,advanced,in-progress,68.33338710442982,2.0,2.0,3
+S0810,CT00001,Bilangan Bulat,beginner,not started,81.84173956542284,4.0,3.0,3
+S0335,CT00005,Kesebangunan,intermediate,not started,33.09,1.0,3.0,3
+S0202,CT00002,Bilangan Rasional,intermediate,in-progress,86.39,1.0,1.0,3
+S0642,CT00003,Rasio,intermediate,not started,70.51699799532034,1.0,2.0,3
+S0045,CT00002,Bilangan Rasional,advanced,in-progress,60.163296128758105,4.0,2.0,3
+S0865,CT00003,Rasio,advanced,not started,79.09392430559583,1.0,2.0,3
+S0818,CT00002,Bilangan Rasional,intermediate,done,91.4704029839392,2.0,2.0,3
+S0205,CT00004,Bentuk Aljabar,beginner,in-progress,88.1919257687245,5.0,1.0,3
+S0761,CT00004,Bentuk Aljabar,advanced,done,69.57530274236527,3.0,1.0,3
+S0099,CT00005,Kesebangunan,intermediate,done,74.96121837974843,1.0,1.0,3
+S0290,CT00006,Data dan Diagram,advanced,done,61.60009478940421,3.0,2.0,6
+S0296,CT00001,Bilangan Bulat,advanced,in-progress,62.71,1.0,1.0,3
+S0424,CT00004,Bentuk Aljabar,advanced,done,89.09096008218467,1.0,2.0,3
+S0008,CT00003,Rasio,intermediate,not started,94.01521667719265,3.0,2.0,3
+S0008,CT00003,Rasio,intermediate,not started,75.81283569556791,5.0,3.0,3
+S0008,CT00003,Rasio,intermediate,not started,73.22429174471682,1.0,2.0,3
+S0008,CT00003,Rasio,intermediate,not started,73.3521110937964,3.0,2.0,3
+S0549,CT00002,Bilangan Rasional,beginner,done,52.96,1.0,3.0,3
+S0435,CT00003,Rasio,intermediate,in-progress,89.52458224889904,1.0,2.0,3
+S0691,CT00005,Kesebangunan,intermediate,DONE,84.05579477418715,3.0,1.0,3
+S0361,CT00005,Kesebangunan,intermediate,not started,64.14121575036049,2.0,3.0,3
+S0398,CT00006,Data dan Diagram,advanced,done,93.4279435833725,5.0,3.0,6
+S0256,CT00002,Bilangan Rasional,intermediate,in-progress,81.99984588908707,5.0,3.0,3
+S0518,CT00002,Bilangan Rasional,advanced,done,84.2106834519364,1.0,1.0,3
+S0575,CT00002,Bilangan Rasional,advanced,DONE,79.06168587842306,2.0,3.0,3
+S0731,CT00005,Kesebangunan,advanced,not started,69.66607517893014,2.0,3.0,3
+S0600,CT00006,Data dan Diagram,advanced,not started,83.57455590541792,4.0,4.0,6
+S0834,CT00004,Bentuk Aljabar,advanced,in-progress,68.4994241405142,2.0,1.0,3
+S0740,CT00001,Bilangan Bulat,advanced,in-progress,59.55,1.0,1.0,3
+S0273,CT00001,Bilangan Bulat,advanced,in-progress,69.51553304535186,1.0,3.0,3
+S0984,CT00001,Bilangan Bulat,advanced,in-progress,75.7329379867781,4.0,3.0,3
+S0341,CT00002,Bilangan Rasional,intermediate,not started,62.68947990921996,4.0,1.0,3
+S0859,CT00002,Bilangan Rasional,advanced,in-progress,79.09575175920294,2.0,1.0,3
+S0891,CT00001,Bilangan Bulat,advanced,in-progress,66.36853917678303,5.0,2.0,3
+S0712,CT00005,Kesebangunan,intermediate,done,63.92802254957129,2.0,3.0,3
+S0247,CT00002,Bilangan Rasional,intermediate,in-progress,57.65,1.0,3.0,3
+S0450,CT00006,Data dan Diagram,beginner,not started,61.00223663560956,5.0,4.0,6
+S0376,CT00004,Bentuk Aljabar,advanced,not started,78.1580868176976,3.0,2.0,3
+S0972,CT00005,Kesebangunan,beginner,DONE,54.79,1.0,2.0,3
+S0972,CT00005,Kesebangunan,beginner,DONE,54.79,1.0,3.0,3
+S0972,CT00005,Kesebangunan,beginner,DONE,54.79,1.0,1.0,3
+S0972,CT00005,Kesebangunan,beginner,DONE,54.79,1.0,1.0,3
+S0751,CT00006,Data dan Diagram,beginner,done,66.6589011918109,1.0,2.0,6
+S0226,CT00002,Bilangan Rasional,advanced,in-progress,86.61473989486132,4.0,3.0,3
+S0059,CT00005,Kesebangunan,beginner,in-progress,69.35252756801167,1.0,2.0,3
+S0307,CT00003,Rasio,intermediate,in-progress,61.60840754647489,4.0,2.0,3
+S0024,CT00005,Kesebangunan,advanced,in-progress,87.1293211630225,5.0,3.0,3
+S0551,CT00005,Kesebangunan,advanced,not started,93.23948870566444,3.0,3.0,3
+S0946,CT00004,Bentuk Aljabar,advanced,not started,64.5157583964318,3.0,3.0,3
+S0531,CT00006,Data dan Diagram,advanced,done,77.09920592078686,4.0,5.0,6
+S0533,CT00001,Bilangan Bulat,advanced,in-progress,59.925,2.0,1.0,3
+S0671,CT00005,Kesebangunan,intermediate,done,7.1,1.0,2.0,3
+S0249,CT00001,Bilangan Bulat,beginner,done,61.94586290730952,5.0,1.0,3
+S0163,CT00001,Bilangan Bulat,advanced,in-progress,55.705,2.0,3.0,3
+S0249,CT00004,Bentuk Aljabar,advanced,done,41.73,2.0,3.0,3
+S0030,CT00005,Kesebangunan,intermediate,not started,88.61871193588397,1.0,2.0,3
+S0221,CT00002,Bilangan Rasional,intermediate,done,64.74,1.0,1.0,3
+S0651,CT00001,Bilangan Bulat,intermediate,in-progress,81.32891737552734,5.0,2.0,3
+S0802,CT00002,Bilangan Rasional,intermediate,not started,76.7214551862082,5.0,1.0,3
+S0554,CT00005,Kesebangunan,beginner,not started,38.31,1.0,2.0,3
+S0710,CT00006,Data dan Diagram,advanced,not started,61.55208285135279,2.0,5.0,6
+S0364,CT00004,Bentuk Aljabar,beginner,not started,80.53566350750825,1.0,2.0,3
+S0478,CT00002,Bilangan Rasional,intermediate,not started,61.94492966074954,1.0,2.0,3
+S0979,CT00004,Bentuk Aljabar,intermediate,in-progress,92.51681001845034,1.0,3.0,3
+S0642,CT00003,Rasio,advanced,in-progress,90.42190361777558,1.0,2.0,3
+S0570,CT00001,Bilangan Bulat,advanced,done,66.75961175896464,1.0,1.0,3
+S0706,CT00003,Rasio,intermediate,in-progress,71.72133131574667,1.0,3.0,3
+S0551,CT00003,Rasio,beginner,not started,87.09596295370065,3.0,3.0,3
+S0476,CT00004,Bentuk Aljabar,intermediate,not started,91.41362906243754,4.0,3.0,3
+S0476,CT00004,Bentuk Aljabar,intermediate,not started,80.21407368351868,5.0,2.0,3
+S0476,CT00004,Bentuk Aljabar,intermediate,not started,65.95368978030774,5.0,3.0,3
+S0476,CT00004,Bentuk Aljabar,intermediate,not started,78.1147599776564,2.0,2.0,3
+S0213,CT00001,Bilangan Bulat,advanced,in-progress,42.99,1.0,3.0,3
+S0419,CT00003,Rasio,intermediate,DONE,89.16358616479489,5.0,2.0,3
+S0127,CT00003,Rasio,beginner,done,75.73103556325044,3.0,2.0,3
+S0827,CT00006,Data dan Diagram,advanced,in-progress,34.75,1.0,2.0,6
+S0538,CT00006,Data dan Diagram,advanced,not started,7.99,1.0,6.0,6
+S0700,CT00003,Rasio,advanced,in-progress,84.94297168500455,5.0,2.0,3
+S0119,CT00006,Data dan Diagram,intermediate,in-progress,50.14,1.0,5.0,6
+S0295,CT00004,Bentuk Aljabar,beginner,in-progress,24.75,1.0,3.0,3
+S0559,CT00004,Bentuk Aljabar,intermediate,in-progress,80.68392266583697,3.0,3.0,3
+S0227,CT00002,Bilangan Rasional,intermediate,DONE,86.17,1.0,1.0,3
+S0504,CT00001,Bilangan Bulat,advanced,not started,83.03602714694904,2.0,2.0,3
+S0569,CT00002,Bilangan Rasional,intermediate,not started,90.805,2.0,1.0,3
+S0314,CT00004,Bentuk Aljabar,advanced,done,88.72914823711771,2.0,1.0,3
+S0571,CT00006,Data dan Diagram,beginner,in-progress,91.81658123575292,5.0,1.0,6
+S0431,CT00001,Bilangan Bulat,beginner,in-progress,92.40874826469312,5.0,1.0,3
+S0974,CT00001,Bilangan Bulat,intermediate,DONE,85.10836351533642,5.0,1.0,3
+S0663,CT00001,Bilangan Bulat,beginner,done,14.25,1.0,1.0,3
+S0311,CT00005,Kesebangunan,beginner,done,88.36565541807028,4.0,1.0,3
+S0147,CT00001,Bilangan Bulat,advanced,not started,89.50678711390731,1.0,1.0,3
+S0350,CT00006,Data dan Diagram,intermediate,not started,85.1270898739988,4.0,2.0,6
+S0350,CT00006,Data dan Diagram,intermediate,not started,84.92450824297187,5.0,2.0,6
+S0350,CT00006,Data dan Diagram,intermediate,not started,64.26174263991183,4.0,1.0,6
+S0350,CT00006,Data dan Diagram,intermediate,not started,80.49239559978797,4.0,3.0,6
+S0460,CT00004,Bentuk Aljabar,advanced,not started,79.99116670656466,5.0,1.0,3
+S0534,CT00003,Rasio,advanced,done,37.335,2.0,3.0,3
+S0425,CT00003,Rasio,advanced,in-progress,69.59564107191034,3.0,2.0,3
+S0642,CT00006,Data dan Diagram,intermediate,done,61.28692926800648,4.0,1.0,6
+S0706,CT00003,Rasio,intermediate,done,72.42432300801599,2.0,3.0,3
+S0893,CT00001,Bilangan Bulat,beginner,done,70.98177962011418,4.0,1.0,3
+S0062,CT00002,Bilangan Rasional,beginner,in-progress,99.81,1.0,2.0,3
+S0022,CT00004,Bentuk Aljabar,beginner,not started,99.63,1.0,1.0,3
+S0018,CT00001,Bilangan Bulat,intermediate,in-progress,66.88043402880328,4.0,2.0,3
+S0038,CT00001,Bilangan Bulat,intermediate,done,88.33893323258195,4.0,2.0,3
+S0731,CT00002,Bilangan Rasional,intermediate,in-progress,77.45,1.0,2.0,3
+S0380,CT00006,Data dan Diagram,beginner,in-progress,73.11150178446076,1.0,2.0,6
+S0990,CT00005,Kesebangunan,beginner,in-progress,80.40296513650388,3.0,3.0,3
+S0153,CT00001,Bilangan Bulat,beginner,in-progress,69.86701658210825,1.0,2.0,3
+S0599,CT00005,Kesebangunan,advanced,not started,66.51761163405739,4.0,2.0,3
+S0978,CT00002,Bilangan Rasional,intermediate,in-progress,73.05638025598131,5.0,2.0,3
+S0341,CT00005,Kesebangunan,advanced,not started,69.53869624571739,1.0,1.0,3
+S0404,CT00001,Bilangan Bulat,beginner,not started,0.6,1.0,1.0,3
+S0203,CT00003,Rasio,beginner,in-progress,75.66631239037831,5.0,1.0,3
+S0583,CT00006,Data dan Diagram,advanced,not started,19.74,1.0,2.0,6
+S0535,CT00005,Kesebangunan,beginner,not started,67.92,1.0,1.0,3
+S0800,CT00002,Bilangan Rasional,intermediate,in-progress,89.2264488046743,5.0,2.0,3
+S0716,CT00001,Bilangan Bulat,advanced,in-progress,75.56512135828686,2.0,1.0,3
+S0726,CT00006,Data dan Diagram,beginner,not started,89.59769618946274,5.0,5.0,6
+S0726,CT00006,Data dan Diagram,beginner,not started,90.10113426735995,4.0,6.0,6
+S0726,CT00006,Data dan Diagram,beginner,not started,63.66935694095539,4.0,5.0,6
+S0726,CT00006,Data dan Diagram,beginner,not started,71.25539978880862,1.0,4.0,6
+S0539,CT00004,Bentuk Aljabar,beginner,done,62.01499151382274,2.0,1.0,3
+S0430,CT00004,Bentuk Aljabar,intermediate,not started,93.98310844877594,1.0,1.0,3
+S0212,CT00004,Bentuk Aljabar,advanced,done,31.18,1.0,1.0,3
+S0212,CT00004,Bentuk Aljabar,advanced,done,31.18,1.0,1.0,3
+S0212,CT00004,Bentuk Aljabar,advanced,done,31.18,1.0,3.0,3
+S0212,CT00004,Bentuk Aljabar,advanced,done,31.18,1.0,1.0,3
+S0566,CT00002,Bilangan Rasional,advanced,done,10.05,1.0,2.0,3
+S0600,CT00001,Bilangan Bulat,advanced,in-progress,68.57247049894113,1.0,2.0,3
+S0228,CT00005,Kesebangunan,intermediate,done,89.24140929752623,5.0,2.0,3
+S0148,CT00003,Rasio,beginner,in-progress,67.98,1.0,3.0,3
+S0980,CT00005,Kesebangunan,beginner,not started,60.947419267084356,2.0,1.0,3
+S0566,CT00004,Bentuk Aljabar,beginner,in-progress,36.97,1.0,1.0,3
+S0389,CT00003,Rasio,advanced,in-progress,94.17493032056935,4.0,2.0,3
+S0390,CT00006,Data dan Diagram,beginner,in-progress,65.89666666666666,3.0,5.0,6
+S0590,CT00003,Rasio,advanced,in-progress,64.82804746386896,2.0,2.0,3
+S0099,CT00006,Data dan Diagram,beginner,not started,86.2347399774762,2.0,2.0,6
+S0030,CT00001,Bilangan Bulat,advanced,done,84.07132648853734,2.0,3.0,3
+S0150,CT00006,Data dan Diagram,advanced,not started,83.84148372295502,2.0,6.0,6
+S0620,CT00002,Bilangan Rasional,intermediate,done,92.40306297872814,2.0,2.0,3
+S0815,CT00006,Data dan Diagram,advanced,not started,51.47,1.0,6.0,6
+S0568,CT00005,Kesebangunan,beginner,not started,78.27081815755174,3.0,2.0,3
+S0310,CT00001,Bilangan Bulat,intermediate,done,72.99569860861496,3.0,2.0,3
+S0369,CT00004,Bentuk Aljabar,advanced,DONE,80.53543339916823,3.0,2.0,3
+S0389,CT00002,Bilangan Rasional,beginner,done,94.55100918084983,2.0,2.0,3
+S0270,CT00006,Data dan Diagram,beginner,in-progress,13.54,1.0,1.0,6
+S0237,CT00003,Rasio,intermediate,in-progress,75.67201498006384,5.0,2.0,3
+S0389,CT00005,Kesebangunan,beginner,in-progress,73.38238364930172,3.0,3.0,3
+S0084,CT00002,Bilangan Rasional,beginner,not started,69.34806492490735,4.0,2.0,3
+S0357,CT00003,Rasio,beginner,in-progress,81.72126346324197,2.0,1.0,3
+S0050,CT00006,Data dan Diagram,advanced,done,96.24,1.0,2.0,6
+S0050,CT00006,Data dan Diagram,advanced,done,96.24,1.0,1.0,6
+S0050,CT00006,Data dan Diagram,advanced,done,96.24,1.0,6.0,6
+S0050,CT00006,Data dan Diagram,advanced,done,96.24,1.0,2.0,6
+S0753,CT00006,Data dan Diagram,advanced,in-progress,89.10620299595442,2.0,5.0,6
+S0317,CT00006,Data dan Diagram,advanced,not started,69.74496504448416,1.0,5.0,6
+S0233,CT00001,Bilangan Bulat,advanced,done,82.41508567117796,8.0,3.0,3
+S0957,CT00003,Rasio,intermediate,not started,72.03312048464349,4.0,1.0,3
+S0225,CT00004,Bentuk Aljabar,advanced,done,61.165477517057944,1.0,3.0,3
+S0033,CT00001,Bilangan Bulat,beginner,not started,67.56205443992174,5.0,3.0,3
+S0176,CT00005,Kesebangunan,beginner,done,83.59328208384557,1.0,1.0,3
+S0028,CT00001,Bilangan Bulat,beginner,done,13.06,1.0,1.0,3
+S0636,CT00002,Bilangan Rasional,advanced,not started,24.97,1.0,2.0,3
+S0537,CT00003,Rasio,advanced,not started,94.42683527652667,1.0,1.0,3
+S0299,CT00004,Bentuk Aljabar,beginner,done,65.43435221264762,1.0,3.0,3
+S0641,CT00001,Bilangan Bulat,beginner,not started,93.2219049529728,3.0,3.0,3
+S0031,CT00005,Kesebangunan,intermediate,not started,83.9777925601606,4.0,2.0,3
+S0031,CT00005,Kesebangunan,intermediate,not started,76.7475736934774,3.0,3.0,3
+S0031,CT00005,Kesebangunan,intermediate,not started,61.99008160410204,2.0,2.0,3
+S0031,CT00005,Kesebangunan,intermediate,not started,64.74004697207792,5.0,1.0,3
+S0326,CT00001,Bilangan Bulat,beginner,in-progress,76.29197314381089,1.0,1.0,3
+S0532,CT00002,Bilangan Rasional,intermediate,not started,81.95,1.0,2.0,3
+S0532,CT00002,Bilangan Rasional,intermediate,not started,81.95,1.0,3.0,3
+S0532,CT00002,Bilangan Rasional,intermediate,not started,81.95,1.0,2.0,3
+S0532,CT00002,Bilangan Rasional,intermediate,not started,81.95,1.0,3.0,3
+S0032,CT00005,Kesebangunan,advanced,in-progress,86.691913285005,4.0,2.0,3
+S0824,CT00005,Kesebangunan,advanced,in-progress,78.70331860483554,2.0,3.0,3
+S0160,CT00003,Rasio,advanced,in-progress,81.75046449479194,4.0,1.0,3
+S0160,CT00003,Rasio,advanced,in-progress,72.97382047406806,2.0,1.0,3
+S0160,CT00003,Rasio,advanced,in-progress,79.03834264498681,5.0,2.0,3
+S0160,CT00003,Rasio,advanced,in-progress,69.03568414575115,1.0,2.0,3
+S0055,CT00005,Kesebangunan,intermediate,not started,86.07184118665612,5.0,1.0,3
+S0842,CT00005,Kesebangunan,beginner,done,73.68813588267133,1.0,1.0,3
+S0793,CT00005,Kesebangunan,advanced,done,86.6760058290088,2.0,1.0,3
+S0147,CT00006,Data dan Diagram,advanced,done,62.47267141385634,3.0,3.0,6
+S0495,CT00001,Bilangan Bulat,intermediate,done,84.60336330318064,5.0,1.0,3
+S0376,CT00006,Data dan Diagram,beginner,not started,42.88,1.0,4.0,6
+S0482,CT00005,Kesebangunan,intermediate,done,66.29683092569877,4.0,2.0,3
+S0408,CT00004,Bentuk Aljabar,beginner,in-progress,83.40596608005127,1.0,1.0,3
+S0009,CT00005,Kesebangunan,advanced,not started,64.422378845947,4.0,1.0,3
+S0928,CT00001,Bilangan Bulat,advanced,not started,94.20112300795472,5.0,3.0,3
+S0271,CT00004,Bentuk Aljabar,advanced,not started,79.74980042214584,1.0,2.0,3
+S0236,CT00001,Bilangan Bulat,advanced,DONE,92.33242503568232,1.0,1.0,3
+S0979,CT00006,Data dan Diagram,beginner,done,48.02,1.0,1.0,6
+S0980,CT00003,Rasio,advanced,in-progress,90.95484827156152,1.0,2.0,3
+S0840,CT00003,Rasio,intermediate,not started,67.10112172503439,3.0,2.0,3
+S0499,CT00003,Rasio,advanced,done,66.27707313102103,4.0,3.0,3
+S0404,CT00003,Rasio,advanced,in-progress,80.05240631919938,1.0,1.0,3
+S0165,CT00006,Data dan Diagram,beginner,not started,83.89461580203414,3.0,6.0,6
+S0539,CT00004,Bentuk Aljabar,advanced,done,94.32167864630387,3.0,3.0,3
+S0907,CT00006,Data dan Diagram,beginner,not started,71.59,1.0,1.0,6
+S0501,CT00005,Kesebangunan,beginner,done,74.36135568134927,1.0,1.0,3
+S0598,CT00004,Bentuk Aljabar,intermediate,not started,78.33790415257597,5.0,3.0,3
+S0509,CT00004,Bentuk Aljabar,intermediate,done,55.57,2.0,1.0,3
+S0340,CT00005,Kesebangunan,beginner,done,96.57,1.0,2.0,3
+S0446,CT00001,Bilangan Bulat,advanced,done,94.47624955856796,4.0,2.0,3
+S0908,CT00004,Bentuk Aljabar,intermediate,in-progress,58.75,1.0,2.0,3
+S0281,CT00001,Bilangan Bulat,beginner,not started,70.15783699409558,1.0,1.0,3
+S0965,CT00004,Bentuk Aljabar,advanced,done,83.84245329743952,3.0,1.0,3
+S0255,CT00001,Bilangan Bulat,advanced,done,31.72,1.0,1.0,3
+S0648,CT00005,Kesebangunan,beginner,in-progress,85.48193679564903,5.0,2.0,3
+S1000,CT00004,Bentuk Aljabar,advanced,not started,82.57916423807623,5.0,2.0,3
+S0388,CT00001,Bilangan Bulat,advanced,done,48.15,1.0,1.0,3
+S0037,CT00003,Rasio,advanced,not started,87.80746481424886,2.0,2.0,3
+S0780,CT00003,Rasio,beginner,in-progress,64.16332431987206,3.0,2.0,3
+S0780,CT00003,Rasio,beginner,in-progress,89.85965043024335,2.0,2.0,3
+S0780,CT00003,Rasio,beginner,in-progress,92.25124501891105,1.0,3.0,3
+S0780,CT00003,Rasio,beginner,in-progress,64.15194008826451,5.0,3.0,3
+S0413,CT00003,Rasio,beginner,in-progress,75.35,1.0,2.0,3
+S0043,CT00001,Bilangan Bulat,beginner,DONE,94.125237520731,1.0,1.0,3
+S0971,CT00006,Data dan Diagram,intermediate,in-progress,78.62993992202125,1.0,1.0,6
+S0383,CT00001,Bilangan Bulat,beginner,done,75.1633008253351,3.0,2.0,3
+S0404,CT00004,Bentuk Aljabar,advanced,not started,45.14,1.0,1.0,3
+S0141,CT00004,Bentuk Aljabar,beginner,not started,74.46398650337164,4.0,3.0,3
+S0729,CT00005,Kesebangunan,beginner,not started,68.31,1.0,3.0,3
+S0855,CT00001,Bilangan Bulat,advanced,in-progress,6.68,1.0,1.0,3
+S0101,CT00004,Bentuk Aljabar,advanced,in-progress,67.92,1.0,2.0,3
+S0972,CT00005,Kesebangunan,beginner,not started,54.79,1.0,3.0,3
+S0997,CT00002,Bilangan Rasional,intermediate,done,73.18198778213295,1.0,1.0,3
+S0881,CT00001,Bilangan Bulat,intermediate,not started,88.90173949663111,4.0,1.0,3
+S0588,CT00005,Kesebangunan,advanced,done,72.04348267443568,5.0,1.0,3
+S0411,CT00004,Bentuk Aljabar,beginner,done,67.01811411253435,4.0,2.0,3
+S0995,CT00001,Bilangan Bulat,advanced,in-progress,64.23745870957083,4.0,2.0,3
+S0995,CT00001,Bilangan Bulat,advanced,in-progress,65.7612095006732,1.0,3.0,3
+S0995,CT00001,Bilangan Bulat,advanced,in-progress,72.3248024602626,4.0,2.0,3
+S0995,CT00001,Bilangan Bulat,advanced,in-progress,64.47395797754446,5.0,2.0,3
+S0927,CT00003,Rasio,beginner,in-progress,88.01234396525926,4.0,1.0,3
+S0659,CT00001,Bilangan Bulat,advanced,not started,3.89,1.0,3.0,3
+S0079,CT00001,Bilangan Bulat,intermediate,done,91.48955781964617,1.0,1.0,3
+S0785,CT00001,Bilangan Bulat,advanced,done,93.62740767413239,1.0,1.0,3
+S0832,CT00006,Data dan Diagram,intermediate,in-progress,41.27,1.0,1.0,6
+S0280,CT00004,Bentuk Aljabar,intermediate,not started,73.41748603804399,4.0,1.0,3
+S0947,CT00001,Bilangan Bulat,beginner,in-progress,70.84925596135186,1.0,2.0,3
+S0531,CT00002,Bilangan Rasional,intermediate,not started,47.89,1.0,1.0,3
+S0838,CT00005,Kesebangunan,beginner,in-progress,22.44,1.0,2.0,3
+S0331,CT00004,Bentuk Aljabar,beginner,done,65.99530952631659,4.0,3.0,3
+S0830,CT00006,Data dan Diagram,intermediate,in-progress,77.4,2.0,3.0,6
+S0087,CT00001,Bilangan Bulat,advanced,in-progress,81.28,1.0,2.0,3
+S0058,CT00006,Data dan Diagram,intermediate,not started,75.6816452500803,1.0,2.0,6
+S0946,CT00005,Kesebangunan,advanced,done,89.26357964737139,3.0,1.0,3
+S0255,CT00005,Kesebangunan,beginner,in-progress,80.581041603269,1.0,1.0,3
+S0373,CT00005,Kesebangunan,beginner,done,39.04,1.0,1.0,3
+S0170,CT00004,Bentuk Aljabar,intermediate,in-progress,90.79308185860607,4.0,2.0,3
+S0657,CT00006,Data dan Diagram,advanced,in-progress,77.16753247519657,2.0,2.0,6
+S0711,CT00002,Bilangan Rasional,intermediate,done,76.34573978785622,1.0,1.0,3
+S0784,CT00003,Rasio,beginner,in-progress,28.58,1.0,1.0,3
+S0033,CT00004,Bentuk Aljabar,beginner,done,94.96175496529608,1.0,1.0,3
+S0806,CT00002,Bilangan Rasional,advanced,in-progress,68.66529392320858,2.0,1.0,3
+S0985,CT00004,Bentuk Aljabar,beginner,not started,61.95,1.0,3.0,3
+S0343,CT00005,Kesebangunan,intermediate,not started,80.99510479299602,4.0,3.0,3
+S0772,CT00006,Data dan Diagram,advanced,not started,66.3611776646471,3.0,3.0,6
+S0933,CT00004,Bentuk Aljabar,beginner,in-progress,80.31416584080726,5.0,2.0,3
+S0070,CT00002,Bilangan Rasional,beginner,not started,87.22893293521136,3.0,1.0,3
+S0662,CT00004,Bentuk Aljabar,advanced,done,73.83533589215538,4.0,3.0,3
+S0510,CT00001,Bilangan Bulat,beginner,done,77.87391005885468,1.0,2.0,3
+S0969,CT00006,Data dan Diagram,beginner,not started,91.75108521072003,4.0,5.0,6
+S0314,CT00006,Data dan Diagram,beginner,not started,67.87145118106088,1.0,2.0,6
+S0881,CT00003,Rasio,intermediate,DONE,93.60978394745345,3.0,3.0,3
+S0213,CT00003,Rasio,advanced,not started,61.24793511732469,2.0,1.0,3
+S0930,CT00003,Rasio,intermediate,in-progress,55.15,1.0,1.0,3
+S0353,CT00004,Bentuk Aljabar,intermediate,done,74.82000000000001,2.0,3.0,3
+S0779,CT00004,Bentuk Aljabar,advanced,not started,71.46169532099478,3.0,3.0,3
+S0274,CT00001,Bilangan Bulat,beginner,in-progress,13.85,1.0,1.0,3
+S0216,CT00005,Kesebangunan,advanced,done,55.63,1.0,1.0,3
+S0604,CT00005,Kesebangunan,intermediate,not started,84.71857791209891,1.0,2.0,3
+S0527,CT00004,Bentuk Aljabar,advanced,done,80.19815312001148,4.0,2.0,3
+S0253,CT00003,Rasio,intermediate,in-progress,74.0030308422118,2.0,3.0,3
+S0253,CT00003,Rasio,intermediate,in-progress,94.28872118730149,4.0,2.0,3
+S0253,CT00003,Rasio,intermediate,in-progress,69.51367611621541,2.0,1.0,3
+S0253,CT00003,Rasio,intermediate,in-progress,60.51305918783092,2.0,2.0,3
+S0815,CT00004,Bentuk Aljabar,intermediate,in-progress,79.90601571030504,3.0,1.0,3
+S0280,CT00004,Bentuk Aljabar,advanced,done,72.17707332994486,5.0,2.0,3
+S0724,CT00002,Bilangan Rasional,intermediate,not started,66.36695080784364,4.0,3.0,3
+S0349,CT00004,Bentuk Aljabar,intermediate,not started,89.91736066948164,1.0,1.0,3
+S0056,CT00006,Data dan Diagram,beginner,in-progress,64.25917799838182,2.0,6.0,6
+S0599,CT00003,Rasio,beginner,done,69.78412326325942,3.0,3.0,3
+S0164,CT00001,Bilangan Bulat,beginner,not started,48.41,1.0,3.0,3
+S0779,CT00001,Bilangan Bulat,intermediate,done,63.745000000000005,2.0,1.0,3
+S0437,CT00006,Data dan Diagram,intermediate,not started,82.42355719339211,2.0,2.0,6
+S0273,CT00005,Kesebangunan,advanced,not started,82.45312734674238,2.0,2.0,3
+S0398,CT00002,Bilangan Rasional,intermediate,in-progress,91.10859813128744,3.0,1.0,3
+S0332,CT00005,Kesebangunan,advanced,done,2.68,1.0,3.0,3
+S0322,CT00006,Data dan Diagram,advanced,in-progress,80.73223661389682,2.0,1.0,6
+S0008,CT00005,Kesebangunan,intermediate,not started,22.06,1.0,2.0,3
+S0562,CT00002,Bilangan Rasional,beginner,in-progress,82.15756990754855,2.0,3.0,3
+S0505,CT00002,Bilangan Rasional,beginner,not started,56.21,1.0,3.0,3
+S0775,CT00005,Kesebangunan,advanced,DONE,65.66410701098766,3.0,3.0,3
+S0711,CT00001,Bilangan Bulat,advanced,in-progress,60.74621731685009,1.0,1.0,3
+S0711,CT00001,Bilangan Bulat,advanced,in-progress,68.92949209417989,5.0,2.0,3
+S0711,CT00001,Bilangan Bulat,advanced,in-progress,90.25710449138712,2.0,3.0,3
+S0711,CT00001,Bilangan Bulat,advanced,in-progress,70.3139013038335,5.0,3.0,3
+S0401,CT00002,Bilangan Rasional,intermediate,done,65.28647426443352,4.0,2.0,3
+S0744,CT00001,Bilangan Bulat,advanced,not started,65.45039044993248,4.0,1.0,3
+S0291,CT00001,Bilangan Bulat,advanced,not started,80.11962463457324,3.0,3.0,3
+S0218,CT00001,Bilangan Bulat,advanced,in-progress,74.9437332230372,1.0,1.0,3
+S0657,CT00006,Data dan Diagram,beginner,in-progress,92.75833021595624,2.0,5.0,6
+S0553,CT00002,Bilangan Rasional,intermediate,done,33.365,2.0,1.0,3
+S0051,CT00002,Bilangan Rasional,advanced,not started,66.4,1.0,3.0,3
+S0548,CT00005,Kesebangunan,advanced,DONE,61.68378609581919,5.0,2.0,3
+S0800,CT00001,Bilangan Bulat,intermediate,done,76.03284368925843,5.0,2.0,3
+S0413,CT00005,Kesebangunan,advanced,done,87.41517583768697,2.0,1.0,3
+S0018,CT00002,Bilangan Rasional,advanced,in-progress,49.62,1.0,2.0,3
+S0107,CT00005,Kesebangunan,intermediate,in-progress,71.89158870200323,1.0,3.0,3
+S0499,CT00001,Bilangan Bulat,intermediate,in-progress,66.096718918588,3.0,3.0,3
+S0243,CT00002,Bilangan Rasional,intermediate,done,88.97,1.0,1.0,3
+S0403,CT00002,Bilangan Rasional,intermediate,not started,73.72140692802502,2.0,3.0,3
+S0280,CT00004,Bentuk Aljabar,advanced,in-progress,82.51914259011225,3.0,3.0,3
+S0709,CT00001,Bilangan Bulat,intermediate,in-progress,42.91,1.0,1.0,3
+S0133,CT00003,Rasio,beginner,in-progress,65.99969610645937,4.0,1.0,3
+S0196,CT00005,Kesebangunan,beginner,in-progress,74.67126785078145,5.0,3.0,3
+S0607,CT00004,Bentuk Aljabar,intermediate,not started,86.68543799126458,5.0,1.0,3
+S0473,CT00005,Kesebangunan,intermediate,done,94.30065539080346,1.0,3.0,3
+S0226,CT00006,Data dan Diagram,advanced,not started,67.52434633447784,3.0,6.0,6
+S0275,CT00006,Data dan Diagram,advanced,in-progress,50.98,1.0,1.0,6
+S0568,CT00002,Bilangan Rasional,intermediate,in-progress,69.86228996123909,2.0,3.0,3
+S0755,CT00005,Kesebangunan,intermediate,not started,63.502934401167884,4.0,1.0,3
+S0584,CT00001,Bilangan Bulat,intermediate,in-progress,64.05176327389472,3.0,3.0,3
+S0707,CT00006,Data dan Diagram,beginner,in-progress,7.03,1.0,6.0,6
+S0707,CT00006,Data dan Diagram,beginner,in-progress,7.03,1.0,4.0,6
+S0707,CT00006,Data dan Diagram,beginner,in-progress,7.03,1.0,3.0,6
+S0707,CT00006,Data dan Diagram,beginner,in-progress,7.03,1.0,2.0,6
