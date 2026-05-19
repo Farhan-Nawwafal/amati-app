@@ -1,5 +1,5 @@
 import express from "express";
-import testRouter from './routes/testRoute.js'; 
+import userRouter from './routes/userRouter.js'; 
 import cors from 'cors';
 
 const createApp = () => {
@@ -10,7 +10,7 @@ const createApp = () => {
     app.use(express.urlencoded({ extended: false }));
 
     // Routes
-    app.use('/api/', testRouter);
+    app.use('/api/auth', userRouter);
     return app;
 };
 
