@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
+import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Courses from './pages/Courses'; 
 import CoursesSubChapters from './pages/CoursesSubChapters';
@@ -21,6 +22,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/courses" element={<Courses />} />
         <Route path="/sub-chapters" element={<CoursesSubChapters />} />
