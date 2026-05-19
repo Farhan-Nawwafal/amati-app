@@ -1,0 +1,211 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+enum Role {
+  admin
+  student
+}
+
+enum AssessmentType {
+  beginner
+  intermediate
+  advanced
+}
+
+enum DifficultyLevel {
+  easy
+  medium
+  hard
+  empty  @map("") // Menangani opsi string kosong di SQL kamu
+}
+
+enum CurrentLevel {
+  beginner
+  intermediate
+  advanced
+}
+
+enum ProgressStatus {
+  not_started @map("not started") // Menangani spasi dari SQL
+  in_progres  @map("in-progres") // Menangani strip dari SQL
+  done
+  empty       @map("") // Menangani opsi string kosong
+}
+
+// ========= MODELS =========
+
+model User {
+  id         String   @id @db.VarChar(30)
+  name       String   @db.VarChar(50)
+  role       Role
+  gmail      String   @db.VarChar(50)
+  password   String   @db.VarChar(50)
+  birth_date DateTime @db.Date
+  created_at DateTime @db.Date
+  updated_at DateTime @db.Date
+
+  // Relations
+  ai_reports    AiReport[]
+  chapter_taken ChapterTaken[]
+  user_attempts UserAttempt[]
+  user_progres  UserProgres[]
+
+  @@map("users")
+}
+
+model Chapter {
+  id                String   @id @db.VarChar(30)
+  name              String   @db.VarChar(100)
+  total_sub_chapter Int
+  created_at        DateTime @db.Date
+  updated_at        DateTime @db.Date
+
+  // Relations
+  chapter_taken             ChapterTaken[]
+  prerequisites_base        Prerequisite[] @relation("ChapterBase")
+  prerequisites_requirement Prerequisite[] @relation("ChapterPrerequisite")
+  sub_chapters              SubChapter[]
+
+  @@map("chapters")
+}
+
+model SubChapter {
+  id         String   @id @db.VarChar(30)
+  chapter_id String   @db.VarChar(50)
+  name       String   @db.VarChar(30)
+  created_at DateTime @db.Date
+  updated_at DateTime @db.Date
+
+  // Relations
+  chapter      Chapter       @relation(fields: [chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  assessments  Assessment[]
+  user_progres UserProgres[]
+
+  @@map("sub_chapter")
+}
+
+model ChapterTaken {
+  id         String   @id @db.VarChar(30)
+  user_id    String   @db.VarChar(30)
+  chapter_id String   @db.VarChar(30)
+  created_at DateTime @db.Date
+  updated_at DateTime @db.Date
+
+  // Relations
+  user         User          @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  chapter      Chapter       @relation(fields: [chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  ai_reports   AiReport[]
+  assessments  Assessment[]
+  user_progres UserProgres[]
+
+  @@map("chapter_taken")
+}
+
+model Assessment {
+  id               String         @id @db.VarChar(30)
+  chapter_taken_id String         @db.VarChar(30)
+  sub_chapter_id   String         @db.VarChar(30)
+  title            String         @db.VarChar(100)
+  type             AssessmentType
+  correct_answer   Int
+  created_at       DateTime       @db.Date
+  updated_at       DateTime       @db.Date
+
+  // Relations
+  chapter_taken ChapterTaken  @relation(fields: [chapter_taken_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sub_chapter   SubChapter    @relation(fields: [sub_chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  questions     Question[]
+  user_attempts UserAttempt[]
+
+  @@map("assessments")
+}
+
+model AiReport {
+  id                 String   @id @db.VarChar(30)
+  user_id            String   @db.VarChar(30)
+  chapter_taken_id   String   @db.VarChar(100)
+  evaluation_text    String   @db.Text
+  recomendation_list Json
+  created_at         DateTime @db.Date
+  updated_at         DateTime @db.Date
+
+  // Relations
+  user          User         @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  chapter_taken ChapterTaken @relation(fields: [chapter_taken_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("ai_reports")
+}
+
+model Prerequisite {
+  id                      String   @id @db.VarChar(30)
+  chapter_id              String   @db.VarChar(50)
+  prerequisite_chapter_id String   @db.VarChar(50)
+  created_at              DateTime @db.Date
+  updated_at              DateTime @db.Date
+
+  // Relations
+  chapter              Chapter @relation("ChapterBase", fields: [chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  prerequisite_chapter Chapter @relation("ChapterPrerequisite", fields: [prerequisite_chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("prerequisites")
+}
+
+model Question {
+  id               String          @id @db.VarChar(30)
+  assessment_id    String          @db.VarChar(50)
+  question         String          @db.VarChar(500)
+  topic            Int
+  difficulty_level DifficultyLevel
+  created_at       DateTime        @db.Date
+  updated_at       DateTime        @db.Date
+
+  // Relations
+  assessment Assessment @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("questions")
+}
+
+model UserAttempt {
+  id             String   @id @db.VarChar(30)
+  user_id        String   @db.VarChar(30)
+  assessement_id String   @db.VarChar(30)
+  score          Float
+  completed_at   DateTime @db.Date
+  created_at     DateTime @db.Date
+  updated_at     DateTime @db.Date
+
+  // Relations
+  user       User       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  assessment Assessment @relation(fields: [assessement_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("user_attempts")
+}
+
+model UserProgres {
+  id               String         @id @db.VarChar(30)
+  user_id          String         @db.VarChar(30)
+  sub_chapter_id   String         @db.VarChar(30)
+  chapter_taken_id String         @db.VarChar(50)
+  current_level    CurrentLevel
+  status           ProgressStatus
+  created_at       DateTime       @db.Date
+  updated_at       DateTime       @db.Date
+
+  // Relations
+  user          User         @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sub_chapter   SubChapter   @relation(fields: [sub_chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  chapter_taken ChapterTaken @relation(fields: [chapter_taken_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map("user_progres")
+}
