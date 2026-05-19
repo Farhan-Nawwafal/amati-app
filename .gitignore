@@ -1,0 +1,49 @@
+# ==========================================
+# 1. DEPENDENCIES & PACKAGES (GLOBAL & MULTI)
+# ==========================================
+# Mengunci node_modules di subfolder manapun (FE maupun BE)
+frontend/node_modules/
+backend/node_modules/
+**/node_modules/
+
+# hasil build/compile production
+frontend/dist/
+frontend/dist-ssr/
+frontend/build/
+
+# ==========================================
+# 2. FILE SEEDER / ENVIRONMENT VARIABLES (RAHASIA)
+# ==========================================
+# Menangkal file .env di root maupun di dalam subfolder agar tidak bocor
+.env
+frontend/.env*
+backend/.env*
+
+# ==========================================
+# 3. RUNTIME LOGS & DEBUG (GLOBAL PREFIX)
+# ==========================================
+# Mencakup semua file log debug, baik di root, FE, maupun BE
+*.log
+*/*.log
+frontend/logs/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# ==========================================
+# 4. EDITOR, OS, & SYSTEM FILES (GLOBAL)
+# ==========================================
+# File sampah OS atau konfigurasi editor taruh di level global (tanpa prefix frontend/)
+# Biar otomatis menyaring folder BE/DS/AI juga jika pakai VS Code yang sama.
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproja
+*.sln
+*.sw?

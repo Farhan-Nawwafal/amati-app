@@ -1,0 +1,24 @@
+/* src/index.css */
+
+/* 1. Tambahkan ini di paling atas untuk efek transisi halus saat navigasi diklik */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary-blue: #007bff;
+  --bg-light-blue: #e3f2fd;
+  --accent-yellow: #ffcc00;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* Font bersih untuk siswa SMP */
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Tambahan opsional agar link tidak bergaris bawah secara default */
+a {
+  text-decoration: none;
+}
