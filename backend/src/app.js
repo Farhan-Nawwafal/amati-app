@@ -1,5 +1,6 @@
 import express from "express";
 import userRouter from './routes/userRouter.js'; 
+import dashboardRouter from './routes/dashboardRoute.js';
 import cors from 'cors';
 
 const createApp = () => {
@@ -11,6 +12,8 @@ const createApp = () => {
 
     // Routes
     app.use('/api/auth', userRouter);
+    app.use('/api/dashboard', dashboardRouter);
+
     return app;
 };
 
