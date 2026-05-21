@@ -5,3 +5,5 @@ export const findChaptersTakenByUserId = async (userId) =>
     where: { user_id: userId },
     select: { chapter_id: true },
   });
+
+  
