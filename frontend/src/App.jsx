@@ -42,7 +42,6 @@ function App() {
         
         {/* TAMBAHKAN ROUTE UNTUK COURSES */}
         <Route path="/courses" element={<Courses />} />
-  
 
         {/* DAFTARKAN ROUTE SUB CHAPTERS */}
         <Route path="/courses/:chapterId" element={<CoursesSubChapters />} />
