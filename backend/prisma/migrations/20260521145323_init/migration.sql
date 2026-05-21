@@ -6,8 +6,8 @@ CREATE TABLE `users` (
     `gmail` VARCHAR(50) NOT NULL,
     `password` VARCHAR(50) NOT NULL,
     `birth_date` DATE NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -17,8 +17,8 @@ CREATE TABLE `chapters` (
     `id` VARCHAR(30) NOT NULL,
     `name` VARCHAR(100) NOT NULL,
     `total_sub_chapter` INTEGER NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -27,9 +27,9 @@ CREATE TABLE `chapters` (
 CREATE TABLE `sub_chapter` (
     `id` VARCHAR(30) NOT NULL,
     `chapter_id` VARCHAR(50) NOT NULL,
-    `name` VARCHAR(30) NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `name` VARCHAR(100) NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -39,8 +39,8 @@ CREATE TABLE `chapter_taken` (
     `id` VARCHAR(30) NOT NULL,
     `user_id` VARCHAR(30) NOT NULL,
     `chapter_id` VARCHAR(30) NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -53,8 +53,8 @@ CREATE TABLE `assessments` (
     `title` VARCHAR(100) NOT NULL,
     `type` ENUM('beginner', 'intermediate', 'advanced') NOT NULL,
     `correct_answer` INTEGER NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -66,8 +66,8 @@ CREATE TABLE `ai_reports` (
     `chapter_taken_id` VARCHAR(100) NOT NULL,
     `evaluation_text` TEXT NOT NULL,
     `recomendation_list` JSON NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -77,8 +77,8 @@ CREATE TABLE `prerequisites` (
     `id` VARCHAR(30) NOT NULL,
     `chapter_id` VARCHAR(50) NOT NULL,
     `prerequisite_chapter_id` VARCHAR(50) NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -90,8 +90,8 @@ CREATE TABLE `questions` (
     `question` VARCHAR(500) NOT NULL,
     `topic` INTEGER NOT NULL,
     `difficulty_level` ENUM('easy', 'medium', 'hard', '') NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -102,9 +102,9 @@ CREATE TABLE `user_attempts` (
     `user_id` VARCHAR(30) NOT NULL,
     `assessement_id` VARCHAR(30) NOT NULL,
     `score` DOUBLE NOT NULL,
-    `completed_at` DATE NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `completed_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -117,8 +117,8 @@ CREATE TABLE `user_progres` (
     `chapter_taken_id` VARCHAR(50) NOT NULL,
     `current_level` ENUM('beginner', 'intermediate', 'advanced') NOT NULL,
     `status` ENUM('not started', 'in-progres', 'done', '') NOT NULL,
-    `created_at` DATE NOT NULL,
-    `updated_at` DATE NOT NULL,
+    `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_at` DATETIME(3) NOT NULL,
 
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

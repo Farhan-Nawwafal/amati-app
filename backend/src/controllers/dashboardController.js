@@ -16,3 +16,7 @@ export const getCountChaptersTakenByUserId = async (req, res) => {
     data: chaptersTaken,
   });
 };
+
+export const getCountChaptersInProgress = async (req, res) => {
+  const 
+};
