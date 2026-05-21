@@ -1,10 +1,10 @@
 -- CreateTable
 CREATE TABLE `users` (
-    `id` VARCHAR(30) NOT NULL,
-    `name` VARCHAR(50) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NOT NULL,
     `role` ENUM('admin', 'student') NOT NULL,
-    `gmail` VARCHAR(50) NOT NULL,
-    `password` VARCHAR(50) NOT NULL,
+    `gmail` VARCHAR(191) NOT NULL,
+    `password` VARCHAR(191) NOT NULL,
     `birth_date` DATE NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
@@ -14,8 +14,8 @@ CREATE TABLE `users` (
 
 -- CreateTable
 CREATE TABLE `chapters` (
-    `id` VARCHAR(30) NOT NULL,
-    `name` VARCHAR(100) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NOT NULL,
     `total_sub_chapter` INTEGER NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
@@ -25,9 +25,9 @@ CREATE TABLE `chapters` (
 
 -- CreateTable
 CREATE TABLE `sub_chapter` (
-    `id` VARCHAR(30) NOT NULL,
-    `chapter_id` VARCHAR(50) NOT NULL,
-    `name` VARCHAR(100) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `chapter_id` VARCHAR(191) NOT NULL,
+    `name` VARCHAR(191) NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
@@ -36,9 +36,9 @@ CREATE TABLE `sub_chapter` (
 
 -- CreateTable
 CREATE TABLE `chapter_taken` (
-    `id` VARCHAR(30) NOT NULL,
-    `user_id` VARCHAR(30) NOT NULL,
-    `chapter_id` VARCHAR(30) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `user_id` VARCHAR(191) NOT NULL,
+    `chapter_id` VARCHAR(191) NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
@@ -47,10 +47,10 @@ CREATE TABLE `chapter_taken` (
 
 -- CreateTable
 CREATE TABLE `assessments` (
-    `id` VARCHAR(30) NOT NULL,
-    `chapter_taken_id` VARCHAR(30) NOT NULL,
-    `sub_chapter_id` VARCHAR(30) NOT NULL,
-    `title` VARCHAR(100) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `chapter_taken_id` VARCHAR(191) NOT NULL,
+    `sub_chapter_id` VARCHAR(191) NOT NULL,
+    `title` VARCHAR(191) NOT NULL,
     `type` ENUM('beginner', 'intermediate', 'advanced') NOT NULL,
     `correct_answer` INTEGER NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -61,9 +61,9 @@ CREATE TABLE `assessments` (
 
 -- CreateTable
 CREATE TABLE `ai_reports` (
-    `id` VARCHAR(30) NOT NULL,
-    `user_id` VARCHAR(30) NOT NULL,
-    `chapter_taken_id` VARCHAR(100) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `user_id` VARCHAR(191) NOT NULL,
+    `chapter_taken_id` VARCHAR(191) NOT NULL,
     `evaluation_text` TEXT NOT NULL,
     `recomendation_list` JSON NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -74,9 +74,9 @@ CREATE TABLE `ai_reports` (
 
 -- CreateTable
 CREATE TABLE `prerequisites` (
-    `id` VARCHAR(30) NOT NULL,
-    `chapter_id` VARCHAR(50) NOT NULL,
-    `prerequisite_chapter_id` VARCHAR(50) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `chapter_id` VARCHAR(191) NOT NULL,
+    `prerequisite_chapter_id` VARCHAR(191) NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
@@ -85,9 +85,9 @@ CREATE TABLE `prerequisites` (
 
 -- CreateTable
 CREATE TABLE `questions` (
-    `id` VARCHAR(30) NOT NULL,
-    `assessment_id` VARCHAR(50) NOT NULL,
-    `question` VARCHAR(500) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `assessment_id` VARCHAR(191) NOT NULL,
+    `question` VARCHAR(191) NOT NULL,
     `topic` INTEGER NOT NULL,
     `difficulty_level` ENUM('easy', 'medium', 'hard', '') NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -98,9 +98,9 @@ CREATE TABLE `questions` (
 
 -- CreateTable
 CREATE TABLE `user_attempts` (
-    `id` VARCHAR(30) NOT NULL,
-    `user_id` VARCHAR(30) NOT NULL,
-    `assessement_id` VARCHAR(30) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `user_id` VARCHAR(191) NOT NULL,
+    `assessement_id` VARCHAR(191) NOT NULL,
     `score` DOUBLE NOT NULL,
     `completed_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
@@ -111,10 +111,10 @@ CREATE TABLE `user_attempts` (
 
 -- CreateTable
 CREATE TABLE `user_progres` (
-    `id` VARCHAR(30) NOT NULL,
-    `user_id` VARCHAR(30) NOT NULL,
-    `sub_chapter_id` VARCHAR(30) NOT NULL,
-    `chapter_taken_id` VARCHAR(50) NOT NULL,
+    `id` VARCHAR(191) NOT NULL,
+    `user_id` VARCHAR(191) NOT NULL,
+    `sub_chapter_id` VARCHAR(191) NOT NULL,
+    `chapter_taken_id` VARCHAR(191) NOT NULL,
     `current_level` ENUM('beginner', 'intermediate', 'advanced') NOT NULL,
     `status` ENUM('not started', 'in-progres', 'done', '') NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),

@@ -13066,8 +13066,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportCreateNestedManyWithoutUserInput
     chapter_taken?: ChapterTakenCreateNestedManyWithoutUserInput
     user_attempts?: UserAttemptCreateNestedManyWithoutUserInput
@@ -13081,8 +13081,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutUserInput
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutUserInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutUserInput
@@ -13126,8 +13126,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
@@ -13156,8 +13156,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
@@ -13168,8 +13168,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
@@ -13204,8 +13204,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type ChapterUpdateManyMutationInput = {
@@ -13227,8 +13227,8 @@ export namespace Prisma {
   export type SubChapterCreateInput = {
     id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
     assessments?: AssessmentCreateNestedManyWithoutSub_chapterInput
     user_progres?: UserProgresCreateNestedManyWithoutSub_chapterInput
@@ -13238,8 +13238,8 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutSub_chapterInput
   }
@@ -13268,8 +13268,8 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type SubChapterUpdateManyMutationInput = {
@@ -13289,8 +13289,8 @@ export namespace Prisma {
 
   export type ChapterTakenCreateInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutChapter_takenInput
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
@@ -13302,8 +13302,8 @@ export namespace Prisma {
     id: string
     user_id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
     assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
@@ -13335,8 +13335,8 @@ export namespace Prisma {
     id: string
     user_id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type ChapterTakenUpdateManyMutationInput = {
@@ -13358,8 +13358,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken: ChapterTakenCreateNestedOneWithoutAssessmentsInput
     sub_chapter: SubChapterCreateNestedOneWithoutAssessmentsInput
     questions?: QuestionCreateNestedManyWithoutAssessmentInput
@@ -13373,8 +13373,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     questions?: QuestionUncheckedCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -13412,8 +13412,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AssessmentUpdateManyMutationInput = {
@@ -13440,8 +13440,8 @@ export namespace Prisma {
     id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutAi_reportsInput
     chapter_taken: ChapterTakenCreateNestedOneWithoutAi_reportsInput
   }
@@ -13452,8 +13452,8 @@ export namespace Prisma {
     chapter_taken_id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AiReportUpdateInput = {
@@ -13482,8 +13482,8 @@ export namespace Prisma {
     chapter_taken_id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AiReportUpdateManyMutationInput = {
@@ -13506,8 +13506,8 @@ export namespace Prisma {
 
   export type PrerequisiteCreateInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutPrerequisites_baseInput
     prerequisite_chapter: ChapterCreateNestedOneWithoutPrerequisites_requirementInput
   }
@@ -13516,8 +13516,8 @@ export namespace Prisma {
     id: string
     chapter_id: string
     prerequisite_chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type PrerequisiteUpdateInput = {
@@ -13540,8 +13540,8 @@ export namespace Prisma {
     id: string
     chapter_id: string
     prerequisite_chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type PrerequisiteUpdateManyMutationInput = {
@@ -13563,8 +13563,8 @@ export namespace Prisma {
     question: string
     topic: number
     difficulty_level: $Enums.DifficultyLevel
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     assessment: AssessmentCreateNestedOneWithoutQuestionsInput
   }
 
@@ -13574,8 +13574,8 @@ export namespace Prisma {
     question: string
     topic: number
     difficulty_level: $Enums.DifficultyLevel
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type QuestionUpdateInput = {
@@ -13604,8 +13604,8 @@ export namespace Prisma {
     question: string
     topic: number
     difficulty_level: $Enums.DifficultyLevel
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type QuestionUpdateManyMutationInput = {
@@ -13630,9 +13630,9 @@ export namespace Prisma {
   export type UserAttemptCreateInput = {
     id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutUser_attemptsInput
     assessment: AssessmentCreateNestedOneWithoutUser_attemptsInput
   }
@@ -13642,9 +13642,9 @@ export namespace Prisma {
     user_id: string
     assessement_id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserAttemptUpdateInput = {
@@ -13672,9 +13672,9 @@ export namespace Prisma {
     user_id: string
     assessement_id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserAttemptUpdateManyMutationInput = {
@@ -13699,8 +13699,8 @@ export namespace Prisma {
     id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutUser_progresInput
     sub_chapter: SubChapterCreateNestedOneWithoutUser_progresInput
     chapter_taken: ChapterTakenCreateNestedOneWithoutUser_progresInput
@@ -13713,8 +13713,8 @@ export namespace Prisma {
     chapter_taken_id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserProgresUpdateInput = {
@@ -13746,8 +13746,8 @@ export namespace Prisma {
     chapter_taken_id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserProgresUpdateManyMutationInput = {
@@ -15603,8 +15603,8 @@ export namespace Prisma {
     id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken: ChapterTakenCreateNestedOneWithoutAi_reportsInput
   }
 
@@ -15613,8 +15613,8 @@ export namespace Prisma {
     chapter_taken_id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AiReportCreateOrConnectWithoutUserInput = {
@@ -15629,8 +15629,8 @@ export namespace Prisma {
 
   export type ChapterTakenCreateWithoutUserInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
     assessments?: AssessmentCreateNestedManyWithoutChapter_takenInput
@@ -15640,8 +15640,8 @@ export namespace Prisma {
   export type ChapterTakenUncheckedCreateWithoutUserInput = {
     id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
     assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
@@ -15660,9 +15660,9 @@ export namespace Prisma {
   export type UserAttemptCreateWithoutUserInput = {
     id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     assessment: AssessmentCreateNestedOneWithoutUser_attemptsInput
   }
 
@@ -15670,9 +15670,9 @@ export namespace Prisma {
     id: string
     assessement_id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserAttemptCreateOrConnectWithoutUserInput = {
@@ -15689,8 +15689,8 @@ export namespace Prisma {
     id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     sub_chapter: SubChapterCreateNestedOneWithoutUser_progresInput
     chapter_taken: ChapterTakenCreateNestedOneWithoutUser_progresInput
   }
@@ -15701,8 +15701,8 @@ export namespace Prisma {
     chapter_taken_id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserProgresCreateOrConnectWithoutUserInput = {
@@ -15832,8 +15832,8 @@ export namespace Prisma {
 
   export type ChapterTakenCreateWithoutChapterInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
     assessments?: AssessmentCreateNestedManyWithoutChapter_takenInput
@@ -15843,8 +15843,8 @@ export namespace Prisma {
   export type ChapterTakenUncheckedCreateWithoutChapterInput = {
     id: string
     user_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
     assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
@@ -15862,16 +15862,16 @@ export namespace Prisma {
 
   export type PrerequisiteCreateWithoutChapterInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     prerequisite_chapter: ChapterCreateNestedOneWithoutPrerequisites_requirementInput
   }
 
   export type PrerequisiteUncheckedCreateWithoutChapterInput = {
     id: string
     prerequisite_chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type PrerequisiteCreateOrConnectWithoutChapterInput = {
@@ -15886,16 +15886,16 @@ export namespace Prisma {
 
   export type PrerequisiteCreateWithoutPrerequisite_chapterInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutPrerequisites_baseInput
   }
 
   export type PrerequisiteUncheckedCreateWithoutPrerequisite_chapterInput = {
     id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type PrerequisiteCreateOrConnectWithoutPrerequisite_chapterInput = {
@@ -15911,8 +15911,8 @@ export namespace Prisma {
   export type SubChapterCreateWithoutChapterInput = {
     id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     assessments?: AssessmentCreateNestedManyWithoutSub_chapterInput
     user_progres?: UserProgresCreateNestedManyWithoutSub_chapterInput
   }
@@ -15920,8 +15920,8 @@ export namespace Prisma {
   export type SubChapterUncheckedCreateWithoutChapterInput = {
     id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutSub_chapterInput
   }
@@ -16026,8 +16026,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
@@ -16037,8 +16037,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
@@ -16054,8 +16054,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken: ChapterTakenCreateNestedOneWithoutAssessmentsInput
     questions?: QuestionCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptCreateNestedManyWithoutAssessmentInput
@@ -16067,8 +16067,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     questions?: QuestionUncheckedCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -16087,8 +16087,8 @@ export namespace Prisma {
     id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutUser_progresInput
     chapter_taken: ChapterTakenCreateNestedOneWithoutUser_progresInput
   }
@@ -16099,8 +16099,8 @@ export namespace Prisma {
     chapter_taken_id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserProgresCreateOrConnectWithoutSub_chapterInput = {
@@ -16199,8 +16199,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportCreateNestedManyWithoutUserInput
     user_attempts?: UserAttemptCreateNestedManyWithoutUserInput
     user_progres?: UserProgresCreateNestedManyWithoutUserInput
@@ -16213,8 +16213,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutUserInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutUserInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutUserInput
@@ -16229,8 +16229,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterCreateNestedManyWithoutChapterInput
@@ -16240,8 +16240,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterUncheckedCreateNestedManyWithoutChapterInput
@@ -16256,8 +16256,8 @@ export namespace Prisma {
     id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutAi_reportsInput
   }
 
@@ -16266,8 +16266,8 @@ export namespace Prisma {
     user_id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AiReportCreateOrConnectWithoutChapter_takenInput = {
@@ -16285,8 +16285,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     sub_chapter: SubChapterCreateNestedOneWithoutAssessmentsInput
     questions?: QuestionCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptCreateNestedManyWithoutAssessmentInput
@@ -16298,8 +16298,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     questions?: QuestionUncheckedCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -16318,8 +16318,8 @@ export namespace Prisma {
     id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutUser_progresInput
     sub_chapter: SubChapterCreateNestedOneWithoutUser_progresInput
   }
@@ -16330,8 +16330,8 @@ export namespace Prisma {
     sub_chapter_id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserProgresCreateOrConnectWithoutChapter_takenInput = {
@@ -16466,8 +16466,8 @@ export namespace Prisma {
 
   export type ChapterTakenCreateWithoutAssessmentsInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutChapter_takenInput
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
@@ -16478,8 +16478,8 @@ export namespace Prisma {
     id: string
     user_id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
   }
@@ -16492,8 +16492,8 @@ export namespace Prisma {
   export type SubChapterCreateWithoutAssessmentsInput = {
     id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
     user_progres?: UserProgresCreateNestedManyWithoutSub_chapterInput
   }
@@ -16502,8 +16502,8 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutSub_chapterInput
   }
 
@@ -16517,8 +16517,8 @@ export namespace Prisma {
     question: string
     topic: number
     difficulty_level: $Enums.DifficultyLevel
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type QuestionUncheckedCreateWithoutAssessmentInput = {
@@ -16526,8 +16526,8 @@ export namespace Prisma {
     question: string
     topic: number
     difficulty_level: $Enums.DifficultyLevel
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type QuestionCreateOrConnectWithoutAssessmentInput = {
@@ -16543,9 +16543,9 @@ export namespace Prisma {
   export type UserAttemptCreateWithoutAssessmentInput = {
     id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutUser_attemptsInput
   }
 
@@ -16553,9 +16553,9 @@ export namespace Prisma {
     id: string
     user_id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserAttemptCreateOrConnectWithoutAssessmentInput = {
@@ -16680,8 +16680,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenCreateNestedManyWithoutUserInput
     user_attempts?: UserAttemptCreateNestedManyWithoutUserInput
     user_progres?: UserProgresCreateNestedManyWithoutUserInput
@@ -16694,8 +16694,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutUserInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutUserInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutUserInput
@@ -16708,8 +16708,8 @@ export namespace Prisma {
 
   export type ChapterTakenCreateWithoutAi_reportsInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutChapter_takenInput
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
     assessments?: AssessmentCreateNestedManyWithoutChapter_takenInput
@@ -16720,8 +16720,8 @@ export namespace Prisma {
     id: string
     user_id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
   }
@@ -16805,8 +16805,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterCreateNestedManyWithoutChapterInput
@@ -16816,8 +16816,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterUncheckedCreateNestedManyWithoutChapterInput
@@ -16832,8 +16832,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
     sub_chapters?: SubChapterCreateNestedManyWithoutChapterInput
@@ -16843,8 +16843,8 @@ export namespace Prisma {
     id: string
     name: string
     total_sub_chapter: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
     sub_chapters?: SubChapterUncheckedCreateNestedManyWithoutChapterInput
@@ -16926,8 +16926,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken: ChapterTakenCreateNestedOneWithoutAssessmentsInput
     sub_chapter: SubChapterCreateNestedOneWithoutAssessmentsInput
     user_attempts?: UserAttemptCreateNestedManyWithoutAssessmentInput
@@ -16940,8 +16940,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
@@ -16992,8 +16992,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportCreateNestedManyWithoutUserInput
     chapter_taken?: ChapterTakenCreateNestedManyWithoutUserInput
     user_progres?: UserProgresCreateNestedManyWithoutUserInput
@@ -17006,8 +17006,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutUserInput
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutUserInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutUserInput
@@ -17023,8 +17023,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter_taken: ChapterTakenCreateNestedOneWithoutAssessmentsInput
     sub_chapter: SubChapterCreateNestedOneWithoutAssessmentsInput
     questions?: QuestionCreateNestedManyWithoutAssessmentInput
@@ -17037,8 +17037,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     questions?: QuestionUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
@@ -17128,8 +17128,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportCreateNestedManyWithoutUserInput
     chapter_taken?: ChapterTakenCreateNestedManyWithoutUserInput
     user_attempts?: UserAttemptCreateNestedManyWithoutUserInput
@@ -17142,8 +17142,8 @@ export namespace Prisma {
     gmail: string
     password: string
     birth_date: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutUserInput
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutUserInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutUserInput
@@ -17157,8 +17157,8 @@ export namespace Prisma {
   export type SubChapterCreateWithoutUser_progresInput = {
     id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
     assessments?: AssessmentCreateNestedManyWithoutSub_chapterInput
   }
@@ -17167,8 +17167,8 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
   }
 
@@ -17179,8 +17179,8 @@ export namespace Prisma {
 
   export type ChapterTakenCreateWithoutUser_progresInput = {
     id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     user: UserCreateNestedOneWithoutChapter_takenInput
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
@@ -17191,8 +17191,8 @@ export namespace Prisma {
     id: string
     user_id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
     assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
   }
@@ -17306,24 +17306,24 @@ export namespace Prisma {
     chapter_taken_id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type ChapterTakenCreateManyUserInput = {
     id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserAttemptCreateManyUserInput = {
     id: string
     assessement_id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserProgresCreateManyUserInput = {
@@ -17332,8 +17332,8 @@ export namespace Prisma {
     chapter_taken_id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AiReportUpdateWithoutUserInput = {
@@ -17450,29 +17450,29 @@ export namespace Prisma {
   export type ChapterTakenCreateManyChapterInput = {
     id: string
     user_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type PrerequisiteCreateManyChapterInput = {
     id: string
     prerequisite_chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type PrerequisiteCreateManyPrerequisite_chapterInput = {
     id: string
     chapter_id: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type SubChapterCreateManyChapterInput = {
     id: string
     name: string
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type ChapterTakenUpdateWithoutChapterInput = {
@@ -17575,8 +17575,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserProgresCreateManySub_chapterInput = {
@@ -17585,8 +17585,8 @@ export namespace Prisma {
     chapter_taken_id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AssessmentUpdateWithoutSub_chapterInput = {
@@ -17658,8 +17658,8 @@ export namespace Prisma {
     user_id: string
     evaluation_text: string
     recomendation_list: JsonNullValueInput | InputJsonValue
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AssessmentCreateManyChapter_takenInput = {
@@ -17668,8 +17668,8 @@ export namespace Prisma {
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserProgresCreateManyChapter_takenInput = {
@@ -17678,8 +17678,8 @@ export namespace Prisma {
     sub_chapter_id: string
     current_level: $Enums.CurrentLevel
     status: $Enums.ProgressStatus
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type AiReportUpdateWithoutChapter_takenInput = {
@@ -17778,17 +17778,17 @@ export namespace Prisma {
     question: string
     topic: number
     difficulty_level: $Enums.DifficultyLevel
-    created_at: Date | string
-    updated_at: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type UserAttemptCreateManyAssessmentInput = {
     id: string
     user_id: string
     score: number
-    completed_at: Date | string
-    created_at: Date | string
-    updated_at: Date | string
+    completed_at?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type QuestionUpdateWithoutAssessmentInput = {

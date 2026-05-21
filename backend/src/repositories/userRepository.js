@@ -1,23 +1,33 @@
-import prisma from '../config/prisma.js'
+import prisma from "../config/prisma.js";
 
-export const createUser = async data => await prisma.user.create({
+export const createUser = async (data) =>
+  await prisma.user.create({
     data: {
-        id: data.id,
-        name: data.name,
-        role: data.role,
-        gmail: data.gmail,
-        password: data.password,
-        birth_date: new Date(data.birth_date), 
-        created_at: data.created_at ? new Date(data.created_at) : undefined,
-        updated_at: data.updated_at ? new Date(data.updated_at) : undefined
-    }
-});
+      id: data.id,
+      name: data.name,
+      role: data.role,
+      gmail: data.gmail,
+      password: data.password,
+      birth_date: data.birth_date,
+    },
+  });
 
-export const  getUsersName = async () => await prisma.user.findMany({
-    select: { name: true }
-});
+export const getUserGmail = async (data) =>
+  await prisma.user.findFirst({
+    where: { gmail: data.gmail },
+  });
 
-export const getUserGmail = async () => await prisma.user.findMany({
-    select: { gmail: true }
-});
-
+export const getUserData = async (data) =>
+  await prisma.user.findFirst({
+    where: {
+      OR: [{ name: data.name }, { gmail: data.gmail }],
+    },
+    select: {
+      id: true,
+      name: true,
+      gmail: true,
+      password: true,
+      birth_date: true,
+      role: true,
+    },
+  });

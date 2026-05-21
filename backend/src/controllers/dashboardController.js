@@ -18,5 +18,5 @@ export const getCountChaptersTakenByUserId = async (req, res) => {
 };
 
 export const getCountChaptersInProgress = async (req, res) => {
-  const 
+  // const 
 };
