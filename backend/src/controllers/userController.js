@@ -1,18 +1,23 @@
-import { getUsers } from '../services/userService.js';
+import { addUser } from '../services/userService.js';
 
-export const allUsers = async (req, res) => {
-  try {
-    const users = await getUsers();
-    return res.status(200).json({
-      success: true,
-      message: "Success to get all users",
-      data: users,
-    });
-  } catch (error) {
-    return res.status(404).json({
-      success: false,
-      message: "Failed to get all users",
-      error: error.message,
-    });
-  }
+export const userRegister = async (req, res) => {
+    try {
+        const user = await addUser(req.body);
+        return res.status(201).json({
+            success: true, 
+            message: 'Success to register!',
+            data: {
+                gmail: user.gmail,
+                name: user.name,
+                birth_date: user.birth_date,
+                role: user.role
+            }
+        });
+    } catch (error) {
+        return res.status(409).json({
+            success: false,
+            message: 'Failed to register!',
+            error: error.message,
+        });
+    }
 };

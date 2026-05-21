@@ -4,6 +4,8 @@ import { PrismaClient } from "../../generated/prisma/index.js";
 
 dotenv.config();
 
+console.log(process.env.DATABASE_HOST)
+
 const adapter = new PrismaMariaDb({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
