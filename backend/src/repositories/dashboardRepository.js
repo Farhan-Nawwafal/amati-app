@@ -16,3 +16,31 @@ export const countChaptersInProgressByUserId = async (userId) =>
       status: 'in_progres',
     },
   });
+
+// 3. Menghitung Chapter Done
+export const countChaptersDoneByUserId = async (userId) => {
+  // Langkah 1: Ambil semua data progress user
+  const allProgress = await prisma.userProgres.findMany({
+    where: { user_id: userId },
+    select: {
+      chapter_taken_id: true,
+      status: true
+    }
+  });
+
+  const chapterMap = {};
+  allProgress.forEach(item => {
+    if (!chapterMap[item.chapter_taken_id]) {
+      chapterMap[item.chapter_taken_id] = [];
+    }
+    chapterMap[item.chapter_taken_id].push(item.status);
+  });
+
+  const completedChapters = Object.keys(chapterMap).filter(chapterId => {
+    const statuses = chapterMap[chapterId];
+    // Pastikan semua status di dalam chapter ini bernilai 'done'
+    return statuses.every(status => status === 'done');
+  });
+
+  return completedChapters;
+};

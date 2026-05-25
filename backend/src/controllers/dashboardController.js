@@ -1,4 +1,4 @@
-import { countChaptersTakenByUserId, countChaptersInProgress } from "../services/dashboardService.js";
+import { countChaptersTakenByUserId, countChaptersInProgress, countChaptersDone } from "../services/dashboardService.js";
 
 export const getCountChaptersTakenByUserId = async (req, res) => {
   const userId = "S0001"; // nanti ini ambil berdasarkan user id yang login ke sistem
@@ -40,6 +40,33 @@ export const getCountChaptersInProgress = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to count chapters in progress!",
+      error: error.message,
+    });
+  }
+};
+
+export const getCountChaptersDone = async (req, res) => {
+  try {
+    const userId = "S0001"; // Tetap disamakan hardcode dulu untuk testing
+    const chaptersDone = await countChaptersDone(userId);
+
+    if (!chaptersDone) {
+      return res.status(200).json({
+        success: true,
+        message: "You haven't completed any chapters yet!",
+        data: chaptersDone, // Mengembalikan angka 0
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Success to count chapters done by user",
+      data: chaptersDone, // Mengembalikan angka jumlah chapter yang selesai
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to count chapters done!",
       error: error.message,
     });
   }
