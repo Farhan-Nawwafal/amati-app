@@ -3,6 +3,7 @@ import {
     countChaptersInProgressByUserId,
     countChaptersDoneByUserId,
     countSubChaptersTakenByUserId,
+    countSubChaptersInProgressByUserId,
 } from '../repositories/dashboardRepository.js';
 
 export const countChaptersTakenByUserId = async (userId) => {
@@ -27,4 +28,9 @@ export const countChaptersDone = async (userId) => {
 export const countSubChaptersTaken = async (userId) => {
   const result = await countSubChaptersTakenByUserId(userId);
   return result; // Langsung mengembalikan angka jumlah count dari database
+};
+
+export const countSubChaptersInProgress = async (userId) => {
+  const result = await countSubChaptersInProgressByUserId(userId);
+  return result;
 };
