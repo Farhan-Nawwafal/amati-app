@@ -1,4 +1,8 @@
-import { countChaptersTakenByUserId, countChaptersInProgress, countChaptersDone } from "../services/dashboardService.js";
+import { countChaptersTakenByUserId, 
+  countChaptersInProgress, 
+  countChaptersDone,
+  countSubChaptersTaken
+} from "../services/dashboardService.js";
 
 export const getCountChaptersTakenByUserId = async (req, res) => {
   const userId = "S0001"; // nanti ini ambil berdasarkan user id yang login ke sistem
@@ -67,6 +71,33 @@ export const getCountChaptersDone = async (req, res) => {
     return res.status(500).json({
       success: false,
       message: "Failed to count chapters done!",
+      error: error.message,
+    });
+  }
+};
+
+export const getCountSubChaptersTaken = async (req, res) => {
+  try {
+    const userId = "S0001"; // Mengunci user id statis untuk keperluan testing
+    const subChaptersTaken = await countSubChaptersTaken(userId);
+
+    if (!subChaptersTaken) {
+      return res.status(200).json({
+        success: true,
+        message: "You haven't taken any sub chapters yet!",
+        data: subChaptersTaken, // Mengembalikan angka 0
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Success to count sub chapters taken by user",
+      data: subChaptersTaken, // Mengembalikan angka jumlah sub-chapter
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to count sub chapters taken!",
       error: error.message,
     });
   }
