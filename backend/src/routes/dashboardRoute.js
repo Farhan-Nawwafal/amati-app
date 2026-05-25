@@ -6,6 +6,7 @@ import {
     getCountSubChaptersTaken,
     getCountSubChaptersInProgress,
     getCountSubChaptersDone,
+    getDashboardSummary,
 } from '../controllers/dashboardController.js';
 
 const router = Router();
@@ -16,5 +17,6 @@ router.get('/countChaptersDone', getCountChaptersDone);
 router.get('/countSubChaptersTaken', getCountSubChaptersTaken);
 router.get('/countSubChaptersInProgress', getCountSubChaptersInProgress);
 router.get('/countSubChaptersDone', getCountSubChaptersDone);
+router.get('/summary', getDashboardSummary);
 
 export default router;

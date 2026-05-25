@@ -159,3 +159,50 @@ export const getCountSubChaptersDone = async (req, res) => {
     });
   }
 };
+
+export const getDashboardSummary = async (req, res) => {
+  try {
+    const userId = "S0001"; // Nanti diganti dengan ID dari middleware auth jika sudah ada
+
+    // Menjalankan ke-6 fungsi service secara pararel (bersamaan) agar performa API instan
+    const [
+      chaptersTaken,
+      chaptersInProgress,
+      chaptersDone,
+      subChaptersTaken,
+      subChaptersInProgress,
+      subChaptersDone // Menambahkan metrik sub-chapter done ke dalam antrean pararel
+    ] = await Promise.all([
+      countChaptersTakenByUserId(userId),
+      countChaptersInProgress(userId),
+      countChaptersDone(userId),
+      countSubChaptersTaken(userId),
+      countSubChaptersInProgress(userId),
+      countSubChaptersDone(userId), // Memanggil service sub-chapter done
+    ]);
+
+    // Mengembalikan seluruh data statistik dalam satu objek JSON terstruktur
+    return res.status(200).json({
+      success: true,
+      message: "Success to fetch dashboard summary",
+      data: {
+        chapters: {
+          taken: chaptersTaken,
+          in_progress: chaptersInProgress,
+          done: chaptersDone,
+        },
+        sub_chapters: {
+          taken: subChaptersTaken,
+          in_progress: subChaptersInProgress,
+          done: subChaptersDone, // Sekarang datanya sudah lengkap masuk ke sini!
+        }
+      }
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Failed to fetch dashboard summary!",
+      error: error.message,
+    });
+  }
+};
