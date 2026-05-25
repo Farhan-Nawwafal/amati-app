@@ -1,5 +1,6 @@
 import { 
     findChaptersTakenByUserId,
+    countChaptersInProgressByUserId,
 } from '../repositories/dashboardRepository.js';
 
 export const countChaptersTakenByUserId = async (userId) => {
@@ -7,4 +8,10 @@ export const countChaptersTakenByUserId = async (userId) => {
   if (!result.length)
     return 0;
 return result.length;
+};
+
+export const countChaptersInProgress = async (userId) => {
+  const result = await countChaptersInProgressByUserId(userId);
+  if (!result.length) return 0;
+  return result.length;
 };

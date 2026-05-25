@@ -1,4 +1,4 @@
-import { countChaptersTakenByUserId } from "../services/dashboardService.js";
+import { countChaptersTakenByUserId, countChaptersInProgress } from "../services/dashboardService.js";
 
 export const getCountChaptersTakenByUserId = async (req, res) => {
   const userId = "S0001"; // nanti ini ambil berdasarkan user id yang login ke sistem
@@ -18,5 +18,29 @@ export const getCountChaptersTakenByUserId = async (req, res) => {
 };
 
 export const getCountChaptersInProgress = async (req, res) => {
-  // const 
+  try {
+    const userId = "S0001"; 
+    const chaptersInProgress = await countChaptersInProgress(userId);
+
+    if (!chaptersInProgress) {
+      return res.status(200).json({
+        success: true,
+        message: "You don't have any chapters in progress!",
+        data: chaptersInProgress, // Akan mengembalikan angka 0
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: "Success to count chapters in progress by user",
+      data: chaptersInProgress, // Akan mengembalikan angka jumlah chapter
+    });
+  } catch (error) {
+    // Menjaga standar catch error dari project kamu sebelumnya
+    return res.status(500).json({
+      success: false,
+      message: "Failed to count chapters in progress!",
+      error: error.message,
+    });
+  }
 };
