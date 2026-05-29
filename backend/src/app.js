@@ -1,6 +1,7 @@
 import express from "express";
 import userRouter from './routes/userRouter.js'; 
 import dashboardRouter from './routes/dashboardRoute.js';
+import courseRoute from "./routes/courseRoute.js";
 import cors from 'cors';
 
 const createApp = () => {
@@ -13,6 +14,7 @@ const createApp = () => {
     // Routes
     app.use('/api/auth', userRouter);
     app.use('/api/dashboard', dashboardRouter);
+    app.use("/api/courses", courseRoute);
 
     return app;
 };
