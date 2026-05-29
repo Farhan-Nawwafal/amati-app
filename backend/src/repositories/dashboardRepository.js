@@ -44,3 +44,32 @@ export const countChaptersDoneByUserId = async (userId) => {
 
   return completedChapters;
 };
+
+  // 4. Menghitung Sub Chapters Taken
+  export const countSubChaptersTakenByUserId = async (userId) =>
+    await prisma.userProgres.count({
+      where: {
+        user_id: userId,
+        status: {
+          in: ['in_progres', 'done'], // Menghitung yang sedang berjalan dan yang sudah selesai
+        },
+      },
+    });
+
+  // 5. Menghitung Sub Chapters In Progress
+  export const countSubChaptersInProgressByUserId = async (userId) =>
+    await prisma.userProgres.count({
+      where: {
+        user_id: userId,
+        status: 'in_progres', 
+      },
+    });
+
+  // 6. Menghitung Sub Chapters Done
+  export const countSubChaptersDoneByUserId = async (userId) =>
+    await prisma.userProgres.count({
+      where: {
+        user_id: userId,
+        status: 'done', 
+      },
+    });
