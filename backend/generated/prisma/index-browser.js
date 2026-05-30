@@ -143,6 +143,7 @@ exports.Prisma.SubChapterScalarFieldEnum = {
   id: 'id',
   chapter_id: 'chapter_id',
   name: 'name',
+  content: 'content',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -239,7 +240,8 @@ exports.Prisma.ChapterOrderByRelevanceFieldEnum = {
 exports.Prisma.SubChapterOrderByRelevanceFieldEnum = {
   id: 'id',
   chapter_id: 'chapter_id',
-  name: 'name'
+  name: 'name',
+  content: 'content'
 };
 
 exports.Prisma.ChapterTakenOrderByRelevanceFieldEnum = {

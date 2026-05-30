@@ -4089,6 +4089,7 @@ export namespace Prisma {
     id: string | null
     chapter_id: string | null
     name: string | null
+    content: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -4097,6 +4098,7 @@ export namespace Prisma {
     id: string | null
     chapter_id: string | null
     name: string | null
+    content: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -4105,6 +4107,7 @@ export namespace Prisma {
     id: number
     chapter_id: number
     name: number
+    content: number
     created_at: number
     updated_at: number
     _all: number
@@ -4115,6 +4118,7 @@ export namespace Prisma {
     id?: true
     chapter_id?: true
     name?: true
+    content?: true
     created_at?: true
     updated_at?: true
   }
@@ -4123,6 +4127,7 @@ export namespace Prisma {
     id?: true
     chapter_id?: true
     name?: true
+    content?: true
     created_at?: true
     updated_at?: true
   }
@@ -4131,6 +4136,7 @@ export namespace Prisma {
     id?: true
     chapter_id?: true
     name?: true
+    content?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -4212,6 +4218,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at: Date
     updated_at: Date
     _count: SubChapterCountAggregateOutputType | null
@@ -4237,6 +4244,7 @@ export namespace Prisma {
     id?: boolean
     chapter_id?: boolean
     name?: boolean
+    content?: boolean
     created_at?: boolean
     updated_at?: boolean
     chapter?: boolean | ChapterDefaultArgs<ExtArgs>
@@ -4251,11 +4259,12 @@ export namespace Prisma {
     id?: boolean
     chapter_id?: boolean
     name?: boolean
+    content?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type SubChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chapter_id" | "name" | "created_at" | "updated_at", ExtArgs["result"]["subChapter"]>
+  export type SubChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chapter_id" | "name" | "content" | "created_at" | "updated_at", ExtArgs["result"]["subChapter"]>
   export type SubChapterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     chapter?: boolean | ChapterDefaultArgs<ExtArgs>
     assessments?: boolean | SubChapter$assessmentsArgs<ExtArgs>
@@ -4274,6 +4283,7 @@ export namespace Prisma {
       id: string
       chapter_id: string
       name: string
+      content: string
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["subChapter"]>
@@ -4651,6 +4661,7 @@ export namespace Prisma {
     readonly id: FieldRef<"SubChapter", 'String'>
     readonly chapter_id: FieldRef<"SubChapter", 'String'>
     readonly name: FieldRef<"SubChapter", 'String'>
+    readonly content: FieldRef<"SubChapter", 'String'>
     readonly created_at: FieldRef<"SubChapter", 'DateTime'>
     readonly updated_at: FieldRef<"SubChapter", 'DateTime'>
   }
@@ -12050,6 +12061,7 @@ export namespace Prisma {
     id: 'id',
     chapter_id: 'chapter_id',
     name: 'name',
+    content: 'content',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -12182,7 +12194,8 @@ export namespace Prisma {
   export const SubChapterOrderByRelevanceFieldEnum: {
     id: 'id',
     chapter_id: 'chapter_id',
-    name: 'name'
+    name: 'name',
+    content: 'content'
   };
 
   export type SubChapterOrderByRelevanceFieldEnum = (typeof SubChapterOrderByRelevanceFieldEnum)[keyof typeof SubChapterOrderByRelevanceFieldEnum]
@@ -12510,6 +12523,7 @@ export namespace Prisma {
     id?: StringFilter<"SubChapter"> | string
     chapter_id?: StringFilter<"SubChapter"> | string
     name?: StringFilter<"SubChapter"> | string
+    content?: StringFilter<"SubChapter"> | string
     created_at?: DateTimeFilter<"SubChapter"> | Date | string
     updated_at?: DateTimeFilter<"SubChapter"> | Date | string
     chapter?: XOR<ChapterScalarRelationFilter, ChapterWhereInput>
@@ -12521,6 +12535,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     chapter?: ChapterOrderByWithRelationInput
@@ -12536,6 +12551,7 @@ export namespace Prisma {
     NOT?: SubChapterWhereInput | SubChapterWhereInput[]
     chapter_id?: StringFilter<"SubChapter"> | string
     name?: StringFilter<"SubChapter"> | string
+    content?: StringFilter<"SubChapter"> | string
     created_at?: DateTimeFilter<"SubChapter"> | Date | string
     updated_at?: DateTimeFilter<"SubChapter"> | Date | string
     chapter?: XOR<ChapterScalarRelationFilter, ChapterWhereInput>
@@ -12547,6 +12563,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: SubChapterCountOrderByAggregateInput
@@ -12561,6 +12578,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"SubChapter"> | string
     chapter_id?: StringWithAggregatesFilter<"SubChapter"> | string
     name?: StringWithAggregatesFilter<"SubChapter"> | string
+    content?: StringWithAggregatesFilter<"SubChapter"> | string
     created_at?: DateTimeWithAggregatesFilter<"SubChapter"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"SubChapter"> | Date | string
   }
@@ -13227,6 +13245,7 @@ export namespace Prisma {
   export type SubChapterCreateInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
@@ -13238,6 +13257,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
@@ -13247,6 +13267,7 @@ export namespace Prisma {
   export type SubChapterUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapter?: ChapterUpdateOneRequiredWithoutSub_chaptersNestedInput
@@ -13258,6 +13279,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     chapter_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     assessments?: AssessmentUncheckedUpdateManyWithoutSub_chapterNestedInput
@@ -13268,6 +13290,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -13275,6 +13298,7 @@ export namespace Prisma {
   export type SubChapterUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13283,6 +13307,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     chapter_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14033,6 +14058,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -14041,6 +14067,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -14049,6 +14076,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -15911,6 +15939,7 @@ export namespace Prisma {
   export type SubChapterCreateWithoutChapterInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     assessments?: AssessmentCreateNestedManyWithoutSub_chapterInput
@@ -15920,6 +15949,7 @@ export namespace Prisma {
   export type SubChapterUncheckedCreateWithoutChapterInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
@@ -16018,6 +16048,7 @@ export namespace Prisma {
     id?: StringFilter<"SubChapter"> | string
     chapter_id?: StringFilter<"SubChapter"> | string
     name?: StringFilter<"SubChapter"> | string
+    content?: StringFilter<"SubChapter"> | string
     created_at?: DateTimeFilter<"SubChapter"> | Date | string
     updated_at?: DateTimeFilter<"SubChapter"> | Date | string
   }
@@ -16492,6 +16523,7 @@ export namespace Prisma {
   export type SubChapterCreateWithoutAssessmentsInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
@@ -16502,6 +16534,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutSub_chapterInput
@@ -16613,6 +16646,7 @@ export namespace Prisma {
   export type SubChapterUpdateWithoutAssessmentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapter?: ChapterUpdateOneRequiredWithoutSub_chaptersNestedInput
@@ -16623,6 +16657,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     chapter_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_progres?: UserProgresUncheckedUpdateManyWithoutSub_chapterNestedInput
@@ -17157,6 +17192,7 @@ export namespace Prisma {
   export type SubChapterCreateWithoutUser_progresInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
@@ -17167,6 +17203,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
@@ -17255,6 +17292,7 @@ export namespace Prisma {
   export type SubChapterUpdateWithoutUser_progresInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapter?: ChapterUpdateOneRequiredWithoutSub_chaptersNestedInput
@@ -17265,6 +17303,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     chapter_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     assessments?: AssessmentUncheckedUpdateManyWithoutSub_chapterNestedInput
@@ -17471,6 +17510,7 @@ export namespace Prisma {
   export type SubChapterCreateManyChapterInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -17547,6 +17587,7 @@ export namespace Prisma {
   export type SubChapterUpdateWithoutChapterInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     assessments?: AssessmentUpdateManyWithoutSub_chapterNestedInput
@@ -17556,6 +17597,7 @@ export namespace Prisma {
   export type SubChapterUncheckedUpdateWithoutChapterInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     assessments?: AssessmentUncheckedUpdateManyWithoutSub_chapterNestedInput
@@ -17565,6 +17607,7 @@ export namespace Prisma {
   export type SubChapterUncheckedUpdateManyWithoutChapterInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }

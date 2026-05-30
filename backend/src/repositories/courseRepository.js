@@ -20,5 +20,6 @@ export const findSubChaptersByChapterId = async (chapterId) =>
       id: true,
       chapter_id: true,
       name: true,
+      content: true,
     },
   });

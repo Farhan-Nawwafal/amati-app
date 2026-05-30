@@ -84,6 +84,7 @@ model SubChapter {
   id         String   @id
   chapter_id String
   name       String
+  content    String   @db.Text
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
