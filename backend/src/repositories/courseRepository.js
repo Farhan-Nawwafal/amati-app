@@ -23,3 +23,23 @@ export const findSubChaptersByChapterId = async (chapterId) =>
       content: true,
     },
   });
+
+  // 3. Mengambil status progres user berdasarkan user_id dan sub_chapter_id
+export const findUserProgress = async (userId, subChapterId) =>
+  await prisma.userProgres.findFirst({
+    where: {
+      user_id: userId,
+      sub_chapter_id: subChapterId,
+    },
+  });
+
+// 4. Memperbarui status progres user menjadi 'in-progres'
+export const updateUserProgressToInProgres = async (progressId) =>
+  await prisma.userProgres.update({
+    where: {
+      id: progressId,
+    },
+    data: {
+      status: "in_progres", // Menggunakan enum 'in-progres' sesuai schema.prisma
+    },
+  });

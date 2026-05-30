@@ -31,7 +31,8 @@ export const getCourses = async (req, res) => {
 export const getSubChapters = async (req, res) => {
   try {
     const { chapterId } = req.params; // Menangkap ID Bab dari URL (contoh: /sub-chapters/C0001)
-
+    const userId = req.user.id;
+    
     const subChapters = await getSubChaptersListByChapter(chapterId);
 
     if (!subChapters.length) {
