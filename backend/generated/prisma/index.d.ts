@@ -9065,25 +9065,15 @@ export namespace Prisma {
 
   export type AggregateQuestion = {
     _count: QuestionCountAggregateOutputType | null
-    _avg: QuestionAvgAggregateOutputType | null
-    _sum: QuestionSumAggregateOutputType | null
     _min: QuestionMinAggregateOutputType | null
     _max: QuestionMaxAggregateOutputType | null
-  }
-
-  export type QuestionAvgAggregateOutputType = {
-    topic: number | null
-  }
-
-  export type QuestionSumAggregateOutputType = {
-    topic: number | null
   }
 
   export type QuestionMinAggregateOutputType = {
     id: string | null
     assessment_id: string | null
     question: string | null
-    topic: number | null
+    topic: string | null
     difficulty_level: $Enums.DifficultyLevel | null
     created_at: Date | null
     updated_at: Date | null
@@ -9093,7 +9083,7 @@ export namespace Prisma {
     id: string | null
     assessment_id: string | null
     question: string | null
-    topic: number | null
+    topic: string | null
     difficulty_level: $Enums.DifficultyLevel | null
     created_at: Date | null
     updated_at: Date | null
@@ -9110,14 +9100,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type QuestionAvgAggregateInputType = {
-    topic?: true
-  }
-
-  export type QuestionSumAggregateInputType = {
-    topic?: true
-  }
 
   export type QuestionMinAggregateInputType = {
     id?: true
@@ -9188,18 +9170,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: QuestionAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: QuestionSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: QuestionMinAggregateInputType
@@ -9230,8 +9200,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: QuestionCountAggregateInputType | true
-    _avg?: QuestionAvgAggregateInputType
-    _sum?: QuestionSumAggregateInputType
     _min?: QuestionMinAggregateInputType
     _max?: QuestionMaxAggregateInputType
   }
@@ -9240,13 +9208,11 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
-    topic: number
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at: Date
     updated_at: Date
     _count: QuestionCountAggregateOutputType | null
-    _avg: QuestionAvgAggregateOutputType | null
-    _sum: QuestionSumAggregateOutputType | null
     _min: QuestionMinAggregateOutputType | null
     _max: QuestionMaxAggregateOutputType | null
   }
@@ -9302,7 +9268,7 @@ export namespace Prisma {
       id: string
       assessment_id: string
       question: string
-      topic: number
+      topic: string
       difficulty_level: $Enums.DifficultyLevel
       created_at: Date
       updated_at: Date
@@ -9679,7 +9645,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Question", 'String'>
     readonly assessment_id: FieldRef<"Question", 'String'>
     readonly question: FieldRef<"Question", 'String'>
-    readonly topic: FieldRef<"Question", 'Int'>
+    readonly topic: FieldRef<"Question", 'String'>
     readonly difficulty_level: FieldRef<"Question", 'DifficultyLevel'>
     readonly created_at: FieldRef<"Question", 'DateTime'>
     readonly updated_at: FieldRef<"Question", 'DateTime'>
@@ -12259,7 +12225,8 @@ export namespace Prisma {
   export const QuestionOrderByRelevanceFieldEnum: {
     id: 'id',
     assessment_id: 'assessment_id',
-    question: 'question'
+    question: 'question',
+    topic: 'topic'
   };
 
   export type QuestionOrderByRelevanceFieldEnum = (typeof QuestionOrderByRelevanceFieldEnum)[keyof typeof QuestionOrderByRelevanceFieldEnum]
@@ -12868,7 +12835,7 @@ export namespace Prisma {
     id?: StringFilter<"Question"> | string
     assessment_id?: StringFilter<"Question"> | string
     question?: StringFilter<"Question"> | string
-    topic?: IntFilter<"Question"> | number
+    topic?: StringFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeFilter<"Question"> | Date | string
     updated_at?: DateTimeFilter<"Question"> | Date | string
@@ -12894,7 +12861,7 @@ export namespace Prisma {
     NOT?: QuestionWhereInput | QuestionWhereInput[]
     assessment_id?: StringFilter<"Question"> | string
     question?: StringFilter<"Question"> | string
-    topic?: IntFilter<"Question"> | number
+    topic?: StringFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeFilter<"Question"> | Date | string
     updated_at?: DateTimeFilter<"Question"> | Date | string
@@ -12910,10 +12877,8 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: QuestionCountOrderByAggregateInput
-    _avg?: QuestionAvgOrderByAggregateInput
     _max?: QuestionMaxOrderByAggregateInput
     _min?: QuestionMinOrderByAggregateInput
-    _sum?: QuestionSumOrderByAggregateInput
   }
 
   export type QuestionScalarWhereWithAggregatesInput = {
@@ -12923,7 +12888,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Question"> | string
     assessment_id?: StringWithAggregatesFilter<"Question"> | string
     question?: StringWithAggregatesFilter<"Question"> | string
-    topic?: IntWithAggregatesFilter<"Question"> | number
+    topic?: StringWithAggregatesFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelWithAggregatesFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeWithAggregatesFilter<"Question"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Question"> | Date | string
@@ -13586,7 +13551,7 @@ export namespace Prisma {
   export type QuestionCreateInput = {
     id: string
     question: string
-    topic: number
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -13597,7 +13562,7 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
-    topic: number
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -13606,7 +13571,7 @@ export namespace Prisma {
   export type QuestionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13617,7 +13582,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     assessment_id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13627,7 +13592,7 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
-    topic: number
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -13636,7 +13601,7 @@ export namespace Prisma {
   export type QuestionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13646,7 +13611,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     assessment_id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14341,10 +14306,6 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
-  export type QuestionAvgOrderByAggregateInput = {
-    topic?: SortOrder
-  }
-
   export type QuestionMaxOrderByAggregateInput = {
     id?: SortOrder
     assessment_id?: SortOrder
@@ -14363,10 +14324,6 @@ export namespace Prisma {
     difficulty_level?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-  }
-
-  export type QuestionSumOrderByAggregateInput = {
-    topic?: SortOrder
   }
 
   export type EnumDifficultyLevelWithAggregatesFilter<$PrismaModel = never> = {
@@ -16548,7 +16505,7 @@ export namespace Prisma {
   export type QuestionCreateWithoutAssessmentInput = {
     id: string
     question: string
-    topic: number
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -16557,7 +16514,7 @@ export namespace Prisma {
   export type QuestionUncheckedCreateWithoutAssessmentInput = {
     id: string
     question: string
-    topic: number
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -16686,7 +16643,7 @@ export namespace Prisma {
     id?: StringFilter<"Question"> | string
     assessment_id?: StringFilter<"Question"> | string
     question?: StringFilter<"Question"> | string
-    topic?: IntFilter<"Question"> | number
+    topic?: StringFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeFilter<"Question"> | Date | string
     updated_at?: DateTimeFilter<"Question"> | Date | string
@@ -17819,7 +17776,7 @@ export namespace Prisma {
   export type QuestionCreateManyAssessmentInput = {
     id: string
     question: string
-    topic: number
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -17837,7 +17794,7 @@ export namespace Prisma {
   export type QuestionUpdateWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17846,7 +17803,7 @@ export namespace Prisma {
   export type QuestionUncheckedUpdateWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17855,7 +17812,7 @@ export namespace Prisma {
   export type QuestionUncheckedUpdateManyWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string

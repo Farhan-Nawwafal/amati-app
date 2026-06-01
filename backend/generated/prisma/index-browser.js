@@ -284,7 +284,8 @@ exports.Prisma.PrerequisiteOrderByRelevanceFieldEnum = {
 exports.Prisma.QuestionOrderByRelevanceFieldEnum = {
   id: 'id',
   assessment_id: 'assessment_id',
-  question: 'question'
+  question: 'question',
+  topic: 'topic'
 };
 
 exports.Prisma.UserAttemptOrderByRelevanceFieldEnum = {

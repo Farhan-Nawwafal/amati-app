@@ -166,7 +166,7 @@ model Question {
   id               String          @id
   assessment_id    String
   question         String
-  topic            Int
+  topic            String
   difficulty_level DifficultyLevel
   created_at       DateTime        @default(now())
   updated_at       DateTime        @updatedAt
