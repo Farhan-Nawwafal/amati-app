@@ -77,9 +77,9 @@ export type Role = (typeof Role)[keyof typeof Role]
 
 
 export const AssessmentType: {
-  beginner: 'beginner',
-  intermediate: 'intermediate',
-  advanced: 'advanced'
+  placement: 'placement',
+  quiz: 'quiz',
+  exam: 'exam'
 };
 
 export type AssessmentType = (typeof AssessmentType)[keyof typeof AssessmentType]
@@ -12393,12 +12393,12 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    gmail?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
-    gmail?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     birth_date?: DateTimeFilter<"User"> | Date | string
     created_at?: DateTimeFilter<"User"> | Date | string
@@ -12407,7 +12407,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenListRelationFilter
     user_attempts?: UserAttemptListRelationFilter
     user_progres?: UserProgresListRelationFilter
-  }, "id">
+  }, "id" | "gmail">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -13076,7 +13076,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -13091,7 +13091,7 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -13136,7 +13136,7 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -16232,7 +16232,7 @@ export namespace Prisma {
   export type UserCreateWithoutChapter_takenInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -16246,7 +16246,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutChapter_takenInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -16723,7 +16723,7 @@ export namespace Prisma {
   export type UserCreateWithoutAi_reportsInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -16737,7 +16737,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutAi_reportsInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -17035,7 +17035,7 @@ export namespace Prisma {
   export type UserCreateWithoutUser_attemptsInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -17049,7 +17049,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutUser_attemptsInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -17171,7 +17171,7 @@ export namespace Prisma {
   export type UserCreateWithoutUser_progresInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -17185,7 +17185,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutUser_progresInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
