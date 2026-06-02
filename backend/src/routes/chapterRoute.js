@@ -1,18 +1,18 @@
 import express from "express";
-import { handleCreateChapter } from "../controllers/chapterController.js";
-
-// Import middleware punya kamu
-import { verifyToken } from "../middlewares/authMiddleware.js";
-import validateMiddleware from "../middlewares/validateMiddleware.js";
-
-// Import schema validasi
+import { handleCreateChapter, getAllChapterController } from "../controllers/chapterController.js";
+import { verifyToken } from "../middleware/authMiddleware.js";
+import validateMiddleware from "../middleware/validateMiddleware.js";
 import { createChapterSchema } from "../validations/chapterValidation.js";
 
 const router = express.Router();
 
 router.use(verifyToken);
+router.get(
+  "/", 
+  getAllChapterController,
+);
 router.post(
-  "/chapters",
+  "/",
   validateMiddleware(createChapterSchema), 
   handleCreateChapter,
 );

@@ -1,11 +1,8 @@
-// src/pages/PreTestQuiz.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAssessmentQuestions } from "../services/assessmentService";
 
-// =========================================================================
-// 💡 DATA DUMMY (MOCK DATA) SEBAGAI FALLBACK JIKA BANK SOAL DI BE BELUM SIAP
-// =========================================================================
+// DATA DUMMY (MOCK DATA) SEBAGAI FALLBACK JIKA BANK SOAL DI BE BELUM SIAP
 const DUMMY_QUESTIONS = [
   {
     id: 1,
@@ -34,14 +31,12 @@ const DUMMY_QUESTIONS = [
 const PreTestQuiz = () => {
   const navigate = useNavigate();
 
-  // State Manajemen Kuis Komponen
   const [preTestQuestions, setPreTestQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [timeLeft, setTimeLeft] = useState(900); // 15 Menit = 900 detik
+  const [timeLeft, setTimeLeft] = useState(900);
   const [loading, setLoading] = useState(true);
 
-  // 🔥 FETCH SOAL DARI BE ASESMEN SECARA OTOMATIS
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
@@ -55,7 +50,6 @@ const PreTestQuiz = () => {
           setPreTestQuestions(questionsFromDb);
           setSelectedAnswers(Array(questionsFromDb.length).fill(null));
         } else {
-          // 💡 Taktik: Jika data dari DB sukses ditarik tapi isinya kosong, pakai data dummy
           setPreTestQuestions(DUMMY_QUESTIONS);
           setSelectedAnswers(Array(DUMMY_QUESTIONS.length).fill(null));
         }
@@ -63,8 +57,6 @@ const PreTestQuiz = () => {
         console.warn(
           "API BE belum siap/gagal di-load. Otomatis menggunakan data dummy agar demo tetap berjalan lancar.",
         );
-
-        // 💡 Taktik: Jika API backend crash atau bermasalah, paksa pakai data dummy
         setPreTestQuestions(DUMMY_QUESTIONS);
         setSelectedAnswers(Array(DUMMY_QUESTIONS.length).fill(null));
       } finally {

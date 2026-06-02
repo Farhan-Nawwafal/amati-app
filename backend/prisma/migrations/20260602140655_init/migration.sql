@@ -90,11 +90,8 @@ CREATE TABLE `questions` (
     `id` VARCHAR(191) NOT NULL,
     `assessment_id` VARCHAR(191) NOT NULL,
     `question` VARCHAR(191) NOT NULL,
-<<<<<<<< HEAD:backend/prisma/migrations/20260602132814_init/migration.sql
-========
     `options` JSON NOT NULL,
     `key_answer` VARCHAR(191) NOT NULL,
->>>>>>>> a7986e29f67cfbf577c6375f656297dab52aac64:backend/prisma/migrations/20260602140304_init/migration.sql
     `topic` VARCHAR(191) NOT NULL,
     `difficulty_level` ENUM('easy', 'medium', 'hard', '') NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),

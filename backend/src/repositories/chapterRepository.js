@@ -1,14 +1,14 @@
-import { PrismaClient } from "@prisma/client";
 import { nanoid } from "nanoid";
-
-const prisma = new PrismaClient();
+import prisma from "../config/prisma.js";
 
 export const createChapter = async (name) => {
+  const generatedId = `CT${Date.now().toString().slice(-5)}`;
+
   return await prisma.chapter.create({
     data: {
-      id: `chap-${nanoid(10)}`, // Generate ID unik
+      id: generatedId,
       name: name,
-      total_sub_chapter: 0, // Diinisialisasi 0 di awal
+      total_sub_chapter: 0,
     },
   });
 };
@@ -16,10 +16,15 @@ export const createChapter = async (name) => {
 export const findChapterByName = async (name) => {
   return await prisma.chapter.findFirst({
     where: {
-      name: {
-        equals: name,
-        mode: "insensitive", // Case-insensitive check
-      },
+      name: name,
+    },
+  });
+};
+
+export const findAllChapters = async () => {
+  return await prisma.chapter.findMany({
+    orderBy: {
+      id: "asc",
     },
   });
 };

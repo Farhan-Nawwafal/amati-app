@@ -1,6 +1,7 @@
 import {
   createChapter,
   findChapterByName,
+  findAllChapters,
 } from "../repositories/chapterRepository.js";
 
 export const addChapter = async (chapterData) => {
@@ -10,6 +11,7 @@ export const addChapter = async (chapterData) => {
 
   // Cek apakah chapter dengan nama yang sama sudah ada
   const isDuplicate = await findChapterByName(chapterData.name);
+  console.log(isDuplicate);
   if (isDuplicate) {
     throw new Error(`Chapter with name "${chapterData.name}" already exists`);
   }
@@ -18,4 +20,9 @@ export const addChapter = async (chapterData) => {
   const newChapter = await createChapter(chapterData.name);
 
   return newChapter;
+};
+
+export const getAllChapters = async () => {
+  const chapters = await findAllChapters();
+  return chapters;
 };
