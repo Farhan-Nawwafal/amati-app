@@ -166,6 +166,8 @@ model Question {
   id               String          @id
   assessment_id    String
   question         String
+  options          Json
+  key_answer       String
   topic            String
   difficulty_level DifficultyLevel
   created_at       DateTime        @default(now())
@@ -180,14 +182,14 @@ model Question {
 model UserAttempt {
   id             String     @id
   user_id        String
-  assessement_id String
+  assessment_id String
   score          Float
   completed_at   DateTime   @default(now())
   created_at     DateTime   @default(now())
   updated_at     DateTime   @updatedAt
   // Relations
   user           User       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  assessment     Assessment @relation(fields: [assessement_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  assessment     Assessment @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("user_attempts")
 }
