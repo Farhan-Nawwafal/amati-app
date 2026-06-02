@@ -189,6 +189,8 @@ exports.Prisma.QuestionScalarFieldEnum = {
   id: 'id',
   assessment_id: 'assessment_id',
   question: 'question',
+  options: 'options',
+  key_answer: 'key_answer',
   topic: 'topic',
   difficulty_level: 'difficulty_level',
   created_at: 'created_at',
@@ -198,7 +200,7 @@ exports.Prisma.QuestionScalarFieldEnum = {
 exports.Prisma.UserAttemptScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
-  assessement_id: 'assessement_id',
+  assessment_id: 'assessment_id',
   score: 'score',
   completed_at: 'completed_at',
   created_at: 'created_at',
@@ -285,13 +287,14 @@ exports.Prisma.QuestionOrderByRelevanceFieldEnum = {
   id: 'id',
   assessment_id: 'assessment_id',
   question: 'question',
+  key_answer: 'key_answer',
   topic: 'topic'
 };
 
 exports.Prisma.UserAttemptOrderByRelevanceFieldEnum = {
   id: 'id',
   user_id: 'user_id',
-  assessement_id: 'assessement_id'
+  assessment_id: 'assessment_id'
 };
 
 exports.Prisma.UserProgresOrderByRelevanceFieldEnum = {

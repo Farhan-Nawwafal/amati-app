@@ -22,3 +22,10 @@ export const countUserPlacementAttempts = async (userId) => {
     },
   });
 };
+
+// Fungsi untuk menyimpan hasil usaha kuis siswa ke tabel user_attempts
+export const createUserAttempt = async (attemptData) => {
+  return await prisma.userAttempt.create({
+    data: attemptData,
+  });
+};

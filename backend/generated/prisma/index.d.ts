@@ -9073,6 +9073,7 @@ export namespace Prisma {
     id: string | null
     assessment_id: string | null
     question: string | null
+    key_answer: string | null
     topic: string | null
     difficulty_level: $Enums.DifficultyLevel | null
     created_at: Date | null
@@ -9083,6 +9084,7 @@ export namespace Prisma {
     id: string | null
     assessment_id: string | null
     question: string | null
+    key_answer: string | null
     topic: string | null
     difficulty_level: $Enums.DifficultyLevel | null
     created_at: Date | null
@@ -9093,6 +9095,8 @@ export namespace Prisma {
     id: number
     assessment_id: number
     question: number
+    options: number
+    key_answer: number
     topic: number
     difficulty_level: number
     created_at: number
@@ -9105,6 +9109,7 @@ export namespace Prisma {
     id?: true
     assessment_id?: true
     question?: true
+    key_answer?: true
     topic?: true
     difficulty_level?: true
     created_at?: true
@@ -9115,6 +9120,7 @@ export namespace Prisma {
     id?: true
     assessment_id?: true
     question?: true
+    key_answer?: true
     topic?: true
     difficulty_level?: true
     created_at?: true
@@ -9125,6 +9131,8 @@ export namespace Prisma {
     id?: true
     assessment_id?: true
     question?: true
+    options?: true
+    key_answer?: true
     topic?: true
     difficulty_level?: true
     created_at?: true
@@ -9208,6 +9216,8 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
+    options: JsonValue
+    key_answer: string
     topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at: Date
@@ -9235,6 +9245,8 @@ export namespace Prisma {
     id?: boolean
     assessment_id?: boolean
     question?: boolean
+    options?: boolean
+    key_answer?: boolean
     topic?: boolean
     difficulty_level?: boolean
     created_at?: boolean
@@ -9248,13 +9260,15 @@ export namespace Prisma {
     id?: boolean
     assessment_id?: boolean
     question?: boolean
+    options?: boolean
+    key_answer?: boolean
     topic?: boolean
     difficulty_level?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type QuestionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "assessment_id" | "question" | "topic" | "difficulty_level" | "created_at" | "updated_at", ExtArgs["result"]["question"]>
+  export type QuestionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "assessment_id" | "question" | "options" | "key_answer" | "topic" | "difficulty_level" | "created_at" | "updated_at", ExtArgs["result"]["question"]>
   export type QuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
   }
@@ -9268,6 +9282,8 @@ export namespace Prisma {
       id: string
       assessment_id: string
       question: string
+      options: Prisma.JsonValue
+      key_answer: string
       topic: string
       difficulty_level: $Enums.DifficultyLevel
       created_at: Date
@@ -9645,6 +9661,8 @@ export namespace Prisma {
     readonly id: FieldRef<"Question", 'String'>
     readonly assessment_id: FieldRef<"Question", 'String'>
     readonly question: FieldRef<"Question", 'String'>
+    readonly options: FieldRef<"Question", 'Json'>
+    readonly key_answer: FieldRef<"Question", 'String'>
     readonly topic: FieldRef<"Question", 'String'>
     readonly difficulty_level: FieldRef<"Question", 'DifficultyLevel'>
     readonly created_at: FieldRef<"Question", 'DateTime'>
@@ -10038,7 +10056,7 @@ export namespace Prisma {
   export type UserAttemptMinAggregateOutputType = {
     id: string | null
     user_id: string | null
-    assessement_id: string | null
+    assessment_id: string | null
     score: number | null
     completed_at: Date | null
     created_at: Date | null
@@ -10048,7 +10066,7 @@ export namespace Prisma {
   export type UserAttemptMaxAggregateOutputType = {
     id: string | null
     user_id: string | null
-    assessement_id: string | null
+    assessment_id: string | null
     score: number | null
     completed_at: Date | null
     created_at: Date | null
@@ -10058,7 +10076,7 @@ export namespace Prisma {
   export type UserAttemptCountAggregateOutputType = {
     id: number
     user_id: number
-    assessement_id: number
+    assessment_id: number
     score: number
     completed_at: number
     created_at: number
@@ -10078,7 +10096,7 @@ export namespace Prisma {
   export type UserAttemptMinAggregateInputType = {
     id?: true
     user_id?: true
-    assessement_id?: true
+    assessment_id?: true
     score?: true
     completed_at?: true
     created_at?: true
@@ -10088,7 +10106,7 @@ export namespace Prisma {
   export type UserAttemptMaxAggregateInputType = {
     id?: true
     user_id?: true
-    assessement_id?: true
+    assessment_id?: true
     score?: true
     completed_at?: true
     created_at?: true
@@ -10098,7 +10116,7 @@ export namespace Prisma {
   export type UserAttemptCountAggregateInputType = {
     id?: true
     user_id?: true
-    assessement_id?: true
+    assessment_id?: true
     score?: true
     completed_at?: true
     created_at?: true
@@ -10195,7 +10213,7 @@ export namespace Prisma {
   export type UserAttemptGroupByOutputType = {
     id: string
     user_id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at: Date
     created_at: Date
@@ -10224,7 +10242,7 @@ export namespace Prisma {
   export type UserAttemptSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
-    assessement_id?: boolean
+    assessment_id?: boolean
     score?: boolean
     completed_at?: boolean
     created_at?: boolean
@@ -10238,14 +10256,14 @@ export namespace Prisma {
   export type UserAttemptSelectScalar = {
     id?: boolean
     user_id?: boolean
-    assessement_id?: boolean
+    assessment_id?: boolean
     score?: boolean
     completed_at?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type UserAttemptOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "assessement_id" | "score" | "completed_at" | "created_at" | "updated_at", ExtArgs["result"]["userAttempt"]>
+  export type UserAttemptOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "assessment_id" | "score" | "completed_at" | "created_at" | "updated_at", ExtArgs["result"]["userAttempt"]>
   export type UserAttemptInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
@@ -10260,7 +10278,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       user_id: string
-      assessement_id: string
+      assessment_id: string
       score: number
       completed_at: Date
       created_at: Date
@@ -10638,7 +10656,7 @@ export namespace Prisma {
   interface UserAttemptFieldRefs {
     readonly id: FieldRef<"UserAttempt", 'String'>
     readonly user_id: FieldRef<"UserAttempt", 'String'>
-    readonly assessement_id: FieldRef<"UserAttempt", 'String'>
+    readonly assessment_id: FieldRef<"UserAttempt", 'String'>
     readonly score: FieldRef<"UserAttempt", 'Float'>
     readonly completed_at: FieldRef<"UserAttempt", 'DateTime'>
     readonly created_at: FieldRef<"UserAttempt", 'DateTime'>
@@ -12088,6 +12106,8 @@ export namespace Prisma {
     id: 'id',
     assessment_id: 'assessment_id',
     question: 'question',
+    options: 'options',
+    key_answer: 'key_answer',
     topic: 'topic',
     difficulty_level: 'difficulty_level',
     created_at: 'created_at',
@@ -12100,7 +12120,7 @@ export namespace Prisma {
   export const UserAttemptScalarFieldEnum: {
     id: 'id',
     user_id: 'user_id',
-    assessement_id: 'assessement_id',
+    assessment_id: 'assessment_id',
     score: 'score',
     completed_at: 'completed_at',
     created_at: 'created_at',
@@ -12226,6 +12246,7 @@ export namespace Prisma {
     id: 'id',
     assessment_id: 'assessment_id',
     question: 'question',
+    key_answer: 'key_answer',
     topic: 'topic'
   };
 
@@ -12235,7 +12256,7 @@ export namespace Prisma {
   export const UserAttemptOrderByRelevanceFieldEnum: {
     id: 'id',
     user_id: 'user_id',
-    assessement_id: 'assessement_id'
+    assessment_id: 'assessment_id'
   };
 
   export type UserAttemptOrderByRelevanceFieldEnum = (typeof UserAttemptOrderByRelevanceFieldEnum)[keyof typeof UserAttemptOrderByRelevanceFieldEnum]
@@ -12835,6 +12856,8 @@ export namespace Prisma {
     id?: StringFilter<"Question"> | string
     assessment_id?: StringFilter<"Question"> | string
     question?: StringFilter<"Question"> | string
+    options?: JsonFilter<"Question">
+    key_answer?: StringFilter<"Question"> | string
     topic?: StringFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeFilter<"Question"> | Date | string
@@ -12846,6 +12869,8 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    options?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
@@ -12861,6 +12886,8 @@ export namespace Prisma {
     NOT?: QuestionWhereInput | QuestionWhereInput[]
     assessment_id?: StringFilter<"Question"> | string
     question?: StringFilter<"Question"> | string
+    options?: JsonFilter<"Question">
+    key_answer?: StringFilter<"Question"> | string
     topic?: StringFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeFilter<"Question"> | Date | string
@@ -12872,6 +12899,8 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    options?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
@@ -12888,6 +12917,8 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Question"> | string
     assessment_id?: StringWithAggregatesFilter<"Question"> | string
     question?: StringWithAggregatesFilter<"Question"> | string
+    options?: JsonWithAggregatesFilter<"Question">
+    key_answer?: StringWithAggregatesFilter<"Question"> | string
     topic?: StringWithAggregatesFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelWithAggregatesFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeWithAggregatesFilter<"Question"> | Date | string
@@ -12900,7 +12931,7 @@ export namespace Prisma {
     NOT?: UserAttemptWhereInput | UserAttemptWhereInput[]
     id?: StringFilter<"UserAttempt"> | string
     user_id?: StringFilter<"UserAttempt"> | string
-    assessement_id?: StringFilter<"UserAttempt"> | string
+    assessment_id?: StringFilter<"UserAttempt"> | string
     score?: FloatFilter<"UserAttempt"> | number
     completed_at?: DateTimeFilter<"UserAttempt"> | Date | string
     created_at?: DateTimeFilter<"UserAttempt"> | Date | string
@@ -12912,7 +12943,7 @@ export namespace Prisma {
   export type UserAttemptOrderByWithRelationInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -12928,7 +12959,7 @@ export namespace Prisma {
     OR?: UserAttemptWhereInput[]
     NOT?: UserAttemptWhereInput | UserAttemptWhereInput[]
     user_id?: StringFilter<"UserAttempt"> | string
-    assessement_id?: StringFilter<"UserAttempt"> | string
+    assessment_id?: StringFilter<"UserAttempt"> | string
     score?: FloatFilter<"UserAttempt"> | number
     completed_at?: DateTimeFilter<"UserAttempt"> | Date | string
     created_at?: DateTimeFilter<"UserAttempt"> | Date | string
@@ -12940,7 +12971,7 @@ export namespace Prisma {
   export type UserAttemptOrderByWithAggregationInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -12958,7 +12989,7 @@ export namespace Prisma {
     NOT?: UserAttemptScalarWhereWithAggregatesInput | UserAttemptScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"UserAttempt"> | string
     user_id?: StringWithAggregatesFilter<"UserAttempt"> | string
-    assessement_id?: StringWithAggregatesFilter<"UserAttempt"> | string
+    assessment_id?: StringWithAggregatesFilter<"UserAttempt"> | string
     score?: FloatWithAggregatesFilter<"UserAttempt"> | number
     completed_at?: DateTimeWithAggregatesFilter<"UserAttempt"> | Date | string
     created_at?: DateTimeWithAggregatesFilter<"UserAttempt"> | Date | string
@@ -13551,6 +13582,8 @@ export namespace Prisma {
   export type QuestionCreateInput = {
     id: string
     question: string
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
     topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
@@ -13562,6 +13595,8 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
     topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
@@ -13571,6 +13606,8 @@ export namespace Prisma {
   export type QuestionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
     topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13582,6 +13619,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     assessment_id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
     topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13592,6 +13631,8 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
     topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
@@ -13601,6 +13642,8 @@ export namespace Prisma {
   export type QuestionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
     topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13611,6 +13654,8 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     assessment_id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
     topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13630,7 +13675,7 @@ export namespace Prisma {
   export type UserAttemptUncheckedCreateInput = {
     id: string
     user_id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at?: Date | string
     created_at?: Date | string
@@ -13650,7 +13695,7 @@ export namespace Prisma {
   export type UserAttemptUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    assessement_id?: StringFieldUpdateOperationsInput | string
+    assessment_id?: StringFieldUpdateOperationsInput | string
     score?: FloatFieldUpdateOperationsInput | number
     completed_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13660,7 +13705,7 @@ export namespace Prisma {
   export type UserAttemptCreateManyInput = {
     id: string
     user_id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at?: Date | string
     created_at?: Date | string
@@ -13678,7 +13723,7 @@ export namespace Prisma {
   export type UserAttemptUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    assessement_id?: StringFieldUpdateOperationsInput | string
+    assessment_id?: StringFieldUpdateOperationsInput | string
     score?: FloatFieldUpdateOperationsInput | number
     completed_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14300,6 +14345,8 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    options?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
@@ -14310,6 +14357,7 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
@@ -14320,6 +14368,7 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
@@ -14356,7 +14405,7 @@ export namespace Prisma {
   export type UserAttemptCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -14370,7 +14419,7 @@ export namespace Prisma {
   export type UserAttemptMaxOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -14380,7 +14429,7 @@ export namespace Prisma {
   export type UserAttemptMinOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -15653,7 +15702,7 @@ export namespace Prisma {
 
   export type UserAttemptUncheckedCreateWithoutUserInput = {
     id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at?: Date | string
     created_at?: Date | string
@@ -15778,7 +15827,7 @@ export namespace Prisma {
     NOT?: UserAttemptScalarWhereInput | UserAttemptScalarWhereInput[]
     id?: StringFilter<"UserAttempt"> | string
     user_id?: StringFilter<"UserAttempt"> | string
-    assessement_id?: StringFilter<"UserAttempt"> | string
+    assessment_id?: StringFilter<"UserAttempt"> | string
     score?: FloatFilter<"UserAttempt"> | number
     completed_at?: DateTimeFilter<"UserAttempt"> | Date | string
     created_at?: DateTimeFilter<"UserAttempt"> | Date | string
@@ -16505,6 +16554,8 @@ export namespace Prisma {
   export type QuestionCreateWithoutAssessmentInput = {
     id: string
     question: string
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
     topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
@@ -16514,6 +16565,8 @@ export namespace Prisma {
   export type QuestionUncheckedCreateWithoutAssessmentInput = {
     id: string
     question: string
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
     topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
@@ -16643,6 +16696,8 @@ export namespace Prisma {
     id?: StringFilter<"Question"> | string
     assessment_id?: StringFilter<"Question"> | string
     question?: StringFilter<"Question"> | string
+    options?: JsonFilter<"Question">
+    key_answer?: StringFilter<"Question"> | string
     topic?: StringFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeFilter<"Question"> | Date | string
@@ -17315,7 +17370,7 @@ export namespace Prisma {
 
   export type UserAttemptCreateManyUserInput = {
     id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at?: Date | string
     created_at?: Date | string
@@ -17397,7 +17452,7 @@ export namespace Prisma {
 
   export type UserAttemptUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    assessement_id?: StringFieldUpdateOperationsInput | string
+    assessment_id?: StringFieldUpdateOperationsInput | string
     score?: FloatFieldUpdateOperationsInput | number
     completed_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17406,7 +17461,7 @@ export namespace Prisma {
 
   export type UserAttemptUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    assessement_id?: StringFieldUpdateOperationsInput | string
+    assessment_id?: StringFieldUpdateOperationsInput | string
     score?: FloatFieldUpdateOperationsInput | number
     completed_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17776,6 +17831,8 @@ export namespace Prisma {
   export type QuestionCreateManyAssessmentInput = {
     id: string
     question: string
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
     topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
@@ -17794,6 +17851,8 @@ export namespace Prisma {
   export type QuestionUpdateWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
     topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17803,6 +17862,8 @@ export namespace Prisma {
   export type QuestionUncheckedUpdateWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
     topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17812,6 +17873,8 @@ export namespace Prisma {
   export type QuestionUncheckedUpdateManyWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
     topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
