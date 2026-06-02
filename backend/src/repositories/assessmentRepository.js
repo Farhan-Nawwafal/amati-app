@@ -7,7 +7,18 @@ export const findAssessmentWithQuestions = async (assessmentId) => {
       id: assessmentId,
     },
     include: {
-      questions: true, // Pastikan nama relasi di schema.prisma kamu adalah 'questions'
+      questions: true,
+    },
+  });
+};
+
+export const countUserPlacementAttempts = async (userId) => {
+  return await prisma.userAttempt.count({
+    where: {
+      user_id: userId,
+      assessment: {
+        type: "placement",
+      },
     },
   });
 };

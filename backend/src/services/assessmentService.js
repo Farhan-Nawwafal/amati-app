@@ -2,7 +2,8 @@ import * as assessmentRepo from "../repositories/assessmentRepository.js";
 
 export const getQuestionsForAssessment = async (assessmentId) => {
   // Panggil repository untuk mencari data
-  const assessment = await assessmentRepo.findAssessmentWithQuestions(assessmentId);
+  const assessment =
+    await assessmentRepo.findAssessmentWithQuestions(assessmentId);
 
   // Logika validasi: Jika kuis tidak ditemukan di database
   if (!assessment) {
@@ -15,4 +16,12 @@ export const getQuestionsForAssessment = async (assessmentId) => {
   }
 
   return assessment;
+};
+
+export const checkIfUserHasTakenPlacement = async (userId) => {
+  // Panggil repository untuk menghitung attempt siswa
+  const count = await assessmentRepo.countUserPlacementAttempts(userId);
+
+  // Jika count > 0, artinya siswa sudah pernah ikut pre-test (placement)
+  return count > 0;
 };

@@ -18,9 +18,9 @@ enum Role {
 }
 
 enum AssessmentType {
-  beginner
-  intermediate
-  advanced
+  placement
+  quiz
+  exam
 }
 
 enum DifficultyLevel {
@@ -48,8 +48,8 @@ enum ProgressStatus {
 model User {
   id         String   @id
   name       String
-  role       Role
-  gmail      String
+  role       Role     @default(student)
+  gmail      String   @unique
   password   String
   birth_date DateTime @db.Date
   created_at DateTime @default(now())

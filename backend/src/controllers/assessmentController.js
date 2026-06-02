@@ -22,3 +22,22 @@ export const getAssessmentQuestions = async (req, res) => {
     });
   }
 };
+
+export const checkPlacementStatus = async (req, res) => {
+  try {
+    // req.user.id didapatkan otomatis dari middleware verifyToken kamu
+    const userId = req.user.id; 
+
+    const hasTaken = await assessmentService.checkIfUserHasTakenPlacement(userId);
+
+    res.status(200).json({
+      success: true,
+      hasCompletedPlacement: hasTaken,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
