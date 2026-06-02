@@ -1,3 +1,4 @@
+import json
 import joblib
 import numpy as np
 import tensorflow as tf
@@ -58,9 +59,13 @@ def generate_motivation(score: float, category: str):
         Kamu adalah tutor matematika yang ramah, asyik, dan memotivasi untuk anak SMP kelas 7. 
         Siswa ini baru saja menyelesaikan evaluasi dan diprediksi mendapat skor {score} dari 100.
         Status pemahamannya masuk dalam kategori: "{category}".
-        
+
         Buatkan 1-2 kalimat motivasi yang singkat, natural, dan menyemangati mereka untuk terus belajar. 
         Jangan menggunakan format poin-poin.
+
+        ATURAN GAYA BAHASA:
+        Gunakan sapaan awal atau kata seru yang beragam. 
+        Sesekali boleh menggunakan "Wah", tapi variasikan juga dengan: "Keren!", "Mantap!", "Oke sip!", atau bahkan langsung masuk ke inti kalimat tanpa sapaan. Buat senatural mungkin seolah sedang *chat* dengan murid.
         """
         
         url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={GEMINI_API_KEY}"
@@ -87,7 +92,20 @@ def generate_motivation(score: float, category: str):
 @app.post("/api/predict-score")
 def predict_score(data: StudentDataInput):
     try:
-        # Susun input
+        # Jika siswa benar-benar belum memulai sama sekali
+        if data.total_attempts == 0 and data.status_chapter == 0:
+            saran_awal = {
+                "kategori": "Belum Memulai",
+                "rekomendasi_materi": f"Kamu belum memulai materi Level {data.current_level}. Yuk baca materi dari awal!",
+                "pesan_tutor_ai": "Halo! Yuk mulai petualangan belajarmu. Jangan takut salah, kita belajar sama-sama ya!"
+            }
+            return {
+                "status": "success",
+                "prediksi_avg_score": 0.0,
+                "analisis_siswa": saran_awal
+            }
+            
+        # Susun input untuk AI
         input_data = np.array([[
             data.current_level,
             data.status_chapter,
@@ -101,8 +119,18 @@ def predict_score(data: StudentDataInput):
         prediksi_scaled = model.predict(input_scaled)
         hasil_skor = scaler_y.inverse_transform(prediksi_scaled)
         
-        # Clamping
-        skor_final = float(hasil_skor[0][0])
+        # Ambil skor mentah dari AI
+        skor_mentah_ai = float(hasil_skor[0][0])
+        
+        # Hitung persentase progres penyelesaian materi
+        if data.total_subchapter > 0:
+            rasio_progres = data.total_subchapters_done / data.total_subchapter
+        else:
+            rasio_progres = 0.0
+            
+        skor_final = skor_mentah_ai * rasio_progres
+        
+        # Pastikan nilai tetap berada di rentang batas wajar (0 - 100)
         skor_final = max(0.0, min(100.0, skor_final))
         skor_final_bulat = round(skor_final, 2)
         
@@ -123,3 +151,28 @@ def predict_score(data: StudentDataInput):
             "status": "error",
             "pesan": f"Terjadi kesalahan internal: {str(e)}"
         }
+    
+# 6. API UNTUK MENGAMBIL MATERI BELAJAR
+@app.get("/api/materi/{chapter_id}")
+def get_materi(chapter_id: str):
+    try:
+        file_path = os.path.join(BASE_DIR, "corpus_materi_rapi.json")
+        if not os.path.exists(file_path):
+            return {"status": "error", "pesan": "Database materi belum tersedia."}
+            
+        with open(file_path, 'r', encoding='utf-8') as f:
+            corpus = json.load(f)
+            
+        # Pengecekan apakah chapter_id (misal: CT00001) ada di dalam file
+        if chapter_id in corpus:
+            return {
+                "status": "success",
+                "data": corpus[chapter_id]
+            }
+        else:
+            return {
+                "status": "error",
+                "pesan": f"Materi dengan ID {chapter_id} tidak ditemukan."
+            }
+    except Exception as e:
+        return {"status": "error", "pesan": f"Terjadi kesalahan server: {str(e)}"}

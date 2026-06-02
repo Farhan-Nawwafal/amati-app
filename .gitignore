@@ -47,3 +47,11 @@ Thumbs.db
 *.njsproja
 *.sln
 *.sw?
+
+# ==========================================
+# 5. AI / DATA SCIENCE / PYTHON (ai-engineer)
+# ==========================================
+# Mengamankan file rahasia, cache, dan script eksperimen AI
+ai-engineer/.env
+ai-engineer/__pycache__/
+ai-engineer/**/*.pyc
