@@ -1,9 +1,7 @@
-// src/pages/Login.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// 1. IMPORT FUNGSI API LOGIN KAMU DI SINI
-// Sesuaikan path relasi foldernya dengan benar (misal: ../services/auth)
 import { userLogin } from "../services/authService";
+import { getPlacementStatus } from "../services/assessmentService";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,7 +11,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false); // State loading untuk handling tombol submit
 
-  // ================= STATE FORGOT PASSWORD ALUR LANGSUNG =================
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalStep, setModalStep] = useState(1); // Step 1: Input Email, Step 2: Create New Password
   const [forgotEmail, setForgotEmail] = useState("");
@@ -37,7 +34,6 @@ const Login = () => {
     setNewPasswords((prev) => ({ ...prev, [name]: value }));
   };
 
-  // 2. LOGIKA UTAMA SINKRONISASI API LOGIN EXPRESS BACKEND
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     if (!loginData.email || !loginData.password) {
@@ -48,33 +44,27 @@ const Login = () => {
     try {
       setIsLoading(true);
 
-      // Sinkronisasi data form ke key model prisma database ('gmail')
+      // Sinkronisasi data form ke key model prisma database
       const payloadData = {
         gmail: loginData.email,
         password: loginData.password,
       };
 
-      // Panggil fungsi API login
-      const response = await userLogin(payloadData);
-
-      console.log("Response sukses login dari BE:", response.data);
+      // Hit API login
+      const loginResponse = await userLogin(payloadData);
 
       // Menyimpan JWT Token atau data user esensial jika dikembalikan oleh backend
-      if (response.data?.user?.token) {
-        localStorage.setItem("token", response.data.user.token);
+      if (loginResponse.data?.user?.token) {
+        localStorage.setItem("token", loginResponse.data.user.token);
       }
-      if (response.data?.user) {
-        localStorage.setItem("user", JSON.stringify(response.data.user));
+      if (loginResponse.data?.user) {
+        localStorage.setItem("user", JSON.stringify(loginResponse.data.user));
       }
 
-      alert("Login Berhasil! Selamat datang kembali.");
+      // Hit API placement status
+      const statusResponse = await getPlacementStatus();
 
-      // ====================================================================
-      // 💡 KUNCI ALUR ADAPTIF: PENENTUAN SISWA BARU / SISWA LAMA
-      // ====================================================================
-      // BE mengirim flag boolean berdasarkan keberadaan data di tabel user_attempts.
-      // Jika count attempts untuk tipe placement > 0, maka nilainya true.
-      const hasCompletedPlacement = response.data?.user?.hasCompletedPlacement;
+      const hasCompletedPlacement = statusResponse.data?.hasCompletedPlacement;
 
       if (!hasCompletedPlacement) {
         // Jika user baru / belum pernah menyelesaikan placement, paksa ke halaman Pre-Test

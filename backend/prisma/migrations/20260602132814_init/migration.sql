@@ -2,13 +2,14 @@
 CREATE TABLE `users` (
     `id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
-    `role` ENUM('admin', 'student') NOT NULL,
+    `role` ENUM('admin', 'student') NOT NULL DEFAULT 'student',
     `gmail` VARCHAR(191) NOT NULL,
     `password` VARCHAR(191) NOT NULL,
     `birth_date` DATE NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
+    UNIQUE INDEX `users_gmail_key`(`gmail`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -28,6 +29,7 @@ CREATE TABLE `sub_chapter` (
     `id` VARCHAR(191) NOT NULL,
     `chapter_id` VARCHAR(191) NOT NULL,
     `name` VARCHAR(191) NOT NULL,
+    `content` TEXT NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
 
@@ -51,7 +53,7 @@ CREATE TABLE `assessments` (
     `chapter_taken_id` VARCHAR(191) NOT NULL,
     `sub_chapter_id` VARCHAR(191) NOT NULL,
     `title` VARCHAR(191) NOT NULL,
-    `type` ENUM('beginner', 'intermediate', 'advanced') NOT NULL,
+    `type` ENUM('placement', 'quiz', 'exam') NOT NULL,
     `correct_answer` INTEGER NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,
@@ -88,7 +90,7 @@ CREATE TABLE `questions` (
     `id` VARCHAR(191) NOT NULL,
     `assessment_id` VARCHAR(191) NOT NULL,
     `question` VARCHAR(191) NOT NULL,
-    `topic` INTEGER NOT NULL,
+    `topic` VARCHAR(191) NOT NULL,
     `difficulty_level` ENUM('easy', 'medium', 'hard', '') NOT NULL,
     `created_at` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updated_at` DATETIME(3) NOT NULL,

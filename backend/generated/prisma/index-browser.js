@@ -306,9 +306,9 @@ exports.Role = exports.$Enums.Role = {
 };
 
 exports.AssessmentType = exports.$Enums.AssessmentType = {
-  beginner: 'beginner',
-  intermediate: 'intermediate',
-  advanced: 'advanced'
+  placement: 'placement',
+  quiz: 'quiz',
+  exam: 'exam'
 };
 
 exports.DifficultyLevel = exports.$Enums.DifficultyLevel = {

@@ -17,8 +17,8 @@ export const countUserPlacementAttempts = async (userId) => {
     where: {
       user_id: userId,
       assessment: {
-        type: "placement",
-      },
+        type: 'placement'
+      }
     },
   });
 };
