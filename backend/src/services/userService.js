@@ -6,7 +6,7 @@ import { calculateAge } from "../utils/calculateAge.js";
 
 export const addUser = async (data) => {
   // check email duplication
-  const existingGmail = await getUserGmail(data.gmail);
+const existingGmail = await getUserGmail(data.gmail);
   if (existingGmail) throw new Error(`Gmail ${data.gmail} already exist!`);
 
   const userAge = calculateAge(data.birth_date);
@@ -30,7 +30,7 @@ export const addUser = async (data) => {
 };
 
 export const checkUser = async (data) => {
-  const user = await getUserGmail(data);
+const user = await getUserGmail(data.gmail);
   if (!user) throw new Error(`Invalid email or password!`);
 
   const isMatchPassword = await comparePassword(data.password, user.password);

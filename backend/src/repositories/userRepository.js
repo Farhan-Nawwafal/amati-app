@@ -12,9 +12,9 @@ export const createUser = async (data) =>
     },
   });
 
-export const getUserGmail = async (data) =>
+export const getUserGmail = async (gmail) =>
   await prisma.user.findFirst({
-    where: { gmail: data.gmail },
+    where: { gmail: gmail }, 
   });
 
 export const getUserData = async (data) =>

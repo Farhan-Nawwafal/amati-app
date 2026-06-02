@@ -34,10 +34,8 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
 
   // 2. Logika Pengecekan Jawaban secara Mandiri di Backend
   assessment.questions.forEach((question) => {
-    // Cari jawaban siswa yang cocok dengan id pertanyaan saat ini
     const studentAnswer = userAnswers.find((ans) => ans.questionId === question.id);
 
-    // Jika siswa menjawab DAN jawabannya sama persis dengan key_answer di DB
     if (studentAnswer && studentAnswer.userAnswer === question.key_answer) {
       totalCorrect++;
     }
@@ -46,21 +44,46 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
   // 3. Hitung skor akhir dengan skala 0 - 100
   const finalScore = (totalCorrect / totalQuestions) * 100;
 
-  // 4. Siapkan data untuk disimpan (Gunakan ID acak 20 karakter agar muat di VARCHAR(30))
+  // 4. Siapkan data untuk disimpan ke user_attempts
   const attemptId = "ATT-" + Math.random().toString(36).substring(2, 18).toUpperCase();
 
   const newAttempt = await assessmentRepo.createUserAttempt({
     id: attemptId,
     user_id: userId,
     assessment_id: assessmentId, 
-    score: parseFloat(finalScore.toFixed(2)), // Membatasi 2 angka di belakang koma
+    score: parseFloat(finalScore.toFixed(2)), 
   });
 
+  // 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
+  const testType = assessmentId.substring(0, 3); // Mengambil 3 huruf pertama (PTG, PTC, QZ, EX)
+
+  // Opsi Tambahan Kembalian untuk Response
+  let extraData = {};
+
+  if (testType === "PTG") {
+    // Logika Khusus Pre-Test Global (Poin 3 Jalur Pertama)
+    // Menentukan level kompetensi tanpa menyentuh tabel user_progres
+    let calculatedLevel = "beginner";
+    if (finalScore > 40 && finalScore <= 75) {
+      calculatedLevel = "intermediate";
+    } else if (finalScore > 75) {
+      calculatedLevel = "advanced";
+    }
+    
+    extraData.suggestedLevel = calculatedLevel;
+  } 
+  else if (testType === "PTC") {
+    // Logika Khusus Pre-Test Chapter (Akan kita rakit setelah ini sukses)
+    extraData.message = "Pre-Test Chapter logic will be processed here.";
+  }
+
+  // 6. Kembalikan data hasil kalkulasi gabungan
   return {
     attemptId: newAttempt.id,
     totalQuestions,
     correctAnswers: totalCorrect,
     score: newAttempt.score,
+    ...extraData // Menggabungkan data level otomatis jika kuisnya PTG
   };
 };
 
