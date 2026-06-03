@@ -18,7 +18,7 @@ df_subchapters = pd.read_csv("data-science/eda_data/progress_subchapters_join.cs
 
 # Tingkatan Level
 level_mapping = {
-    "All": "all",
+    "Semua Tingkatan": "all",
     "Beginner": "beginner",
     "Intermediate": "intermediate",
     "Advanced": "advanced"
@@ -71,3 +71,49 @@ if not df_subchapters.empty:
         
 else:
     st.info("Materi sub-bab kosong atau tidak ditemukan.")
+
+# Grafik Rata-rata Skor Tiap Bab
+st.markdown("---")
+st.header(f"🔍 Evaluasi Performa: Rata-rata Skor Terendah Berdasarkan Level **{selected_display}**")
+
+if selected_level_value == "all":
+    chapter_valid = df_chapters['name'].unique()
+    df_answer = df_answers[df_answers['name'].isin(chapter_valid)]
+else:
+    chapter_valid = df_chapters[df_chapters['current_level'] == selected_level_value]['name'].unique()
+    
+    valid_users = df_chapters[df_chapters['current_level'] == selected_level_value]['user_id_x'].unique()
+    df_answer = df_answers[
+        (df_answers['name'].isin(chapter_valid)) & 
+        (df_answers['user_id_x'].isin(valid_users))
+    ]
+
+if df_answer.empty:
+    st.info(f"Belum ada data nilai assessment untuk bab di level {selected_display}.")
+else:
+
+    lowest_scores_grouped = df_answer.groupby('name')['score'].mean().reset_index(name='Rata-rata Skor')
+    lowest_scores_grouped = lowest_scores_grouped.sort_values(by='Rata-rata Skor', ascending=False)
+    absolute_lowest = lowest_scores_grouped.iloc[-1] 
+    st.error(f"⚠️ **Target Evaluasi Level {selected_display}:** Bab **{absolute_lowest['name']}** memiliki rata-rata skor terendah sebesar **{round(absolute_lowest['Rata-rata Skor'], 2)}**.")
+
+    # Menampilkan Visualisasi Bar Chart
+    fig_lowest = px.bar(
+        lowest_scores_grouped,
+        x='Rata-rata Skor',
+        y='name',
+        orientation='h',
+        labels={'Rata-rata Skor': 'Rata-rata Skor Siswa', 'name': 'Judul Bab Matematika Kelas 7'},
+        color='Rata-rata Skor',
+        text=lowest_scores_grouped['Rata-rata Skor'].round(2),
+        color_continuous_scale=px.colors.sequential.Reds_r
+    )
+    
+    fig_lowest.update_traces(textposition='inside')
+    fig_lowest.update_layout(
+        margin=dict(l=20, r=20, t=20, b=20),
+        height=500,
+        showlegend=False
+    )
+    
+    st.plotly_chart(fig_lowest, use_container_width=True)
