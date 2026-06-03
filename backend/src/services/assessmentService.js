@@ -188,3 +188,15 @@ export const checkIfUserHasTakenPlacement = async (userId) => {
   const count = await assessmentRepo.countUserPlacementAttempts(userId);
   return count > 0;
 };
+
+// Fungsi untuk memproses pengambilan laporan AI siswa
+export const getUserAiReports = async (userId) => {
+  const reports = await assessmentRepo.findAiReportsByUserId(userId);
+  
+  // Jika siswa belum punya laporan AI sama sekali
+  if (!reports || reports.length === 0) {
+    throw new Error("No AI reports found for this user. Take a Pre-Test Chapter first!");
+  }
+
+  return reports;
+};

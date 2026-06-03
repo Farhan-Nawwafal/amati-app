@@ -99,3 +99,15 @@ export const createAiReport = async (data) => {
     },
   });
 };
+
+// Fungsi untuk mengambil semua laporan AI milik siswa berdasarkan userId
+export const findAiReportsByUserId = async (userId) => {
+  return await prisma.aiReport.findMany({
+    where: {
+      user_id: userId,
+    },
+    orderBy: {
+      created_at: "desc", // Laporan terbaru akan muncul di paling atas
+    },
+  });
+};
