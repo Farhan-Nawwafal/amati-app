@@ -117,3 +117,43 @@ else:
     )
     
     st.plotly_chart(fig_lowest, use_container_width=True)
+
+# Grafik Bab yang Paling Banyak Berhasil Diselesaikan
+st.markdown("---")
+st.header(f"🏆 Bab yang Paling Banyak Diselesaikan Berdasarkan Level {selected_display}")
+
+if selected_level_value == "all":
+    completed_chapters = df_chapters[df_chapters['status_chapter'].str.lower() == 'done']
+else:
+    completed_chapters = df_chapters[
+        (df_chapters['status_chapter'].str.lower() == 'done') & 
+        (df_chapters['current_level'] == selected_level_value)
+    ]
+
+if completed_chapters.empty:
+    st.info(f"Belum ada siswa yang menyelesaikan bab di level {selected_display}.")
+else:
+    completed_group = completed_chapters.groupby('name').size().reset_index(name='Siswa Selesai')
+    completed_group = completed_group.sort_values(by='Siswa Selesai', ascending=True)
+    
+    fig_completed = px.bar(
+        completed_group,
+        x='Siswa Selesai',
+        y='name',
+        orientation='h',
+        labels={'Siswa Selesai': 'Jumlah Siswa yang Menyelesaikan Bab', 'name': 'Judul Bab Matematika Kelas 7'},
+        color='Siswa Selesai',
+        text='Siswa Selesai', 
+        color_continuous_scale=px.colors.sequential.Greens  
+    )
+    
+    fig_completed.update_traces(textposition='inside')
+    fig_completed.update_layout(
+        yaxis={'categoryorder': 'total ascending'},
+        margin=dict(l=20, r=20, t=20, b=20),
+        height=350,
+        showlegend=False
+    )
+    
+    st.plotly_chart(fig_completed, use_container_width=True)
+
