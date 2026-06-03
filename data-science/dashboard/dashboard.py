@@ -157,3 +157,43 @@ else:
     
     st.plotly_chart(fig_completed, use_container_width=True)
 
+# Grafik Top 5 Sub-bab yang Paling Banyak Membuat Siswa Stuck
+st.markdown("---")
+st.header(f"⚠️ Top 5 Sub-Bab yang Paling Banyak Membuat Siswa Stuck (In-Progress) di Level {selected_display}")
+
+if selected_level_value == "all":
+    stuck_subchapters = df_subchapters[df_subchapters['status_subchapter'].str.lower() == 'in-progress']
+else:
+    stuck_subchapters = df_subchapters[
+        (df_subchapters['status_subchapter'].str.lower() == 'in-progress') & 
+        (df_subchapters['current_level'] == selected_level_value)
+    ]
+
+if stuck_subchapters.empty:
+    st.info(f"Mantap! Tidak ada siswa yang sedang stuck di sub-bab level {selected_display} saat ini.")
+else:
+    stuck_group = stuck_subchapters.groupby('name').size().reset_index(name='Jumlah Siswa Stuck')
+    top_5_stuck = stuck_group.sort_values(by='Jumlah Siswa Stuck', ascending=True).tail(5)
+    
+    fig_stuck = px.bar(
+        top_5_stuck,
+        x='Jumlah Siswa Stuck',
+        y='name',
+        orientation='h',
+        labels={'Jumlah Siswa Stuck': 'Jumlah Siswa (In-Progress)', 'name': 'Judul Sub-Bab Matematika Kelas 7'},
+        color='Jumlah Siswa Stuck',
+        text='Jumlah Siswa Stuck', 
+        color_continuous_scale=px.colors.sequential.Oranges
+    )
+    
+    fig_stuck.update_traces(textposition='inside')
+    fig_stuck.update_layout(
+        yaxis={'categoryorder': 'total ascending'},
+        margin=dict(l=20, r=20, t=20, b=20),
+        height=350,
+        showlegend=False
+    )
+    
+    st.plotly_chart(fig_stuck, use_container_width=True)
+
+
