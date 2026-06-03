@@ -1,34 +1,99 @@
-// src/pages/Courses.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
-import { coursesData } from "../data/coursesData"; // Membaca data store kurikulum pusat
+import {
+  getCoursesChapters,
+  enrollChapterApi,
+} from "../services/coursesChapterService";
 
 const Courses = () => {
   const navigate = useNavigate();
-
-  // State untuk filter kategori status aktif
   const [activeFilter, setActiveFilter] = useState("All");
-
-  // 1. TAMBAHKAN STATE UNTUK MENAMPUNG KATA KUNCI PENCARIAN
   const [searchQuery, setSearchQuery] = useState("");
 
-  // 2. LOGIKA FILTER GABUNGAN (STATUS KURSUS + KATA KUNCI PENCARIAN)
-  const filteredChapters = coursesData.filter((chapter) => {
-    // Cek apakah cocok dengan filter kategori (All / Not Started / In-Progress / Done)
+  const [dbChaptersList, setDbChaptersList] = useState([]);
+  const [isPageLoading, setIsPageLoading] = useState(true);
+  const [enrollLoadingId, setEnrollLoadingId] = useState(null); // Efek loading tombol individual
+
+  // Fungsi fetch data katalog pembelajar dari database
+  const loadStudentCatalog = async () => {
+    try {
+      setIsPageLoading(true);
+      const response = await getCoursesChapters();
+      const fetchedCatalog = response.data?.data || [];
+      setDbChaptersList(fetchedCatalog);
+    } catch (error) {
+      console.error("Gagal memuat katalog kurikulum adaptif:", error);
+      alert("Terjadi gangguan koneksi saat mengambil katalog materi.");
+    } finally {
+      setIsPageLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadStudentCatalog();
+  }, []);
+
+  // LOGIKA KLIK TOMBOL AMBIL KELAS
+  const handleEnrollChapter = async (e, chapterId) => {
+    e.preventDefault();
+    e.stopPropagation(); // Mencegah efek klik kartu (navigate) terpicu otomatis
+
+    const confirmEnroll = window.confirm(
+      "Apakah kamu yakin ingin mengambil kelas bab materi ini?",
+    );
+    if (!confirmEnroll) return;
+
+    try {
+      setEnrollLoadingId(chapterId); // Nyalakan loading khusus di tombol ini
+
+      const payload = { chapterId };
+      await enrollChapterApi(payload);
+
+      alert(
+        "Sukses: Kelas berhasil diambil! Jalur progres belajarmu sudah aktif.",
+      );
+
+      // Muat ulang data katalog dari BE agar status "Not Started" berubah menjadi "In-Progress" asli database
+      await loadStudentCatalog();
+    } catch (error) {
+      console.error("Gagal melakukan enrollment kelas:", error);
+      alert(
+        error.response?.data?.message || "Gagal mengambil kelas. Coba lagi.",
+      );
+    } finally {
+      setEnrollLoadingId(null);
+    }
+  };
+
+  // Logika Filter Pencarian
+  const filteredChapters = dbChaptersList.filter((chapter) => {
     const matchesFilter =
       activeFilter === "All" || chapter.status === activeFilter;
-
-    // Cek apakah kata kunci pencarian cocok dengan nama bab atau judul chapter
     const matchesSearch =
       chapter.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       chapter.title.toLowerCase().includes(searchQuery.toLowerCase());
-
-    // Kartu baru akan lolos sensor jika memenuhi kedua kriteria di atas
     return matchesFilter && matchesSearch;
   });
 
+  if (isPageLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+          fontFamily: "'Inter', sans-serif",
+          fontWeight: "bold",
+          color: "#002d72",
+        }}
+      >
+        🔄 Menyinkronkan katalog silabus Matematika AMATI...
+      </div>
+    );
+  }
   return (
     <div
       style={{
@@ -41,7 +106,7 @@ const Courses = () => {
       {/* SIDEBAR TUNGGAL */}
       <Sidebar activeMenu="Courses" />
 
-      {/* ================= MAIN CONTENT (KANAN) ================= */}
+      {/* MAIN CONTENT (KANAN) */}
       <main
         style={{
           flex: "1",
@@ -171,7 +236,7 @@ const Courses = () => {
             </div>
           </div>
 
-          {/* GRID CARD CHAPTER (Membaca array 'filteredChapters' hasil pencarian dinamis) */}
+          {/* GRID CARD CHAPTER */}
           <div
             style={{
               display: "grid",
@@ -180,123 +245,173 @@ const Courses = () => {
               marginTop: "10px",
             }}
           >
-            {filteredChapters.map((chapter) => (
-              <div
-                key={chapter.id}
-                onClick={() => navigate(`/courses/${chapter.id}`)} // Masuk ke halaman sub-chapters dinamis
-                style={{
-                  backgroundColor: "#fff",
-                  borderRadius: "20px",
-                  overflow: "hidden",
-                  boxShadow: "0 8px 25px rgba(0,0,0,0.03)",
-                  border: "1px solid #f0f0f0",
-                  display: "flex",
-                  flexDirection: "column",
-                  cursor: "pointer",
-                }}
-              >
-                {/* Bagian Atas: Wadah Thumbnail Gambar */}
-                <div
-                  style={{
-                    height: "160px",
-                    backgroundColor: "#5b86e5",
-                    position: "relative",
-                    overflow: "hidden",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#fff",
-                      textAlign: "center",
-                      padding: "20px",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: "0.8rem",
-                        display: "block",
-                        opacity: 0.8,
-                      }}
-                    >
-                      {chapter.title}
-                    </span>
-                    <span style={{ fontSize: "1.4rem" }}>{chapter.name}</span>
-                  </div>
-                </div>
+            {filteredChapters.map((chapter) => {
+              // Cek status dengan mengubahnya ke huruf kecil semua tanpa tanda spasi/strip
+              const cleanStatus = chapter.status
+                ?.toLowerCase()
+                .replace("-", "")
+                .trim();
 
-                {/* Bagian Bawah: Informasi Detail Teks */}
+              // Kelas HANYA dikunci jika teks statusnya murni mendeteksi kata "not started"
+              const isClassLocked = cleanStatus === "not started";
+              return (
                 <div
+                  key={chapter.id}
+                  onClick={() => {
+                    if (isClassLocked) {
+                      alert(
+                        "⚠️ Akses Ditolak: Silakan klik tombol 'Ambil Kelas' terlebih dahulu untuk mengaktifkan modul belajar bab ini.",
+                      );
+                    } else {
+                      navigate(`/courses/${chapter.id}`, {
+                        state: { chapterName: chapter.name },
+                      });
+                    }
+                  }}
                   style={{
-                    padding: "20px",
+                    backgroundColor: "#fff",
+                    borderRadius: "20px",
+                    overflow: "hidden",
+                    boxShadow: "0 8px 25px rgba(0,0,0,0.03)",
+                    border: "1px solid #f0f0f0",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "12px",
+                    cursor: "pointer",
                   }}
                 >
-                  <div>
-                    <span
+                  {/* Bagian Atas: Wadah Thumbnail Gambar */}
+                  <div
+                    style={{
+                      height: "160px",
+                      backgroundColor: "#5b86e5",
+                      position: "relative",
+                      overflow: "hidden",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div
                       style={{
-                        color: "#007bff",
-                        fontSize: "0.85rem",
+                        color: "#fff",
+                        textAlign: "center",
+                        padding: "20px",
                         fontWeight: "bold",
                       }}
                     >
-                      {chapter.title}
-                    </span>
-                    <h3
-                      style={{
-                        margin: "4px 0 0 0",
-                        color: "#002d72",
-                        fontSize: "1.15rem",
-                        fontWeight: "700",
-                      }}
-                    >
-                      {chapter.name}
-                    </h3>
+                      <span
+                        style={{
+                          fontSize: "0.8rem",
+                          display: "block",
+                          opacity: 0.8,
+                        }}
+                      >
+                        {chapter.title}
+                      </span>
+                      <span style={{ fontSize: "1.4rem" }}>{chapter.name}</span>
+                    </div>
                   </div>
 
-                  {/* Progress Bar Line (Persen %) */}
-                  <div style={{ marginTop: "5px" }}>
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        fontSize: "0.8rem",
-                        color: "#888",
-                        marginBottom: "6px",
-                      }}
-                    >
-                      <span>My Progress</span>
-                      <span style={{ fontWeight: "bold", color: "#333" }}>
-                        {chapter.progress}%
-                      </span>
-                    </div>
-                    <div
-                      style={{
-                        width: "100%",
-                        height: "8px",
-                        backgroundColor: "#f0f0f0",
-                        borderRadius: "10px",
-                        overflow: "hidden",
-                      }}
-                    >
-                      <div
+                  {/* Bagian Bawah: Informasi Detail Teks */}
+                  <div
+                    style={{
+                      padding: "20px",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "12px",
+                    }}
+                  >
+                    <div>
+                      <span
                         style={{
-                          width: `${chapter.progress}%`,
-                          height: "100%",
-                          backgroundColor: "#ff3366",
-                          borderRadius: "10px",
+                          color: "#007bff",
+                          fontSize: "0.85rem",
+                          fontWeight: "bold",
                         }}
-                      ></div>
+                      >
+                        {chapter.title}
+                      </span>
+                      <h3
+                        style={{
+                          margin: "4px 0 0 0",
+                          color: "#002d72",
+                          fontSize: "1.15rem",
+                          fontWeight: "700",
+                        }}
+                      >
+                        {chapter.name}
+                      </h3>
+                    </div>
+
+                    {/* Progress Bar Line (Persen %) */}
+                    <div style={{ marginTop: "5px" }}>
+                      {isClassLocked ? (
+                        /* 💡 SEPAKAT REGISTRASI: Tampilkan tombol enroll jika kelas belum diambil */
+                        <button
+                          onClick={(e) => handleEnrollChapter(e, chapter.id)}
+                          disabled={enrollLoadingId === chapter.id}
+                          style={{
+                            width: "100%",
+                            padding: "10px",
+                            backgroundColor: "#ff7a00",
+                            color: "#fff",
+                            border: "none",
+                            borderRadius: "10px",
+                            fontWeight: "bold",
+                            fontSize: "0.9rem",
+                            cursor:
+                              enrollLoadingId === chapter.id
+                                ? "not-allowed"
+                                : "pointer",
+                            boxShadow: "0 4px 12px rgba(255, 122, 0, 0.2)",
+                          }}
+                        >
+                          {enrollLoadingId === chapter.id
+                            ? "Enrolling..."
+                            : "📥 Ambil Kelas"}
+                        </button>
+                      ) : (
+                        /* Tampilkan progres bar asli database jika kelas sudah resmi diambil */
+                        <>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "space-between",
+                              fontSize: "0.8rem",
+                              color: "#888",
+                              marginBottom: "6px",
+                            }}
+                          >
+                            <span>My Progress</span>
+                            <span style={{ fontWeight: "bold", color: "#333" }}>
+                              {chapter.progress}%
+                            </span>
+                          </div>
+                          <div
+                            style={{
+                              width: "100%",
+                              height: "8px",
+                              backgroundColor: "#f0f0f0",
+                              borderRadius: "10px",
+                              overflow: "hidden",
+                            }}
+                          >
+                            <div
+                              style={{
+                                width: `${chapter.progress}%`,
+                                height: "100%",
+                                backgroundColor: "#00b4d8",
+                                borderRadius: "10px",
+                              }}
+                            ></div>
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             {/* Notifikasi jika hasil pencarian kosong */}
             {filteredChapters.length === 0 && (
