@@ -74,3 +74,15 @@ export const updateUserProgressToDone = async (userId, subChapterId) => {
     },
   });
 };
+
+// Fungsi untuk menandai bahwa satu bab penuh telah selesai/lulus
+export const updateChapterTakenToDone = async (chapterTakenId) => {
+  return await prisma.chapterTaken.update({
+    where: { id: chapterTakenId },
+    data: {
+      // Misalkan kamu punya kolom status atau sejenisnya di tabel chapter_taken, 
+      // atau jika arsitekturmu menggunakan penanda tanggal selesai:
+      updated_at: new Date() 
+    },
+  });
+};

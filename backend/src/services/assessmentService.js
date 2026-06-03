@@ -125,13 +125,17 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
     }
   }
 
-  // ========================================================
-  // [4] LOGIKA BARU: Exam Akhir Bab (EXM)
+// ========================================================
+  // [4] LOGIKA SAMBUNGAN: Exam Akhir Bab (EXM)
   // ========================================================
   else if (testType === "EXM") {
     if (finalScore >= 70) {
+      // Jika lulus ujian, kunci status data bab yang diambil menjadi selesai
+      if (assessment.chapter_taken_id) {
+        await assessmentRepo.updateChapterTakenToDone(assessment.chapter_taken_id);
+      }
       extraData.examStatus = "PASSED";
-      extraData.message = "Luar biasa! Kamu lulus ujian kompetensi bab ini.";
+      extraData.message = "Luar biasa! Kamu lulus ujian kompetensi bab ini. Akses bab selanjutnya telah terbuka!";
     } else {
       extraData.examStatus = "FAILED";
       extraData.message = "Kamu belum lulus ujian bab ini. Silakan ulas kembali materi yang dirasa sulit.";
