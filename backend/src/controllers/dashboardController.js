@@ -162,7 +162,7 @@ export const getCountSubChaptersDone = async (req, res) => {
 
 export const getDashboardSummary = async (req, res) => {
   try {
-    const userId = "S0001"; // Nanti diganti dengan ID dari middleware auth jika sudah ada
+    const userId = req.user.id; 
 
     // Menjalankan ke-6 fungsi service secara pararel (bersamaan) agar performa API instan
     const [
