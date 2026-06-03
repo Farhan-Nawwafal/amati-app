@@ -103,20 +103,15 @@ export const submitAnswersAndCalculateScore = async (
 
       // D. Susun array data untuk dimasukkan massal ke tabel user_progres
       const progressPayload = subChapters.map((sub) => {
-        return {
-          id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(), // ID unik progres
-          user_id: userId,
-          sub_chapter_id: sub.id,
-          chapter_taken_id: chapterTakenId,
-<<<<<<< HEAD
-          current_level: currentLevel, 
-          status: "not_started", 
-=======
-          current_level: currentLevel, // Level dinamis hasil kuis
-          status: "not started", // Status awal sesuai panduan gambarmu
->>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
-        };
-      });
+          return {
+            id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(),
+            user_id: userId,
+            sub_chapter_id: sub.id,
+            chapter_taken_id: chapterTakenId,
+            current_level: currentLevel,
+            status: "not_started"
+          };
+        });
 
       // E. Eksekusi simpan massal ke MySQL lewat Prisma
       if (progressPayload.length > 0) {
@@ -127,7 +122,7 @@ export const submitAnswersAndCalculateScore = async (
       // INTEGRASI AI 
       // ========================================================
       try {
-        //  Memicu AI dan menangkap response teks transkrip
+        // Memicu AI dan menangkap response teks transkrip
         const aiResult = await generateAiRecommendation(newAttempt.score, currentLevel);
 
         const aiReportId = "AI-REP-" + Math.random().toString(36).substring(2, 12).toUpperCase();
@@ -155,14 +150,14 @@ export const submitAnswersAndCalculateScore = async (
       }
     }
 
-<<<<<<< HEAD
+    // AREA PTC: Mengembalikan level kuis bab
     extraData.currentLevel = currentLevel;
     extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked & AI Personalized report generated!";
-=======
+
+  } else if (testType === "PTG") {
+    // AREA PTG: Mengembalikan level kuis global bawaan kamu
     extraData.suggestedLevel = calculatedLevel;
-    extraData.message =
-      "Pre-Test Global completed. Adaptive user progress baseline has been created.";
->>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
+    extraData.message = "Pre-Test Global completed. Adaptive user progress baseline has been created.";
   }
 
   // ========================================================
