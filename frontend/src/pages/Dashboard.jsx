@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
+import AiReportCard from "../components/AiReportCard"; // 🌟 IMPOR KOMPONEN AI BARU KITA
 import { getDashboardSummaryApi } from "../services/dashboardService";
 
 const Dashboard = () => {
@@ -9,6 +10,7 @@ const Dashboard = () => {
   const storedUser = localStorage.getItem("user");
   const userData = storedUser ? JSON.parse(storedUser) : null;
   const currentUserName = userData?.name || "Siswa AMATI";
+  const currentUserId = userData?.id || null; // 🌟 AMBIL USER ID SISWA SECARA DINAMIS
 
   // State menampung data statistik dari database backend
   const [summaryData, setSummaryData] = useState(null);
@@ -501,7 +503,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* Box Completed Chapter -> PERSENTASE DINAMIS BERDASARKAN HASIL HITUNG BARIS 32 */}
+              {/* Box Completed Chapter */}
               <div
                 style={{
                   backgroundColor: "#fff",
@@ -543,21 +545,20 @@ const Dashboard = () => {
                     overflow: "hidden",
                   }}
                 >
-                  {/* Lebar Isi Progress Bar Mengikuti State Persentase */}
                   <div
                     style={{
                       width: `${progressPercentage}%`,
                       height: "100%",
                       backgroundColor: "#ff7a00",
                       borderRadius: "10px",
-                      transition: "width 0.5s ease-out", // Animasi slide oranye yang halus saat data ter-load
+                      transition: "width 0.5s ease-out",
                     }}
                   ></div>
                 </div>
               </div>
             </div>
 
-            {/* KOLOM KANAN (Aktivitas Terbaru / Recent Activities) */}
+            {/* KOLOM KANAN (Aktivitas Terbaru & Laporan AI) */}
             <div
               style={{
                 flex: "1",
@@ -567,6 +568,9 @@ const Dashboard = () => {
                 gap: "30px",
               }}
             >
+              {/*  KARTU REKOMENDASI AI AMATI DIKIRIM USER ID SISWA */}
+              <AiReportCard userId={currentUserId} />
+
               {/* Recent Activity - Chapter */}
               <div
                 style={{

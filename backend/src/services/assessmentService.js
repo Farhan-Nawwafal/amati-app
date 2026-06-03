@@ -24,8 +24,7 @@ export const submitAnswersAndCalculateScore = async (
   userAnswers,
 ) => {
   // 1. Ambil data kuis beserta butir soal dari DB master untuk dicocokkan kuncinya
-  const assessment =
-    await assessmentRepo.findAssessmentWithQuestions(assessmentId);
+  const assessment = await assessmentRepo.findAssessmentWithQuestions(assessmentId);
   if (!assessment) {
     throw new Error("Assessment not found!");
   }
@@ -50,8 +49,7 @@ export const submitAnswersAndCalculateScore = async (
 
   // 3. Kalkulasi Skor Akhir Skala 0 - 100
   const finalScore = (totalCorrect / totalQuestions) * 100;
-  const attemptId =
-    "ATT-" + Math.random().toString(36).substring(2, 12).toUpperCase();
+  const attemptId = "ATT-" + Math.random().toString(36).substring(2, 12).toUpperCase();
 
   // 4. Simpan nilai hasil pengerjaan global ke tabel user_attempts
   const newAttempt = await assessmentRepo.createUserAttempt({
@@ -61,9 +59,8 @@ export const submitAnswersAndCalculateScore = async (
     score: parseFloat(finalScore.toFixed(2)),
   });
 
-// 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
+  // 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
   const testType = assessmentId.substring(0, 3); 
-
   let extraData = {};
 
   // ========================================================
@@ -77,13 +74,13 @@ export const submitAnswersAndCalculateScore = async (
       calculatedLevel = "advanced";
     }
     extraData.suggestedLevel = calculatedLevel;
+    extraData.message = "Pre-Test Global completed. Adaptive user progress baseline has been created.";
   } 
   
+  // ========================================================
+  // [2] LOGIKA: Pre-Test Chapter (PTC)
+  // ========================================================
   else if (testType === "PTC") {
-    // ========================================================
-    // LOGIKA BARU: Pre-Test Chapter (PTC)
-    // ========================================================
-    
     // A. Tentukan tingkat kompetensi awal bab berdasarkan skor kuis
     let currentLevel = "beginner";
     if (finalScore > 40 && finalScore <= 75) {
@@ -104,17 +101,12 @@ export const submitAnswersAndCalculateScore = async (
       // D. Susun array data untuk dimasukkan massal ke tabel user_progres
       const progressPayload = subChapters.map((sub) => {
         return {
-          id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(), // ID unik progres
+          id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(),
           user_id: userId,
           sub_chapter_id: sub.id,
           chapter_taken_id: chapterTakenId,
-<<<<<<< HEAD
           current_level: currentLevel, 
           status: "not_started", 
-=======
-          current_level: currentLevel, // Level dinamis hasil kuis
-          status: "not started", // Status awal sesuai panduan gambarmu
->>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
         };
       });
 
@@ -124,12 +116,11 @@ export const submitAnswersAndCalculateScore = async (
       }
 
       // ========================================================
-      // INTEGRASI AI 
+      // INTEGRASI AI (HANYA UNTUK KUIS BAB / PTC)
       // ========================================================
       try {
-        //  Memicu AI dan menangkap response teks transkrip
+        // Memicu AI dan menangkap response teks transkrip
         const aiResult = await generateAiRecommendation(newAttempt.score, currentLevel);
-
         const aiReportId = "AI-REP-" + Math.random().toString(36).substring(2, 12).toUpperCase();
 
         // Menyimpan laporan AI hasil tangkapan langsung ke MySQL
@@ -138,7 +129,7 @@ export const submitAnswersAndCalculateScore = async (
           userId: userId,
           chapterTakenId: chapterTakenId,
           evaluationText: aiResult.evaluationText,
-          recomendationList: aiResult.recomendationList // Array otomatis diconvert ke JSON oleh Prisma!
+          recomendationList: aiResult.recomendationList
         });
 
         // Selipkan ke data kembalian agar Postman bisa melihat hasil kerja AI
@@ -155,18 +146,12 @@ export const submitAnswersAndCalculateScore = async (
       }
     }
 
-<<<<<<< HEAD
     extraData.currentLevel = currentLevel;
     extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked & AI Personalized report generated!";
-=======
-    extraData.suggestedLevel = calculatedLevel;
-    extraData.message =
-      "Pre-Test Global completed. Adaptive user progress baseline has been created.";
->>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
   }
 
   // ========================================================
-  // [3] LOGIKA BARU: Quiz Sub-Chapter (QZN)
+  // [3] LOGIKA: Quiz Sub-Chapter (QZN)
   // ========================================================
   else if (testType === "QZN") {
     if (assessment.sub_chapter_id) {
@@ -182,8 +167,8 @@ export const submitAnswersAndCalculateScore = async (
     }
   }
 
-// ========================================================
-  // [4] LOGIKA SAMBUNGAN: Exam Akhir Bab (EXM)
+  // ========================================================
+  // [4] LOGIKA: Exam Akhir Bab (EXM)
   // ========================================================
   else if (testType === "EXM") {
     if (finalScore >= 70) {
@@ -199,12 +184,13 @@ export const submitAnswersAndCalculateScore = async (
     }
   }
 
+  // Mengembalian payload data sukses secara konsisten ke controller
   return {
     attemptId: newAttempt.id,
     totalQuestions,
     correctAnswers: totalCorrect,
     score: newAttempt.score,
-    ...extraData // Menggabungkan data level otomatis jika kuisnya PTG
+    ...extraData 
   };
 };
 
@@ -217,7 +203,6 @@ export const checkIfUserHasTakenPlacement = async (userId) => {
 export const getUserAiReports = async (userId) => {
   const reports = await assessmentRepo.findAiReportsByUserId(userId);
   
-  // Jika siswa belum punya laporan AI sama sekali
   if (!reports || reports.length === 0) {
     throw new Error("No AI reports found for this user. Take a Pre-Test Chapter first!");
   }
