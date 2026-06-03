@@ -2,6 +2,7 @@ import express from "express";
 import userRouter from './routes/userRouter.js'; 
 import dashboardRouter from './routes/dashboardRoute.js';
 import chaptersRouter from "./routes/chapterRoute.js";
+import subChapterRouter from "./routes/subChapterRoute.js";
 import courseRoute from "./routes/courseRoute.js";
 import assessmentRoute from "./routes/assessmentRoute.js";
 import cors from 'cors';
@@ -19,6 +20,7 @@ const createApp = () => {
     app.use("/api/courses", courseRoute);
     app.use("/api/chapters", chaptersRouter);
     app.use("/api/assessments", assessmentRoute);
+    app.use('/api/subchapters', subChapterRouter);
 
     return app;
 };

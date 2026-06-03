@@ -1,7 +1,9 @@
+// src/pages/AdminCourses.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import logoAmati from "/src/assets/logo2.png";
 import { createChapter, getChapters } from "../services/chapterService";
+import { createSubChapter } from "../services/subChapterService";
 
 const AdminCourses = () => {
   const navigate = useNavigate();
@@ -12,6 +14,8 @@ const AdminCourses = () => {
   const [selectedChapterId, setSelectedChapterId] = useState(null);
   const [newChapterName, setNewChapterName] = useState("");
   const [newSubName, setNewSubName] = useState("");
+  // 💡 1. TAMBAHKAN STATE BARU UNTUK CONTENT MATERI SUB-BAB
+  const [newSubContent, setNewSubContent] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isPageLoading, setIsPageLoading] = useState(true);
 
@@ -42,6 +46,7 @@ const AdminCourses = () => {
   const currentActiveChapter = chapters.find(
     (ch) => ch.id === selectedChapterId,
   );
+
   // 2. LOGIKA TAMBAH CHAPTER DENGAN INTEGRASI API EXPRESS BE
   const handleAddChapter = async (e) => {
     e.preventDefault();
@@ -80,8 +85,8 @@ const AdminCourses = () => {
     }
   };
 
-  // LOGIKA TAMBAH SUB-CHAPTER + VALIDASI KETAT
-  const handleAddSubChapter = (e) => {
+  // 3. LOGIKA TAMBAH SUB-CHAPTER DENGAN INTEGRASI RESTFUL API BE EXPRESS
+  const handleAddSubChapter = async (e) => {
     e.preventDefault();
 
     if (!selectedChapterId) {
@@ -96,24 +101,80 @@ const AdminCourses = () => {
       return;
     }
 
-    const newSub = {
-      id: `sub${Date.now()}`,
-      chapter_id: selectedChapterId,
-      name: newSubName,
-    };
+    // 💡 2. VALIDASI KETAT BARU: Pastikan text area konten tidak dikirim kosong
+    if (!newSubContent.trim()) {
+      alert("Error: Isi konten materi modul tidak boleh kosong!");
+      return;
+    }
 
-    setSubChapters([...subChapters, newSub]);
+    try {
+      setIsSubmitting(true);
 
-    // Update counter total_sub_chapter di data Bab terkait
-    setChapters(
-      chapters.map((ch) =>
-        ch.id === selectedChapterId
-          ? { ...ch, total_sub_chapter: (ch.total_sub_chapter || 0) + 1 }
-          : ch,
-      ),
-    );
-    setNewSubName("");
+      // Paket data disesuaikan dengan kontrak variabel req.body di BE Controller
+      const payloadData = {
+        chapterId: selectedChapterId,
+        name: newSubName.trim(),
+        content: newSubContent.trim(), // 💡 3. SEKARANG DATA KONTEN DIAMBIL DARI INPUT MANUAL USER
+      };
+
+      // Tembak API POST Backend
+      const response = await createSubChapter(payloadData);
+      console.log("Sukses menyimpan sub-chapter ke DB:", response.data);
+
+      const savedSubChapter = response.data?.data;
+
+      // Masukkan ke state local subChapters agar UI merender baris materi baru
+      const newSub = {
+        id: savedSubChapter.id,
+        chapter_id: savedSubChapter.chapter_id,
+        name: savedSubChapter.name,
+      };
+
+      setSubChapters([...subChapters, newSub]);
+
+      // Sinkronisasi: Update counter total_sub_chapter di data Bab terkait (+1)
+      setChapters(
+        chapters.map((ch) =>
+          ch.id === selectedChapterId
+            ? { ...ch, total_sub_chapter: (ch.total_sub_chapter || 0) + 1 }
+            : ch,
+        ),
+      );
+
+      // Reset seluruh field input form kuis subchapter
+      setNewSubName("");
+      setNewSubContent("");
+      alert(
+        "Sukses: Sub-Chapter baru berhasil disimpan dan counter Bab ter-update!",
+      );
+    } catch (error) {
+      console.error("Gagal menambahkan sub-chapter:", error);
+      const errMsg =
+        error.response?.data?.message ||
+        "Terjadi kegagalan koneksi saat menyimpan sub-chapter.";
+      alert(errMsg);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  if (isPageLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+          fontFamily: "'Inter', sans-serif",
+          fontWeight: "bold",
+          color: "#002d72",
+        }}
+      >
+        🔄 Menyinkronkan data panel kontrol AMATI dengan database...
+      </div>
+    );
+  }
 
   return (
     <div
@@ -342,41 +403,76 @@ const AdminCourses = () => {
                 : "⚠️ Blokir: Anda belum memilih Bab di sebelah kiri."}
             </p>
 
+            {/* 💡 4. MENGUBAH FORM MENJADI COLUMN AGAR TATA LETAK INPUT DAN TEXTAREA TERSUSUN KE BAWAH DENGAN RAPI */}
             <form
               onSubmit={handleAddSubChapter}
-              style={{ display: "flex", gap: "10px", marginBottom: "20px" }}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "15px",
+                marginBottom: "25px",
+              }}
             >
+              {/* Input Judul Sub-Chapter */}
               <input
                 type="text"
                 placeholder={
                   currentActiveChapter
-                    ? `Input Sub-Bab untuk ${currentActiveChapter.name}...`
+                    ? `Input Judul Sub-Bab untuk ${currentActiveChapter.name}...`
                     : "Pilih Bab di kiri untuk mengaktifkan..."
                 }
                 value={newSubName}
                 onChange={(e) => setNewSubName(e.target.value)}
-                disabled={!selectedChapterId}
+                disabled={!selectedChapterId || isSubmitting}
                 style={{
-                  flex: 1,
                   padding: "10px 15px",
                   borderRadius: "10px",
                   border: "1px solid",
                   borderColor: selectedChapterId ? "#ccc" : "#ffa7a7",
                   backgroundColor: selectedChapterId ? "#fff" : "#ffebee",
                   outline: "none",
+                  fontFamily: "'Inter', sans-serif",
                 }}
               />
+
+              {/* 💡 5. ELEMEN BARU: Textarea untuk menginput isi materi (content) pembelajaran */}
+              <textarea
+                placeholder={
+                  currentActiveChapter
+                    ? `Ketikkan isi konten materi edukasi lengkap untuk ${newSubName || "sub-bab ini"}...`
+                    : "Pilih Bab di kiri untuk mengaktifkan text area..."
+                }
+                rows={6}
+                value={newSubContent}
+                onChange={(e) => setNewSubContent(e.target.value)}
+                disabled={!selectedChapterId || isSubmitting}
+                style={{
+                  padding: "12px 15px",
+                  borderRadius: "10px",
+                  border: "1px solid",
+                  borderColor: selectedChapterId ? "#ccc" : "#ffa7a7",
+                  backgroundColor: selectedChapterId ? "#fff" : "#ffebee",
+                  outline: "none",
+                  resize: "vertical", // Mengizinkan admin mengubah tinggi box secara vertikal
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: "0.9rem",
+                  lineHeight: "1.5",
+                }}
+              />
+
+              {/* Tombol Add Sub-Chapter */}
               <button
                 type="submit"
-                disabled={!selectedChapterId}
+                disabled={!selectedChapterId || isSubmitting}
                 style={{
-                  padding: "10px 20px",
+                  padding: "12px 20px",
                   backgroundColor: selectedChapterId ? "#ff7a00" : "#888",
                   color: "#fff",
                   border: "none",
                   borderRadius: "10px",
                   fontWeight: "bold",
                   cursor: selectedChapterId ? "pointer" : "not-allowed",
+                  alignSelf: "flex-end", // Memposisikan tombol di kanan bawah form
                 }}
               >
                 {currentActiveChapter
