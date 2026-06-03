@@ -70,3 +70,28 @@ export const createBulkUserProgress = async (progressDataArray) => {
     skipDuplicates: true, // Amankan dari eror jika data sudah pernah terbuat
   });
 };
+
+// Fungsi untuk mengubah status progres sub-bab siswa menjadi 'done'
+export const updateUserProgressToDone = async (userId, subChapterId) => {
+  return await prisma.userProgres.updateMany({
+    where: {
+      user_id: userId,
+      sub_chapter_id: subChapterId,
+    },
+    data: {
+      status: "done", // Mengubah status menjadi done sesuai diagram kendali
+    },
+  });
+};
+
+// Fungsi untuk menandai bahwa satu bab penuh telah selesai/lulus
+export const updateChapterTakenToDone = async (chapterTakenId) => {
+  return await prisma.chapterTaken.update({
+    where: { id: chapterTakenId },
+    data: {
+      // Misalkan kamu punya kolom status atau sejenisnya di tabel chapter_taken, 
+      // atau jika arsitekturmu menggunakan penanda tanggal selesai:
+      updated_at: new Date() 
+    },
+  });
+};

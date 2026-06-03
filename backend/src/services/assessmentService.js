@@ -2,8 +2,7 @@ import * as assessmentRepo from "../repositories/assessmentRepository.js";
 
 export const getQuestionsForAssessment = async (assessmentId) => {
   // Panggil repository untuk mencari data
-  const assessment =
-    await assessmentRepo.findAssessmentWithQuestions(assessmentId);
+  const assessment = await assessmentRepo.findAssessmentWithQuestions(assessmentId);
 
   // Logika validasi: Jika kuis tidak ditemukan di database
   if (!assessment) {
@@ -61,34 +60,62 @@ export const submitAnswersAndCalculateScore = async (
     score: parseFloat(finalScore.toFixed(2)),
   });
 
-  // 5. DETEKSI OTOMATIS: Jika kuisnya bertipe Pre-Test Global (PTG)
-  const testType = assessmentId.substring(0, 3);
+// 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
+  const testType = assessmentId.substring(0, 3); 
+
   let extraData = {};
 
+  // ========================================================
+  // [1] LOGIKA: Pre-Test Global (PTG)
+  // ========================================================
   if (testType === "PTG") {
-    // Tentukan tingkat penguasaan kompetensi awal siswa
     let calculatedLevel = "beginner";
     if (finalScore > 40 && finalScore <= 75) {
       calculatedLevel = "intermediate";
     } else if (finalScore > 75) {
       calculatedLevel = "advanced";
     }
+    extraData.suggestedLevel = calculatedLevel;
+  } 
+  
+  else if (testType === "PTC") {
+    // ========================================================
+    // LOGIKA BARU: Pre-Test Chapter (PTC)
+    // ========================================================
+    
+    // A. Tentukan tingkat kompetensi awal bab berdasarkan skor kuis
+    let currentLevel = "beginner";
+    if (finalScore > 40 && finalScore <= 75) {
+      currentLevel = "intermediate";
+    } else if (finalScore > 75) {
+      currentLevel = "advanced";
+    }
 
-    // Ambil seluruh daftar sub-chapter untuk di-inisialisasi massal
-    const subChapters = await assessmentRepo.getAllSubChaptersMaster();
+    // B. Ambil info chapter_taken_id dari kuis ini
+    const assessmentInfo = await assessmentRepo.findAssessmentChapterInfo(assessmentId);
+    
+    if (assessmentInfo) {
+      const chapterTakenId = assessmentInfo.chapter_taken_id;
 
-    const progressPayload = subChapters.map((sub) => ({
-      id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(),
-      user_id: userId,
-      sub_chapter_id: sub.id,
-      chapter_taken_id: "", // Dikosongkan dulu karena belum mulai klik "Ambil Bab" di silabus
-      current_level: calculatedLevel, // Level dinamis hasil Pre-Test Global
-      status: "not_started", // Status awal belum dipelajari
-    }));
+      // C. Ambil semua daftar sub-bab yang ada di dalam bab ini
+      const subChapters = await assessmentRepo.findSubChaptersByChapterTaken(chapterTakenId);
 
-    // Eksekusi bulk insert massal tabel progres awal siswa ke MySQL
-    if (progressPayload.length > 0) {
-      await assessmentRepo.createBulkUserProgress(progressPayload);
+      // D. Susun array data untuk dimasukkan massal ke tabel user_progres
+      const progressPayload = subChapters.map((sub) => {
+        return {
+          id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(), // ID unik progres
+          user_id: userId,
+          sub_chapter_id: sub.id,
+          chapter_taken_id: chapterTakenId,
+          current_level: currentLevel, // Level dinamis hasil kuis
+          status: "not started", // Status awal sesuai panduan gambarmu
+        };
+      });
+
+      // E. Eksekusi simpan massal ke MySQL lewat Prisma
+      if (progressPayload.length > 0) {
+        await assessmentRepo.createBulkUserProgress(progressPayload);
+      }
     }
 
     extraData.suggestedLevel = calculatedLevel;
@@ -96,19 +123,50 @@ export const submitAnswersAndCalculateScore = async (
       "Pre-Test Global completed. Adaptive user progress baseline has been created.";
   }
 
+  // ========================================================
+  // [3] LOGIKA BARU: Quiz Sub-Chapter (QZN)
+  // ========================================================
+  else if (testType === "QZN") {
+    if (assessment.sub_chapter_id) {
+      // Jika siswa lulus kuis (Skor >= 60), status progres otomatis diubah menjadi 'done'
+      if (finalScore >= 60) {
+        await assessmentRepo.updateUserProgressToDone(userId, assessment.sub_chapter_id);
+        extraData.quizStatus = "PASSED";
+        extraData.message = "Selamat! Kuis lulus, progres materi diperbarui menjadi 'done'.";
+      } else {
+        extraData.quizStatus = "FAILED";
+        extraData.message = "Skor belum memenuhi syarat kelulusan (KKM: 60). Silakan coba kembali.";
+      }
+    }
+  }
+
+// ========================================================
+  // [4] LOGIKA SAMBUNGAN: Exam Akhir Bab (EXM)
+  // ========================================================
+  else if (testType === "EXM") {
+    if (finalScore >= 70) {
+      // Jika lulus ujian, kunci status data bab yang diambil menjadi selesai
+      if (assessment.chapter_taken_id) {
+        await assessmentRepo.updateChapterTakenToDone(assessment.chapter_taken_id);
+      }
+      extraData.examStatus = "PASSED";
+      extraData.message = "Luar biasa! Kamu lulus ujian kompetensi bab ini. Akses bab selanjutnya telah terbuka!";
+    } else {
+      extraData.examStatus = "FAILED";
+      extraData.message = "Kamu belum lulus ujian bab ini. Silakan ulas kembali materi yang dirasa sulit.";
+    }
+  }
+
   return {
     attemptId: newAttempt.id,
     totalQuestions,
     correctAnswers: totalCorrect,
     score: newAttempt.score,
-    ...extraData,
+    ...extraData // Menggabungkan data level otomatis jika kuisnya PTG
   };
 };
 
 export const checkIfUserHasTakenPlacement = async (userId) => {
-  // Panggil repository untuk menghitung attempt siswa
   const count = await assessmentRepo.countUserPlacementAttempts(userId);
-
-  // Jika count > 0, artinya siswa sudah pernah ikut pre-test (placement)
   return count > 0;
 };
