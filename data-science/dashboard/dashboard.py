@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
 import plotly.express as px
 
 # Konfigurasi halaman
@@ -81,7 +79,6 @@ if selected_level_value == "all":
     df_answer = df_answers[df_answers['name'].isin(chapter_valid)]
 else:
     chapter_valid = df_chapters[df_chapters['current_level'] == selected_level_value]['name'].unique()
-    
     valid_users = df_chapters[df_chapters['current_level'] == selected_level_value]['user_id_x'].unique()
     df_answer = df_answers[
         (df_answers['name'].isin(chapter_valid)) & 
@@ -91,7 +88,6 @@ else:
 if df_answer.empty:
     st.info(f"Belum ada data nilai assessment untuk bab di level {selected_display}.")
 else:
-
     lowest_scores_grouped = df_answer.groupby('name')['score'].mean().reset_index(name='Rata-rata Skor')
     lowest_scores_grouped = lowest_scores_grouped.sort_values(by='Rata-rata Skor', ascending=False)
     absolute_lowest = lowest_scores_grouped.iloc[-1] 
@@ -195,7 +191,6 @@ else:
     )
     
     st.plotly_chart(fig_stuck, use_container_width=True)
-
 
 # Menampilkan Chart Analisis Skor Placement dan Exam di Akhir Bab
 st.markdown("---")
