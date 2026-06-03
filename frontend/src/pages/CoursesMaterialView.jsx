@@ -1,7 +1,6 @@
-// src/pages/MaterialView.jsx
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { coursesData } from "../data/coursesData";
+import { getSubChaptersByChapterApi, completeSubChapterApi } from "../services/coursesChapterService";
 
 const CoursesMaterialView = () => {
   const navigate = useNavigate();
@@ -9,20 +8,78 @@ const CoursesMaterialView = () => {
   // 1. Tangkap 3 koordinat parameter dinamis dari URL bar browser
   const { chapterId, subChapterId, topicId } = useParams();
 
-  // 2. Cari data kurikulum secara presisi berdasarkan parameter URL tersebut
-  const currentChapter = coursesData.find((ch) => ch.id === chapterId);
+  // 💡 STATE MANAJEMEN DATA DINAMIS DATABASE
+  const [dynamicChaptersData, setDynamicChaptersData] = useState([]);
+  const [isPageLoading, setIsPageLoading] = useState(true);
+
+  // 🔥 EFFECT FETCH DATA DINAMIS REALTIME DARI MYSQL
+  useEffect(() => {
+    const loadRealtimeMaterial = async () => {
+      try {
+        setIsPageLoading(true);
+        const response = await getSubChaptersByChapterApi(chapterId);
+        const dbSubChapters = response.data?.data || [];
+
+        // 💡 STRATEGI ADAPTER: Bungkus data DB agar bentuknya serasi dengan UI statis (.subChapters & .topics)
+        const formattedChapter = {
+          id: chapterId,
+          title: `Chapter Detail`,
+          name: `Materi Kelas VII`,
+          subChapters: dbSubChapters.map((sub) => ({
+            id: sub.id,
+            title: `Sub Chapter`,
+            name: sub.name,
+            progress: sub.progress || 0,
+            // Membuat virtual topics agar logic .map milik temanmu tetap bekerja lancar
+            topics: [
+              {
+                id: sub.id, // topicId disamakan dengan subChapterId agar otomatis aktif saat sub-bab diklik
+                name: sub.name,
+                content: sub.content,
+              },
+            ],
+          })),
+        };
+
+        setDynamicChaptersData([formattedChapter]);
+      } catch (error) {
+        console.error("Gagal menjemput data materi workspace:", error);
+      } finally {
+        setIsPageLoading(false);
+      }
+    };
+
+    if (chapterId) {
+      loadRealtimeMaterial();
+    }
+  }, [chapterId]);
+
+  // 2. Cari data kurikulum secara presisi berdasarkan parameter URL tersebut (Membaca State Dinamis)
+  const currentChapter = dynamicChaptersData.find((ch) => ch.id === chapterId);
   const currentSubChapter = currentChapter?.subChapters.find(
     (sub) => sub.id === subChapterId,
   );
   const currentTopic = currentSubChapter?.topics.find(
-    (top) => top.id === topicId,
+    (top) => top.id === topicId || top.id === subChapterId,
   );
+  const isCurrentSubDone = currentSubChapter?.progress === 100;
 
   // State kontrol buka-tutup Sidebar Kanan (Hamburger Menu Toggle)
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // State Accordion untuk panel kanan
   const [openAccordion, setOpenAccordion] = useState(subChapterId);
+
+  const handleMarkAsDone = async () => {
+    try {
+      await completeSubChapterApi(subChapterId);
+      alert("Mantap! Materi selesai dipelajari.");
+      // Refresh data agar checklist sidebar otomatis jadi hijau (100%)
+      window.location.reload(); // Atau panggil ulang fungsi fetch API-mu
+    } catch (error) {
+      alert("Gagal menyelesaikan materi.");
+    }
+  };
 
   // 3. KUNCI SINKRONISASI: Jika URL subChapterId berubah, otomatis buka folder accordion yang sesuai!
   useEffect(() => {
@@ -31,7 +88,23 @@ const CoursesMaterialView = () => {
     }
   }, [subChapterId]);
 
-  // Antisipasi jika data belum diisi di file coursesData.js agar tidak crash
+  // Penahan Loading Screen agar tidak crash properti undefined saat fetching database
+  if (isPageLoading) {
+    return (
+      <div
+        style={{
+          padding: "40px",
+          textAlign: "center",
+          fontFamily: "'Inter', sans-serif",
+          fontWeight: "bold",
+        }}
+      >
+        🔄 Sedang menyinkronkan lembar materi bacaan dengan database AMATI...
+      </div>
+    );
+  }
+
+  // Antisipasi jika data belum diisi di database agar tidak crash
   if (!currentChapter || !currentSubChapter || !currentTopic) {
     return (
       <div
@@ -45,7 +118,8 @@ const CoursesMaterialView = () => {
           Materi atau Parameter ID Tidak Ditemukan!
         </h3>
         <p style={{ color: "#666" }}>
-          Pastikan Anda telah melengkapi array 'topics' di file coursesData.js
+          Pastikan Anda telah mengisi materi content di database untuk ID:{" "}
+          {subChapterId}
         </p>
         <button
           onClick={() => navigate("/courses")}
@@ -198,119 +272,44 @@ const CoursesMaterialView = () => {
               boxShadow: "0 4px 20px rgba(0,0,0,0.01)",
             }}
           >
-            <h1
-              style={{
-                margin: "0 0 20px 0",
-                color: "#002d72",
-                fontSize: "1.8rem",
-                fontWeight: "700",
-              }}
-            >
-              {currentTopic.name}
-            </h1>
-
             <p
               style={{
                 color: "#555",
                 lineHeight: "1.8",
                 fontSize: "0.95rem",
                 margin: 0,
+                whiteSpace: "pre-line",
               }}
             >
               {currentTopic.content}
             </p>
-
-            {/* GRAFIK GARIS BILANGAN (Hanya muncul khusus jika topik ID Pengertian Bilangan Bulat aktif) */}
-            {topicId === "top1-1-1" && (
-              <div
+            <div
+              style={{
+                marginTop: "40px",
+                display: "flex",
+                justifyContent: "flex-end",
+              }}
+            >
+              <button
+                onClick={handleMarkAsDone}
+                disabled={currentSubChapter.progress === 100} // Tombol mati jika sudah 100%
                 style={{
-                  margin: "30px 0",
-                  honesty: "center",
-                  padding: "25px",
-                  border: "1px solid #e0e0e0",
-                  borderRadius: "15px",
-                  backgroundColor: "#fafafa",
-                  textAlign: "center",
+                  padding: "12px 25px",
+                  backgroundColor:
+                    currentSubChapter.progress === 100 ? "#28a745" : "#007bff",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  cursor:
+                    currentSubChapter.progress === 100 ? "not-allowed" : "pointer",
                 }}
               >
-                <div
-                  style={{
-                    position: "relative",
-                    width: "75%",
-                    height: "2px",
-                    backgroundColor: "#333",
-                    margin: "30px auto",
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <span
-                    style={{
-                      position: "absolute",
-                      left: "-5px",
-                      top: "-6px",
-                      transform: "rotate(135deg)",
-                      width: "8px",
-                      height: "8px",
-                      borderTop: "2px solid #333",
-                      borderRight: "2px solid #333",
-                    }}
-                  ></span>
-                  {[-3, -2, -1, 0, 1, 2, 3].map((num) => (
-                    <div
-                      key={num}
-                      style={{
-                        position: "relative",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: "2px",
-                          height: "8px",
-                          backgroundColor: "#333",
-                          marginTop: "-3px",
-                        }}
-                      ></div>
-                      <span
-                        style={{
-                          fontSize: "0.8rem",
-                          fontWeight: "bold",
-                          marginTop: "6px",
-                          color: num === 0 ? "#007bff" : "#333",
-                        }}
-                      >
-                        {num}
-                      </span>
-                    </div>
-                  ))}
-                  <span
-                    style={{
-                      position: "absolute",
-                      right: "-5px",
-                      top: "-6px",
-                      transform: "rotate(45deg)",
-                      width: "8px",
-                      height: "8px",
-                      borderTop: "2px solid #333",
-                      borderRight: "2px solid #333",
-                    }}
-                  ></span>
-                </div>
-                <p
-                  style={{
-                    fontSize: "0.75rem",
-                    color: "#2ec4b6",
-                    margin: 0,
-                    fontWeight: "bold",
-                  }}
-                >
-                  Gambar 1.1 Pembagian Bilangan Bulat
-                </p>
-              </div>
-            )}
+                {currentSubChapter.progress === 100
+                  ? "✔️ Materi Selesai"
+                  : "Tandai Selesai"}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -346,6 +345,7 @@ const CoursesMaterialView = () => {
                 const isCurrentOpen = openAccordion === sub.id;
                 return (
                   <div
+                    toggle-target="row"
                     key={sub.id}
                     style={{
                       borderBottom: "1px solid #f0f0f0",
@@ -404,15 +404,14 @@ const CoursesMaterialView = () => {
                         }}
                       >
                         {sub.topics.map((topic) => {
-                          const isTopicActive = topicId === topic.id;
+                          const isTopicActive =
+                            topicId === topic.id || subChapterId === sub.id;
                           return (
                             <div
                               key={topic.id}
-                              // Klik topik baru otomatis memperbarui URL bar
+                              // Klik topik baru otomatis memperbarui URL bar dinamis murni database
                               onClick={() =>
-                                navigate(
-                                  `/material/${chapterId}/${sub.id}/${topic.id}`,
-                                )
+                                navigate(`/material/${chapterId}/${sub.id}`)
                               }
                               style={{
                                 display: "flex",
@@ -426,7 +425,13 @@ const CoursesMaterialView = () => {
                                 height="16"
                                 viewBox="0 0 24 24"
                                 fill="none"
-                                stroke={isTopicActive ? "#007bff" : "#ccc"}
+                                stroke={
+                                  sub.progress === 100
+                                    ? "#28a745"
+                                    : isTopicActive
+                                      ? "#007bff"
+                                      : "#ccc"
+                                }
                                 strokeWidth="2.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"

@@ -108,13 +108,8 @@ export const submitAnswersAndCalculateScore = async (
           user_id: userId,
           sub_chapter_id: sub.id,
           chapter_taken_id: chapterTakenId,
-<<<<<<< HEAD
           current_level: currentLevel, 
           status: "not_started", 
-=======
-          current_level: currentLevel, // Level dinamis hasil kuis
-          status: "not started", // Status awal sesuai panduan gambarmu
->>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
         };
       });
 
@@ -155,14 +150,8 @@ export const submitAnswersAndCalculateScore = async (
       }
     }
 
-<<<<<<< HEAD
     extraData.currentLevel = currentLevel;
     extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked & AI Personalized report generated!";
-=======
-    extraData.suggestedLevel = calculatedLevel;
-    extraData.message =
-      "Pre-Test Global completed. Adaptive user progress baseline has been created.";
->>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
   }
 
   // ========================================================

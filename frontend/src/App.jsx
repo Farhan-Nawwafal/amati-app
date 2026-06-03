@@ -43,7 +43,7 @@ function App() {
         <Route path="/courses" element={<Courses />} />
         <Route path="/courses/:chapterId" element={<CoursesSubChapters />} />
         <Route
-          path="/material/:chapterId/:subChapterId/:topicId"
+          path="/material/:chapterId/:subChapterId"
           element={<CoursesMaterialView />}
         />
 
