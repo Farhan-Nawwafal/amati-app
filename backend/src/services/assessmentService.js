@@ -54,27 +54,64 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
     score: parseFloat(finalScore.toFixed(2)), 
   });
 
-  // 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
-  const testType = assessmentId.substring(0, 3); // Mengambil 3 huruf pertama (PTG, PTC, QZ, EX)
+// 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
+  const testType = assessmentId.substring(0, 3); 
 
-  // Opsi Tambahan Kembalian untuk Response
   let extraData = {};
 
   if (testType === "PTG") {
-    // Logika Khusus Pre-Test Global (Poin 3 Jalur Pertama)
-    // Menentukan level kompetensi tanpa menyentuh tabel user_progres
+    // Logika Khusus Pre-Test Global (Selesai)
     let calculatedLevel = "beginner";
     if (finalScore > 40 && finalScore <= 75) {
       calculatedLevel = "intermediate";
     } else if (finalScore > 75) {
       calculatedLevel = "advanced";
     }
-    
     extraData.suggestedLevel = calculatedLevel;
   } 
+  
   else if (testType === "PTC") {
-    // Logika Khusus Pre-Test Chapter (Akan kita rakit setelah ini sukses)
-    extraData.message = "Pre-Test Chapter logic will be processed here.";
+    // ========================================================
+    // LOGIKA BARU: Pre-Test Chapter (PTC)
+    // ========================================================
+    
+    // A. Tentukan tingkat kompetensi awal bab berdasarkan skor kuis
+    let currentLevel = "beginner";
+    if (finalScore > 40 && finalScore <= 75) {
+      currentLevel = "intermediate";
+    } else if (finalScore > 75) {
+      currentLevel = "advanced";
+    }
+
+    // B. Ambil info chapter_taken_id dari kuis ini
+    const assessmentInfo = await assessmentRepo.findAssessmentChapterInfo(assessmentId);
+    
+    if (assessmentInfo) {
+      const chapterTakenId = assessmentInfo.chapter_taken_id;
+
+      // C. Ambil semua daftar sub-bab yang ada di dalam bab ini
+      const subChapters = await assessmentRepo.findSubChaptersByChapterTaken(chapterTakenId);
+
+      // D. Susun array data untuk dimasukkan massal ke tabel user_progres
+      const progressPayload = subChapters.map((sub) => {
+        return {
+          id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(), // ID unik progres
+          user_id: userId,
+          sub_chapter_id: sub.id,
+          chapter_taken_id: chapterTakenId,
+          current_level: currentLevel, // Level dinamis hasil kuis
+          status: "not started", // Status awal sesuai panduan gambarmu
+        };
+      });
+
+      // E. Eksekusi simpan massal ke MySQL lewat Prisma
+      if (progressPayload.length > 0) {
+        await assessmentRepo.createBulkUserProgress(progressPayload);
+      }
+    }
+
+    extraData.currentLevel = currentLevel;
+    extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked with status 'not started'.";
   }
 
   // 6. Kembalikan data hasil kalkulasi gabungan
