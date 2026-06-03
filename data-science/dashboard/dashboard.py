@@ -197,3 +197,61 @@ else:
     st.plotly_chart(fig_stuck, use_container_width=True)
 
 
+# Menampilkan Chart Analisis Skor Placement dan Exam di Akhir Bab
+st.markdown("---")
+st.header(f"📊 Grafik Analisis Perbandingan Rata-rata Skor Placement Test (awal) dan Exam (akhir) pada Level {selected_display}")
+
+if selected_level_value == "all":
+    current_level_chapter_names = df_chapters['name'].unique()
+else:
+    current_level_chapter_names = df_chapters[df_chapters['current_level'] == selected_level_value]['name'].unique()
+
+df_answers_filtered = df_answers[df_answers['name'].isin(current_level_chapter_names)]
+
+if df_answers_filtered.empty:
+    st.info(f"Belum ada data nilai assessment untuk bab di level {selected_display}.")
+else:
+    placement_df = df_answers_filtered[df_answers_filtered['type'].str.lower() == 'placement']
+    exam_df = df_answers_filtered[df_answers_filtered['type'].str.lower() != 'placement']
+
+    placement_group = placement_df.groupby('name')['score'].mean().reset_index()
+    placement_group.columns = ['Judul Bab', 'Placement (Awal)']
+
+    exam_grouped = exam_df.groupby('name')['score'].mean().reset_index()
+    exam_grouped.columns = ['Judul Bab', 'Exam (Akhir)']
+
+    base_table = pd.DataFrame({'Judul Bab': current_level_chapter_names})
+    merged_scores = pd.merge(base_table, placement_group, on='Judul Bab', how='left')
+    merged_scores = pd.merge(merged_scores, exam_grouped, on='Judul Bab', how='left')
+    merged_scores = merged_scores.fillna(0)
+
+    df_chart = pd.melt(
+        merged_scores, 
+        id_vars=['Judul Bab'], 
+        value_vars=['Placement (Awal)', 'Exam (Akhir)'],
+        var_name='Tipe Evaluasi', 
+        value_name='Rata-rata Skor'
+    )
+
+    fig_scores = px.bar(
+        df_chart,
+        x='Judul Bab',
+        y='Rata-rata Skor',
+        color='Tipe Evaluasi',
+        barmode='group', 
+        text=df_chart['Rata-rata Skor'].round(2), 
+        labels={'Rata-rata Skor': 'Rata-rata Skor', 'Judul Bab': 'Judul Bab Matematika Kelas 7'},
+        color_discrete_map={
+            'Placement (Awal)': '#A6CEE3', 
+            'Exam (Akhir)': '#1F78B4'       
+        }
+    )
+
+    fig_scores.update_traces(textposition='inside')
+    fig_scores.update_layout(
+        margin=dict(l=20, r=20, t=30, b=20),
+        height=450,
+        legend_title_text='Jenis Evaluasi'
+    )
+
+    st.plotly_chart(fig_scores, use_container_width=True)
