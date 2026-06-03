@@ -18,9 +18,14 @@ export const getQuestionsForAssessment = async (assessmentId) => {
   return assessment;
 };
 
-export const submitAnswersAndCalculateScore = async (userId, assessmentId, userAnswers) => {
-  // 1. Ambil data kuis beserta butir soalnya untuk dicocokkan
-  const assessment = await assessmentRepo.findAssessmentWithQuestions(assessmentId);
+export const submitAnswersAndCalculateScore = async (
+  userId,
+  assessmentId,
+  userAnswers,
+) => {
+  // 1. Ambil data kuis beserta butir soal dari DB master untuk dicocokkan kuncinya
+  const assessment =
+    await assessmentRepo.findAssessmentWithQuestions(assessmentId);
   if (!assessment) {
     throw new Error("Assessment not found!");
   }
@@ -32,30 +37,32 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
 
   let totalCorrect = 0;
 
-  // 2. Logika Pengecekan Jawaban secara Mandiri di Backend
+  // 2. Cocokkan jawaban siswa dari frontend dengan key_answer asli di database
   assessment.questions.forEach((question) => {
-    const studentAnswer = userAnswers.find((ans) => ans.questionId === question.id);
+    const studentAnswer = userAnswers.find(
+      (ans) => ans.questionId === question.id,
+    );
 
     if (studentAnswer && studentAnswer.userAnswer === question.key_answer) {
       totalCorrect++;
     }
   });
 
-  // 3. Hitung skor akhir dengan skala 0 - 100
+  // 3. Kalkulasi Skor Akhir Skala 0 - 100
   const finalScore = (totalCorrect / totalQuestions) * 100;
+  const attemptId =
+    "ATT-" + Math.random().toString(36).substring(2, 12).toUpperCase();
 
-  // 4. Siapkan data untuk disimpan ke user_attempts
-  const attemptId = "ATT-" + Math.random().toString(36).substring(2, 18).toUpperCase();
-
+  // 4. Simpan nilai hasil pengerjaan global ke tabel user_attempts
   const newAttempt = await assessmentRepo.createUserAttempt({
     id: attemptId,
     user_id: userId,
-    assessment_id: assessmentId, 
-    score: parseFloat(finalScore.toFixed(2)), 
+    assessment_id: assessmentId,
+    score: parseFloat(finalScore.toFixed(2)),
   });
 
-  // 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID (3 HURUF PERTAMA)
-  const testType = assessmentId.substring(0, 3).toUpperCase(); 
+// 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
+  const testType = assessmentId.substring(0, 3); 
 
   let extraData = {};
 
@@ -72,10 +79,12 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
     extraData.suggestedLevel = calculatedLevel;
   } 
   
-  // ========================================================
-  // [2] LOGIKA: Pre-Test Chapter (PTC)
-  // ========================================================
   else if (testType === "PTC") {
+    // ========================================================
+    // LOGIKA BARU: Pre-Test Chapter (PTC)
+    // ========================================================
+    
+    // A. Tentukan tingkat kompetensi awal bab berdasarkan skor kuis
     let currentLevel = "beginner";
     if (finalScore > 40 && finalScore <= 75) {
       currentLevel = "intermediate";
@@ -83,23 +92,33 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
       currentLevel = "advanced";
     }
 
+    // B. Ambil info chapter_taken_id dari kuis ini
     const assessmentInfo = await assessmentRepo.findAssessmentChapterInfo(assessmentId);
     
     if (assessmentInfo) {
       const chapterTakenId = assessmentInfo.chapter_taken_id;
+
+      // C. Ambil semua daftar sub-bab yang ada di dalam bab ini
       const subChapters = await assessmentRepo.findSubChaptersByChapterTaken(chapterTakenId);
 
+      // D. Susun array data untuk dimasukkan massal ke tabel user_progres
       const progressPayload = subChapters.map((sub) => {
         return {
-          id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(),
+          id: "PRG-" + Math.random().toString(36).substring(2, 12).toUpperCase(), // ID unik progres
           user_id: userId,
           sub_chapter_id: sub.id,
           chapter_taken_id: chapterTakenId,
+<<<<<<< HEAD
           current_level: currentLevel, 
           status: "not_started", 
+=======
+          current_level: currentLevel, // Level dinamis hasil kuis
+          status: "not started", // Status awal sesuai panduan gambarmu
+>>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
         };
       });
 
+      // E. Eksekusi simpan massal ke MySQL lewat Prisma
       if (progressPayload.length > 0) {
         await assessmentRepo.createBulkUserProgress(progressPayload);
       }
@@ -136,8 +155,14 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
       }
     }
 
+<<<<<<< HEAD
     extraData.currentLevel = currentLevel;
     extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked & AI Personalized report generated!";
+=======
+    extraData.suggestedLevel = calculatedLevel;
+    extraData.message =
+      "Pre-Test Global completed. Adaptive user progress baseline has been created.";
+>>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
   }
 
   // ========================================================
@@ -174,13 +199,12 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
     }
   }
 
-  // 6. Kembalikan data hasil kalkulasi gabungan
   return {
     attemptId: newAttempt.id,
     totalQuestions,
     correctAnswers: totalCorrect,
     score: newAttempt.score,
-    ...extraData 
+    ...extraData // Menggabungkan data level otomatis jika kuisnya PTG
   };
 };
 

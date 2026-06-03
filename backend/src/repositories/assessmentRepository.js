@@ -17,8 +17,8 @@ export const countUserPlacementAttempts = async (userId) => {
     where: {
       user_id: userId,
       assessment: {
-        type: 'placement'
-      }
+        type: "placement",
+      },
     },
   });
 };
@@ -34,7 +34,7 @@ export const createUserAttempt = async (attemptData) => {
 export const findAssessmentChapterInfo = async (assessmentId) => {
   return await prisma.assessment.findUnique({
     where: { id: assessmentId },
-    select: { chapter_taken_id: true } // Mengambil ID relasi bab yang diambil
+    select: { chapter_taken_id: true }, // Mengambil ID relasi bab yang diambil
   });
 };
 
@@ -43,14 +43,23 @@ export const findSubChaptersByChapterTaken = async (chapterTakenId) => {
   // Mencari data bab asli untuk mendapatkan chapter_id
   const chapterTaken = await prisma.chapterTaken.findUnique({
     where: { id: chapterTakenId },
-    select: { chapter_id: true }
+    select: { chapter_id: true },
   });
 
   if (!chapterTaken) return [];
 
   // Mengambil semua sub-bab milik chapter tersebut
   return await prisma.subChapter.findMany({
-    where: { chapter_id: chapterTaken.chapter_id }
+    where: { chapter_id: chapterTaken.chapter_id },
+  });
+};
+
+export const getAllSubChaptersMaster = async () => {
+  return await prisma.subChapter.findMany({
+    select: {
+      id: true,
+      name: true,
+    },
   });
 };
 

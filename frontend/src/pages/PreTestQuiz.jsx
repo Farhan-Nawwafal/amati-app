@@ -1,64 +1,45 @@
+// src/pages/PreTestQuiz.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAssessmentQuestions } from "../services/assessmentService";
-
-// DATA DUMMY (MOCK DATA) SEBAGAI FALLBACK JIKA BANK SOAL DI BE BELUM SIAP
-const DUMMY_QUESTIONS = [
-  {
-    id: 1,
-    topic: "Bilangan Bulat",
-    question:
-      "Bilangan adalah suatu konsep matematika yang digunakan untuk merepresentasikan jumlah, ukuran, atau urutan suatu objek. Berdasarkan grafik di bawah ini, tentukan pernyataan pembagian posisi matematika yang paling valid:",
-    image: "https://via.placeholder.com/600x150?text=Grafik+Garis+Bilangan",
-    options: [
-      "A. -5 > 2",
-      "B. 0 adalah bilangan negatif",
-      "C. 3 < 5",
-      "D. -2 < -4",
-    ],
-    correctAnswer: 2,
-  },
-  {
-    id: 2,
-    topic: "Aljabar Dasar",
-    question: "Jika nilai x = 5, berapakah hasil dari persamaan 2x + 10?",
-    image: null,
-    options: ["15", "20", "25", "30"],
-    correctAnswer: 1,
-  },
-];
+import {
+  getAssessmentQuestions,
+  submitAssessmentAnswers,
+} from "../services/assessmentService";
 
 const PreTestQuiz = () => {
   const navigate = useNavigate();
 
+  // State Utama Manajemen Kuis
   const [preTestQuestions, setPreTestQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState([]);
-  const [timeLeft, setTimeLeft] = useState(900);
+  const [selectedAnswers, setSelectedAnswers] = useState([]); // Menyimpan objek [{ questionId, userAnswer }]
+  const [timeLeft, setTimeLeft] = useState(900); // 15 Menit timer kuis
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const placementId = "AS00001";
+        const placementId = "PTG00001";
         const response = await getAssessmentQuestions(placementId);
 
-        // Sesuai struktur data BE: response.data.data.questions
         const questionsFromDb = response.data?.data?.questions || [];
 
         if (questionsFromDb.length > 0) {
           setPreTestQuestions(questionsFromDb);
-          setSelectedAnswers(Array(questionsFromDb.length).fill(null));
+          setSelectedAnswers(
+            questionsFromDb.map((q) => ({
+              questionId: q.id,
+              userAnswer: null,
+            })),
+          );
         } else {
-          setPreTestQuestions(DUMMY_QUESTIONS);
-          setSelectedAnswers(Array(DUMMY_QUESTIONS.length).fill(null));
+          alert("Peringatan: Bank soal pre-test di database kamu kosong!");
         }
       } catch (error) {
-        console.warn(
-          "API BE belum siap/gagal di-load. Otomatis menggunakan data dummy agar demo tetap berjalan lancar.",
+        console.error("Gagal mengambil soal pre-test:", error);
+        alert(
+          "Error: Gagal memuat lembar ujian. Pastikan database MySQL dan server BE kamu menyala!",
         );
-        setPreTestQuestions(DUMMY_QUESTIONS);
-        setSelectedAnswers(Array(DUMMY_QUESTIONS.length).fill(null));
       } finally {
         setLoading(false);
       }
@@ -67,10 +48,10 @@ const PreTestQuiz = () => {
     fetchQuestions();
   }, []);
 
-  // Format Timer Waktu (MM:SS)
+  // Format Timer Waktu Mundur (MM : SS)
   useEffect(() => {
     if (timeLeft <= 0) {
-      handleSubmitPreTest(); // Waktu habis otomatis submit
+      handleAutoSubmit();
       return;
     }
     const timer = setInterval(() => setTimeLeft((prev) => prev - 1), 1000);
@@ -85,7 +66,7 @@ const PreTestQuiz = () => {
     return `${m} : ${s}`;
   };
 
-  // Navigasi Soal
+  // Navigasi Soal Kuis
   const handleNext = () => {
     if (currentQuestionIndex < preTestQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -98,34 +79,72 @@ const PreTestQuiz = () => {
     }
   };
 
-  // Memilih Jawaban
+  // Memilih Pilihan Ganda (Menyimpan index pilihan ganda sebagai nilai string "0", "1", dst)
   const handleSelectOption = (optionIndex) => {
-    const updatedAnswers = [...selectedAnswers];
-    updatedAnswers[currentQuestionIndex] = optionIndex;
+    const currentQ = preTestQuestions[currentQuestionIndex];
+    const updatedAnswers = selectedAnswers.map((ans) => {
+      if (ans.questionId === currentQ.id) {
+        return { ...ans, userAnswer: optionIndex.toString() };
+      }
+      return ans;
+    });
     setSelectedAnswers(updatedAnswers);
   };
 
-  // Submit Kuis
-  const handleSubmitPreTest = () => {
-    let score = 0;
-    preTestQuestions.forEach((q, index) => {
-      if (selectedAnswers[index] === q.correctAnswer) score += 1;
-    });
-
-    // Pindah ke halaman result sambil membawa data skor
-    navigate("/pre-test/result", {
-      state: { finalScore: score, totalQuestions: preTestQuestions.length },
-    });
+  // Logic Submit Tombol Manual
+  const handleSubmitPreTest = async () => {
+    const confirmSubmit = window.confirm(
+      "Apakah Anda yakin ingin mengakhiri dan mengirim hasil Pre-Test Anda?",
+    );
+    if (!confirmSubmit) return;
+    await executeSubmission();
   };
 
-  // Handler Tombol Keluar dari Kuis (Pengaman Alur Aplikasi)
+  // Logic Auto-Submit saat waktu habis
+  const handleAutoSubmit = async () => {
+    alert(
+      "Waktu ujian Anda telah habis! Lembar jawaban Anda otomatis dikirimkan ke server.",
+    );
+    await executeSubmission();
+  };
+
+  // Eksekusi Pengiriman Paket Jawaban Ke API Backend
+  const executeSubmission = async () => {
+    try {
+      setLoading(true);
+      const placementId = "PTG00001";
+
+      const payload = {
+        answers: selectedAnswers, // Mengirimkan objek [{ questionId, userAnswer }]
+      };
+
+      const response = await submitAssessmentAnswers(placementId, payload);
+      console.log("Sukses menyimpan hasil pengerjaan kuis:", response.data);
+
+      const scoreResult = response.data?.data?.score || 0;
+
+      // Navigasi sukses membawa data skor asli hitungan server ke halaman result
+      navigate("/pre-test/result", {
+        state: {
+          finalScore: scoreResult,
+          totalQuestions: preTestQuestions.length,
+        },
+      });
+    } catch (error) {
+      console.error("Gagal melakukan submission kuis:", error);
+      alert(
+        "Terjadi kegagalan koneksi ke server saat menyimpan lembar jawaban.",
+      );
+      setLoading(false);
+    }
+  };
+
+  // Handler Pengaman: Cegah siswa tidak sengaja klik tombol keluar back rute
   const handleCancelQuiz = () => {
     const confirmExit = window.confirm(
-      "Apakah Anda yakin ingin keluar dari Pre-Test? Progres pendaftaran Anda sudah tersimpan, namun Anda harus menyelesaikan tes ini nanti untuk membuka materi Kurikulum Adaptif Matematika.",
+      "Apakah Anda yakin ingin keluar dari Pre-Test? Anda harus menyelesaikan tes ini nanti untuk membuka materi Kurikulum Adaptif.",
     );
-    if (confirmExit) {
-      navigate("/login");
-    }
+    if (confirmExit) navigate("/login");
   };
 
   if (loading) {
@@ -138,12 +157,24 @@ const PreTestQuiz = () => {
           fontFamily: "'Inter', sans-serif",
         }}
       >
-        Sedang mengunduh soal Diagnostic Pre-Test...
+        🔄 Sedang memproses lembar kuis ujian matematika...
       </div>
     );
   }
 
   const currentQ = preTestQuestions[currentQuestionIndex];
+  const currentAnswerObj = selectedAnswers.find(
+    (ans) => ans.questionId === currentQ?.id,
+  );
+  const currentSelectedValue = currentAnswerObj?.userAnswer
+    ? parseInt(currentAnswerObj.userAnswer)
+    : null;
+
+  // Render opsi jawaban secara dinamis dari tipe data Json database
+  const parsedOptions =
+    typeof currentQ?.options === "string"
+      ? JSON.parse(currentQ.options)
+      : currentQ?.options || [];
 
   return (
     <div
@@ -155,7 +186,7 @@ const PreTestQuiz = () => {
         fontFamily: "'Inter', sans-serif",
       }}
     >
-      {/* ================= HEADER TOP BAR ================= */}
+      {/* HEADER TOP BAR */}
       <header
         style={{
           backgroundColor: "#fff",
@@ -198,7 +229,7 @@ const PreTestQuiz = () => {
       </header>
 
       <div style={{ display: "flex", flex: "1", overflow: "hidden" }}>
-        {/* ================= SIDEBAR NAVIGASI SOAL KIRI ================= */}
+        {/* SIDEBAR NAVIGASI GRID ANGKA */}
         <aside
           style={{
             width: "280px",
@@ -219,7 +250,6 @@ const PreTestQuiz = () => {
           >
             Daftar Soal
           </h3>
-
           <div
             style={{
               display: "grid",
@@ -227,37 +257,40 @@ const PreTestQuiz = () => {
               gap: "10px",
             }}
           >
-            {/* Membuat tombol grid dinamis mengikuti jumlah soal asli/dummy yang termuat */}
-            {preTestQuestions.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentQuestionIndex(idx)}
-                style={{
-                  width: "45px",
-                  height: "45px",
-                  borderRadius: "8px",
-                  border: "none",
-                  fontWeight: "bold",
-                  fontSize: "0.9rem",
-                  cursor: "pointer",
-                  backgroundColor:
-                    currentQuestionIndex === idx
-                      ? "#007bff"
-                      : selectedAnswers[idx] !== null
-                        ? "#28a745"
-                        : "#e9ecef",
-                  color:
-                    currentQuestionIndex === idx ||
-                    selectedAnswers[idx] !== null
-                      ? "#fff"
-                      : "#666",
-                }}
-              >
-                {idx + 1}
-              </button>
-            ))}
+            {preTestQuestions.map((q, idx) => {
+              const ansObj = selectedAnswers.find(
+                (ans) => ans.questionId === q.id,
+              );
+              const isAnswered = ansObj && ansObj.userAnswer !== null;
+              return (
+                <button
+                  key={q.id}
+                  onClick={() => setCurrentQuestionIndex(idx)}
+                  style={{
+                    width: "45px",
+                    height: "45px",
+                    borderRadius: "8px",
+                    border: "none",
+                    fontWeight: "bold",
+                    fontSize: "0.9rem",
+                    cursor: "pointer",
+                    backgroundColor:
+                      currentQuestionIndex === idx
+                        ? "#007bff"
+                        : isAnswered
+                          ? "#28a745"
+                          : "#e9ecef",
+                    color:
+                      currentQuestionIndex === idx || isAnswered
+                        ? "#fff"
+                        : "#666",
+                  }}
+                >
+                  {idx + 1}
+                </button>
+              );
+            })}
           </div>
-
           <div style={{ marginTop: "auto", paddingTop: "30px" }}>
             <button
               onClick={handleSubmitPreTest}
@@ -277,7 +310,7 @@ const PreTestQuiz = () => {
           </div>
         </aside>
 
-        {/* ================= AREA KERJA SOAL KANAN ================= */}
+        {/* WORKSPACE AREA SOAL */}
         <main
           style={{
             flex: "1",
@@ -349,7 +382,7 @@ const PreTestQuiz = () => {
                   </div>
                 )}
 
-                {/* GRID OPSI JAWABAN (2 Kolom) */}
+                {/* GRID OPSI JAWABAN */}
                 <div
                   style={{
                     display: "grid",
@@ -357,7 +390,7 @@ const PreTestQuiz = () => {
                     gap: "20px",
                   }}
                 >
-                  {currentQ.options.map((opt, idx) => (
+                  {parsedOptions.map((opt, idx) => (
                     <div
                       key={idx}
                       onClick={() => handleSelectOption(idx)}
@@ -369,11 +402,11 @@ const PreTestQuiz = () => {
                         alignItems: "center",
                         gap: "15px",
                         border:
-                          selectedAnswers[currentQuestionIndex] === idx
+                          currentSelectedValue === idx
                             ? "2px solid #007bff"
                             : "1px solid #ddd",
                         backgroundColor:
-                          selectedAnswers[currentQuestionIndex] === idx
+                          currentSelectedValue === idx
                             ? "rgba(0, 123, 255, 0.05)"
                             : "#fff",
                         transition: "all 0.2s",
@@ -389,16 +422,14 @@ const PreTestQuiz = () => {
                           alignItems: "center",
                           justifyContent: "center",
                           backgroundColor:
-                            selectedAnswers[currentQuestionIndex] === idx
+                            currentSelectedValue === idx
                               ? "#007bff"
                               : "transparent",
                           borderColor:
-                            selectedAnswers[currentQuestionIndex] === idx
-                              ? "#007bff"
-                              : "#ccc",
+                            currentSelectedValue === idx ? "#007bff" : "#ccc",
                         }}
                       >
-                        {selectedAnswers[currentQuestionIndex] === idx && (
+                        {currentSelectedValue === idx && (
                           <div
                             style={{
                               width: "10px",
@@ -417,7 +448,7 @@ const PreTestQuiz = () => {
                 </div>
               </div>
 
-              {/* TOMBOL PREVIOUS & NEXT */}
+              {/* NAVIGASI PREV NEXT FOOTER */}
               <div
                 style={{
                   display: "flex",
@@ -443,7 +474,6 @@ const PreTestQuiz = () => {
                 >
                   Previous
                 </button>
-
                 {currentQuestionIndex < preTestQuestions.length - 1 ? (
                   <button
                     onClick={handleNext}
@@ -481,7 +511,7 @@ const PreTestQuiz = () => {
             <div
               style={{ textAlign: "center", marginTop: "50px", color: "#666" }}
             >
-              Soal sedang disiapkan...
+              Bank Soal tidak ditemukan...
             </div>
           )}
         </main>
