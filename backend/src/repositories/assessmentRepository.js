@@ -61,3 +61,16 @@ export const createBulkUserProgress = async (progressDataArray) => {
     skipDuplicates: true, // Amankan dari eror jika data sudah pernah terbuat
   });
 };
+
+// Fungsi untuk mengubah status progres sub-bab siswa menjadi 'done'
+export const updateUserProgressToDone = async (userId, subChapterId) => {
+  return await prisma.userProgres.updateMany({
+    where: {
+      user_id: userId,
+      sub_chapter_id: subChapterId,
+    },
+    data: {
+      status: "done", // Mengubah status menjadi done sesuai diagram kendali
+    },
+  });
+};
