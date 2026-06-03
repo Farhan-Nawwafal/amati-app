@@ -69,3 +69,24 @@ export const submitAssessment = async (req, res) => {
     });
   }
 };
+
+// Endpoint untuk mengambil laporan AI milik siswa berdasarkan userId
+export const getUserAiReports = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    
+    // Panggil fungsi service
+    const reports = await assessmentService.getUserAiReports(userId);
+
+    return res.status(200).json({
+      success: true,
+      message: "AI Reports retrieved successfully!",
+      data: reports,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};

@@ -1,3 +1,4 @@
+import { generateAiRecommendation } from "../utils/aiClient.js";
 import * as assessmentRepo from "../repositories/assessmentRepository.js";
 
 export const getQuestionsForAssessment = async (assessmentId) => {
@@ -107,8 +108,13 @@ export const submitAnswersAndCalculateScore = async (
           user_id: userId,
           sub_chapter_id: sub.id,
           chapter_taken_id: chapterTakenId,
+<<<<<<< HEAD
+          current_level: currentLevel, 
+          status: "not_started", 
+=======
           current_level: currentLevel, // Level dinamis hasil kuis
           status: "not started", // Status awal sesuai panduan gambarmu
+>>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
         };
       });
 
@@ -116,11 +122,47 @@ export const submitAnswersAndCalculateScore = async (
       if (progressPayload.length > 0) {
         await assessmentRepo.createBulkUserProgress(progressPayload);
       }
+
+      // ========================================================
+      // INTEGRASI AI 
+      // ========================================================
+      try {
+        //  Memicu AI dan menangkap response teks transkrip
+        const aiResult = await generateAiRecommendation(newAttempt.score, currentLevel);
+
+        const aiReportId = "AI-REP-" + Math.random().toString(36).substring(2, 12).toUpperCase();
+
+        // Menyimpan laporan AI hasil tangkapan langsung ke MySQL
+        await assessmentRepo.createAiReport({
+          id: aiReportId,
+          userId: userId,
+          chapterTakenId: chapterTakenId,
+          evaluationText: aiResult.evaluationText,
+          recomendationList: aiResult.recomendationList // Array otomatis diconvert ke JSON oleh Prisma!
+        });
+
+        // Selipkan ke data kembalian agar Postman bisa melihat hasil kerja AI
+        extraData.aiAnalysis = {
+          reportId: aiReportId,
+          evaluation: aiResult.evaluationText,
+          recommendations: aiResult.recomendationList
+        };
+
+      } catch (aiError) {
+        // Supaya jika AI down, kuis utama siswa tidak ikut eror (Gently handle)
+        console.error("AI Generation failed but assessment saved:", aiError.message);
+        extraData.aiStatus = "AI Engine temporary unavailable, report queue deferred.";
+      }
     }
 
+<<<<<<< HEAD
+    extraData.currentLevel = currentLevel;
+    extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked & AI Personalized report generated!";
+=======
     extraData.suggestedLevel = calculatedLevel;
     extraData.message =
       "Pre-Test Global completed. Adaptive user progress baseline has been created.";
+>>>>>>> 0f8dccbb5d8cc8ce8f6d7fae11558e978407c47f
   }
 
   // ========================================================
@@ -169,4 +211,16 @@ export const submitAnswersAndCalculateScore = async (
 export const checkIfUserHasTakenPlacement = async (userId) => {
   const count = await assessmentRepo.countUserPlacementAttempts(userId);
   return count > 0;
+};
+
+// Fungsi untuk memproses pengambilan laporan AI siswa
+export const getUserAiReports = async (userId) => {
+  const reports = await assessmentRepo.findAiReportsByUserId(userId);
+  
+  // Jika siswa belum punya laporan AI sama sekali
+  if (!reports || reports.length === 0) {
+    throw new Error("No AI reports found for this user. Take a Pre-Test Chapter first!");
+  }
+
+  return reports;
 };
