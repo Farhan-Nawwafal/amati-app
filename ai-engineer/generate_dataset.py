@@ -48,29 +48,38 @@ def generate_monte_carlo_dataset():
         t_sub = total_subchapters[i]
         
         if status == "not started":
-            # Jika belum mulai, semuanya 0
             avg_scores.append(0.0)
             total_attempts_list.append(0.0)
             total_subchapters_done_list.append(0.0)
-        
-        elif status == "in-progress":
-            # Menggunakan Bell Curve untuk nilai rata-rata (kisaran 40-70)
-            score = np.random.normal(loc=55, scale=15)
-            avg_scores.append(round(np.clip(score, 10, 85), 2))
             
-            attempts = np.random.normal(loc=2, scale=1)
-            total_attempts_list.append(round(np.clip(attempts, 1, 5), 1))
+        elif status == "in-progress":
+            # Semakin banyak attempt di in-progress, nilainya cenderung rendah
+            attempts = float(np.random.randint(1, 5))
+            total_attempts_list.append(attempts)
+            
+            # Base score 65, dikurangi 5 poin setiap nambah attempt
+            base_score = np.random.normal(loc=65, scale=5)
+            score = base_score - (attempts * 5) 
+            avg_scores.append(round(np.clip(score, 10, 85), 2))
             
             done = np.random.randint(0, t_sub)
             total_subchapters_done_list.append(float(done))
             
-        else:
-            score = np.random.normal(loc=80, scale=10)
+        else: # status == 'done'
+            attempts = float(np.random.randint(1, 6))
+            total_attempts_list.append(attempts)
+            
+            # Logika Benar: 1 Attempt = Nilai Sempurna, >3 Attempt = Nilai Pas-pasan
+            if attempts == 1:
+                score = np.random.normal(loc=95, scale=3)
+            elif attempts == 2:
+                score = np.random.normal(loc=88, scale=4)
+            elif attempts == 3:
+                score = np.random.normal(loc=80, scale=4)
+            else:
+                score = np.random.normal(loc=72, scale=3)
+                
             avg_scores.append(round(np.clip(score, 60, 100), 2))
-            
-            attempts = np.random.normal(loc=4, scale=2)
-            total_attempts_list.append(round(np.clip(attempts, 1, 10), 1))
-            
             total_subchapters_done_list.append(float(t_sub))
 
     # 6. Menyusun hasil simulasi ke dalam format DataFrame persis seperti master data

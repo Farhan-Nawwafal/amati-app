@@ -122,13 +122,9 @@ def predict_score(data: StudentDataInput):
         # Ambil skor mentah dari AI
         skor_mentah_ai = float(hasil_skor[0][0])
         
-        # Hitung persentase progres penyelesaian materi
-        if data.total_subchapter > 0:
-            rasio_progres = data.total_subchapters_done / data.total_subchapter
-        else:
-            rasio_progres = 0.0
-            
-        skor_final = skor_mentah_ai * rasio_progres
+        # AI sudah dilatih dengan sangat presisi di dataset.
+        # Kita gunakan skor murni AI tanpa memotongnya dengan rasio progres!
+        skor_final = skor_mentah_ai
         
         # Pastikan nilai tetap berada di rentang batas wajar (0 - 100)
         skor_final = max(0.0, min(100.0, skor_final))
