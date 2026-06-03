@@ -1,3 +1,4 @@
+import { generateAiRecommendation } from "../utils/aiClient.js";
 import * as assessmentRepo from "../repositories/assessmentRepository.js";
 
 export const getQuestionsForAssessment = async (assessmentId) => {
@@ -95,17 +96,48 @@ export const submitAnswersAndCalculateScore = async (userId, assessmentId, userA
           sub_chapter_id: sub.id,
           chapter_taken_id: chapterTakenId,
           current_level: currentLevel, 
-          status: "not started", 
+          status: "not_started", 
         };
       });
 
       if (progressPayload.length > 0) {
         await assessmentRepo.createBulkUserProgress(progressPayload);
       }
+
+      // ========================================================
+      // INTEGRASI AI 
+      // ========================================================
+      try {
+        //  Memicu AI dan menangkap response teks transkrip
+        const aiResult = await generateAiRecommendation(newAttempt.score, currentLevel);
+
+        const aiReportId = "AI-REP-" + Math.random().toString(36).substring(2, 12).toUpperCase();
+
+        // Menyimpan laporan AI hasil tangkapan langsung ke MySQL
+        await assessmentRepo.createAiReport({
+          id: aiReportId,
+          userId: userId,
+          chapterTakenId: chapterTakenId,
+          evaluationText: aiResult.evaluationText,
+          recomendationList: aiResult.recomendationList // Array otomatis diconvert ke JSON oleh Prisma!
+        });
+
+        // Selipkan ke data kembalian agar Postman bisa melihat hasil kerja AI
+        extraData.aiAnalysis = {
+          reportId: aiReportId,
+          evaluation: aiResult.evaluationText,
+          recommendations: aiResult.recomendationList
+        };
+
+      } catch (aiError) {
+        // Supaya jika AI down, kuis utama siswa tidak ikut eror (Gently handle)
+        console.error("AI Generation failed but assessment saved:", aiError.message);
+        extraData.aiStatus = "AI Engine temporary unavailable, report queue deferred.";
+      }
     }
 
     extraData.currentLevel = currentLevel;
-    extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked with status 'not started'.";
+    extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked & AI Personalized report generated!";
   }
 
   // ========================================================

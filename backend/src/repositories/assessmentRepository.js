@@ -86,3 +86,16 @@ export const updateChapterTakenToDone = async (chapterTakenId) => {
     },
   });
 };
+
+// Fungsi untuk menyimpan transkrip evaluasi & rekomendasi dari AI ke database
+export const createAiReport = async (data) => {
+  return await prisma.aiReport.create({
+    data: {
+      id: data.id,
+      user_id: data.userId,
+      chapter_taken_id: data.chapterTakenId,
+      evaluation_text: data.evaluationText,
+      recomendation_list: data.recomendationList, // Akan menyimpan array/objek JSON langsung
+    },
+  });
+};
