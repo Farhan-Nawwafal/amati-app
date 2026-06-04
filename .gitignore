@@ -52,10 +52,6 @@ Thumbs.db
 # 5. AI / DATA SCIENCE / PYTHON (ai-engineer)
 # ==========================================
 # Mengamankan file rahasia, cache, dan script eksperimen AI
-**/__pycache__/
-*.pyc
-**/*.pyc
-.vercel/
-.venv/
-env/
-venv/
+ai-engineer/.env
+ai-engineer/__pycache__/
+ai-engineer/**/*.pyc
