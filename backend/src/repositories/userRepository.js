@@ -31,3 +31,14 @@ export const getUserData = async (data) =>
       role: true,
     },
   });
+
+  export const getUserById = async (id) =>
+  await prisma.user.findUnique({
+    where: { id: id },
+  });
+
+  export const updateUserProfileData = async (id, updatedPayload) =>
+  await prisma.user.update({
+    where: { id: id },
+    data: updatedPayload, // Otomatis mengupdate kolom yang dikirim dari service
+  });
