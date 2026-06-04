@@ -28,15 +28,17 @@ const Settings = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // ================= 1. FUNGSI GET: AMBIL DATA DARI BACKEND =================
-  useEffect(() => {
+useEffect(() => {
     const fetchUserData = async () => {
       try {
-        // Ganti URL ini dengan endpoint asli backend AMATI kamu nanti
-        const response = await fetch('http://localhost:5000/api/user/profile', {
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('Token tidak ditemukan di localStorage');
+
+        const response = await fetch('http://localhost:3000/api/auth/profile', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            // 'Authorization': `Bearer ${localStorage.getItem('token')}` // Buka jika pakai JWT Token
+            'Authorization': `Bearer ${token}` // 🔓 COMMENT SUDAH DIBUKA & AKTIF
           }
         });
 
@@ -44,22 +46,21 @@ const Settings = () => {
           const data = await response.json();
           setFormData({
             name: data.name || '',
-            birthDate: data.birthDate || '',
+            birthDate: data.birthDate ? data.birthDate.split('T')[0] : '', // Format tanggal agar bersih YYYY-MM-DD
             email: data.email || '',
-            password: '************' // Samarkan password demi keamanan
+            password: '************'
           });
           setEmailNotif(data.emailNotif ?? true);
           setExamReminder(data.examReminder ?? true);
           setCourseUpdate(data.courseUpdate ?? true);
         } else {
-          throw new Error('Backend belum siap');
+          throw new Error('Backend belum siap atau token kedaluwarsa');
         }
       } catch (error) {
-        console.log("⚠️ Backend belum merespons, mengaktifkan data dummy AMATI...");
-        // CADANGAN: Data dummy otomatis aktif jika backend belum dibuat
+        console.log("⚠️ Menggunakan data dummy karena:", error.message);
         setFormData({
           name: "Anna Carescco",
-          birthDate: "21 August 1999",
+          birthDate: "1999-08-21",
           email: "annacarescco@gmail.com",
           password: "layerssecret"
         });
@@ -76,25 +77,28 @@ const Settings = () => {
   };
 
   // ================= 2. FUNGSI PUT: SIMPAN PERUBAHAN PROFIL =================
-  const handleSaveChanges = async (e) => {
+const handleSaveChanges = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/profile', {
+      const token = localStorage.getItem('token');
+      const response = await fetch('http://localhost:3000/api/auth/profile', { // 🌟 PORT DISESUAIKAN KE 3000
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // 🌟 SERTAKAN TOKEN UNTUK UPDATE
+        },
         body: JSON.stringify(formData)
       });
 
       if (response.ok) {
-        alert("🎉 Profil berhasil diperbarui di backend!");
+        alert("🎉 Profil berhasil diperbarui di database database!");
       } else {
         throw new Error('Gagal update ke database');
       }
     } catch (error) {
       console.error(error);
-      // Notifikasi fallback simulasi sukses lokal
       alert(`⚙️ [Mode Simulasi] Perubahan profil untuk "${formData.name}" disimpan lokal.`);
     } finally {
       setIsLoading(false);
@@ -102,14 +106,18 @@ const Settings = () => {
   };
 
   // ================= 3. FUNGSI PATCH: SIMPAN PREFERENSI TOGGLE NOTIFIKASI =================
-  const handleToggleNotif = async (type, currentValue, setStates) => {
+const handleToggleNotif = async (type, currentValue, setStates) => {
     const newValue = !currentValue;
-    setStates(newValue); // Update UI secara instan
+    setStates(newValue);
 
     try {
-      await fetch('http://localhost:5000/api/user/settings', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
+      const token = localStorage.getItem('token');
+      await fetch('http://localhost:3000/api/auth/profile', { // 🌟 PORT DISESUAIKAN KE 3000
+        method: 'PUT', // Kita satukan ke endpoint profile PUT yang sudah kita buat
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify({ [type]: newValue })
       });
     } catch (error) {
@@ -174,14 +182,36 @@ const Settings = () => {
               
               {/* Bagian Edit Foto */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px' }}>
-                <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#ffcc00', overflow: 'hidden' }}>
-                  <img src="https://via.placeholder.com/80" alt="Avatar" />
+                  {/* Lingkaran Avatar dengan Inisial Nama Dinamis */}
+                  <div style={{ 
+                    width: '80px', 
+                    height: '80px', 
+                    borderRadius: '50%', 
+                    backgroundColor: '#002d72', // Warna biru AMATI sesuai branding kamu
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 4px 10px rgba(0,2,114,0.15)'
+                  }}>
+                    <span style={{ 
+                      color: '#ffffff', 
+                      fontSize: '2rem', 
+                      fontWeight: '700',
+                      textTransform: 'uppercase'
+                    }}>
+                      {formData.name ? formData.name.charAt(0) : 'U'}
+                    </span>
+                  </div>
+                  
+                  <div>
+                    <h4 style={{ margin: '0 0 4px 0', color: '#333', fontSize: '1rem', fontWeight: '700' }}>
+                      Personal Avatar
+                    </h4>
+                    <span style={{ fontSize: '0.75rem', color: '#aaa', display: 'block', maxWidth: '350px', lineHeight: '1.4' }}>
+                      Avatar otomatis disesuaikan dengan inisial nama akun siswa Anda.
+                    </span>
+                  </div>
                 </div>
-                <div>
-                  <button type="button" style={{ padding: '8px 15px', backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '8px', cursor: 'pointer', fontSize: '0.85rem', marginBottom: '8px', display: 'block' }}>Edit Photo</button>
-                  <span style={{ fontSize: '0.75rem', color: '#aaa' }}>We suggest you to upload your photo with ratio 1:1. Please make sure the size is under 1 MB.</span>
-                </div>
-              </div>
 
               {/* Form Input Baris dengan Value Dinamis */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', columnGap: '35px', rowGap: '35px' }}>
