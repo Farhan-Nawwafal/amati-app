@@ -1,4 +1,3 @@
-// src/pages/PreTestQuiz.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
@@ -19,7 +18,7 @@ const PreTestQuiz = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const placementId = "PTG00001";
+        const placementId = "AS-PLC-001";
         const response = await getAssessmentQuestions(placementId);
 
         const questionsFromDb = response.data?.data?.questions || [];
@@ -80,11 +79,11 @@ const PreTestQuiz = () => {
   };
 
   // Memilih Pilihan Ganda (Menyimpan index pilihan ganda sebagai nilai string "0", "1", dst)
-  const handleSelectOption = (optionIndex) => {
+  const handleSelectOption = (optionLetter) => {
     const currentQ = preTestQuestions[currentQuestionIndex];
     const updatedAnswers = selectedAnswers.map((ans) => {
       if (ans.questionId === currentQ.id) {
-        return { ...ans, userAnswer: optionIndex.toString() };
+        return { ...ans, userAnswer: optionLetter };
       }
       return ans;
     });
@@ -112,7 +111,7 @@ const PreTestQuiz = () => {
   const executeSubmission = async () => {
     try {
       setLoading(true);
-      const placementId = "PTG00001";
+      const placementId = "AS-PLC-001";
 
       const payload = {
         answers: selectedAnswers, // Mengirimkan objek [{ questionId, userAnswer }]
@@ -166,15 +165,16 @@ const PreTestQuiz = () => {
   const currentAnswerObj = selectedAnswers.find(
     (ans) => ans.questionId === currentQ?.id,
   );
-  const currentSelectedValue = currentAnswerObj?.userAnswer
-    ? parseInt(currentAnswerObj.userAnswer)
-    : null;
 
-  // Render opsi jawaban secara dinamis dari tipe data Json database
-  const parsedOptions =
-    typeof currentQ?.options === "string"
+  // 💡 Ganti pengecekan angka menjadi pengecekan Huruf String
+  const currentSelectedLetter = currentAnswerObj?.userAnswer || null;
+
+  // 💡 Pastikan JSON di-parse menjadi Object (Bukan Array)
+  const parsedOptions = currentQ?.options
+    ? typeof currentQ.options === "string"
       ? JSON.parse(currentQ.options)
-      : currentQ?.options || [];
+      : currentQ.options
+    : {};
 
   return (
     <div
@@ -390,10 +390,11 @@ const PreTestQuiz = () => {
                     gap: "20px",
                   }}
                 >
-                  {parsedOptions.map((opt, idx) => (
+                  {/* 💡 Gunakan Object.entries karena datanya sekarang berbentuk JSON Object */}
+                  {Object.entries(parsedOptions).map(([letter, text]) => (
                     <div
-                      key={idx}
-                      onClick={() => handleSelectOption(idx)}
+                      key={letter}
+                      onClick={() => handleSelectOption(letter)}
                       style={{
                         padding: "15px 20px",
                         borderRadius: "12px",
@@ -402,11 +403,11 @@ const PreTestQuiz = () => {
                         alignItems: "center",
                         gap: "15px",
                         border:
-                          currentSelectedValue === idx
+                          currentSelectedLetter === letter
                             ? "2px solid #007bff"
                             : "1px solid #ddd",
                         backgroundColor:
-                          currentSelectedValue === idx
+                          currentSelectedLetter === letter
                             ? "rgba(0, 123, 255, 0.05)"
                             : "#fff",
                         transition: "all 0.2s",
@@ -422,14 +423,16 @@ const PreTestQuiz = () => {
                           alignItems: "center",
                           justifyContent: "center",
                           backgroundColor:
-                            currentSelectedValue === idx
+                            currentSelectedLetter === letter
                               ? "#007bff"
                               : "transparent",
                           borderColor:
-                            currentSelectedValue === idx ? "#007bff" : "#ccc",
+                            currentSelectedLetter === letter
+                              ? "#007bff"
+                              : "#ccc",
                         }}
                       >
-                        {currentSelectedValue === idx && (
+                        {currentSelectedLetter === letter ? (
                           <div
                             style={{
                               width: "10px",
@@ -438,10 +441,21 @@ const PreTestQuiz = () => {
                               borderRadius: "50%",
                             }}
                           ></div>
+                        ) : (
+                          // Tampilkan label A, B, C, D di dalam lingkaran jika belum dipilih
+                          <span
+                            style={{
+                              fontSize: "0.75rem",
+                              fontWeight: "bold",
+                              color: "#ccc",
+                            }}
+                          >
+                            {letter}
+                          </span>
                         )}
                       </div>
                       <span style={{ fontSize: "0.95rem", color: "#333" }}>
-                        {opt}
+                        {text}
                       </span>
                     </div>
                   ))}

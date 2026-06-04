@@ -63,9 +63,7 @@ export const submitAnswersAndCalculateScore = async (
   const testType = assessmentId.substring(0, 3); 
   let extraData = {};
 
-  // ========================================================
   // [1] LOGIKA: Pre-Test Global (PTG)
-  // ========================================================
   if (testType === "PTG") {
     let calculatedLevel = "beginner";
     if (finalScore > 40 && finalScore <= 75) {
@@ -77,9 +75,7 @@ export const submitAnswersAndCalculateScore = async (
     extraData.message = "Pre-Test Global completed. Adaptive user progress baseline has been created.";
   } 
   
-  // ========================================================
   // [2] LOGIKA: Pre-Test Chapter (PTC)
-  // ========================================================
   else if (testType === "PTC") {
     // A. Tentukan tingkat kompetensi awal bab berdasarkan skor kuis
     let currentLevel = "beginner";
@@ -93,7 +89,7 @@ export const submitAnswersAndCalculateScore = async (
     const assessmentInfo = await assessmentRepo.findAssessmentChapterInfo(assessmentId);
     
     if (assessmentInfo) {
-      const chapterTakenId = assessmentInfo.chapter_taken_id;
+      const chapterTakenId = assessmentInfo.chapter_id;
 
       // C. Ambil semua daftar sub-bab yang ada di dalam bab ini
       const subChapters = await assessmentRepo.findSubChaptersByChapterTaken(chapterTakenId);
@@ -115,9 +111,9 @@ export const submitAnswersAndCalculateScore = async (
         await assessmentRepo.createBulkUserProgress(progressPayload);
       }
 
-      // ========================================================
+  
       // INTEGRASI AI (HANYA UNTUK KUIS BAB / PTC)
-      // ========================================================
+  
       try {
         // Memicu AI dan menangkap response teks transkrip
         const aiResult = await generateAiRecommendation(newAttempt.score, currentLevel);
@@ -150,9 +146,7 @@ export const submitAnswersAndCalculateScore = async (
     extraData.message = "Pre-Test Chapter completed. Sub-chapters unlocked & AI Personalized report generated!";
   }
 
-  // ========================================================
   // [3] LOGIKA: Quiz Sub-Chapter (QZN)
-  // ========================================================
   else if (testType === "QZN") {
     if (assessment.sub_chapter_id) {
       // Jika siswa lulus kuis (Skor >= 60), status progres otomatis diubah menjadi 'done'
@@ -167,14 +161,12 @@ export const submitAnswersAndCalculateScore = async (
     }
   }
 
-  // ========================================================
   // [4] LOGIKA: Exam Akhir Bab (EXM)
-  // ========================================================
   else if (testType === "EXM") {
     if (finalScore >= 70) {
       // Jika lulus ujian, kunci status data bab yang diambil menjadi selesai
-      if (assessment.chapter_taken_id) {
-        await assessmentRepo.updateChapterTakenToDone(assessment.chapter_taken_id);
+      if (assessment.chapter_id) {
+        await assessmentRepo.updateChapterTakenToDone(assessment.chapter_id);
       }
       extraData.examStatus = "PASSED";
       extraData.message = "Luar biasa! Kamu lulus ujian kompetensi bab ini. Akses bab selanjutnya telah terbuka!";

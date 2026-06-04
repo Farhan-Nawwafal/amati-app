@@ -14,7 +14,6 @@ export const getAllChaptersList = async (userId) => {
       userId,
       chapter.id,
     );
-    console.log(userProgressList);
 
     let progressPercentage = 0;
     let finalStatus = "Not Started"; // Nilai default jika user MEMANG belum enroll

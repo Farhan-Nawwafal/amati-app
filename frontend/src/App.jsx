@@ -49,7 +49,7 @@ function App() {
 
         {/* Fitur Kuis */}
         <Route path="/quiz" element={<QuizList />} />
-        <Route path="/quiz/workspace" element={<QuizWorkspace />} />
+        <Route path="/quiz/workspace/:assessmentId" element={<QuizWorkspace />} />
         <Route path="/quiz/result" element={<QuizResult />} />
 
         {/* Fitur Ujian */}

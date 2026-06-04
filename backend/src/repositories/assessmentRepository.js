@@ -30,6 +30,15 @@ export const createUserAttempt = async (attemptData) => {
   });
 };
 
+export const findChapterTakenByUser = async (userId, chapterId) => {
+  return await prisma.chapterTaken.findFirst({
+    where: {
+      user_id: userId,
+      chapter_id: chapterId,
+    },
+  });
+};
+
 // Fungsi untuk mencari tahu chapter_id dari kuis yang sedang dikerjakan
 export const findAssessmentChapterInfo = async (assessmentId) => {
   return await prisma.assessment.findUnique({
@@ -51,6 +60,12 @@ export const findSubChaptersByChapterTaken = async (chapterTakenId) => {
   // Mengambil semua sub-bab milik chapter tersebut
   return await prisma.subChapter.findMany({
     where: { chapter_id: chapterTaken.chapter_id },
+  });
+};
+
+export const findSubChaptersByChapterId = async (chapterId) => {
+  return await prisma.subChapter.findMany({
+    where: { chapter_id: chapterId },
   });
 };
 
@@ -86,12 +101,13 @@ export const updateUserProgressToDone = async (userId, subChapterId) => {
 
 // Fungsi untuk menandai bahwa satu bab penuh telah selesai/lulus
 export const updateChapterTakenToDone = async (chapterTakenId) => {
-  return await prisma.chapterTaken.update({
-    where: { id: chapterTakenId },
+  return await prisma.chapterTaken.updateMany({
+    where: {
+      user_id: userId,
+      chapter_id: chapterId,
+    },
     data: {
-      // Misalkan kamu punya kolom status atau sejenisnya di tabel chapter_taken, 
-      // atau jika arsitekturmu menggunakan penanda tanggal selesai:
-      updated_at: new Date() 
+      updated_at: new Date(),
     },
   });
 };

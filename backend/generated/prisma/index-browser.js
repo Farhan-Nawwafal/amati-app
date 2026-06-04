@@ -158,13 +158,14 @@ exports.Prisma.ChapterTakenScalarFieldEnum = {
 
 exports.Prisma.AssessmentScalarFieldEnum = {
   id: 'id',
-  chapter_taken_id: 'chapter_taken_id',
+  chapter_id: 'chapter_id',
   sub_chapter_id: 'sub_chapter_id',
   title: 'title',
   type: 'type',
   correct_answer: 'correct_answer',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  chapterTakenId: 'chapterTakenId'
 };
 
 exports.Prisma.AiReportScalarFieldEnum = {
@@ -252,11 +253,17 @@ exports.Prisma.ChapterTakenOrderByRelevanceFieldEnum = {
   chapter_id: 'chapter_id'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.AssessmentOrderByRelevanceFieldEnum = {
   id: 'id',
-  chapter_taken_id: 'chapter_taken_id',
+  chapter_id: 'chapter_id',
   sub_chapter_id: 'sub_chapter_id',
-  title: 'title'
+  title: 'title',
+  chapterTakenId: 'chapterTakenId'
 };
 
 exports.Prisma.JsonNullValueFilter = {
