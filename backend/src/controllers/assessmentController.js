@@ -44,8 +44,8 @@ export const checkPlacementStatus = async (req, res) => {
 export const submitAssessment = async (req, res) => {
   try {
     const { assessmentId } = req.params;
-    const userId = req.user.id; // Diambil otomatis dari gembok authMiddleware kalian
-    const { answers } = req.body; // Array jawaban dari frontend
+    const userId = req.user.id; 
+    const { answers } = req.body;
 
     if (!answers || !Array.isArray(answers)) {
       return res.status(400).json({
