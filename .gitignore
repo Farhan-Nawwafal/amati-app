@@ -54,4 +54,8 @@ Thumbs.db
 # Mengamankan file rahasia, cache, dan script eksperimen AI
 **/__pycache__/
 *.pyc
+**/*.pyc
 .vercel/
+.venv/
+env/
+venv/
