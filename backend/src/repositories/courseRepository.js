@@ -24,16 +24,23 @@ export const findUserProgressForChapter = async (userId, chapterId) => {
   });
 };
 
-export const findSubChaptersByChapterId = async (chapterId) =>
-  await prisma.subChapter.findMany({
+export const findSubChaptersByChapterIdWithProgress = async (
+  chapterId,
+  userId,
+) => {
+  return await prisma.subChapter.findMany({
     where: { chapter_id: chapterId },
-    select: {
-      id: true,
-      chapter_id: true,
-      name: true,
-      content: true,
+    include: {
+      user_progres: {
+        where: { user_id: userId },
+        select: { status: true },
+      },
+    },
+    orderBy: {
+      id: "asc", // Menjaga urutan sub-bab tetap rapi
     },
   });
+};
 
 export const findUserProgress = async (userId, subChapterId) =>
   await prisma.userProgres.findFirst({

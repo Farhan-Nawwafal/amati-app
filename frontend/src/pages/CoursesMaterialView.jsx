@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getSubChaptersByChapterApi, completeSubChapterApi } from "../services/coursesChapterService";
+import {
+  getSubChaptersByChapterApi,
+  completeSubChapterApi,
+} from "../services/coursesChapterService";
 
 const CoursesMaterialView = () => {
   const navigate = useNavigate();
@@ -25,20 +28,29 @@ const CoursesMaterialView = () => {
           id: chapterId,
           title: `Chapter Detail`,
           name: `Materi Kelas VII`,
-          subChapters: dbSubChapters.map((sub) => ({
-            id: sub.id,
-            title: `Sub Chapter`,
-            name: sub.name,
-            progress: sub.progress || 0,
-            // Membuat virtual topics agar logic .map milik temanmu tetap bekerja lancar
-            topics: [
-              {
-                id: sub.id, // topicId disamakan dengan subChapterId agar otomatis aktif saat sub-bab diklik
-                name: sub.name,
-                content: sub.content,
-              },
-            ],
-          })),
+          subChapters: dbSubChapters.map((sub) => {
+            let currentProgress = 0;
+            if (sub.status === "done") currentProgress = 100;
+            else if (
+              sub.status === "in_progres" ||
+              sub.status === "in_progress"
+            )
+              currentProgress = 50;
+            return {
+              id: sub.id,
+              title: `Sub Chapter`,
+              name: sub.name,
+              progress: currentProgress,
+              // Membuat virtual topics agar logic .map milik temanmu tetap bekerja lancar
+              topics: [
+                {
+                  id: sub.id, // topicId disamakan dengan subChapterId agar otomatis aktif saat sub-bab diklik
+                  name: sub.name,
+                  content: sub.content,
+                },
+              ],
+            };
+          }),
         };
 
         setDynamicChaptersData([formattedChapter]);
@@ -302,7 +314,9 @@ const CoursesMaterialView = () => {
                   borderRadius: "8px",
                   fontWeight: "bold",
                   cursor:
-                    currentSubChapter.progress === 100 ? "not-allowed" : "pointer",
+                    currentSubChapter.progress === 100
+                      ? "not-allowed"
+                      : "pointer",
                 }}
               >
                 {currentSubChapter.progress === 100

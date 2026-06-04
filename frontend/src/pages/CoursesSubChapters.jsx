@@ -270,15 +270,15 @@ const CoursesSubChapters = () => {
             }}
           >
             {filteredSubChapters.map((sub, index) => {
-              // Menghitung status progress (bawaan default jika tabel user_progres kamu ter-mapping)
-              // Jika kolom progress belum dihitung BE, kita amankan dengan fallback default 0%
-              const currentProgress = sub.progress ?? 0;
+              let currentProgress = sub.progress ?? 0;
+
+              if (sub.status === "done") {
+                currentProgress = 100;
+              }
 
               return (
                 <div
                   key={sub.id}
-                  // 💡 SINKRONISASI NAVIGASI: Karena schema DB kamu menyimpan teks di kolom 'content' sub_chapter langsung,
-                  // rutenya diringkas langsung menembak id sub-bab tanpa bersarang rute topik lagi
                   onClick={() => navigate(`/material/${chapterId}/${sub.id}`)}
                   style={{
                     backgroundColor: "#fff",
@@ -291,8 +291,12 @@ const CoursesSubChapters = () => {
                     cursor: "pointer",
                   }}
                 >
+                  {/* 💡 Warna Indikator Atas: Hijau jika 100%, Biru jika belum */}
                   <div
-                    style={{ height: "6px", backgroundColor: "#5c86ff" }}
+                    style={{
+                      height: "6px",
+                      backgroundColor: "#5c86ff",
+                    }}
                   ></div>
                   <div
                     style={{
@@ -347,12 +351,14 @@ const CoursesSubChapters = () => {
                           overflow: "hidden",
                         }}
                       >
+                        {/* Bar Progress*/}
                         <div
                           style={{
                             width: `${currentProgress}%`,
                             height: "100%",
                             backgroundColor: "#00b4d8",
                             borderRadius: "10px",
+                            transition: "width 0.5s ease-in-out",
                           }}
                         ></div>
                       </div>
@@ -361,20 +367,6 @@ const CoursesSubChapters = () => {
                 </div>
               );
             })}
-
-            {/* Banner info jika kata kunci pencarian subbab kosong */}
-            {filteredSubChapters.length === 0 && (
-              <div
-                style={{
-                  textAlign: "center",
-                  color: "#aaa",
-                  padding: "30px",
-                  fontWeight: "500",
-                }}
-              >
-                Tidak ditemukan sub-bab dengan kata kunci "{searchQuery}".
-              </div>
-            )}
           </div>
         </div>
       </main>

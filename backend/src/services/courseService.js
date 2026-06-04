@@ -51,7 +51,7 @@ export const getAllChaptersList = async (userId) => {
 
 export const getSubChaptersListByChapter = async (chapterId, userId) => {
   // Ambil semua butir sub-bab master dari DB berdasarkan ID Bab
-  const subChapters = await courseRepo.findSubChaptersByChapterId(chapterId);
+  const subChapters = await courseRepo.findSubChaptersByChapterIdWithProgress(chapterId);
 
   const transformedSubChapters = [];
 
@@ -60,8 +60,12 @@ export const getSubChaptersListByChapter = async (chapterId, userId) => {
     const userProgress = await courseRepo.findUserProgress(userId, sub.id);
 
     let progressValue = 0;
+    let currentStatus = "not_started"; // 💡 TAMBAHAN BARU: Setup default status
 
     if (userProgress) {
+      // Tarik status murni dari MySQL (done / in_progres)
+      currentStatus = userProgress.status;
+
       // Hitung total seluruh kuis evaluasi master yang ada di sub-bab ini
       const totalAssessmentsInSub =
         await courseRepo.countAssessmentsBySubChapter(sub.id);
@@ -89,7 +93,8 @@ export const getSubChaptersListByChapter = async (chapterId, userId) => {
       chapter_id: sub.chapter_id,
       name: sub.name,
       content: sub.content,
-      progress: progressValue,
+      progress: progressValue, // Ini persentase kuis
+      status: currentStatus,
     });
   }
 
@@ -105,7 +110,7 @@ export const enrollToChapterService = async (userId, chapterId) => {
     throw new Error("You have already enrolled in this chapter!");
   }
 
-  const subChapters = await courseRepo.findSubChaptersByChapterId(chapterId);
+  const subChapters = await courseRepo.findSubChaptersByChapterIdWithProgress(chapterId);
   if (!subChapters.length) {
     throw new Error(
       "This chapter has no sub-chapters initialized yet by admin.",
