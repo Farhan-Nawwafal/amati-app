@@ -6,6 +6,7 @@ import os
 import requests
 from dotenv import load_dotenv
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 # 1. Load Environment Variables
@@ -13,6 +14,15 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 app = FastAPI()
+
+# Membuka gembok CORS agar Frontend Web bisa berkomunikasi dengan Backend
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Saat online nanti, ganti "*" dengan URL website Frontend yang sudah dihosting (misal: "https://amati-frontend.com")
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -24,9 +34,13 @@ class StudentDataInput(BaseModel):
     total_subchapter: int
 
 # 2. Load Model Deep Learning dan Scaler
-model = tf.keras.models.load_model(os.path.join(BASE_DIR, "amati_model.keras"))
-scaler_X = joblib.load(os.path.join(BASE_DIR, "scaler_X.pkl"))
-scaler_y = joblib.load(os.path.join(BASE_DIR, "scaler_y.pkl"))
+try:
+    model = tf.keras.models.load_model(os.path.join(BASE_DIR, "amati_model.keras"))
+    scaler_X = joblib.load(os.path.join(BASE_DIR, "scaler_X.pkl"))
+    scaler_y = joblib.load(os.path.join(BASE_DIR, "scaler_y.pkl"))
+    print("[INFO] Model Deep Learning dan Scaler berhasil dimuat.")
+except Exception as e:
+    print(f"[ERROR] Gagal memuat model/scaler: {e}")
 
 # 3. Logika Rekomendasi Utama
 def get_recommendation(score: float, current_level: int):
@@ -116,15 +130,19 @@ def predict_score(data: StudentDataInput):
         
         # Prediksi Deep Learning
         input_scaled = scaler_X.transform(input_data)
-        prediksi_scaled = model.predict(input_scaled)
+        prediksi_scaled = model.predict(input_scaled, verbose=0)
         hasil_skor = scaler_y.inverse_transform(prediksi_scaled)
         
         # Ambil skor mentah dari AI
         skor_mentah_ai = float(hasil_skor[0][0])
         
-        # AI sudah dilatih dengan sangat presisi di dataset.
-        # Kita gunakan skor murni AI tanpa memotongnya dengan rasio progres!
-        skor_final = skor_mentah_ai
+        # Hitung persentase progres penyelesaian materi
+        if data.total_subchapter > 0:
+            rasio_progres = data.total_subchapters_done / data.total_subchapter
+        else:
+            rasio_progres = 0.0
+            
+        skor_final = skor_mentah_ai * rasio_progres
         
         # Pastikan nilai tetap berada di rentang batas wajar (0 - 100)
         skor_final = max(0.0, min(100.0, skor_final))
