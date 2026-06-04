@@ -39,40 +39,40 @@ const Settings = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   // ================= 1. FUNGSI GET: AMBIL DATA DARI BACKEND =================
-  useEffect(() => {
+useEffect(() => {
     const fetchUserData = async () => {
       try {
-        // Ganti URL ini dengan endpoint asli backend AMATI kamu nanti
-        const response = await fetch("http://localhost:5000/api/user/profile", {
+        const token = localStorage.getItem('token');
+        if (!token) throw new Error('Token tidak ditemukan di localStorage');
+
+        const response = await fetch("http://localhost:3000/api/auth/profile", {
           method: "GET",
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
             // 'Authorization': `Bearer ${localStorage.getItem('token')}` // Buka jika pakai JWT Token
-          },
+          }
         });
 
         if (response.ok) {
           const data = await response.json();
           setFormData({
-            name: data.name || "",
-            birthDate: data.birthDate || "",
-            email: data.email || "",
-            password: "************", // Samarkan password demi keamanan
+            name: data.name || '',
+            birthDate: data.birthDate || '',
+            email: data.email || '',
+            password: '************' // Samarkan password demi keamanan
           });
           setEmailNotif(data.emailNotif ?? true);
           setExamReminder(data.examReminder ?? true);
           setCourseUpdate(data.courseUpdate ?? true);
         } else {
-          throw new Error("Backend belum siap");
+          throw new Error('Backend belum siap');
         }
       } catch (error) {
-        console.log(
-          "⚠️ Backend belum merespons, mengaktifkan data dummy AMATI...",
-        );
+        console.log("⚠️ Backend belum merespons, mengaktifkan data dummy AMATI...");
         // CADANGAN: Data dummy otomatis aktif jika backend belum dibuat
         setFormData({
           name: "Anna Carescco",
-          birthDate: "21 August 1999",
+          birthDate: "1999-08-21",
           email: "annacarescco@gmail.com",
           password: "layerssecret",
         });
@@ -89,43 +89,41 @@ const Settings = () => {
   };
 
   // ================= 2. FUNGSI PUT: SIMPAN PERUBAHAN PROFIL =================
-  const handleSaveChanges = async (e) => {
+const handleSaveChanges = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/user/profile", {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+      const response = await fetch('http://localhost:5000/api/user/profile', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
-        alert("🎉 Profil berhasil diperbarui di backend!");
+        alert("🎉 Profil berhasil diperbarui di database database!");
       } else {
         throw new Error("Gagal update ke database");
       }
     } catch (error) {
       console.error(error);
       // Notifikasi fallback simulasi sukses lokal
-      alert(
-        `⚙️ [Mode Simulasi] Perubahan profil untuk "${formData.name}" disimpan lokal.`,
-      );
+      alert(`⚙️ [Mode Simulasi] Perubahan profil untuk "${formData.name}" disimpan lokal.`);
     } finally {
       setIsLoading(false);
     }
   };
 
   // ================= 3. FUNGSI PATCH: SIMPAN PREFERENSI TOGGLE NOTIFIKASI =================
-  const handleToggleNotif = async (type, currentValue, setStates) => {
+const handleToggleNotif = async (type, currentValue, setStates) => {
     const newValue = !currentValue;
     setStates(newValue); // Update UI secara instan
 
     try {
-      await fetch("http://localhost:5000/api/user/settings", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ [type]: newValue }),
+      await fetch('http://localhost:5000/api/user/settings', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ [type]: newValue })
       });
     } catch (error) {
       console.log(
@@ -247,45 +245,13 @@ const Settings = () => {
               </h3>
 
               {/* Bagian Edit Foto */}
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "20px",
-                  marginBottom: "30px",
-                }}
-              >
-                <div
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    borderRadius: "50%",
-                    backgroundColor: "#ffcc00",
-                    overflow: "hidden",
-                  }}
-                >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px' }}>
+                <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#ffcc00', overflow: 'hidden' }}>
                   <img src="https://via.placeholder.com/80" alt="Avatar" />
                 </div>
                 <div>
-                  <button
-                    type="button"
-                    style={{
-                      padding: "8px 15px",
-                      backgroundColor: "#fff",
-                      border: "1px solid #ccc",
-                      borderRadius: "8px",
-                      cursor: "pointer",
-                      fontSize: "0.85rem",
-                      marginBottom: "8px",
-                      display: "block",
-                    }}
-                  >
-                    Edit Photo
-                  </button>
-                  <span style={{ fontSize: "0.75rem", color: "#aaa" }}>
-                    We suggest you to upload your photo with ratio 1:1. Please
-                    make sure the size is under 1 MB.
-                  </span>
+                  <button type="button" style={{ padding: '8px 15px', backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '8px', cursor: 'pointer', fontSize: '0.85rem', marginBottom: '8px', display: 'block' }}>Edit Photo</button>
+                  <span style={{ fontSize: '0.75rem', color: '#aaa' }}>We suggest you to upload your photo with ratio 1:1. Please make sure the size is under 1 MB.</span>
                 </div>
               </div>
 
