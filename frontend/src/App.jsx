@@ -18,6 +18,7 @@ import ExamWorkspace from "./pages/ExamWorkspace";
 import ExamResult from "./pages/ExamResult";
 import Settings from "./pages/Settings";
 import AdminCourses from "./pages/AdminCourses";
+import AiMaterialView from "./pages/AiMaterialView";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -46,15 +47,16 @@ function App() {
           path="/material/:chapterId/:subChapterId"
           element={<CoursesMaterialView />}
         />
+        <Route path="/ai-materi/:chapterId" element={<AiMaterialView />} />
 
         {/* Fitur Kuis */}
         <Route path="/quiz" element={<QuizList />} />
-        <Route path="/quiz/workspace" element={<QuizWorkspace />} />
+        <Route path="/quiz/workspace/:assessmentId" element={<QuizWorkspace />} />
         <Route path="/quiz/result" element={<QuizResult />} />
 
         {/* Fitur Ujian */}
         <Route path="/exam" element={<ExamList />} />
-        <Route path="/exam/workspace" element={<ExamWorkspace />} />
+        <Route path="/exam/workspace/:assessmentId" element={<ExamWorkspace />} />
         <Route path="/exam/result" element={<ExamResult />} />
 
         {/* CMS Area Admin */}

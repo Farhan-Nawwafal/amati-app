@@ -86,6 +86,7 @@ const Navbar = () => {
             fontWeight: "bold",
             cursor: "pointer",
           }}
+          onClick={() => navigate('/register')} 
         >
           Get Started
         </button>

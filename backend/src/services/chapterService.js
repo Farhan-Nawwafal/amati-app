@@ -11,7 +11,6 @@ export const addChapter = async (chapterData) => {
 
   // Cek apakah chapter dengan nama yang sama sudah ada
   const isDuplicate = await findChapterByName(chapterData.name);
-  console.log(isDuplicate);
   if (isDuplicate) {
     throw new Error(`Chapter with name "${chapterData.name}" already exists`);
   }

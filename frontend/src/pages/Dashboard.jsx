@@ -2,15 +2,14 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
-import AiReportCard from "../components/AiReportCard"; // 🌟 IMPOR KOMPONEN AI BARU KITA
+// import AiReportCard from "../components/AiReportCard";
 import { getDashboardSummaryApi } from "../services/dashboardService";
 
 const Dashboard = () => {
-  // Ambil data user secara aman dari localStorage hasil parsing objek login
   const storedUser = localStorage.getItem("user");
   const userData = storedUser ? JSON.parse(storedUser) : null;
   const currentUserName = userData?.name || "Siswa AMATI";
-  const currentUserId = userData?.id || null; // 🌟 AMBIL USER ID SISWA SECARA DINAMIS
+  const currentUserId = userData?.id || null;
 
   // State menampung data statistik dari database backend
   const [summaryData, setSummaryData] = useState(null);
@@ -31,8 +30,7 @@ const Dashboard = () => {
     fetchDashboardSummary();
   }, []);
 
-  // Total Sub-Chapter kurikulum kelas 7 idealnya bisa dihitung dinamis, di sini kita pakai fallback default 12
-  const totalSubChaptersRequired = summaryData?.sub_chapters?.taken || 12;
+  const totalSubChaptersRequired = summaryData?.sub_chapters?.taken || 0;
   const doneSubChapters = summaryData?.sub_chapters?.done || 0;
 
   // Hitung persentase pengerjaan (amankan dengan batas minimum 0% dan maksimum 100%)
@@ -89,7 +87,7 @@ const Dashboard = () => {
             flex: "1",
           }}
         >
-          {/* Welcome Text -> NAMA USER SUDAH DINAMIS */}
+          {/* Welcome Text */}
           <div>
             <h1 style={{ margin: 0, color: "#002d72", fontSize: "2rem" }}>
               Welcome Back, {currentUserName}
@@ -131,7 +129,7 @@ const Dashboard = () => {
                   Chapters
                 </h3>
                 <div style={{ display: "flex", gap: "15px" }}>
-                  {/* Card Chapters Taken -> DINAMIS */}
+                  {/* Card Chapters Taken */}
                   <div
                     style={{
                       flex: "1",
@@ -176,7 +174,7 @@ const Dashboard = () => {
                         fontWeight: "700",
                       }}
                     >
-                      {summaryData?.chapters?.taken ?? 0}
+                      {loading ? "..." : (summaryData?.chapters?.taken ?? 0)}
                     </h2>
                     <p
                       style={{
@@ -189,7 +187,7 @@ const Dashboard = () => {
                     </p>
                   </div>
 
-                  {/* Card Chapters In Progress -> DINAMIS */}
+                  {/* Card Chapters In Progress */}
                   <div
                     style={{
                       flex: "1",
@@ -234,7 +232,9 @@ const Dashboard = () => {
                         fontWeight: "700",
                       }}
                     >
-                      {summaryData?.chapters?.in_progress ?? 0}
+                      {loading
+                        ? "..."
+                        : (summaryData?.chapters?.in_progress ?? 0)}
                     </h2>
                     <p
                       style={{
@@ -247,7 +247,7 @@ const Dashboard = () => {
                     </p>
                   </div>
 
-                  {/* Card Chapters Done -> DINAMIS */}
+                  {/* Card Chapters Done */}
                   <div
                     style={{
                       flex: "1",
@@ -292,7 +292,7 @@ const Dashboard = () => {
                         fontWeight: "700",
                       }}
                     >
-                      {summaryData?.chapters?.done ?? 0}
+                      {loading ? "..." : (summaryData?.chapters?.done ?? 0)}
                     </h2>
                     <p
                       style={{
@@ -327,7 +327,7 @@ const Dashboard = () => {
                   Sub Chapters
                 </h3>
                 <div style={{ display: "flex", gap: "15px" }}>
-                  {/* Sub Chapters Taken -> DINAMIS */}
+                  {/* Sub Chapters Taken */}
                   <div
                     style={{
                       flex: "1",
@@ -372,7 +372,9 @@ const Dashboard = () => {
                         fontWeight: "700",
                       }}
                     >
-                      {summaryData?.sub_chapters?.taken ?? 0}
+                      {loading
+                        ? "..."
+                        : (summaryData?.sub_chapters?.taken ?? 0)}
                     </h2>
                     <p
                       style={{
@@ -385,7 +387,7 @@ const Dashboard = () => {
                     </p>
                   </div>
 
-                  {/* Sub Chapters In Progress -> DINAMIS */}
+                  {/* Sub Chapters In Progress */}
                   <div
                     style={{
                       flex: "1",
@@ -430,7 +432,9 @@ const Dashboard = () => {
                         fontWeight: "700",
                       }}
                     >
-                      {summaryData?.sub_chapters?.in_progress ?? 0}
+                      {loading
+                        ? "..."
+                        : (summaryData?.sub_chapters?.in_progress ?? 0)}
                     </h2>
                     <p
                       style={{
@@ -443,7 +447,7 @@ const Dashboard = () => {
                     </p>
                   </div>
 
-                  {/* Sub Chapters Done -> DINAMIS */}
+                  {/* Sub Chapters Done */}
                   <div
                     style={{
                       flex: "1",
@@ -488,7 +492,7 @@ const Dashboard = () => {
                         fontWeight: "700",
                       }}
                     >
-                      {summaryData?.sub_chapters?.done ?? 0}
+                      {loading ? "..." : (summaryData?.sub_chapters?.done ?? 0)}
                     </h2>
                     <p
                       style={{
@@ -503,58 +507,87 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              {/* Box Completed Chapter */}
+              {/* Box Chapter Progress */}
               <div
                 style={{
                   backgroundColor: "#fff",
                   padding: "25px",
                   borderRadius: "20px",
                   boxShadow: "0 4px 20px rgba(0,0,0,0.02)",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "20px",
                 }}
               >
                 <h3
                   style={{
-                    margin: "0 0 20px 0",
+                    margin: 0,
                     fontSize: "1.1rem",
                     color: "#333",
                   }}
                 >
-                  Completed Chapter
+                  Chapter Progress
                 </h3>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    marginBottom: "10px",
-                    fontSize: "0.9rem",
-                    color: "#555",
-                  }}
-                >
-                  <span>Syllabus Mastery Progress</span>
-                  <span style={{ fontWeight: "bold", color: "#333" }}>
-                    {progressPercentage}%
-                  </span>
-                </div>
-                {/* Progress Bar Container */}
-                <div
-                  style={{
-                    width: "100%",
-                    height: "12px",
-                    backgroundColor: "#f0f0f0",
-                    borderRadius: "10px",
-                    overflow: "hidden",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: `${progressPercentage}%`,
-                      height: "100%",
-                      backgroundColor: "#ff7a00",
-                      borderRadius: "10px",
-                      transition: "width 0.5s ease-out",
-                    }}
-                  ></div>
-                </div>
+
+                {/* Looping Progress Bar Dinamis dari Backend */}
+                {loading ? (
+                  <p style={{ fontSize: "0.9rem", color: "#888", margin: 0 }}>
+                    Memuat progress...
+                  </p>
+                ) : summaryData?.chapter_progress &&
+                  summaryData.chapter_progress.length > 0 ? (
+                  summaryData.chapter_progress.map((chapter, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "8px",
+                      }}
+                    >
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          fontSize: "0.9rem",
+                          color: "#555",
+                        }}
+                      >
+                        <span style={{ fontWeight: "500" }}>
+                          {chapter.title}
+                        </span>
+                        <span style={{ fontWeight: "bold", color: "#333" }}>
+                          {chapter.progress}%
+                        </span>
+                      </div>
+                      {/* Progress Bar Container */}
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "10px",
+                          backgroundColor: "#f0f0f0",
+                          borderRadius: "10px",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: `${chapter.progress}%`,
+                            height: "100%",
+                            backgroundColor:
+                              chapter.progress === 100 ? "#00b4d8" : "#ff7a00",
+                            borderRadius: "10px",
+                            transition: "width 0.5s ease-out",
+                          }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <p style={{ fontSize: "0.9rem", color: "#888", margin: 0 }}>
+                    Belum ada kelas yang dipelajari.
+                  </p>
+                )}
               </div>
             </div>
 
@@ -568,10 +601,10 @@ const Dashboard = () => {
                 gap: "30px",
               }}
             >
-              {/*  KARTU REKOMENDASI AI AMATI DIKIRIM USER ID SISWA */}
-              <AiReportCard userId={currentUserId} />
+              {/* KARTU REKOMENDASI AI AMATI */}
+              {/* <AiReportCard userId={currentUserId} /> */}
 
-              {/* Recent Activity - Chapter */}
+              {/* 💡 RECENT ACTIVITY - CHAPTER DINAMIS */}
               <div
                 style={{
                   backgroundColor: "#fff",
@@ -602,8 +635,15 @@ const Dashboard = () => {
                       height: "40px",
                       backgroundColor: "#007bff",
                       borderRadius: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#fff",
+                      fontWeight: "bold",
                     }}
-                  ></div>
+                  >
+                    CH
+                  </div>
                   <div>
                     <h4
                       style={{
@@ -612,7 +652,10 @@ const Dashboard = () => {
                         color: "#002d72",
                       }}
                     >
-                      chapter 1 - Bilangan Bulat
+                      {loading
+                        ? "Memuat..."
+                        : summaryData?.recent_chapter?.title ||
+                          "Belum ada aktivitas bab"}
                     </h4>
                     <p
                       style={{
@@ -621,13 +664,13 @@ const Dashboard = () => {
                         color: "#aaa",
                       }}
                     >
-                      Active Session
+                      {summaryData?.recent_chapter?.status || "-"}
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Recent Activity - Sub Chapter */}
+              {/* 💡 RECENT ACTIVITY - SUB CHAPTER DINAMIS */}
               <div
                 style={{
                   backgroundColor: "#fff",
@@ -658,13 +701,23 @@ const Dashboard = () => {
                       height: "40px",
                       backgroundColor: "#007bff",
                       borderRadius: "8px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "#fff",
+                      fontWeight: "bold",
                     }}
-                  ></div>
+                  >
+                    SUB
+                  </div>
                   <div>
                     <h4
                       style={{ margin: 0, fontSize: "0.85rem", color: "#333" }}
                     >
-                      Chapter 1 - A. Memahami Bilangan Bulat
+                      {loading
+                        ? "Memuat..."
+                        : summaryData?.recent_sub_chapter?.title ||
+                          "Belum ada aktivitas sub-bab"}
                     </h4>
                     <p
                       style={{
@@ -673,7 +726,7 @@ const Dashboard = () => {
                         color: "#aaa",
                       }}
                     >
-                      In Progress
+                      {summaryData?.recent_sub_chapter?.status || "-"}
                     </p>
                   </div>
                 </div>

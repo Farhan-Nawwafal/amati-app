@@ -12,6 +12,13 @@ export const findAssessmentWithQuestions = async (assessmentId) => {
   });
 };
 
+export const findChapterById = async (chapterId) => {
+  return await prisma.chapter.findUnique({
+    where: { id: chapterId },
+    select: { id: true, name: true },
+  });
+};
+
 export const countUserPlacementAttempts = async (userId) => {
   return await prisma.userAttempt.count({
     where: {
@@ -27,6 +34,15 @@ export const countUserPlacementAttempts = async (userId) => {
 export const createUserAttempt = async (attemptData) => {
   return await prisma.userAttempt.create({
     data: attemptData,
+  });
+};
+
+export const findChapterTakenByUser = async (userId, chapterId) => {
+  return await prisma.chapterTaken.findFirst({
+    where: {
+      user_id: userId,
+      chapter_id: chapterId,
+    },
   });
 };
 
@@ -51,6 +67,12 @@ export const findSubChaptersByChapterTaken = async (chapterTakenId) => {
   // Mengambil semua sub-bab milik chapter tersebut
   return await prisma.subChapter.findMany({
     where: { chapter_id: chapterTaken.chapter_id },
+  });
+};
+
+export const findSubChaptersByChapterId = async (chapterId) => {
+  return await prisma.subChapter.findMany({
+    where: { chapter_id: chapterId },
   });
 };
 
@@ -84,14 +106,36 @@ export const updateUserProgressToDone = async (userId, subChapterId) => {
   });
 };
 
-// Fungsi untuk menandai bahwa satu bab penuh telah selesai/lulus
-export const updateChapterTakenToDone = async (chapterTakenId) => {
-  return await prisma.chapterTaken.update({
-    where: { id: chapterTakenId },
+export const updateChapterTakenToDone = async (userId, chapterId) => {
+  return await prisma.chapterTaken.updateMany({
+    where: {
+      user_id: userId,
+      chapter_id: chapterId,
+    },
     data: {
-      // Misalkan kamu punya kolom status atau sejenisnya di tabel chapter_taken, 
-      // atau jika arsitekturmu menggunakan penanda tanggal selesai:
-      updated_at: new Date() 
+      updated_at: new Date(),
+    },
+  });
+};
+
+export const countExamAttempts = async (userId, assessmentId) => {
+  return await prisma.userAttempt.count({
+    where: { user_id: userId, assessment_id: assessmentId },
+  });
+};
+
+export const countTotalSubChaptersInChapter = async (chapterId) => {
+  return await prisma.subChapter.count({
+    where: { chapter_id: chapterId },
+  });
+};
+
+export const countDoneSubChaptersByUser = async (userId, chapterId) => {
+  return await prisma.userProgres.count({
+    where: {
+      user_id: userId,
+      status: "done",
+      sub_chapter: { chapter_id: chapterId },
     },
   });
 };

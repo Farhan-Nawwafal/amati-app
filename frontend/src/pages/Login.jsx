@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../services/authService";
 import { getPlacementStatus } from "../services/assessmentService";
+import bgLogin from '../assets/Login.png';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -129,8 +130,8 @@ const Login = () => {
       <div
         style={{
           flex: "1.1",
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80')",
+          // 🌟 REVISI BARIS URL DI BAWAH INI:
+          backgroundImage: `url(${bgLogin})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           padding: "50px",
