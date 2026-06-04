@@ -5,9 +5,13 @@ const ExamResult = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
   const resultData = location.state?.resultData;
+  const explicitChapterId = location.state?.explicitChapterId;
+
   const examTitle = location.state?.quizTitle || "Hasil Evaluasi Exam";
+  const aiData = resultData?.aiAnalysis;
+  const finalChapterId =
+    explicitChapterId || aiData?.chapterId || resultData?.chapterId;
 
   const storedData = localStorage.getItem("user");
   const userData = storedData ? JSON.parse(storedData) : null;
@@ -163,6 +167,125 @@ const ExamResult = () => {
             the Exam.
           </p>
         </div>
+
+        {/* KARTU ANALISIS AI DINAMIS */}
+        {aiData && (
+          <div
+            style={{
+              backgroundColor: "#e8f4fd",
+              padding: "25px 30px",
+              borderRadius: "20px",
+              border: "1px solid #bbdefb",
+              width: "100%",
+              maxWidth: "500px",
+              marginBottom: "40px",
+              boxShadow: "0 10px 30px rgba(0, 123, 255, 0.05)",
+              textAlign: "left",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                marginBottom: "15px",
+              }}
+            >
+              <span style={{ fontSize: "1.5rem" }}>🤖</span>
+              <h3 style={{ margin: 0, color: "#002d72", fontSize: "1.2rem" }}>
+                Tutor AI AMATI
+              </h3>
+            </div>
+
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+                fontSize: "0.95rem",
+                color: "#444",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "1px solid #bbdefb",
+                  paddingBottom: "8px",
+                }}
+              >
+                <span>Kategori Pemahaman:</span>
+                <span style={{ fontWeight: "700", color: "#007bff" }}>
+                  {aiData.kategori}
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  borderBottom: "1px solid #bbdefb",
+                  paddingBottom: "8px",
+                }}
+              >
+                <span>Prediksi Skor Asli:</span>
+                <span style={{ fontWeight: "700", color: "#ff7a00" }}>
+                  {aiData.prediksiSkor} / 100
+                </span>
+              </div>
+
+              <div style={{ marginTop: "5px" }}>
+                <span
+                  style={{
+                    fontWeight: "600",
+                    display: "block",
+                    marginBottom: "4px",
+                  }}
+                >
+                  Rekomendasi Belajar:
+                </span>
+                <span style={{ lineHeight: "1.5" }}>{aiData.rekomendasi}</span>
+              </div>
+            </div>
+
+            {/* Pesan Motivasi Gemini */}
+            <div
+              style={{
+                backgroundColor: "#fff",
+                padding: "15px 20px",
+                borderRadius: "15px",
+                marginTop: "20px",
+                borderLeft: "4px solid #ff3366",
+                fontStyle: "italic",
+                color: "#555",
+                lineHeight: "1.6",
+                fontSize: "0.95rem",
+              }}
+            >
+              "{aiData.pesan}"
+            </div>
+            <button
+              onClick={() => {
+                if (!finalChapterId) {
+                  alert("Error: ID Chapter belum terkirim dari Backend!");
+                  return;
+                }
+                navigate(`/ai-materi/${finalChapterId}`);
+              }}
+              style={{
+                marginTop: "15px",
+                padding: "10px 20px",
+                background: "#002d72",
+                color: "#fff",
+                borderRadius: "8px",
+                border: "none",
+                cursor: "pointer",
+                fontWeight: "bold",
+              }}
+            >
+              📖 Pelajari Rekomendasi Materi
+            </button>
+          </div>
+        )}
 
         {/* Tombol Navigasi */}
         <div

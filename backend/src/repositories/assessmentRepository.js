@@ -12,6 +12,13 @@ export const findAssessmentWithQuestions = async (assessmentId) => {
   });
 };
 
+export const findChapterById = async (chapterId) => {
+  return await prisma.chapter.findUnique({
+    where: { id: chapterId },
+    select: { id: true, name: true },
+  });
+};
+
 export const countUserPlacementAttempts = async (userId) => {
   return await prisma.userAttempt.count({
     where: {
@@ -99,8 +106,7 @@ export const updateUserProgressToDone = async (userId, subChapterId) => {
   });
 };
 
-// Fungsi untuk menandai bahwa satu bab penuh telah selesai/lulus
-export const updateChapterTakenToDone = async (chapterTakenId) => {
+export const updateChapterTakenToDone = async (userId, chapterId) => {
   return await prisma.chapterTaken.updateMany({
     where: {
       user_id: userId,
@@ -108,6 +114,28 @@ export const updateChapterTakenToDone = async (chapterTakenId) => {
     },
     data: {
       updated_at: new Date(),
+    },
+  });
+};
+
+export const countExamAttempts = async (userId, assessmentId) => {
+  return await prisma.userAttempt.count({
+    where: { user_id: userId, assessment_id: assessmentId },
+  });
+};
+
+export const countTotalSubChaptersInChapter = async (chapterId) => {
+  return await prisma.subChapter.count({
+    where: { chapter_id: chapterId },
+  });
+};
+
+export const countDoneSubChaptersByUser = async (userId, chapterId) => {
+  return await prisma.userProgres.count({
+    where: {
+      user_id: userId,
+      status: "done",
+      sub_chapter: { chapter_id: chapterId },
     },
   });
 };

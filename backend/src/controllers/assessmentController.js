@@ -6,7 +6,8 @@ export const getAssessmentQuestions = async (req, res) => {
     const { assessmentId } = req.params;
 
     // Meminta service mengambilkan datanya
-    const data = await assessmentService.getQuestionsForAssessment(assessmentId);
+    const data =
+      await assessmentService.getQuestionsForAssessment(assessmentId);
 
     // Mengirim respon sukses ke frontend
     res.status(200).json({
@@ -25,9 +26,10 @@ export const getAssessmentQuestions = async (req, res) => {
 
 export const checkPlacementStatus = async (req, res) => {
   try {
-    const userId = req.user.id; 
+    const userId = req.user.id;
 
-    const hasTaken = await assessmentService.checkIfUserHasTakenPlacement(userId);
+    const hasTaken =
+      await assessmentService.checkIfUserHasTakenPlacement(userId);
 
     res.status(200).json({
       success: true,
@@ -44,7 +46,7 @@ export const checkPlacementStatus = async (req, res) => {
 export const submitAssessment = async (req, res) => {
   try {
     const { assessmentId } = req.params;
-    const userId = req.user.id; 
+    const userId = req.user.id;
     const { answers } = req.body;
 
     if (!answers || !Array.isArray(answers)) {
@@ -55,7 +57,11 @@ export const submitAssessment = async (req, res) => {
     }
 
     // Panggil service untuk menghitung skor dan menyimpan hasilnya
-    const result = await assessmentService.submitAnswersAndCalculateScore(userId, assessmentId, answers);
+    const result = await assessmentService.submitAnswersAndCalculateScore(
+      userId,
+      assessmentId,
+      answers,
+    );
 
     res.status(201).json({
       success: true,
@@ -74,7 +80,7 @@ export const submitAssessment = async (req, res) => {
 export const getUserAiReports = async (req, res) => {
   try {
     const { userId } = req.params;
-    
+
     // Panggil fungsi service
     const reports = await assessmentService.getUserAiReports(userId);
 
@@ -82,6 +88,24 @@ export const getUserAiReports = async (req, res) => {
       success: true,
       message: "AI Reports retrieved successfully!",
       data: reports,
+    });
+  } catch (error) {
+    return res.status(404).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+export const fetchChapterMaterial = async (req, res) => {
+  try {
+    const { chapterId } = req.params;
+    const data = await assessmentService.getChapterMaterial(chapterId);
+
+    return res.status(200).json({
+      success: true,
+      message: "Materi berhasil diambil",
+      data,
     });
   } catch (error) {
     return res.status(404).json({

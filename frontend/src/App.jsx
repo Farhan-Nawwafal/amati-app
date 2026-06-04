@@ -18,6 +18,7 @@ import ExamWorkspace from "./pages/ExamWorkspace";
 import ExamResult from "./pages/ExamResult";
 import Settings from "./pages/Settings";
 import AdminCourses from "./pages/AdminCourses";
+import AiMaterialView from "./pages/AiMaterialView";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -46,6 +47,7 @@ function App() {
           path="/material/:chapterId/:subChapterId"
           element={<CoursesMaterialView />}
         />
+        <Route path="/ai-materi/:chapterId" element={<AiMaterialView />} />
 
         {/* Fitur Kuis */}
         <Route path="/quiz" element={<QuizList />} />

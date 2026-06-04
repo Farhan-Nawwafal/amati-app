@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
-import AiReportCard from "../components/AiReportCard";
+// import AiReportCard from "../components/AiReportCard";
 import { getDashboardSummaryApi } from "../services/dashboardService";
 
 const Dashboard = () => {
@@ -602,7 +602,7 @@ const Dashboard = () => {
               }}
             >
               {/* KARTU REKOMENDASI AI AMATI */}
-              <AiReportCard userId={currentUserId} />
+              {/* <AiReportCard userId={currentUserId} /> */}
 
               {/* 💡 RECENT ACTIVITY - CHAPTER DINAMIS */}
               <div

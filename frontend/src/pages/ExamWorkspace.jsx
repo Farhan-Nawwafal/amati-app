@@ -72,11 +72,18 @@ const ExamWorkspace = () => {
         answers: answersPayload,
       });
 
-      // Bawa data skor menuju halaman ExamResult
+      const finalResultData = res.data?.data || res.data || res;
+
+      const fetchedChapterId =
+        finalResultData.chapterId ||
+        finalResultData.chapter_id ||
+        finalResultData.aiAnalysis?.chapterId;
+
       navigate("/exam/result", {
         state: {
-          resultData: res.data.data,
+          resultData: finalResultData,
           examTitle: assessmentTitle,
+          explicitChapterId: fetchedChapterId,
         },
       });
     } catch (error) {

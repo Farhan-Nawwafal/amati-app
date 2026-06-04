@@ -18,7 +18,6 @@ const QuizList = () => {
       try {
         setIsPageLoading(true);
         const response = await getStudentQuizListApi();
-        // console.log(response);
         setDbQuizList(response.data?.data || []);
       } catch (error) {
         console.error("Gagal memuat daftar kuis adaptif:", error);
