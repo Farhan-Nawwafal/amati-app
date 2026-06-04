@@ -12,9 +12,9 @@ export const createUser = async (data) =>
     },
   });
 
-export const getUserGmail = async (data) =>
+export const getUserGmail = async (gmail) =>
   await prisma.user.findFirst({
-    where: { gmail: data.gmail },
+    where: { gmail: gmail }, 
   });
 
 export const getUserData = async (data) =>
@@ -30,4 +30,15 @@ export const getUserData = async (data) =>
       birth_date: true,
       role: true,
     },
+  });
+
+  export const getUserById = async (id) =>
+  await prisma.user.findUnique({
+    where: { id: id },
+  });
+
+  export const updateUserProfileData = async (id, updatedPayload) =>
+  await prisma.user.update({
+    where: { id: id },
+    data: updatedPayload, // Otomatis mengupdate kolom yang dikirim dari service
   });

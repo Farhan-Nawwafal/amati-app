@@ -18,9 +18,9 @@ enum Role {
 }
 
 enum AssessmentType {
-  beginner
-  intermediate
-  advanced
+  placement
+  quiz
+  exam
 }
 
 enum DifficultyLevel {
@@ -48,8 +48,8 @@ enum ProgressStatus {
 model User {
   id         String   @id
   name       String
-  role       Role
-  gmail      String
+  role       Role     @default(student)
+  gmail      String   @unique
   password   String
   birth_date DateTime @db.Date
   created_at DateTime @default(now())
@@ -76,6 +76,7 @@ model Chapter {
   prerequisites_base        Prerequisite[] @relation("ChapterBase")
   prerequisites_requirement Prerequisite[] @relation("ChapterPrerequisite")
   sub_chapters              SubChapter[]
+  assessments               Assessment[]
 
   @@map("chapters")
 }
@@ -84,6 +85,7 @@ model SubChapter {
   id         String   @id
   chapter_id String
   name       String
+  content    String   @db.Text
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -113,20 +115,24 @@ model ChapterTaken {
 }
 
 model Assessment {
-  id               String         @id
-  chapter_taken_id String
-  sub_chapter_id   String
-  title            String
-  type             AssessmentType
-  correct_answer   Int
-  created_at       DateTime       @default(now())
-  updated_at       DateTime       @updatedAt
+  id String @id
 
-  // Relations
-  chapter_taken ChapterTaken  @relation(fields: [chapter_taken_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  sub_chapter   SubChapter    @relation(fields: [sub_chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  questions     Question[]
-  user_attempts UserAttempt[]
+  chapter_id     String?
+  sub_chapter_id String?
+
+  title          String
+  type           AssessmentType
+  correct_answer Int
+  created_at     DateTime       @default(now())
+  updated_at     DateTime       @updatedAt
+
+  chapter     Chapter?    @relation(fields: [chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sub_chapter SubChapter? @relation(fields: [sub_chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  questions      Question[]
+  user_attempts  UserAttempt[]
+  chapterTaken   ChapterTaken? @relation(fields: [chapterTakenId], references: [id])
+  chapterTakenId String?
 
   @@map("assessments")
 }
@@ -164,29 +170,30 @@ model Prerequisite {
 model Question {
   id               String          @id
   assessment_id    String
-  question         String
-  topic            Int
+  question         String          @db.Text  
+  options          Json
+  key_answer       String
+  topic            String
   difficulty_level DifficultyLevel
   created_at       DateTime        @default(now())
   updated_at       DateTime        @updatedAt
 
-  // Relations
   assessment Assessment @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("questions")
 }
 
 model UserAttempt {
-  id             String     @id
-  user_id        String
-  assessement_id String
-  score          Float
-  completed_at   DateTime   @default(now())
-  created_at     DateTime   @default(now())
-  updated_at     DateTime   @updatedAt
+  id            String     @id
+  user_id       String
+  assessment_id String
+  score         Float
+  completed_at  DateTime   @default(now())
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
   // Relations
-  user           User       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  assessment     Assessment @relation(fields: [assessement_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user          User       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  assessment    Assessment @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("user_attempts")
 }

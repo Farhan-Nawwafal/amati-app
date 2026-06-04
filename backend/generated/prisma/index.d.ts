@@ -77,9 +77,9 @@ export type Role = (typeof Role)[keyof typeof Role]
 
 
 export const AssessmentType: {
-  beginner: 'beginner',
-  intermediate: 'intermediate',
-  advanced: 'advanced'
+  placement: 'placement',
+  quiz: 'quiz',
+  exam: 'exam'
 };
 
 export type AssessmentType = (typeof AssessmentType)[keyof typeof AssessmentType]
@@ -1738,6 +1738,7 @@ export namespace Prisma {
     prerequisites_base: number
     prerequisites_requirement: number
     sub_chapters: number
+    assessments: number
   }
 
   export type ChapterCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1745,6 +1746,7 @@ export namespace Prisma {
     prerequisites_base?: boolean | ChapterCountOutputTypeCountPrerequisites_baseArgs
     prerequisites_requirement?: boolean | ChapterCountOutputTypeCountPrerequisites_requirementArgs
     sub_chapters?: boolean | ChapterCountOutputTypeCountSub_chaptersArgs
+    assessments?: boolean | ChapterCountOutputTypeCountAssessmentsArgs
   }
 
   // Custom InputTypes
@@ -1784,6 +1786,13 @@ export namespace Prisma {
    */
   export type ChapterCountOutputTypeCountSub_chaptersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SubChapterWhereInput
+  }
+
+  /**
+   * ChapterCountOutputType without action
+   */
+  export type ChapterCountOutputTypeCountAssessmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AssessmentWhereInput
   }
 
 
@@ -3199,6 +3208,7 @@ export namespace Prisma {
     prerequisites_base?: boolean | Chapter$prerequisites_baseArgs<ExtArgs>
     prerequisites_requirement?: boolean | Chapter$prerequisites_requirementArgs<ExtArgs>
     sub_chapters?: boolean | Chapter$sub_chaptersArgs<ExtArgs>
+    assessments?: boolean | Chapter$assessmentsArgs<ExtArgs>
     _count?: boolean | ChapterCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["chapter"]>
 
@@ -3218,6 +3228,7 @@ export namespace Prisma {
     prerequisites_base?: boolean | Chapter$prerequisites_baseArgs<ExtArgs>
     prerequisites_requirement?: boolean | Chapter$prerequisites_requirementArgs<ExtArgs>
     sub_chapters?: boolean | Chapter$sub_chaptersArgs<ExtArgs>
+    assessments?: boolean | Chapter$assessmentsArgs<ExtArgs>
     _count?: boolean | ChapterCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3228,6 +3239,7 @@ export namespace Prisma {
       prerequisites_base: Prisma.$PrerequisitePayload<ExtArgs>[]
       prerequisites_requirement: Prisma.$PrerequisitePayload<ExtArgs>[]
       sub_chapters: Prisma.$SubChapterPayload<ExtArgs>[]
+      assessments: Prisma.$AssessmentPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3579,6 +3591,7 @@ export namespace Prisma {
     prerequisites_base<T extends Chapter$prerequisites_baseArgs<ExtArgs> = {}>(args?: Subset<T, Chapter$prerequisites_baseArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PrerequisitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     prerequisites_requirement<T extends Chapter$prerequisites_requirementArgs<ExtArgs> = {}>(args?: Subset<T, Chapter$prerequisites_requirementArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PrerequisitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sub_chapters<T extends Chapter$sub_chaptersArgs<ExtArgs> = {}>(args?: Subset<T, Chapter$sub_chaptersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubChapterPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    assessments<T extends Chapter$assessmentsArgs<ExtArgs> = {}>(args?: Subset<T, Chapter$assessmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AssessmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4057,6 +4070,30 @@ export namespace Prisma {
   }
 
   /**
+   * Chapter.assessments
+   */
+  export type Chapter$assessmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Assessment
+     */
+    select?: AssessmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Assessment
+     */
+    omit?: AssessmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AssessmentInclude<ExtArgs> | null
+    where?: AssessmentWhereInput
+    orderBy?: AssessmentOrderByWithRelationInput | AssessmentOrderByWithRelationInput[]
+    cursor?: AssessmentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AssessmentScalarFieldEnum | AssessmentScalarFieldEnum[]
+  }
+
+  /**
    * Chapter without action
    */
   export type ChapterDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4089,6 +4126,7 @@ export namespace Prisma {
     id: string | null
     chapter_id: string | null
     name: string | null
+    content: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -4097,6 +4135,7 @@ export namespace Prisma {
     id: string | null
     chapter_id: string | null
     name: string | null
+    content: string | null
     created_at: Date | null
     updated_at: Date | null
   }
@@ -4105,6 +4144,7 @@ export namespace Prisma {
     id: number
     chapter_id: number
     name: number
+    content: number
     created_at: number
     updated_at: number
     _all: number
@@ -4115,6 +4155,7 @@ export namespace Prisma {
     id?: true
     chapter_id?: true
     name?: true
+    content?: true
     created_at?: true
     updated_at?: true
   }
@@ -4123,6 +4164,7 @@ export namespace Prisma {
     id?: true
     chapter_id?: true
     name?: true
+    content?: true
     created_at?: true
     updated_at?: true
   }
@@ -4131,6 +4173,7 @@ export namespace Prisma {
     id?: true
     chapter_id?: true
     name?: true
+    content?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -4212,6 +4255,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at: Date
     updated_at: Date
     _count: SubChapterCountAggregateOutputType | null
@@ -4237,6 +4281,7 @@ export namespace Prisma {
     id?: boolean
     chapter_id?: boolean
     name?: boolean
+    content?: boolean
     created_at?: boolean
     updated_at?: boolean
     chapter?: boolean | ChapterDefaultArgs<ExtArgs>
@@ -4251,11 +4296,12 @@ export namespace Prisma {
     id?: boolean
     chapter_id?: boolean
     name?: boolean
+    content?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type SubChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chapter_id" | "name" | "created_at" | "updated_at", ExtArgs["result"]["subChapter"]>
+  export type SubChapterOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chapter_id" | "name" | "content" | "created_at" | "updated_at", ExtArgs["result"]["subChapter"]>
   export type SubChapterInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     chapter?: boolean | ChapterDefaultArgs<ExtArgs>
     assessments?: boolean | SubChapter$assessmentsArgs<ExtArgs>
@@ -4274,6 +4320,7 @@ export namespace Prisma {
       id: string
       chapter_id: string
       name: string
+      content: string
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["subChapter"]>
@@ -4651,6 +4698,7 @@ export namespace Prisma {
     readonly id: FieldRef<"SubChapter", 'String'>
     readonly chapter_id: FieldRef<"SubChapter", 'String'>
     readonly name: FieldRef<"SubChapter", 'String'>
+    readonly content: FieldRef<"SubChapter", 'String'>
     readonly created_at: FieldRef<"SubChapter", 'DateTime'>
     readonly updated_at: FieldRef<"SubChapter", 'DateTime'>
   }
@@ -6113,35 +6161,38 @@ export namespace Prisma {
 
   export type AssessmentMinAggregateOutputType = {
     id: string | null
-    chapter_taken_id: string | null
+    chapter_id: string | null
     sub_chapter_id: string | null
     title: string | null
     type: $Enums.AssessmentType | null
     correct_answer: number | null
     created_at: Date | null
     updated_at: Date | null
+    chapterTakenId: string | null
   }
 
   export type AssessmentMaxAggregateOutputType = {
     id: string | null
-    chapter_taken_id: string | null
+    chapter_id: string | null
     sub_chapter_id: string | null
     title: string | null
     type: $Enums.AssessmentType | null
     correct_answer: number | null
     created_at: Date | null
     updated_at: Date | null
+    chapterTakenId: string | null
   }
 
   export type AssessmentCountAggregateOutputType = {
     id: number
-    chapter_taken_id: number
+    chapter_id: number
     sub_chapter_id: number
     title: number
     type: number
     correct_answer: number
     created_at: number
     updated_at: number
+    chapterTakenId: number
     _all: number
   }
 
@@ -6156,35 +6207,38 @@ export namespace Prisma {
 
   export type AssessmentMinAggregateInputType = {
     id?: true
-    chapter_taken_id?: true
+    chapter_id?: true
     sub_chapter_id?: true
     title?: true
     type?: true
     correct_answer?: true
     created_at?: true
     updated_at?: true
+    chapterTakenId?: true
   }
 
   export type AssessmentMaxAggregateInputType = {
     id?: true
-    chapter_taken_id?: true
+    chapter_id?: true
     sub_chapter_id?: true
     title?: true
     type?: true
     correct_answer?: true
     created_at?: true
     updated_at?: true
+    chapterTakenId?: true
   }
 
   export type AssessmentCountAggregateInputType = {
     id?: true
-    chapter_taken_id?: true
+    chapter_id?: true
     sub_chapter_id?: true
     title?: true
     type?: true
     correct_answer?: true
     created_at?: true
     updated_at?: true
+    chapterTakenId?: true
     _all?: true
   }
 
@@ -6276,13 +6330,14 @@ export namespace Prisma {
 
   export type AssessmentGroupByOutputType = {
     id: string
-    chapter_taken_id: string
-    sub_chapter_id: string
+    chapter_id: string | null
+    sub_chapter_id: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
     created_at: Date
     updated_at: Date
+    chapterTakenId: string | null
     _count: AssessmentCountAggregateOutputType | null
     _avg: AssessmentAvgAggregateOutputType | null
     _sum: AssessmentSumAggregateOutputType | null
@@ -6306,17 +6361,19 @@ export namespace Prisma {
 
   export type AssessmentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    chapter_taken_id?: boolean
+    chapter_id?: boolean
     sub_chapter_id?: boolean
     title?: boolean
     type?: boolean
     correct_answer?: boolean
     created_at?: boolean
     updated_at?: boolean
-    chapter_taken?: boolean | ChapterTakenDefaultArgs<ExtArgs>
-    sub_chapter?: boolean | SubChapterDefaultArgs<ExtArgs>
+    chapterTakenId?: boolean
+    chapter?: boolean | Assessment$chapterArgs<ExtArgs>
+    sub_chapter?: boolean | Assessment$sub_chapterArgs<ExtArgs>
     questions?: boolean | Assessment$questionsArgs<ExtArgs>
     user_attempts?: boolean | Assessment$user_attemptsArgs<ExtArgs>
+    chapterTaken?: boolean | Assessment$chapterTakenArgs<ExtArgs>
     _count?: boolean | AssessmentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["assessment"]>
 
@@ -6324,41 +6381,45 @@ export namespace Prisma {
 
   export type AssessmentSelectScalar = {
     id?: boolean
-    chapter_taken_id?: boolean
+    chapter_id?: boolean
     sub_chapter_id?: boolean
     title?: boolean
     type?: boolean
     correct_answer?: boolean
     created_at?: boolean
     updated_at?: boolean
+    chapterTakenId?: boolean
   }
 
-  export type AssessmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chapter_taken_id" | "sub_chapter_id" | "title" | "type" | "correct_answer" | "created_at" | "updated_at", ExtArgs["result"]["assessment"]>
+  export type AssessmentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "chapter_id" | "sub_chapter_id" | "title" | "type" | "correct_answer" | "created_at" | "updated_at" | "chapterTakenId", ExtArgs["result"]["assessment"]>
   export type AssessmentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    chapter_taken?: boolean | ChapterTakenDefaultArgs<ExtArgs>
-    sub_chapter?: boolean | SubChapterDefaultArgs<ExtArgs>
+    chapter?: boolean | Assessment$chapterArgs<ExtArgs>
+    sub_chapter?: boolean | Assessment$sub_chapterArgs<ExtArgs>
     questions?: boolean | Assessment$questionsArgs<ExtArgs>
     user_attempts?: boolean | Assessment$user_attemptsArgs<ExtArgs>
+    chapterTaken?: boolean | Assessment$chapterTakenArgs<ExtArgs>
     _count?: boolean | AssessmentCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $AssessmentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Assessment"
     objects: {
-      chapter_taken: Prisma.$ChapterTakenPayload<ExtArgs>
-      sub_chapter: Prisma.$SubChapterPayload<ExtArgs>
+      chapter: Prisma.$ChapterPayload<ExtArgs> | null
+      sub_chapter: Prisma.$SubChapterPayload<ExtArgs> | null
       questions: Prisma.$QuestionPayload<ExtArgs>[]
       user_attempts: Prisma.$UserAttemptPayload<ExtArgs>[]
+      chapterTaken: Prisma.$ChapterTakenPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      chapter_taken_id: string
-      sub_chapter_id: string
+      chapter_id: string | null
+      sub_chapter_id: string | null
       title: string
       type: $Enums.AssessmentType
       correct_answer: number
       created_at: Date
       updated_at: Date
+      chapterTakenId: string | null
     }, ExtArgs["result"]["assessment"]>
     composites: {}
   }
@@ -6699,10 +6760,11 @@ export namespace Prisma {
    */
   export interface Prisma__AssessmentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    chapter_taken<T extends ChapterTakenDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ChapterTakenDefaultArgs<ExtArgs>>): Prisma__ChapterTakenClient<$Result.GetResult<Prisma.$ChapterTakenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    sub_chapter<T extends SubChapterDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SubChapterDefaultArgs<ExtArgs>>): Prisma__SubChapterClient<$Result.GetResult<Prisma.$SubChapterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    chapter<T extends Assessment$chapterArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$chapterArgs<ExtArgs>>): Prisma__ChapterClient<$Result.GetResult<Prisma.$ChapterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    sub_chapter<T extends Assessment$sub_chapterArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$sub_chapterArgs<ExtArgs>>): Prisma__SubChapterClient<$Result.GetResult<Prisma.$SubChapterPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     questions<T extends Assessment$questionsArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$questionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuestionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     user_attempts<T extends Assessment$user_attemptsArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$user_attemptsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAttemptPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    chapterTaken<T extends Assessment$chapterTakenArgs<ExtArgs> = {}>(args?: Subset<T, Assessment$chapterTakenArgs<ExtArgs>>): Prisma__ChapterTakenClient<$Result.GetResult<Prisma.$ChapterTakenPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6733,13 +6795,14 @@ export namespace Prisma {
    */
   interface AssessmentFieldRefs {
     readonly id: FieldRef<"Assessment", 'String'>
-    readonly chapter_taken_id: FieldRef<"Assessment", 'String'>
+    readonly chapter_id: FieldRef<"Assessment", 'String'>
     readonly sub_chapter_id: FieldRef<"Assessment", 'String'>
     readonly title: FieldRef<"Assessment", 'String'>
     readonly type: FieldRef<"Assessment", 'AssessmentType'>
     readonly correct_answer: FieldRef<"Assessment", 'Int'>
     readonly created_at: FieldRef<"Assessment", 'DateTime'>
     readonly updated_at: FieldRef<"Assessment", 'DateTime'>
+    readonly chapterTakenId: FieldRef<"Assessment", 'String'>
   }
     
 
@@ -7088,6 +7151,44 @@ export namespace Prisma {
   }
 
   /**
+   * Assessment.chapter
+   */
+  export type Assessment$chapterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Chapter
+     */
+    select?: ChapterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Chapter
+     */
+    omit?: ChapterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChapterInclude<ExtArgs> | null
+    where?: ChapterWhereInput
+  }
+
+  /**
+   * Assessment.sub_chapter
+   */
+  export type Assessment$sub_chapterArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SubChapter
+     */
+    select?: SubChapterSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SubChapter
+     */
+    omit?: SubChapterOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SubChapterInclude<ExtArgs> | null
+    where?: SubChapterWhereInput
+  }
+
+  /**
    * Assessment.questions
    */
   export type Assessment$questionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7133,6 +7234,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: UserAttemptScalarFieldEnum | UserAttemptScalarFieldEnum[]
+  }
+
+  /**
+   * Assessment.chapterTaken
+   */
+  export type Assessment$chapterTakenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChapterTaken
+     */
+    select?: ChapterTakenSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChapterTaken
+     */
+    omit?: ChapterTakenOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChapterTakenInclude<ExtArgs> | null
+    where?: ChapterTakenWhereInput
   }
 
   /**
@@ -9054,25 +9174,16 @@ export namespace Prisma {
 
   export type AggregateQuestion = {
     _count: QuestionCountAggregateOutputType | null
-    _avg: QuestionAvgAggregateOutputType | null
-    _sum: QuestionSumAggregateOutputType | null
     _min: QuestionMinAggregateOutputType | null
     _max: QuestionMaxAggregateOutputType | null
-  }
-
-  export type QuestionAvgAggregateOutputType = {
-    topic: number | null
-  }
-
-  export type QuestionSumAggregateOutputType = {
-    topic: number | null
   }
 
   export type QuestionMinAggregateOutputType = {
     id: string | null
     assessment_id: string | null
     question: string | null
-    topic: number | null
+    key_answer: string | null
+    topic: string | null
     difficulty_level: $Enums.DifficultyLevel | null
     created_at: Date | null
     updated_at: Date | null
@@ -9082,7 +9193,8 @@ export namespace Prisma {
     id: string | null
     assessment_id: string | null
     question: string | null
-    topic: number | null
+    key_answer: string | null
+    topic: string | null
     difficulty_level: $Enums.DifficultyLevel | null
     created_at: Date | null
     updated_at: Date | null
@@ -9092,6 +9204,8 @@ export namespace Prisma {
     id: number
     assessment_id: number
     question: number
+    options: number
+    key_answer: number
     topic: number
     difficulty_level: number
     created_at: number
@@ -9100,18 +9214,11 @@ export namespace Prisma {
   }
 
 
-  export type QuestionAvgAggregateInputType = {
-    topic?: true
-  }
-
-  export type QuestionSumAggregateInputType = {
-    topic?: true
-  }
-
   export type QuestionMinAggregateInputType = {
     id?: true
     assessment_id?: true
     question?: true
+    key_answer?: true
     topic?: true
     difficulty_level?: true
     created_at?: true
@@ -9122,6 +9229,7 @@ export namespace Prisma {
     id?: true
     assessment_id?: true
     question?: true
+    key_answer?: true
     topic?: true
     difficulty_level?: true
     created_at?: true
@@ -9132,6 +9240,8 @@ export namespace Prisma {
     id?: true
     assessment_id?: true
     question?: true
+    options?: true
+    key_answer?: true
     topic?: true
     difficulty_level?: true
     created_at?: true
@@ -9177,18 +9287,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: QuestionAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: QuestionSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: QuestionMinAggregateInputType
@@ -9219,8 +9317,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: QuestionCountAggregateInputType | true
-    _avg?: QuestionAvgAggregateInputType
-    _sum?: QuestionSumAggregateInputType
     _min?: QuestionMinAggregateInputType
     _max?: QuestionMaxAggregateInputType
   }
@@ -9229,13 +9325,13 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
-    topic: number
+    options: JsonValue
+    key_answer: string
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at: Date
     updated_at: Date
     _count: QuestionCountAggregateOutputType | null
-    _avg: QuestionAvgAggregateOutputType | null
-    _sum: QuestionSumAggregateOutputType | null
     _min: QuestionMinAggregateOutputType | null
     _max: QuestionMaxAggregateOutputType | null
   }
@@ -9258,6 +9354,8 @@ export namespace Prisma {
     id?: boolean
     assessment_id?: boolean
     question?: boolean
+    options?: boolean
+    key_answer?: boolean
     topic?: boolean
     difficulty_level?: boolean
     created_at?: boolean
@@ -9271,13 +9369,15 @@ export namespace Prisma {
     id?: boolean
     assessment_id?: boolean
     question?: boolean
+    options?: boolean
+    key_answer?: boolean
     topic?: boolean
     difficulty_level?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type QuestionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "assessment_id" | "question" | "topic" | "difficulty_level" | "created_at" | "updated_at", ExtArgs["result"]["question"]>
+  export type QuestionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "assessment_id" | "question" | "options" | "key_answer" | "topic" | "difficulty_level" | "created_at" | "updated_at", ExtArgs["result"]["question"]>
   export type QuestionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
   }
@@ -9291,7 +9391,9 @@ export namespace Prisma {
       id: string
       assessment_id: string
       question: string
-      topic: number
+      options: Prisma.JsonValue
+      key_answer: string
+      topic: string
       difficulty_level: $Enums.DifficultyLevel
       created_at: Date
       updated_at: Date
@@ -9668,7 +9770,9 @@ export namespace Prisma {
     readonly id: FieldRef<"Question", 'String'>
     readonly assessment_id: FieldRef<"Question", 'String'>
     readonly question: FieldRef<"Question", 'String'>
-    readonly topic: FieldRef<"Question", 'Int'>
+    readonly options: FieldRef<"Question", 'Json'>
+    readonly key_answer: FieldRef<"Question", 'String'>
+    readonly topic: FieldRef<"Question", 'String'>
     readonly difficulty_level: FieldRef<"Question", 'DifficultyLevel'>
     readonly created_at: FieldRef<"Question", 'DateTime'>
     readonly updated_at: FieldRef<"Question", 'DateTime'>
@@ -10061,7 +10165,7 @@ export namespace Prisma {
   export type UserAttemptMinAggregateOutputType = {
     id: string | null
     user_id: string | null
-    assessement_id: string | null
+    assessment_id: string | null
     score: number | null
     completed_at: Date | null
     created_at: Date | null
@@ -10071,7 +10175,7 @@ export namespace Prisma {
   export type UserAttemptMaxAggregateOutputType = {
     id: string | null
     user_id: string | null
-    assessement_id: string | null
+    assessment_id: string | null
     score: number | null
     completed_at: Date | null
     created_at: Date | null
@@ -10081,7 +10185,7 @@ export namespace Prisma {
   export type UserAttemptCountAggregateOutputType = {
     id: number
     user_id: number
-    assessement_id: number
+    assessment_id: number
     score: number
     completed_at: number
     created_at: number
@@ -10101,7 +10205,7 @@ export namespace Prisma {
   export type UserAttemptMinAggregateInputType = {
     id?: true
     user_id?: true
-    assessement_id?: true
+    assessment_id?: true
     score?: true
     completed_at?: true
     created_at?: true
@@ -10111,7 +10215,7 @@ export namespace Prisma {
   export type UserAttemptMaxAggregateInputType = {
     id?: true
     user_id?: true
-    assessement_id?: true
+    assessment_id?: true
     score?: true
     completed_at?: true
     created_at?: true
@@ -10121,7 +10225,7 @@ export namespace Prisma {
   export type UserAttemptCountAggregateInputType = {
     id?: true
     user_id?: true
-    assessement_id?: true
+    assessment_id?: true
     score?: true
     completed_at?: true
     created_at?: true
@@ -10218,7 +10322,7 @@ export namespace Prisma {
   export type UserAttemptGroupByOutputType = {
     id: string
     user_id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at: Date
     created_at: Date
@@ -10247,7 +10351,7 @@ export namespace Prisma {
   export type UserAttemptSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_id?: boolean
-    assessement_id?: boolean
+    assessment_id?: boolean
     score?: boolean
     completed_at?: boolean
     created_at?: boolean
@@ -10261,14 +10365,14 @@ export namespace Prisma {
   export type UserAttemptSelectScalar = {
     id?: boolean
     user_id?: boolean
-    assessement_id?: boolean
+    assessment_id?: boolean
     score?: boolean
     completed_at?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
 
-  export type UserAttemptOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "assessement_id" | "score" | "completed_at" | "created_at" | "updated_at", ExtArgs["result"]["userAttempt"]>
+  export type UserAttemptOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_id" | "assessment_id" | "score" | "completed_at" | "created_at" | "updated_at", ExtArgs["result"]["userAttempt"]>
   export type UserAttemptInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     assessment?: boolean | AssessmentDefaultArgs<ExtArgs>
@@ -10283,7 +10387,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       user_id: string
-      assessement_id: string
+      assessment_id: string
       score: number
       completed_at: Date
       created_at: Date
@@ -10661,7 +10765,7 @@ export namespace Prisma {
   interface UserAttemptFieldRefs {
     readonly id: FieldRef<"UserAttempt", 'String'>
     readonly user_id: FieldRef<"UserAttempt", 'String'>
-    readonly assessement_id: FieldRef<"UserAttempt", 'String'>
+    readonly assessment_id: FieldRef<"UserAttempt", 'String'>
     readonly score: FieldRef<"UserAttempt", 'Float'>
     readonly completed_at: FieldRef<"UserAttempt", 'DateTime'>
     readonly created_at: FieldRef<"UserAttempt", 'DateTime'>
@@ -12050,6 +12154,7 @@ export namespace Prisma {
     id: 'id',
     chapter_id: 'chapter_id',
     name: 'name',
+    content: 'content',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -12070,13 +12175,14 @@ export namespace Prisma {
 
   export const AssessmentScalarFieldEnum: {
     id: 'id',
-    chapter_taken_id: 'chapter_taken_id',
+    chapter_id: 'chapter_id',
     sub_chapter_id: 'sub_chapter_id',
     title: 'title',
     type: 'type',
     correct_answer: 'correct_answer',
     created_at: 'created_at',
-    updated_at: 'updated_at'
+    updated_at: 'updated_at',
+    chapterTakenId: 'chapterTakenId'
   };
 
   export type AssessmentScalarFieldEnum = (typeof AssessmentScalarFieldEnum)[keyof typeof AssessmentScalarFieldEnum]
@@ -12110,6 +12216,8 @@ export namespace Prisma {
     id: 'id',
     assessment_id: 'assessment_id',
     question: 'question',
+    options: 'options',
+    key_answer: 'key_answer',
     topic: 'topic',
     difficulty_level: 'difficulty_level',
     created_at: 'created_at',
@@ -12122,7 +12230,7 @@ export namespace Prisma {
   export const UserAttemptScalarFieldEnum: {
     id: 'id',
     user_id: 'user_id',
-    assessement_id: 'assessement_id',
+    assessment_id: 'assessment_id',
     score: 'score',
     completed_at: 'completed_at',
     created_at: 'created_at',
@@ -12182,7 +12290,8 @@ export namespace Prisma {
   export const SubChapterOrderByRelevanceFieldEnum: {
     id: 'id',
     chapter_id: 'chapter_id',
-    name: 'name'
+    name: 'name',
+    content: 'content'
   };
 
   export type SubChapterOrderByRelevanceFieldEnum = (typeof SubChapterOrderByRelevanceFieldEnum)[keyof typeof SubChapterOrderByRelevanceFieldEnum]
@@ -12197,11 +12306,20 @@ export namespace Prisma {
   export type ChapterTakenOrderByRelevanceFieldEnum = (typeof ChapterTakenOrderByRelevanceFieldEnum)[keyof typeof ChapterTakenOrderByRelevanceFieldEnum]
 
 
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
   export const AssessmentOrderByRelevanceFieldEnum: {
     id: 'id',
-    chapter_taken_id: 'chapter_taken_id',
+    chapter_id: 'chapter_id',
     sub_chapter_id: 'sub_chapter_id',
-    title: 'title'
+    title: 'title',
+    chapterTakenId: 'chapterTakenId'
   };
 
   export type AssessmentOrderByRelevanceFieldEnum = (typeof AssessmentOrderByRelevanceFieldEnum)[keyof typeof AssessmentOrderByRelevanceFieldEnum]
@@ -12246,7 +12364,9 @@ export namespace Prisma {
   export const QuestionOrderByRelevanceFieldEnum: {
     id: 'id',
     assessment_id: 'assessment_id',
-    question: 'question'
+    question: 'question',
+    key_answer: 'key_answer',
+    topic: 'topic'
   };
 
   export type QuestionOrderByRelevanceFieldEnum = (typeof QuestionOrderByRelevanceFieldEnum)[keyof typeof QuestionOrderByRelevanceFieldEnum]
@@ -12255,7 +12375,7 @@ export namespace Prisma {
   export const UserAttemptOrderByRelevanceFieldEnum: {
     id: 'id',
     user_id: 'user_id',
-    assessement_id: 'assessement_id'
+    assessment_id: 'assessment_id'
   };
 
   export type UserAttemptOrderByRelevanceFieldEnum = (typeof UserAttemptOrderByRelevanceFieldEnum)[keyof typeof UserAttemptOrderByRelevanceFieldEnum]
@@ -12392,12 +12512,12 @@ export namespace Prisma {
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    gmail?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
     role?: EnumRoleFilter<"User"> | $Enums.Role
-    gmail?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     birth_date?: DateTimeFilter<"User"> | Date | string
     created_at?: DateTimeFilter<"User"> | Date | string
@@ -12406,7 +12526,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenListRelationFilter
     user_attempts?: UserAttemptListRelationFilter
     user_progres?: UserProgresListRelationFilter
-  }, "id">
+  }, "id" | "gmail">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
@@ -12449,6 +12569,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteListRelationFilter
     prerequisites_requirement?: PrerequisiteListRelationFilter
     sub_chapters?: SubChapterListRelationFilter
+    assessments?: AssessmentListRelationFilter
   }
 
   export type ChapterOrderByWithRelationInput = {
@@ -12461,6 +12582,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteOrderByRelationAggregateInput
     prerequisites_requirement?: PrerequisiteOrderByRelationAggregateInput
     sub_chapters?: SubChapterOrderByRelationAggregateInput
+    assessments?: AssessmentOrderByRelationAggregateInput
     _relevance?: ChapterOrderByRelevanceInput
   }
 
@@ -12477,6 +12599,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteListRelationFilter
     prerequisites_requirement?: PrerequisiteListRelationFilter
     sub_chapters?: SubChapterListRelationFilter
+    assessments?: AssessmentListRelationFilter
   }, "id">
 
   export type ChapterOrderByWithAggregationInput = {
@@ -12510,6 +12633,7 @@ export namespace Prisma {
     id?: StringFilter<"SubChapter"> | string
     chapter_id?: StringFilter<"SubChapter"> | string
     name?: StringFilter<"SubChapter"> | string
+    content?: StringFilter<"SubChapter"> | string
     created_at?: DateTimeFilter<"SubChapter"> | Date | string
     updated_at?: DateTimeFilter<"SubChapter"> | Date | string
     chapter?: XOR<ChapterScalarRelationFilter, ChapterWhereInput>
@@ -12521,6 +12645,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     chapter?: ChapterOrderByWithRelationInput
@@ -12536,6 +12661,7 @@ export namespace Prisma {
     NOT?: SubChapterWhereInput | SubChapterWhereInput[]
     chapter_id?: StringFilter<"SubChapter"> | string
     name?: StringFilter<"SubChapter"> | string
+    content?: StringFilter<"SubChapter"> | string
     created_at?: DateTimeFilter<"SubChapter"> | Date | string
     updated_at?: DateTimeFilter<"SubChapter"> | Date | string
     chapter?: XOR<ChapterScalarRelationFilter, ChapterWhereInput>
@@ -12547,6 +12673,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: SubChapterCountOrderByAggregateInput
@@ -12561,6 +12688,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"SubChapter"> | string
     chapter_id?: StringWithAggregatesFilter<"SubChapter"> | string
     name?: StringWithAggregatesFilter<"SubChapter"> | string
+    content?: StringWithAggregatesFilter<"SubChapter"> | string
     created_at?: DateTimeWithAggregatesFilter<"SubChapter"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"SubChapter"> | Date | string
   }
@@ -12638,32 +12766,36 @@ export namespace Prisma {
     OR?: AssessmentWhereInput[]
     NOT?: AssessmentWhereInput | AssessmentWhereInput[]
     id?: StringFilter<"Assessment"> | string
-    chapter_taken_id?: StringFilter<"Assessment"> | string
-    sub_chapter_id?: StringFilter<"Assessment"> | string
+    chapter_id?: StringNullableFilter<"Assessment"> | string | null
+    sub_chapter_id?: StringNullableFilter<"Assessment"> | string | null
     title?: StringFilter<"Assessment"> | string
     type?: EnumAssessmentTypeFilter<"Assessment"> | $Enums.AssessmentType
     correct_answer?: IntFilter<"Assessment"> | number
     created_at?: DateTimeFilter<"Assessment"> | Date | string
     updated_at?: DateTimeFilter<"Assessment"> | Date | string
-    chapter_taken?: XOR<ChapterTakenScalarRelationFilter, ChapterTakenWhereInput>
-    sub_chapter?: XOR<SubChapterScalarRelationFilter, SubChapterWhereInput>
+    chapterTakenId?: StringNullableFilter<"Assessment"> | string | null
+    chapter?: XOR<ChapterNullableScalarRelationFilter, ChapterWhereInput> | null
+    sub_chapter?: XOR<SubChapterNullableScalarRelationFilter, SubChapterWhereInput> | null
     questions?: QuestionListRelationFilter
     user_attempts?: UserAttemptListRelationFilter
+    chapterTaken?: XOR<ChapterTakenNullableScalarRelationFilter, ChapterTakenWhereInput> | null
   }
 
   export type AssessmentOrderByWithRelationInput = {
     id?: SortOrder
-    chapter_taken_id?: SortOrder
-    sub_chapter_id?: SortOrder
+    chapter_id?: SortOrderInput | SortOrder
+    sub_chapter_id?: SortOrderInput | SortOrder
     title?: SortOrder
     type?: SortOrder
     correct_answer?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    chapter_taken?: ChapterTakenOrderByWithRelationInput
+    chapterTakenId?: SortOrderInput | SortOrder
+    chapter?: ChapterOrderByWithRelationInput
     sub_chapter?: SubChapterOrderByWithRelationInput
     questions?: QuestionOrderByRelationAggregateInput
     user_attempts?: UserAttemptOrderByRelationAggregateInput
+    chapterTaken?: ChapterTakenOrderByWithRelationInput
     _relevance?: AssessmentOrderByRelevanceInput
   }
 
@@ -12672,28 +12804,31 @@ export namespace Prisma {
     AND?: AssessmentWhereInput | AssessmentWhereInput[]
     OR?: AssessmentWhereInput[]
     NOT?: AssessmentWhereInput | AssessmentWhereInput[]
-    chapter_taken_id?: StringFilter<"Assessment"> | string
-    sub_chapter_id?: StringFilter<"Assessment"> | string
+    chapter_id?: StringNullableFilter<"Assessment"> | string | null
+    sub_chapter_id?: StringNullableFilter<"Assessment"> | string | null
     title?: StringFilter<"Assessment"> | string
     type?: EnumAssessmentTypeFilter<"Assessment"> | $Enums.AssessmentType
     correct_answer?: IntFilter<"Assessment"> | number
     created_at?: DateTimeFilter<"Assessment"> | Date | string
     updated_at?: DateTimeFilter<"Assessment"> | Date | string
-    chapter_taken?: XOR<ChapterTakenScalarRelationFilter, ChapterTakenWhereInput>
-    sub_chapter?: XOR<SubChapterScalarRelationFilter, SubChapterWhereInput>
+    chapterTakenId?: StringNullableFilter<"Assessment"> | string | null
+    chapter?: XOR<ChapterNullableScalarRelationFilter, ChapterWhereInput> | null
+    sub_chapter?: XOR<SubChapterNullableScalarRelationFilter, SubChapterWhereInput> | null
     questions?: QuestionListRelationFilter
     user_attempts?: UserAttemptListRelationFilter
+    chapterTaken?: XOR<ChapterTakenNullableScalarRelationFilter, ChapterTakenWhereInput> | null
   }, "id">
 
   export type AssessmentOrderByWithAggregationInput = {
     id?: SortOrder
-    chapter_taken_id?: SortOrder
-    sub_chapter_id?: SortOrder
+    chapter_id?: SortOrderInput | SortOrder
+    sub_chapter_id?: SortOrderInput | SortOrder
     title?: SortOrder
     type?: SortOrder
     correct_answer?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    chapterTakenId?: SortOrderInput | SortOrder
     _count?: AssessmentCountOrderByAggregateInput
     _avg?: AssessmentAvgOrderByAggregateInput
     _max?: AssessmentMaxOrderByAggregateInput
@@ -12706,13 +12841,14 @@ export namespace Prisma {
     OR?: AssessmentScalarWhereWithAggregatesInput[]
     NOT?: AssessmentScalarWhereWithAggregatesInput | AssessmentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Assessment"> | string
-    chapter_taken_id?: StringWithAggregatesFilter<"Assessment"> | string
-    sub_chapter_id?: StringWithAggregatesFilter<"Assessment"> | string
+    chapter_id?: StringNullableWithAggregatesFilter<"Assessment"> | string | null
+    sub_chapter_id?: StringNullableWithAggregatesFilter<"Assessment"> | string | null
     title?: StringWithAggregatesFilter<"Assessment"> | string
     type?: EnumAssessmentTypeWithAggregatesFilter<"Assessment"> | $Enums.AssessmentType
     correct_answer?: IntWithAggregatesFilter<"Assessment"> | number
     created_at?: DateTimeWithAggregatesFilter<"Assessment"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Assessment"> | Date | string
+    chapterTakenId?: StringNullableWithAggregatesFilter<"Assessment"> | string | null
   }
 
   export type AiReportWhereInput = {
@@ -12850,7 +12986,9 @@ export namespace Prisma {
     id?: StringFilter<"Question"> | string
     assessment_id?: StringFilter<"Question"> | string
     question?: StringFilter<"Question"> | string
-    topic?: IntFilter<"Question"> | number
+    options?: JsonFilter<"Question">
+    key_answer?: StringFilter<"Question"> | string
+    topic?: StringFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeFilter<"Question"> | Date | string
     updated_at?: DateTimeFilter<"Question"> | Date | string
@@ -12861,6 +12999,8 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    options?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
@@ -12876,7 +13016,9 @@ export namespace Prisma {
     NOT?: QuestionWhereInput | QuestionWhereInput[]
     assessment_id?: StringFilter<"Question"> | string
     question?: StringFilter<"Question"> | string
-    topic?: IntFilter<"Question"> | number
+    options?: JsonFilter<"Question">
+    key_answer?: StringFilter<"Question"> | string
+    topic?: StringFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeFilter<"Question"> | Date | string
     updated_at?: DateTimeFilter<"Question"> | Date | string
@@ -12887,15 +13029,15 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    options?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: QuestionCountOrderByAggregateInput
-    _avg?: QuestionAvgOrderByAggregateInput
     _max?: QuestionMaxOrderByAggregateInput
     _min?: QuestionMinOrderByAggregateInput
-    _sum?: QuestionSumOrderByAggregateInput
   }
 
   export type QuestionScalarWhereWithAggregatesInput = {
@@ -12905,7 +13047,9 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Question"> | string
     assessment_id?: StringWithAggregatesFilter<"Question"> | string
     question?: StringWithAggregatesFilter<"Question"> | string
-    topic?: IntWithAggregatesFilter<"Question"> | number
+    options?: JsonWithAggregatesFilter<"Question">
+    key_answer?: StringWithAggregatesFilter<"Question"> | string
+    topic?: StringWithAggregatesFilter<"Question"> | string
     difficulty_level?: EnumDifficultyLevelWithAggregatesFilter<"Question"> | $Enums.DifficultyLevel
     created_at?: DateTimeWithAggregatesFilter<"Question"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Question"> | Date | string
@@ -12917,7 +13061,7 @@ export namespace Prisma {
     NOT?: UserAttemptWhereInput | UserAttemptWhereInput[]
     id?: StringFilter<"UserAttempt"> | string
     user_id?: StringFilter<"UserAttempt"> | string
-    assessement_id?: StringFilter<"UserAttempt"> | string
+    assessment_id?: StringFilter<"UserAttempt"> | string
     score?: FloatFilter<"UserAttempt"> | number
     completed_at?: DateTimeFilter<"UserAttempt"> | Date | string
     created_at?: DateTimeFilter<"UserAttempt"> | Date | string
@@ -12929,7 +13073,7 @@ export namespace Prisma {
   export type UserAttemptOrderByWithRelationInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -12945,7 +13089,7 @@ export namespace Prisma {
     OR?: UserAttemptWhereInput[]
     NOT?: UserAttemptWhereInput | UserAttemptWhereInput[]
     user_id?: StringFilter<"UserAttempt"> | string
-    assessement_id?: StringFilter<"UserAttempt"> | string
+    assessment_id?: StringFilter<"UserAttempt"> | string
     score?: FloatFilter<"UserAttempt"> | number
     completed_at?: DateTimeFilter<"UserAttempt"> | Date | string
     created_at?: DateTimeFilter<"UserAttempt"> | Date | string
@@ -12957,7 +13101,7 @@ export namespace Prisma {
   export type UserAttemptOrderByWithAggregationInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -12975,7 +13119,7 @@ export namespace Prisma {
     NOT?: UserAttemptScalarWhereWithAggregatesInput | UserAttemptScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"UserAttempt"> | string
     user_id?: StringWithAggregatesFilter<"UserAttempt"> | string
-    assessement_id?: StringWithAggregatesFilter<"UserAttempt"> | string
+    assessment_id?: StringWithAggregatesFilter<"UserAttempt"> | string
     score?: FloatWithAggregatesFilter<"UserAttempt"> | number
     completed_at?: DateTimeWithAggregatesFilter<"UserAttempt"> | Date | string
     created_at?: DateTimeWithAggregatesFilter<"UserAttempt"> | Date | string
@@ -13062,7 +13206,7 @@ export namespace Prisma {
   export type UserCreateInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -13077,7 +13221,7 @@ export namespace Prisma {
   export type UserUncheckedCreateInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -13122,7 +13266,7 @@ export namespace Prisma {
   export type UserCreateManyInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -13162,6 +13306,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterCreateNestedManyWithoutChapterInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterUncheckedCreateInput = {
@@ -13174,6 +13319,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterUncheckedCreateNestedManyWithoutChapterInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterUpdateInput = {
@@ -13186,6 +13332,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteUpdateManyWithoutChapterNestedInput
     prerequisites_requirement?: PrerequisiteUpdateManyWithoutPrerequisite_chapterNestedInput
     sub_chapters?: SubChapterUpdateManyWithoutChapterNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterNestedInput
   }
 
   export type ChapterUncheckedUpdateInput = {
@@ -13198,6 +13345,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteUncheckedUpdateManyWithoutChapterNestedInput
     prerequisites_requirement?: PrerequisiteUncheckedUpdateManyWithoutPrerequisite_chapterNestedInput
     sub_chapters?: SubChapterUncheckedUpdateManyWithoutChapterNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterNestedInput
   }
 
   export type ChapterCreateManyInput = {
@@ -13227,6 +13375,7 @@ export namespace Prisma {
   export type SubChapterCreateInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
@@ -13238,6 +13387,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
@@ -13247,6 +13397,7 @@ export namespace Prisma {
   export type SubChapterUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapter?: ChapterUpdateOneRequiredWithoutSub_chaptersNestedInput
@@ -13258,6 +13409,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     chapter_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     assessments?: AssessmentUncheckedUpdateManyWithoutSub_chapterNestedInput
@@ -13268,6 +13420,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -13275,6 +13428,7 @@ export namespace Prisma {
   export type SubChapterUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13283,6 +13437,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     chapter_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -13294,7 +13449,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutChapter_takenInput
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
-    assessments?: AssessmentCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterTakenInput
     user_progres?: UserProgresCreateNestedManyWithoutChapter_takenInput
   }
 
@@ -13305,7 +13460,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
-    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterTakenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
   }
 
@@ -13316,7 +13471,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutChapter_takenNestedInput
     chapter?: ChapterUpdateOneRequiredWithoutChapter_takenNestedInput
     ai_reports?: AiReportUpdateManyWithoutChapter_takenNestedInput
-    assessments?: AssessmentUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterTakenNestedInput
     user_progres?: UserProgresUpdateManyWithoutChapter_takenNestedInput
   }
 
@@ -13327,7 +13482,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     ai_reports?: AiReportUncheckedUpdateManyWithoutChapter_takenNestedInput
-    assessments?: AssessmentUncheckedUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterTakenNestedInput
     user_progres?: UserProgresUncheckedUpdateManyWithoutChapter_takenNestedInput
   }
 
@@ -13360,21 +13515,23 @@ export namespace Prisma {
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
-    chapter_taken: ChapterTakenCreateNestedOneWithoutAssessmentsInput
-    sub_chapter: SubChapterCreateNestedOneWithoutAssessmentsInput
+    chapter?: ChapterCreateNestedOneWithoutAssessmentsInput
+    sub_chapter?: SubChapterCreateNestedOneWithoutAssessmentsInput
     questions?: QuestionCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptCreateNestedManyWithoutAssessmentInput
+    chapterTaken?: ChapterTakenCreateNestedOneWithoutAssessmentsInput
   }
 
   export type AssessmentUncheckedCreateInput = {
     id: string
-    chapter_taken_id: string
-    sub_chapter_id: string
+    chapter_id?: string | null
+    sub_chapter_id?: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
+    chapterTakenId?: string | null
     questions?: QuestionUncheckedCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -13386,34 +13543,37 @@ export namespace Prisma {
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    chapter_taken?: ChapterTakenUpdateOneRequiredWithoutAssessmentsNestedInput
-    sub_chapter?: SubChapterUpdateOneRequiredWithoutAssessmentsNestedInput
+    chapter?: ChapterUpdateOneWithoutAssessmentsNestedInput
+    sub_chapter?: SubChapterUpdateOneWithoutAssessmentsNestedInput
     questions?: QuestionUpdateManyWithoutAssessmentNestedInput
     user_attempts?: UserAttemptUpdateManyWithoutAssessmentNestedInput
+    chapterTaken?: ChapterTakenUpdateOneWithoutAssessmentsNestedInput
   }
 
   export type AssessmentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chapter_taken_id?: StringFieldUpdateOperationsInput | string
-    sub_chapter_id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sub_chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapterTakenId?: NullableStringFieldUpdateOperationsInput | string | null
     questions?: QuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     user_attempts?: UserAttemptUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentCreateManyInput = {
     id: string
-    chapter_taken_id: string
-    sub_chapter_id: string
+    chapter_id?: string | null
+    sub_chapter_id?: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
+    chapterTakenId?: string | null
   }
 
   export type AssessmentUpdateManyMutationInput = {
@@ -13427,13 +13587,14 @@ export namespace Prisma {
 
   export type AssessmentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chapter_taken_id?: StringFieldUpdateOperationsInput | string
-    sub_chapter_id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sub_chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapterTakenId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AiReportCreateInput = {
@@ -13561,7 +13722,9 @@ export namespace Prisma {
   export type QuestionCreateInput = {
     id: string
     question: string
-    topic: number
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -13572,7 +13735,9 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
-    topic: number
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -13581,7 +13746,9 @@ export namespace Prisma {
   export type QuestionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13592,7 +13759,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     assessment_id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13602,7 +13771,9 @@ export namespace Prisma {
     id: string
     assessment_id: string
     question: string
-    topic: number
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -13611,7 +13782,9 @@ export namespace Prisma {
   export type QuestionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13621,7 +13794,9 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     assessment_id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13640,7 +13815,7 @@ export namespace Prisma {
   export type UserAttemptUncheckedCreateInput = {
     id: string
     user_id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at?: Date | string
     created_at?: Date | string
@@ -13660,7 +13835,7 @@ export namespace Prisma {
   export type UserAttemptUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    assessement_id?: StringFieldUpdateOperationsInput | string
+    assessment_id?: StringFieldUpdateOperationsInput | string
     score?: FloatFieldUpdateOperationsInput | number
     completed_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13670,7 +13845,7 @@ export namespace Prisma {
   export type UserAttemptCreateManyInput = {
     id: string
     user_id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at?: Date | string
     created_at?: Date | string
@@ -13688,7 +13863,7 @@ export namespace Prisma {
   export type UserAttemptUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    assessement_id?: StringFieldUpdateOperationsInput | string
+    assessment_id?: StringFieldUpdateOperationsInput | string
     score?: FloatFieldUpdateOperationsInput | number
     completed_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13946,11 +14121,21 @@ export namespace Prisma {
     none?: SubChapterWhereInput
   }
 
+  export type AssessmentListRelationFilter = {
+    every?: AssessmentWhereInput
+    some?: AssessmentWhereInput
+    none?: AssessmentWhereInput
+  }
+
   export type PrerequisiteOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
   export type SubChapterOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AssessmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14013,16 +14198,6 @@ export namespace Prisma {
     isNot?: ChapterWhereInput
   }
 
-  export type AssessmentListRelationFilter = {
-    every?: AssessmentWhereInput
-    some?: AssessmentWhereInput
-    none?: AssessmentWhereInput
-  }
-
-  export type AssessmentOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type SubChapterOrderByRelevanceInput = {
     fields: SubChapterOrderByRelevanceFieldEnum | SubChapterOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -14033,6 +14208,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -14041,6 +14217,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -14049,6 +14226,7 @@ export namespace Prisma {
     id?: SortOrder
     chapter_id?: SortOrder
     name?: SortOrder
+    content?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -14088,6 +14266,21 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type EnumAssessmentTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.AssessmentType | EnumAssessmentTypeFieldRefInput<$PrismaModel>
     in?: $Enums.AssessmentType[]
@@ -14095,20 +14288,30 @@ export namespace Prisma {
     not?: NestedEnumAssessmentTypeFilter<$PrismaModel> | $Enums.AssessmentType
   }
 
-  export type ChapterTakenScalarRelationFilter = {
-    is?: ChapterTakenWhereInput
-    isNot?: ChapterTakenWhereInput
+  export type ChapterNullableScalarRelationFilter = {
+    is?: ChapterWhereInput | null
+    isNot?: ChapterWhereInput | null
   }
 
-  export type SubChapterScalarRelationFilter = {
-    is?: SubChapterWhereInput
-    isNot?: SubChapterWhereInput
+  export type SubChapterNullableScalarRelationFilter = {
+    is?: SubChapterWhereInput | null
+    isNot?: SubChapterWhereInput | null
   }
 
   export type QuestionListRelationFilter = {
     every?: QuestionWhereInput
     some?: QuestionWhereInput
     none?: QuestionWhereInput
+  }
+
+  export type ChapterTakenNullableScalarRelationFilter = {
+    is?: ChapterTakenWhereInput | null
+    isNot?: ChapterTakenWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type QuestionOrderByRelationAggregateInput = {
@@ -14123,13 +14326,14 @@ export namespace Prisma {
 
   export type AssessmentCountOrderByAggregateInput = {
     id?: SortOrder
-    chapter_taken_id?: SortOrder
+    chapter_id?: SortOrder
     sub_chapter_id?: SortOrder
     title?: SortOrder
     type?: SortOrder
     correct_answer?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    chapterTakenId?: SortOrder
   }
 
   export type AssessmentAvgOrderByAggregateInput = {
@@ -14138,28 +14342,48 @@ export namespace Prisma {
 
   export type AssessmentMaxOrderByAggregateInput = {
     id?: SortOrder
-    chapter_taken_id?: SortOrder
+    chapter_id?: SortOrder
     sub_chapter_id?: SortOrder
     title?: SortOrder
     type?: SortOrder
     correct_answer?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    chapterTakenId?: SortOrder
   }
 
   export type AssessmentMinOrderByAggregateInput = {
     id?: SortOrder
-    chapter_taken_id?: SortOrder
+    chapter_id?: SortOrder
     sub_chapter_id?: SortOrder
     title?: SortOrder
     type?: SortOrder
     correct_answer?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+    chapterTakenId?: SortOrder
   }
 
   export type AssessmentSumOrderByAggregateInput = {
     correct_answer?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type EnumAssessmentTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -14193,6 +14417,11 @@ export namespace Prisma {
     gt?: InputJsonValue
     gte?: InputJsonValue
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type ChapterTakenScalarRelationFilter = {
+    is?: ChapterTakenWhereInput
+    isNot?: ChapterTakenWhereInput
   }
 
   export type AiReportOrderByRelevanceInput = {
@@ -14307,20 +14536,19 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    options?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
-  export type QuestionAvgOrderByAggregateInput = {
-    topic?: SortOrder
-  }
-
   export type QuestionMaxOrderByAggregateInput = {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
@@ -14331,14 +14559,11 @@ export namespace Prisma {
     id?: SortOrder
     assessment_id?: SortOrder
     question?: SortOrder
+    key_answer?: SortOrder
     topic?: SortOrder
     difficulty_level?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-  }
-
-  export type QuestionSumOrderByAggregateInput = {
-    topic?: SortOrder
   }
 
   export type EnumDifficultyLevelWithAggregatesFilter<$PrismaModel = never> = {
@@ -14371,7 +14596,7 @@ export namespace Prisma {
   export type UserAttemptCountOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -14385,7 +14610,7 @@ export namespace Prisma {
   export type UserAttemptMaxOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -14395,7 +14620,7 @@ export namespace Prisma {
   export type UserAttemptMinOrderByAggregateInput = {
     id?: SortOrder
     user_id?: SortOrder
-    assessement_id?: SortOrder
+    assessment_id?: SortOrder
     score?: SortOrder
     completed_at?: SortOrder
     created_at?: SortOrder
@@ -14434,6 +14659,11 @@ export namespace Prisma {
     in?: $Enums.ProgressStatus[]
     notIn?: $Enums.ProgressStatus[]
     not?: NestedEnumProgressStatusFilter<$PrismaModel> | $Enums.ProgressStatus
+  }
+
+  export type SubChapterScalarRelationFilter = {
+    is?: SubChapterWhereInput
+    isNot?: SubChapterWhereInput
   }
 
   export type UserProgresOrderByRelevanceInput = {
@@ -14703,6 +14933,13 @@ export namespace Prisma {
     connect?: SubChapterWhereUniqueInput | SubChapterWhereUniqueInput[]
   }
 
+  export type AssessmentCreateNestedManyWithoutChapterInput = {
+    create?: XOR<AssessmentCreateWithoutChapterInput, AssessmentUncheckedCreateWithoutChapterInput> | AssessmentCreateWithoutChapterInput[] | AssessmentUncheckedCreateWithoutChapterInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutChapterInput | AssessmentCreateOrConnectWithoutChapterInput[]
+    createMany?: AssessmentCreateManyChapterInputEnvelope
+    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+  }
+
   export type ChapterTakenUncheckedCreateNestedManyWithoutChapterInput = {
     create?: XOR<ChapterTakenCreateWithoutChapterInput, ChapterTakenUncheckedCreateWithoutChapterInput> | ChapterTakenCreateWithoutChapterInput[] | ChapterTakenUncheckedCreateWithoutChapterInput[]
     connectOrCreate?: ChapterTakenCreateOrConnectWithoutChapterInput | ChapterTakenCreateOrConnectWithoutChapterInput[]
@@ -14729,6 +14966,13 @@ export namespace Prisma {
     connectOrCreate?: SubChapterCreateOrConnectWithoutChapterInput | SubChapterCreateOrConnectWithoutChapterInput[]
     createMany?: SubChapterCreateManyChapterInputEnvelope
     connect?: SubChapterWhereUniqueInput | SubChapterWhereUniqueInput[]
+  }
+
+  export type AssessmentUncheckedCreateNestedManyWithoutChapterInput = {
+    create?: XOR<AssessmentCreateWithoutChapterInput, AssessmentUncheckedCreateWithoutChapterInput> | AssessmentCreateWithoutChapterInput[] | AssessmentUncheckedCreateWithoutChapterInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutChapterInput | AssessmentCreateOrConnectWithoutChapterInput[]
+    createMany?: AssessmentCreateManyChapterInputEnvelope
+    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -14795,6 +15039,20 @@ export namespace Prisma {
     deleteMany?: SubChapterScalarWhereInput | SubChapterScalarWhereInput[]
   }
 
+  export type AssessmentUpdateManyWithoutChapterNestedInput = {
+    create?: XOR<AssessmentCreateWithoutChapterInput, AssessmentUncheckedCreateWithoutChapterInput> | AssessmentCreateWithoutChapterInput[] | AssessmentUncheckedCreateWithoutChapterInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutChapterInput | AssessmentCreateOrConnectWithoutChapterInput[]
+    upsert?: AssessmentUpsertWithWhereUniqueWithoutChapterInput | AssessmentUpsertWithWhereUniqueWithoutChapterInput[]
+    createMany?: AssessmentCreateManyChapterInputEnvelope
+    set?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    disconnect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    delete?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    update?: AssessmentUpdateWithWhereUniqueWithoutChapterInput | AssessmentUpdateWithWhereUniqueWithoutChapterInput[]
+    updateMany?: AssessmentUpdateManyWithWhereWithoutChapterInput | AssessmentUpdateManyWithWhereWithoutChapterInput[]
+    deleteMany?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
+  }
+
   export type ChapterTakenUncheckedUpdateManyWithoutChapterNestedInput = {
     create?: XOR<ChapterTakenCreateWithoutChapterInput, ChapterTakenUncheckedCreateWithoutChapterInput> | ChapterTakenCreateWithoutChapterInput[] | ChapterTakenUncheckedCreateWithoutChapterInput[]
     connectOrCreate?: ChapterTakenCreateOrConnectWithoutChapterInput | ChapterTakenCreateOrConnectWithoutChapterInput[]
@@ -14849,6 +15107,20 @@ export namespace Prisma {
     update?: SubChapterUpdateWithWhereUniqueWithoutChapterInput | SubChapterUpdateWithWhereUniqueWithoutChapterInput[]
     updateMany?: SubChapterUpdateManyWithWhereWithoutChapterInput | SubChapterUpdateManyWithWhereWithoutChapterInput[]
     deleteMany?: SubChapterScalarWhereInput | SubChapterScalarWhereInput[]
+  }
+
+  export type AssessmentUncheckedUpdateManyWithoutChapterNestedInput = {
+    create?: XOR<AssessmentCreateWithoutChapterInput, AssessmentUncheckedCreateWithoutChapterInput> | AssessmentCreateWithoutChapterInput[] | AssessmentUncheckedCreateWithoutChapterInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutChapterInput | AssessmentCreateOrConnectWithoutChapterInput[]
+    upsert?: AssessmentUpsertWithWhereUniqueWithoutChapterInput | AssessmentUpsertWithWhereUniqueWithoutChapterInput[]
+    createMany?: AssessmentCreateManyChapterInputEnvelope
+    set?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    disconnect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    delete?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
+    update?: AssessmentUpdateWithWhereUniqueWithoutChapterInput | AssessmentUpdateWithWhereUniqueWithoutChapterInput[]
+    updateMany?: AssessmentUpdateManyWithWhereWithoutChapterInput | AssessmentUpdateManyWithWhereWithoutChapterInput[]
+    deleteMany?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
   }
 
   export type ChapterCreateNestedOneWithoutSub_chaptersInput = {
@@ -14968,10 +15240,10 @@ export namespace Prisma {
     connect?: AiReportWhereUniqueInput | AiReportWhereUniqueInput[]
   }
 
-  export type AssessmentCreateNestedManyWithoutChapter_takenInput = {
-    create?: XOR<AssessmentCreateWithoutChapter_takenInput, AssessmentUncheckedCreateWithoutChapter_takenInput> | AssessmentCreateWithoutChapter_takenInput[] | AssessmentUncheckedCreateWithoutChapter_takenInput[]
-    connectOrCreate?: AssessmentCreateOrConnectWithoutChapter_takenInput | AssessmentCreateOrConnectWithoutChapter_takenInput[]
-    createMany?: AssessmentCreateManyChapter_takenInputEnvelope
+  export type AssessmentCreateNestedManyWithoutChapterTakenInput = {
+    create?: XOR<AssessmentCreateWithoutChapterTakenInput, AssessmentUncheckedCreateWithoutChapterTakenInput> | AssessmentCreateWithoutChapterTakenInput[] | AssessmentUncheckedCreateWithoutChapterTakenInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutChapterTakenInput | AssessmentCreateOrConnectWithoutChapterTakenInput[]
+    createMany?: AssessmentCreateManyChapterTakenInputEnvelope
     connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
   }
 
@@ -14989,10 +15261,10 @@ export namespace Prisma {
     connect?: AiReportWhereUniqueInput | AiReportWhereUniqueInput[]
   }
 
-  export type AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput = {
-    create?: XOR<AssessmentCreateWithoutChapter_takenInput, AssessmentUncheckedCreateWithoutChapter_takenInput> | AssessmentCreateWithoutChapter_takenInput[] | AssessmentUncheckedCreateWithoutChapter_takenInput[]
-    connectOrCreate?: AssessmentCreateOrConnectWithoutChapter_takenInput | AssessmentCreateOrConnectWithoutChapter_takenInput[]
-    createMany?: AssessmentCreateManyChapter_takenInputEnvelope
+  export type AssessmentUncheckedCreateNestedManyWithoutChapterTakenInput = {
+    create?: XOR<AssessmentCreateWithoutChapterTakenInput, AssessmentUncheckedCreateWithoutChapterTakenInput> | AssessmentCreateWithoutChapterTakenInput[] | AssessmentUncheckedCreateWithoutChapterTakenInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutChapterTakenInput | AssessmentCreateOrConnectWithoutChapterTakenInput[]
+    createMany?: AssessmentCreateManyChapterTakenInputEnvelope
     connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
   }
 
@@ -15033,17 +15305,17 @@ export namespace Prisma {
     deleteMany?: AiReportScalarWhereInput | AiReportScalarWhereInput[]
   }
 
-  export type AssessmentUpdateManyWithoutChapter_takenNestedInput = {
-    create?: XOR<AssessmentCreateWithoutChapter_takenInput, AssessmentUncheckedCreateWithoutChapter_takenInput> | AssessmentCreateWithoutChapter_takenInput[] | AssessmentUncheckedCreateWithoutChapter_takenInput[]
-    connectOrCreate?: AssessmentCreateOrConnectWithoutChapter_takenInput | AssessmentCreateOrConnectWithoutChapter_takenInput[]
-    upsert?: AssessmentUpsertWithWhereUniqueWithoutChapter_takenInput | AssessmentUpsertWithWhereUniqueWithoutChapter_takenInput[]
-    createMany?: AssessmentCreateManyChapter_takenInputEnvelope
+  export type AssessmentUpdateManyWithoutChapterTakenNestedInput = {
+    create?: XOR<AssessmentCreateWithoutChapterTakenInput, AssessmentUncheckedCreateWithoutChapterTakenInput> | AssessmentCreateWithoutChapterTakenInput[] | AssessmentUncheckedCreateWithoutChapterTakenInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutChapterTakenInput | AssessmentCreateOrConnectWithoutChapterTakenInput[]
+    upsert?: AssessmentUpsertWithWhereUniqueWithoutChapterTakenInput | AssessmentUpsertWithWhereUniqueWithoutChapterTakenInput[]
+    createMany?: AssessmentCreateManyChapterTakenInputEnvelope
     set?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
     disconnect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
     delete?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
     connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    update?: AssessmentUpdateWithWhereUniqueWithoutChapter_takenInput | AssessmentUpdateWithWhereUniqueWithoutChapter_takenInput[]
-    updateMany?: AssessmentUpdateManyWithWhereWithoutChapter_takenInput | AssessmentUpdateManyWithWhereWithoutChapter_takenInput[]
+    update?: AssessmentUpdateWithWhereUniqueWithoutChapterTakenInput | AssessmentUpdateWithWhereUniqueWithoutChapterTakenInput[]
+    updateMany?: AssessmentUpdateManyWithWhereWithoutChapterTakenInput | AssessmentUpdateManyWithWhereWithoutChapterTakenInput[]
     deleteMany?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
   }
 
@@ -15075,17 +15347,17 @@ export namespace Prisma {
     deleteMany?: AiReportScalarWhereInput | AiReportScalarWhereInput[]
   }
 
-  export type AssessmentUncheckedUpdateManyWithoutChapter_takenNestedInput = {
-    create?: XOR<AssessmentCreateWithoutChapter_takenInput, AssessmentUncheckedCreateWithoutChapter_takenInput> | AssessmentCreateWithoutChapter_takenInput[] | AssessmentUncheckedCreateWithoutChapter_takenInput[]
-    connectOrCreate?: AssessmentCreateOrConnectWithoutChapter_takenInput | AssessmentCreateOrConnectWithoutChapter_takenInput[]
-    upsert?: AssessmentUpsertWithWhereUniqueWithoutChapter_takenInput | AssessmentUpsertWithWhereUniqueWithoutChapter_takenInput[]
-    createMany?: AssessmentCreateManyChapter_takenInputEnvelope
+  export type AssessmentUncheckedUpdateManyWithoutChapterTakenNestedInput = {
+    create?: XOR<AssessmentCreateWithoutChapterTakenInput, AssessmentUncheckedCreateWithoutChapterTakenInput> | AssessmentCreateWithoutChapterTakenInput[] | AssessmentUncheckedCreateWithoutChapterTakenInput[]
+    connectOrCreate?: AssessmentCreateOrConnectWithoutChapterTakenInput | AssessmentCreateOrConnectWithoutChapterTakenInput[]
+    upsert?: AssessmentUpsertWithWhereUniqueWithoutChapterTakenInput | AssessmentUpsertWithWhereUniqueWithoutChapterTakenInput[]
+    createMany?: AssessmentCreateManyChapterTakenInputEnvelope
     set?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
     disconnect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
     delete?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
     connect?: AssessmentWhereUniqueInput | AssessmentWhereUniqueInput[]
-    update?: AssessmentUpdateWithWhereUniqueWithoutChapter_takenInput | AssessmentUpdateWithWhereUniqueWithoutChapter_takenInput[]
-    updateMany?: AssessmentUpdateManyWithWhereWithoutChapter_takenInput | AssessmentUpdateManyWithWhereWithoutChapter_takenInput[]
+    update?: AssessmentUpdateWithWhereUniqueWithoutChapterTakenInput | AssessmentUpdateWithWhereUniqueWithoutChapterTakenInput[]
+    updateMany?: AssessmentUpdateManyWithWhereWithoutChapterTakenInput | AssessmentUpdateManyWithWhereWithoutChapterTakenInput[]
     deleteMany?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
   }
 
@@ -15103,10 +15375,10 @@ export namespace Prisma {
     deleteMany?: UserProgresScalarWhereInput | UserProgresScalarWhereInput[]
   }
 
-  export type ChapterTakenCreateNestedOneWithoutAssessmentsInput = {
-    create?: XOR<ChapterTakenCreateWithoutAssessmentsInput, ChapterTakenUncheckedCreateWithoutAssessmentsInput>
-    connectOrCreate?: ChapterTakenCreateOrConnectWithoutAssessmentsInput
-    connect?: ChapterTakenWhereUniqueInput
+  export type ChapterCreateNestedOneWithoutAssessmentsInput = {
+    create?: XOR<ChapterCreateWithoutAssessmentsInput, ChapterUncheckedCreateWithoutAssessmentsInput>
+    connectOrCreate?: ChapterCreateOrConnectWithoutAssessmentsInput
+    connect?: ChapterWhereUniqueInput
   }
 
   export type SubChapterCreateNestedOneWithoutAssessmentsInput = {
@@ -15129,6 +15401,12 @@ export namespace Prisma {
     connect?: UserAttemptWhereUniqueInput | UserAttemptWhereUniqueInput[]
   }
 
+  export type ChapterTakenCreateNestedOneWithoutAssessmentsInput = {
+    create?: XOR<ChapterTakenCreateWithoutAssessmentsInput, ChapterTakenUncheckedCreateWithoutAssessmentsInput>
+    connectOrCreate?: ChapterTakenCreateOrConnectWithoutAssessmentsInput
+    connect?: ChapterTakenWhereUniqueInput
+  }
+
   export type QuestionUncheckedCreateNestedManyWithoutAssessmentInput = {
     create?: XOR<QuestionCreateWithoutAssessmentInput, QuestionUncheckedCreateWithoutAssessmentInput> | QuestionCreateWithoutAssessmentInput[] | QuestionUncheckedCreateWithoutAssessmentInput[]
     connectOrCreate?: QuestionCreateOrConnectWithoutAssessmentInput | QuestionCreateOrConnectWithoutAssessmentInput[]
@@ -15147,18 +15425,22 @@ export namespace Prisma {
     set?: $Enums.AssessmentType
   }
 
-  export type ChapterTakenUpdateOneRequiredWithoutAssessmentsNestedInput = {
-    create?: XOR<ChapterTakenCreateWithoutAssessmentsInput, ChapterTakenUncheckedCreateWithoutAssessmentsInput>
-    connectOrCreate?: ChapterTakenCreateOrConnectWithoutAssessmentsInput
-    upsert?: ChapterTakenUpsertWithoutAssessmentsInput
-    connect?: ChapterTakenWhereUniqueInput
-    update?: XOR<XOR<ChapterTakenUpdateToOneWithWhereWithoutAssessmentsInput, ChapterTakenUpdateWithoutAssessmentsInput>, ChapterTakenUncheckedUpdateWithoutAssessmentsInput>
+  export type ChapterUpdateOneWithoutAssessmentsNestedInput = {
+    create?: XOR<ChapterCreateWithoutAssessmentsInput, ChapterUncheckedCreateWithoutAssessmentsInput>
+    connectOrCreate?: ChapterCreateOrConnectWithoutAssessmentsInput
+    upsert?: ChapterUpsertWithoutAssessmentsInput
+    disconnect?: ChapterWhereInput | boolean
+    delete?: ChapterWhereInput | boolean
+    connect?: ChapterWhereUniqueInput
+    update?: XOR<XOR<ChapterUpdateToOneWithWhereWithoutAssessmentsInput, ChapterUpdateWithoutAssessmentsInput>, ChapterUncheckedUpdateWithoutAssessmentsInput>
   }
 
-  export type SubChapterUpdateOneRequiredWithoutAssessmentsNestedInput = {
+  export type SubChapterUpdateOneWithoutAssessmentsNestedInput = {
     create?: XOR<SubChapterCreateWithoutAssessmentsInput, SubChapterUncheckedCreateWithoutAssessmentsInput>
     connectOrCreate?: SubChapterCreateOrConnectWithoutAssessmentsInput
     upsert?: SubChapterUpsertWithoutAssessmentsInput
+    disconnect?: SubChapterWhereInput | boolean
+    delete?: SubChapterWhereInput | boolean
     connect?: SubChapterWhereUniqueInput
     update?: XOR<XOR<SubChapterUpdateToOneWithWhereWithoutAssessmentsInput, SubChapterUpdateWithoutAssessmentsInput>, SubChapterUncheckedUpdateWithoutAssessmentsInput>
   }
@@ -15189,6 +15471,20 @@ export namespace Prisma {
     update?: UserAttemptUpdateWithWhereUniqueWithoutAssessmentInput | UserAttemptUpdateWithWhereUniqueWithoutAssessmentInput[]
     updateMany?: UserAttemptUpdateManyWithWhereWithoutAssessmentInput | UserAttemptUpdateManyWithWhereWithoutAssessmentInput[]
     deleteMany?: UserAttemptScalarWhereInput | UserAttemptScalarWhereInput[]
+  }
+
+  export type ChapterTakenUpdateOneWithoutAssessmentsNestedInput = {
+    create?: XOR<ChapterTakenCreateWithoutAssessmentsInput, ChapterTakenUncheckedCreateWithoutAssessmentsInput>
+    connectOrCreate?: ChapterTakenCreateOrConnectWithoutAssessmentsInput
+    upsert?: ChapterTakenUpsertWithoutAssessmentsInput
+    disconnect?: ChapterTakenWhereInput | boolean
+    delete?: ChapterTakenWhereInput | boolean
+    connect?: ChapterTakenWhereUniqueInput
+    update?: XOR<XOR<ChapterTakenUpdateToOneWithWhereWithoutAssessmentsInput, ChapterTakenUpdateWithoutAssessmentsInput>, ChapterTakenUncheckedUpdateWithoutAssessmentsInput>
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type QuestionUncheckedUpdateManyWithoutAssessmentNestedInput = {
@@ -15492,11 +15788,55 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedEnumAssessmentTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.AssessmentType | EnumAssessmentTypeFieldRefInput<$PrismaModel>
     in?: $Enums.AssessmentType[]
     notIn?: $Enums.AssessmentType[]
     not?: NestedEnumAssessmentTypeFilter<$PrismaModel> | $Enums.AssessmentType
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedEnumAssessmentTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -15633,7 +15973,7 @@ export namespace Prisma {
     updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
-    assessments?: AssessmentCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterTakenInput
     user_progres?: UserProgresCreateNestedManyWithoutChapter_takenInput
   }
 
@@ -15643,7 +15983,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
-    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterTakenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
   }
 
@@ -15668,7 +16008,7 @@ export namespace Prisma {
 
   export type UserAttemptUncheckedCreateWithoutUserInput = {
     id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at?: Date | string
     created_at?: Date | string
@@ -15793,7 +16133,7 @@ export namespace Prisma {
     NOT?: UserAttemptScalarWhereInput | UserAttemptScalarWhereInput[]
     id?: StringFilter<"UserAttempt"> | string
     user_id?: StringFilter<"UserAttempt"> | string
-    assessement_id?: StringFilter<"UserAttempt"> | string
+    assessment_id?: StringFilter<"UserAttempt"> | string
     score?: FloatFilter<"UserAttempt"> | number
     completed_at?: DateTimeFilter<"UserAttempt"> | Date | string
     created_at?: DateTimeFilter<"UserAttempt"> | Date | string
@@ -15836,7 +16176,7 @@ export namespace Prisma {
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
-    assessments?: AssessmentCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterTakenInput
     user_progres?: UserProgresCreateNestedManyWithoutChapter_takenInput
   }
 
@@ -15846,7 +16186,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
-    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterTakenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
   }
 
@@ -15911,6 +16251,7 @@ export namespace Prisma {
   export type SubChapterCreateWithoutChapterInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     assessments?: AssessmentCreateNestedManyWithoutSub_chapterInput
@@ -15920,6 +16261,7 @@ export namespace Prisma {
   export type SubChapterUncheckedCreateWithoutChapterInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
@@ -15933,6 +16275,42 @@ export namespace Prisma {
 
   export type SubChapterCreateManyChapterInputEnvelope = {
     data: SubChapterCreateManyChapterInput | SubChapterCreateManyChapterInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AssessmentCreateWithoutChapterInput = {
+    id: string
+    title: string
+    type: $Enums.AssessmentType
+    correct_answer: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    sub_chapter?: SubChapterCreateNestedOneWithoutAssessmentsInput
+    questions?: QuestionCreateNestedManyWithoutAssessmentInput
+    user_attempts?: UserAttemptCreateNestedManyWithoutAssessmentInput
+    chapterTaken?: ChapterTakenCreateNestedOneWithoutAssessmentsInput
+  }
+
+  export type AssessmentUncheckedCreateWithoutChapterInput = {
+    id: string
+    sub_chapter_id?: string | null
+    title: string
+    type: $Enums.AssessmentType
+    correct_answer: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    chapterTakenId?: string | null
+    questions?: QuestionUncheckedCreateNestedManyWithoutAssessmentInput
+    user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
+  }
+
+  export type AssessmentCreateOrConnectWithoutChapterInput = {
+    where: AssessmentWhereUniqueInput
+    create: XOR<AssessmentCreateWithoutChapterInput, AssessmentUncheckedCreateWithoutChapterInput>
+  }
+
+  export type AssessmentCreateManyChapterInputEnvelope = {
+    data: AssessmentCreateManyChapterInput | AssessmentCreateManyChapterInput[]
     skipDuplicates?: boolean
   }
 
@@ -16018,8 +16396,40 @@ export namespace Prisma {
     id?: StringFilter<"SubChapter"> | string
     chapter_id?: StringFilter<"SubChapter"> | string
     name?: StringFilter<"SubChapter"> | string
+    content?: StringFilter<"SubChapter"> | string
     created_at?: DateTimeFilter<"SubChapter"> | Date | string
     updated_at?: DateTimeFilter<"SubChapter"> | Date | string
+  }
+
+  export type AssessmentUpsertWithWhereUniqueWithoutChapterInput = {
+    where: AssessmentWhereUniqueInput
+    update: XOR<AssessmentUpdateWithoutChapterInput, AssessmentUncheckedUpdateWithoutChapterInput>
+    create: XOR<AssessmentCreateWithoutChapterInput, AssessmentUncheckedCreateWithoutChapterInput>
+  }
+
+  export type AssessmentUpdateWithWhereUniqueWithoutChapterInput = {
+    where: AssessmentWhereUniqueInput
+    data: XOR<AssessmentUpdateWithoutChapterInput, AssessmentUncheckedUpdateWithoutChapterInput>
+  }
+
+  export type AssessmentUpdateManyWithWhereWithoutChapterInput = {
+    where: AssessmentScalarWhereInput
+    data: XOR<AssessmentUpdateManyMutationInput, AssessmentUncheckedUpdateManyWithoutChapterInput>
+  }
+
+  export type AssessmentScalarWhereInput = {
+    AND?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
+    OR?: AssessmentScalarWhereInput[]
+    NOT?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
+    id?: StringFilter<"Assessment"> | string
+    chapter_id?: StringNullableFilter<"Assessment"> | string | null
+    sub_chapter_id?: StringNullableFilter<"Assessment"> | string | null
+    title?: StringFilter<"Assessment"> | string
+    type?: EnumAssessmentTypeFilter<"Assessment"> | $Enums.AssessmentType
+    correct_answer?: IntFilter<"Assessment"> | number
+    created_at?: DateTimeFilter<"Assessment"> | Date | string
+    updated_at?: DateTimeFilter<"Assessment"> | Date | string
+    chapterTakenId?: StringNullableFilter<"Assessment"> | string | null
   }
 
   export type ChapterCreateWithoutSub_chaptersInput = {
@@ -16031,6 +16441,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterUncheckedCreateWithoutSub_chaptersInput = {
@@ -16042,6 +16453,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterCreateOrConnectWithoutSub_chaptersInput = {
@@ -16056,19 +16468,21 @@ export namespace Prisma {
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
-    chapter_taken: ChapterTakenCreateNestedOneWithoutAssessmentsInput
+    chapter?: ChapterCreateNestedOneWithoutAssessmentsInput
     questions?: QuestionCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptCreateNestedManyWithoutAssessmentInput
+    chapterTaken?: ChapterTakenCreateNestedOneWithoutAssessmentsInput
   }
 
   export type AssessmentUncheckedCreateWithoutSub_chapterInput = {
     id: string
-    chapter_taken_id: string
+    chapter_id?: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
+    chapterTakenId?: string | null
     questions?: QuestionUncheckedCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
   }
@@ -16133,6 +16547,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUpdateManyWithoutChapterNestedInput
     prerequisites_base?: PrerequisiteUpdateManyWithoutChapterNestedInput
     prerequisites_requirement?: PrerequisiteUpdateManyWithoutPrerequisite_chapterNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterNestedInput
   }
 
   export type ChapterUncheckedUpdateWithoutSub_chaptersInput = {
@@ -16144,6 +16559,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUncheckedUpdateManyWithoutChapterNestedInput
     prerequisites_base?: PrerequisiteUncheckedUpdateManyWithoutChapterNestedInput
     prerequisites_requirement?: PrerequisiteUncheckedUpdateManyWithoutPrerequisite_chapterNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterNestedInput
   }
 
   export type AssessmentUpsertWithWhereUniqueWithoutSub_chapterInput = {
@@ -16160,20 +16576,6 @@ export namespace Prisma {
   export type AssessmentUpdateManyWithWhereWithoutSub_chapterInput = {
     where: AssessmentScalarWhereInput
     data: XOR<AssessmentUpdateManyMutationInput, AssessmentUncheckedUpdateManyWithoutSub_chapterInput>
-  }
-
-  export type AssessmentScalarWhereInput = {
-    AND?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
-    OR?: AssessmentScalarWhereInput[]
-    NOT?: AssessmentScalarWhereInput | AssessmentScalarWhereInput[]
-    id?: StringFilter<"Assessment"> | string
-    chapter_taken_id?: StringFilter<"Assessment"> | string
-    sub_chapter_id?: StringFilter<"Assessment"> | string
-    title?: StringFilter<"Assessment"> | string
-    type?: EnumAssessmentTypeFilter<"Assessment"> | $Enums.AssessmentType
-    correct_answer?: IntFilter<"Assessment"> | number
-    created_at?: DateTimeFilter<"Assessment"> | Date | string
-    updated_at?: DateTimeFilter<"Assessment"> | Date | string
   }
 
   export type UserProgresUpsertWithWhereUniqueWithoutSub_chapterInput = {
@@ -16195,7 +16597,7 @@ export namespace Prisma {
   export type UserCreateWithoutChapter_takenInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -16209,7 +16611,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutChapter_takenInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -16234,6 +16636,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterCreateNestedManyWithoutChapterInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterUncheckedCreateWithoutChapter_takenInput = {
@@ -16245,6 +16648,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterUncheckedCreateNestedManyWithoutChapterInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterCreateOrConnectWithoutChapter_takenInput = {
@@ -16280,21 +16684,23 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type AssessmentCreateWithoutChapter_takenInput = {
+  export type AssessmentCreateWithoutChapterTakenInput = {
     id: string
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
-    sub_chapter: SubChapterCreateNestedOneWithoutAssessmentsInput
+    chapter?: ChapterCreateNestedOneWithoutAssessmentsInput
+    sub_chapter?: SubChapterCreateNestedOneWithoutAssessmentsInput
     questions?: QuestionCreateNestedManyWithoutAssessmentInput
     user_attempts?: UserAttemptCreateNestedManyWithoutAssessmentInput
   }
 
-  export type AssessmentUncheckedCreateWithoutChapter_takenInput = {
+  export type AssessmentUncheckedCreateWithoutChapterTakenInput = {
     id: string
-    sub_chapter_id: string
+    chapter_id?: string | null
+    sub_chapter_id?: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
@@ -16304,13 +16710,13 @@ export namespace Prisma {
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
-  export type AssessmentCreateOrConnectWithoutChapter_takenInput = {
+  export type AssessmentCreateOrConnectWithoutChapterTakenInput = {
     where: AssessmentWhereUniqueInput
-    create: XOR<AssessmentCreateWithoutChapter_takenInput, AssessmentUncheckedCreateWithoutChapter_takenInput>
+    create: XOR<AssessmentCreateWithoutChapterTakenInput, AssessmentUncheckedCreateWithoutChapterTakenInput>
   }
 
-  export type AssessmentCreateManyChapter_takenInputEnvelope = {
-    data: AssessmentCreateManyChapter_takenInput | AssessmentCreateManyChapter_takenInput[]
+  export type AssessmentCreateManyChapterTakenInputEnvelope = {
+    data: AssessmentCreateManyChapterTakenInput | AssessmentCreateManyChapterTakenInput[]
     skipDuplicates?: boolean
   }
 
@@ -16403,6 +16809,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteUpdateManyWithoutChapterNestedInput
     prerequisites_requirement?: PrerequisiteUpdateManyWithoutPrerequisite_chapterNestedInput
     sub_chapters?: SubChapterUpdateManyWithoutChapterNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterNestedInput
   }
 
   export type ChapterUncheckedUpdateWithoutChapter_takenInput = {
@@ -16414,6 +16821,7 @@ export namespace Prisma {
     prerequisites_base?: PrerequisiteUncheckedUpdateManyWithoutChapterNestedInput
     prerequisites_requirement?: PrerequisiteUncheckedUpdateManyWithoutPrerequisite_chapterNestedInput
     sub_chapters?: SubChapterUncheckedUpdateManyWithoutChapterNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterNestedInput
   }
 
   export type AiReportUpsertWithWhereUniqueWithoutChapter_takenInput = {
@@ -16432,20 +16840,20 @@ export namespace Prisma {
     data: XOR<AiReportUpdateManyMutationInput, AiReportUncheckedUpdateManyWithoutChapter_takenInput>
   }
 
-  export type AssessmentUpsertWithWhereUniqueWithoutChapter_takenInput = {
+  export type AssessmentUpsertWithWhereUniqueWithoutChapterTakenInput = {
     where: AssessmentWhereUniqueInput
-    update: XOR<AssessmentUpdateWithoutChapter_takenInput, AssessmentUncheckedUpdateWithoutChapter_takenInput>
-    create: XOR<AssessmentCreateWithoutChapter_takenInput, AssessmentUncheckedCreateWithoutChapter_takenInput>
+    update: XOR<AssessmentUpdateWithoutChapterTakenInput, AssessmentUncheckedUpdateWithoutChapterTakenInput>
+    create: XOR<AssessmentCreateWithoutChapterTakenInput, AssessmentUncheckedCreateWithoutChapterTakenInput>
   }
 
-  export type AssessmentUpdateWithWhereUniqueWithoutChapter_takenInput = {
+  export type AssessmentUpdateWithWhereUniqueWithoutChapterTakenInput = {
     where: AssessmentWhereUniqueInput
-    data: XOR<AssessmentUpdateWithoutChapter_takenInput, AssessmentUncheckedUpdateWithoutChapter_takenInput>
+    data: XOR<AssessmentUpdateWithoutChapterTakenInput, AssessmentUncheckedUpdateWithoutChapterTakenInput>
   }
 
-  export type AssessmentUpdateManyWithWhereWithoutChapter_takenInput = {
+  export type AssessmentUpdateManyWithWhereWithoutChapterTakenInput = {
     where: AssessmentScalarWhereInput
-    data: XOR<AssessmentUpdateManyMutationInput, AssessmentUncheckedUpdateManyWithoutChapter_takenInput>
+    data: XOR<AssessmentUpdateManyMutationInput, AssessmentUncheckedUpdateManyWithoutChapterTakenInput>
   }
 
   export type UserProgresUpsertWithWhereUniqueWithoutChapter_takenInput = {
@@ -16464,34 +16872,39 @@ export namespace Prisma {
     data: XOR<UserProgresUpdateManyMutationInput, UserProgresUncheckedUpdateManyWithoutChapter_takenInput>
   }
 
-  export type ChapterTakenCreateWithoutAssessmentsInput = {
+  export type ChapterCreateWithoutAssessmentsInput = {
     id: string
+    name: string
+    total_sub_chapter: number
     created_at?: Date | string
     updated_at?: Date | string
-    user: UserCreateNestedOneWithoutChapter_takenInput
-    chapter: ChapterCreateNestedOneWithoutChapter_takenInput
-    ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
-    user_progres?: UserProgresCreateNestedManyWithoutChapter_takenInput
+    chapter_taken?: ChapterTakenCreateNestedManyWithoutChapterInput
+    prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
+    prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
+    sub_chapters?: SubChapterCreateNestedManyWithoutChapterInput
   }
 
-  export type ChapterTakenUncheckedCreateWithoutAssessmentsInput = {
+  export type ChapterUncheckedCreateWithoutAssessmentsInput = {
     id: string
-    user_id: string
-    chapter_id: string
+    name: string
+    total_sub_chapter: number
     created_at?: Date | string
     updated_at?: Date | string
-    ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
-    user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
+    chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutChapterInput
+    prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
+    prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
+    sub_chapters?: SubChapterUncheckedCreateNestedManyWithoutChapterInput
   }
 
-  export type ChapterTakenCreateOrConnectWithoutAssessmentsInput = {
-    where: ChapterTakenWhereUniqueInput
-    create: XOR<ChapterTakenCreateWithoutAssessmentsInput, ChapterTakenUncheckedCreateWithoutAssessmentsInput>
+  export type ChapterCreateOrConnectWithoutAssessmentsInput = {
+    where: ChapterWhereUniqueInput
+    create: XOR<ChapterCreateWithoutAssessmentsInput, ChapterUncheckedCreateWithoutAssessmentsInput>
   }
 
   export type SubChapterCreateWithoutAssessmentsInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
@@ -16502,6 +16915,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutSub_chapterInput
@@ -16515,7 +16929,9 @@ export namespace Prisma {
   export type QuestionCreateWithoutAssessmentInput = {
     id: string
     question: string
-    topic: number
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -16524,7 +16940,9 @@ export namespace Prisma {
   export type QuestionUncheckedCreateWithoutAssessmentInput = {
     id: string
     question: string
-    topic: number
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -16568,6 +16986,144 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ChapterTakenCreateWithoutAssessmentsInput = {
+    id: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    user: UserCreateNestedOneWithoutChapter_takenInput
+    chapter: ChapterCreateNestedOneWithoutChapter_takenInput
+    ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
+    user_progres?: UserProgresCreateNestedManyWithoutChapter_takenInput
+  }
+
+  export type ChapterTakenUncheckedCreateWithoutAssessmentsInput = {
+    id: string
+    user_id: string
+    chapter_id: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
+    user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
+  }
+
+  export type ChapterTakenCreateOrConnectWithoutAssessmentsInput = {
+    where: ChapterTakenWhereUniqueInput
+    create: XOR<ChapterTakenCreateWithoutAssessmentsInput, ChapterTakenUncheckedCreateWithoutAssessmentsInput>
+  }
+
+  export type ChapterUpsertWithoutAssessmentsInput = {
+    update: XOR<ChapterUpdateWithoutAssessmentsInput, ChapterUncheckedUpdateWithoutAssessmentsInput>
+    create: XOR<ChapterCreateWithoutAssessmentsInput, ChapterUncheckedCreateWithoutAssessmentsInput>
+    where?: ChapterWhereInput
+  }
+
+  export type ChapterUpdateToOneWithWhereWithoutAssessmentsInput = {
+    where?: ChapterWhereInput
+    data: XOR<ChapterUpdateWithoutAssessmentsInput, ChapterUncheckedUpdateWithoutAssessmentsInput>
+  }
+
+  export type ChapterUpdateWithoutAssessmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    total_sub_chapter?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapter_taken?: ChapterTakenUpdateManyWithoutChapterNestedInput
+    prerequisites_base?: PrerequisiteUpdateManyWithoutChapterNestedInput
+    prerequisites_requirement?: PrerequisiteUpdateManyWithoutPrerequisite_chapterNestedInput
+    sub_chapters?: SubChapterUpdateManyWithoutChapterNestedInput
+  }
+
+  export type ChapterUncheckedUpdateWithoutAssessmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    total_sub_chapter?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapter_taken?: ChapterTakenUncheckedUpdateManyWithoutChapterNestedInput
+    prerequisites_base?: PrerequisiteUncheckedUpdateManyWithoutChapterNestedInput
+    prerequisites_requirement?: PrerequisiteUncheckedUpdateManyWithoutPrerequisite_chapterNestedInput
+    sub_chapters?: SubChapterUncheckedUpdateManyWithoutChapterNestedInput
+  }
+
+  export type SubChapterUpsertWithoutAssessmentsInput = {
+    update: XOR<SubChapterUpdateWithoutAssessmentsInput, SubChapterUncheckedUpdateWithoutAssessmentsInput>
+    create: XOR<SubChapterCreateWithoutAssessmentsInput, SubChapterUncheckedCreateWithoutAssessmentsInput>
+    where?: SubChapterWhereInput
+  }
+
+  export type SubChapterUpdateToOneWithWhereWithoutAssessmentsInput = {
+    where?: SubChapterWhereInput
+    data: XOR<SubChapterUpdateWithoutAssessmentsInput, SubChapterUncheckedUpdateWithoutAssessmentsInput>
+  }
+
+  export type SubChapterUpdateWithoutAssessmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapter?: ChapterUpdateOneRequiredWithoutSub_chaptersNestedInput
+    user_progres?: UserProgresUpdateManyWithoutSub_chapterNestedInput
+  }
+
+  export type SubChapterUncheckedUpdateWithoutAssessmentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user_progres?: UserProgresUncheckedUpdateManyWithoutSub_chapterNestedInput
+  }
+
+  export type QuestionUpsertWithWhereUniqueWithoutAssessmentInput = {
+    where: QuestionWhereUniqueInput
+    update: XOR<QuestionUpdateWithoutAssessmentInput, QuestionUncheckedUpdateWithoutAssessmentInput>
+    create: XOR<QuestionCreateWithoutAssessmentInput, QuestionUncheckedCreateWithoutAssessmentInput>
+  }
+
+  export type QuestionUpdateWithWhereUniqueWithoutAssessmentInput = {
+    where: QuestionWhereUniqueInput
+    data: XOR<QuestionUpdateWithoutAssessmentInput, QuestionUncheckedUpdateWithoutAssessmentInput>
+  }
+
+  export type QuestionUpdateManyWithWhereWithoutAssessmentInput = {
+    where: QuestionScalarWhereInput
+    data: XOR<QuestionUpdateManyMutationInput, QuestionUncheckedUpdateManyWithoutAssessmentInput>
+  }
+
+  export type QuestionScalarWhereInput = {
+    AND?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
+    OR?: QuestionScalarWhereInput[]
+    NOT?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
+    id?: StringFilter<"Question"> | string
+    assessment_id?: StringFilter<"Question"> | string
+    question?: StringFilter<"Question"> | string
+    options?: JsonFilter<"Question">
+    key_answer?: StringFilter<"Question"> | string
+    topic?: StringFilter<"Question"> | string
+    difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
+    created_at?: DateTimeFilter<"Question"> | Date | string
+    updated_at?: DateTimeFilter<"Question"> | Date | string
+  }
+
+  export type UserAttemptUpsertWithWhereUniqueWithoutAssessmentInput = {
+    where: UserAttemptWhereUniqueInput
+    update: XOR<UserAttemptUpdateWithoutAssessmentInput, UserAttemptUncheckedUpdateWithoutAssessmentInput>
+    create: XOR<UserAttemptCreateWithoutAssessmentInput, UserAttemptUncheckedCreateWithoutAssessmentInput>
+  }
+
+  export type UserAttemptUpdateWithWhereUniqueWithoutAssessmentInput = {
+    where: UserAttemptWhereUniqueInput
+    data: XOR<UserAttemptUpdateWithoutAssessmentInput, UserAttemptUncheckedUpdateWithoutAssessmentInput>
+  }
+
+  export type UserAttemptUpdateManyWithWhereWithoutAssessmentInput = {
+    where: UserAttemptScalarWhereInput
+    data: XOR<UserAttemptUpdateManyMutationInput, UserAttemptUncheckedUpdateManyWithoutAssessmentInput>
+  }
+
   export type ChapterTakenUpsertWithoutAssessmentsInput = {
     update: XOR<ChapterTakenUpdateWithoutAssessmentsInput, ChapterTakenUncheckedUpdateWithoutAssessmentsInput>
     create: XOR<ChapterTakenCreateWithoutAssessmentsInput, ChapterTakenUncheckedCreateWithoutAssessmentsInput>
@@ -16599,84 +17155,10 @@ export namespace Prisma {
     user_progres?: UserProgresUncheckedUpdateManyWithoutChapter_takenNestedInput
   }
 
-  export type SubChapterUpsertWithoutAssessmentsInput = {
-    update: XOR<SubChapterUpdateWithoutAssessmentsInput, SubChapterUncheckedUpdateWithoutAssessmentsInput>
-    create: XOR<SubChapterCreateWithoutAssessmentsInput, SubChapterUncheckedCreateWithoutAssessmentsInput>
-    where?: SubChapterWhereInput
-  }
-
-  export type SubChapterUpdateToOneWithWhereWithoutAssessmentsInput = {
-    where?: SubChapterWhereInput
-    data: XOR<SubChapterUpdateWithoutAssessmentsInput, SubChapterUncheckedUpdateWithoutAssessmentsInput>
-  }
-
-  export type SubChapterUpdateWithoutAssessmentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    chapter?: ChapterUpdateOneRequiredWithoutSub_chaptersNestedInput
-    user_progres?: UserProgresUpdateManyWithoutSub_chapterNestedInput
-  }
-
-  export type SubChapterUncheckedUpdateWithoutAssessmentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    chapter_id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_progres?: UserProgresUncheckedUpdateManyWithoutSub_chapterNestedInput
-  }
-
-  export type QuestionUpsertWithWhereUniqueWithoutAssessmentInput = {
-    where: QuestionWhereUniqueInput
-    update: XOR<QuestionUpdateWithoutAssessmentInput, QuestionUncheckedUpdateWithoutAssessmentInput>
-    create: XOR<QuestionCreateWithoutAssessmentInput, QuestionUncheckedCreateWithoutAssessmentInput>
-  }
-
-  export type QuestionUpdateWithWhereUniqueWithoutAssessmentInput = {
-    where: QuestionWhereUniqueInput
-    data: XOR<QuestionUpdateWithoutAssessmentInput, QuestionUncheckedUpdateWithoutAssessmentInput>
-  }
-
-  export type QuestionUpdateManyWithWhereWithoutAssessmentInput = {
-    where: QuestionScalarWhereInput
-    data: XOR<QuestionUpdateManyMutationInput, QuestionUncheckedUpdateManyWithoutAssessmentInput>
-  }
-
-  export type QuestionScalarWhereInput = {
-    AND?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
-    OR?: QuestionScalarWhereInput[]
-    NOT?: QuestionScalarWhereInput | QuestionScalarWhereInput[]
-    id?: StringFilter<"Question"> | string
-    assessment_id?: StringFilter<"Question"> | string
-    question?: StringFilter<"Question"> | string
-    topic?: IntFilter<"Question"> | number
-    difficulty_level?: EnumDifficultyLevelFilter<"Question"> | $Enums.DifficultyLevel
-    created_at?: DateTimeFilter<"Question"> | Date | string
-    updated_at?: DateTimeFilter<"Question"> | Date | string
-  }
-
-  export type UserAttemptUpsertWithWhereUniqueWithoutAssessmentInput = {
-    where: UserAttemptWhereUniqueInput
-    update: XOR<UserAttemptUpdateWithoutAssessmentInput, UserAttemptUncheckedUpdateWithoutAssessmentInput>
-    create: XOR<UserAttemptCreateWithoutAssessmentInput, UserAttemptUncheckedCreateWithoutAssessmentInput>
-  }
-
-  export type UserAttemptUpdateWithWhereUniqueWithoutAssessmentInput = {
-    where: UserAttemptWhereUniqueInput
-    data: XOR<UserAttemptUpdateWithoutAssessmentInput, UserAttemptUncheckedUpdateWithoutAssessmentInput>
-  }
-
-  export type UserAttemptUpdateManyWithWhereWithoutAssessmentInput = {
-    where: UserAttemptScalarWhereInput
-    data: XOR<UserAttemptUpdateManyMutationInput, UserAttemptUncheckedUpdateManyWithoutAssessmentInput>
-  }
-
   export type UserCreateWithoutAi_reportsInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -16690,7 +17172,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutAi_reportsInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -16712,7 +17194,7 @@ export namespace Prisma {
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutChapter_takenInput
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
-    assessments?: AssessmentCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterTakenInput
     user_progres?: UserProgresCreateNestedManyWithoutChapter_takenInput
   }
 
@@ -16722,7 +17204,7 @@ export namespace Prisma {
     chapter_id: string
     created_at?: Date | string
     updated_at?: Date | string
-    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterTakenInput
     user_progres?: UserProgresUncheckedCreateNestedManyWithoutChapter_takenInput
   }
 
@@ -16787,7 +17269,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutChapter_takenNestedInput
     chapter?: ChapterUpdateOneRequiredWithoutChapter_takenNestedInput
-    assessments?: AssessmentUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterTakenNestedInput
     user_progres?: UserProgresUpdateManyWithoutChapter_takenNestedInput
   }
 
@@ -16797,7 +17279,7 @@ export namespace Prisma {
     chapter_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    assessments?: AssessmentUncheckedUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterTakenNestedInput
     user_progres?: UserProgresUncheckedUpdateManyWithoutChapter_takenNestedInput
   }
 
@@ -16810,6 +17292,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterCreateNestedManyWithoutChapterInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterUncheckedCreateWithoutPrerequisites_baseInput = {
@@ -16821,6 +17304,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_requirement?: PrerequisiteUncheckedCreateNestedManyWithoutPrerequisite_chapterInput
     sub_chapters?: SubChapterUncheckedCreateNestedManyWithoutChapterInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterCreateOrConnectWithoutPrerequisites_baseInput = {
@@ -16837,6 +17321,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteCreateNestedManyWithoutChapterInput
     sub_chapters?: SubChapterCreateNestedManyWithoutChapterInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterUncheckedCreateWithoutPrerequisites_requirementInput = {
@@ -16848,6 +17333,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUncheckedCreateNestedManyWithoutChapterInput
     prerequisites_base?: PrerequisiteUncheckedCreateNestedManyWithoutChapterInput
     sub_chapters?: SubChapterUncheckedCreateNestedManyWithoutChapterInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterInput
   }
 
   export type ChapterCreateOrConnectWithoutPrerequisites_requirementInput = {
@@ -16875,6 +17361,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUpdateManyWithoutChapterNestedInput
     prerequisites_requirement?: PrerequisiteUpdateManyWithoutPrerequisite_chapterNestedInput
     sub_chapters?: SubChapterUpdateManyWithoutChapterNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterNestedInput
   }
 
   export type ChapterUncheckedUpdateWithoutPrerequisites_baseInput = {
@@ -16886,6 +17373,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUncheckedUpdateManyWithoutChapterNestedInput
     prerequisites_requirement?: PrerequisiteUncheckedUpdateManyWithoutPrerequisite_chapterNestedInput
     sub_chapters?: SubChapterUncheckedUpdateManyWithoutChapterNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterNestedInput
   }
 
   export type ChapterUpsertWithoutPrerequisites_requirementInput = {
@@ -16908,6 +17396,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUpdateManyWithoutChapterNestedInput
     prerequisites_base?: PrerequisiteUpdateManyWithoutChapterNestedInput
     sub_chapters?: SubChapterUpdateManyWithoutChapterNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterNestedInput
   }
 
   export type ChapterUncheckedUpdateWithoutPrerequisites_requirementInput = {
@@ -16919,6 +17408,7 @@ export namespace Prisma {
     chapter_taken?: ChapterTakenUncheckedUpdateManyWithoutChapterNestedInput
     prerequisites_base?: PrerequisiteUncheckedUpdateManyWithoutChapterNestedInput
     sub_chapters?: SubChapterUncheckedUpdateManyWithoutChapterNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterNestedInput
   }
 
   export type AssessmentCreateWithoutQuestionsInput = {
@@ -16928,20 +17418,22 @@ export namespace Prisma {
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
-    chapter_taken: ChapterTakenCreateNestedOneWithoutAssessmentsInput
-    sub_chapter: SubChapterCreateNestedOneWithoutAssessmentsInput
+    chapter?: ChapterCreateNestedOneWithoutAssessmentsInput
+    sub_chapter?: SubChapterCreateNestedOneWithoutAssessmentsInput
     user_attempts?: UserAttemptCreateNestedManyWithoutAssessmentInput
+    chapterTaken?: ChapterTakenCreateNestedOneWithoutAssessmentsInput
   }
 
   export type AssessmentUncheckedCreateWithoutQuestionsInput = {
     id: string
-    chapter_taken_id: string
-    sub_chapter_id: string
+    chapter_id?: string | null
+    sub_chapter_id?: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
+    chapterTakenId?: string | null
     user_attempts?: UserAttemptUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
@@ -16968,27 +17460,29 @@ export namespace Prisma {
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    chapter_taken?: ChapterTakenUpdateOneRequiredWithoutAssessmentsNestedInput
-    sub_chapter?: SubChapterUpdateOneRequiredWithoutAssessmentsNestedInput
+    chapter?: ChapterUpdateOneWithoutAssessmentsNestedInput
+    sub_chapter?: SubChapterUpdateOneWithoutAssessmentsNestedInput
     user_attempts?: UserAttemptUpdateManyWithoutAssessmentNestedInput
+    chapterTaken?: ChapterTakenUpdateOneWithoutAssessmentsNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutQuestionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chapter_taken_id?: StringFieldUpdateOperationsInput | string
-    sub_chapter_id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sub_chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapterTakenId?: NullableStringFieldUpdateOperationsInput | string | null
     user_attempts?: UserAttemptUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type UserCreateWithoutUser_attemptsInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -17002,7 +17496,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutUser_attemptsInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -17025,20 +17519,22 @@ export namespace Prisma {
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
-    chapter_taken: ChapterTakenCreateNestedOneWithoutAssessmentsInput
-    sub_chapter: SubChapterCreateNestedOneWithoutAssessmentsInput
+    chapter?: ChapterCreateNestedOneWithoutAssessmentsInput
+    sub_chapter?: SubChapterCreateNestedOneWithoutAssessmentsInput
     questions?: QuestionCreateNestedManyWithoutAssessmentInput
+    chapterTaken?: ChapterTakenCreateNestedOneWithoutAssessmentsInput
   }
 
   export type AssessmentUncheckedCreateWithoutUser_attemptsInput = {
     id: string
-    chapter_taken_id: string
-    sub_chapter_id: string
+    chapter_id?: string | null
+    sub_chapter_id?: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
+    chapterTakenId?: string | null
     questions?: QuestionUncheckedCreateNestedManyWithoutAssessmentInput
   }
 
@@ -17104,27 +17600,29 @@ export namespace Prisma {
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    chapter_taken?: ChapterTakenUpdateOneRequiredWithoutAssessmentsNestedInput
-    sub_chapter?: SubChapterUpdateOneRequiredWithoutAssessmentsNestedInput
+    chapter?: ChapterUpdateOneWithoutAssessmentsNestedInput
+    sub_chapter?: SubChapterUpdateOneWithoutAssessmentsNestedInput
     questions?: QuestionUpdateManyWithoutAssessmentNestedInput
+    chapterTaken?: ChapterTakenUpdateOneWithoutAssessmentsNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutUser_attemptsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chapter_taken_id?: StringFieldUpdateOperationsInput | string
-    sub_chapter_id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sub_chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapterTakenId?: NullableStringFieldUpdateOperationsInput | string | null
     questions?: QuestionUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type UserCreateWithoutUser_progresInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -17138,7 +17636,7 @@ export namespace Prisma {
   export type UserUncheckedCreateWithoutUser_progresInput = {
     id: string
     name: string
-    role: $Enums.Role
+    role?: $Enums.Role
     gmail: string
     password: string
     birth_date: Date | string
@@ -17157,6 +17655,7 @@ export namespace Prisma {
   export type SubChapterCreateWithoutUser_progresInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     chapter: ChapterCreateNestedOneWithoutSub_chaptersInput
@@ -17167,6 +17666,7 @@ export namespace Prisma {
     id: string
     chapter_id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
     assessments?: AssessmentUncheckedCreateNestedManyWithoutSub_chapterInput
@@ -17184,7 +17684,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutChapter_takenInput
     chapter: ChapterCreateNestedOneWithoutChapter_takenInput
     ai_reports?: AiReportCreateNestedManyWithoutChapter_takenInput
-    assessments?: AssessmentCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentCreateNestedManyWithoutChapterTakenInput
   }
 
   export type ChapterTakenUncheckedCreateWithoutUser_progresInput = {
@@ -17194,7 +17694,7 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     ai_reports?: AiReportUncheckedCreateNestedManyWithoutChapter_takenInput
-    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapter_takenInput
+    assessments?: AssessmentUncheckedCreateNestedManyWithoutChapterTakenInput
   }
 
   export type ChapterTakenCreateOrConnectWithoutUser_progresInput = {
@@ -17255,6 +17755,7 @@ export namespace Prisma {
   export type SubChapterUpdateWithoutUser_progresInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapter?: ChapterUpdateOneRequiredWithoutSub_chaptersNestedInput
@@ -17265,6 +17766,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     chapter_id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     assessments?: AssessmentUncheckedUpdateManyWithoutSub_chapterNestedInput
@@ -17288,7 +17790,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutChapter_takenNestedInput
     chapter?: ChapterUpdateOneRequiredWithoutChapter_takenNestedInput
     ai_reports?: AiReportUpdateManyWithoutChapter_takenNestedInput
-    assessments?: AssessmentUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterTakenNestedInput
   }
 
   export type ChapterTakenUncheckedUpdateWithoutUser_progresInput = {
@@ -17298,7 +17800,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     ai_reports?: AiReportUncheckedUpdateManyWithoutChapter_takenNestedInput
-    assessments?: AssessmentUncheckedUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterTakenNestedInput
   }
 
   export type AiReportCreateManyUserInput = {
@@ -17319,7 +17821,7 @@ export namespace Prisma {
 
   export type UserAttemptCreateManyUserInput = {
     id: string
-    assessement_id: string
+    assessment_id: string
     score: number
     completed_at?: Date | string
     created_at?: Date | string
@@ -17369,7 +17871,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     chapter?: ChapterUpdateOneRequiredWithoutChapter_takenNestedInput
     ai_reports?: AiReportUpdateManyWithoutChapter_takenNestedInput
-    assessments?: AssessmentUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterTakenNestedInput
     user_progres?: UserProgresUpdateManyWithoutChapter_takenNestedInput
   }
 
@@ -17379,7 +17881,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     ai_reports?: AiReportUncheckedUpdateManyWithoutChapter_takenNestedInput
-    assessments?: AssessmentUncheckedUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterTakenNestedInput
     user_progres?: UserProgresUncheckedUpdateManyWithoutChapter_takenNestedInput
   }
 
@@ -17401,7 +17903,7 @@ export namespace Prisma {
 
   export type UserAttemptUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    assessement_id?: StringFieldUpdateOperationsInput | string
+    assessment_id?: StringFieldUpdateOperationsInput | string
     score?: FloatFieldUpdateOperationsInput | number
     completed_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17410,7 +17912,7 @@ export namespace Prisma {
 
   export type UserAttemptUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
-    assessement_id?: StringFieldUpdateOperationsInput | string
+    assessment_id?: StringFieldUpdateOperationsInput | string
     score?: FloatFieldUpdateOperationsInput | number
     completed_at?: DateTimeFieldUpdateOperationsInput | Date | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17471,8 +17973,20 @@ export namespace Prisma {
   export type SubChapterCreateManyChapterInput = {
     id: string
     name: string
+    content: string
     created_at?: Date | string
     updated_at?: Date | string
+  }
+
+  export type AssessmentCreateManyChapterInput = {
+    id: string
+    sub_chapter_id?: string | null
+    title: string
+    type: $Enums.AssessmentType
+    correct_answer: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    chapterTakenId?: string | null
   }
 
   export type ChapterTakenUpdateWithoutChapterInput = {
@@ -17481,7 +17995,7 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutChapter_takenNestedInput
     ai_reports?: AiReportUpdateManyWithoutChapter_takenNestedInput
-    assessments?: AssessmentUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUpdateManyWithoutChapterTakenNestedInput
     user_progres?: UserProgresUpdateManyWithoutChapter_takenNestedInput
   }
 
@@ -17491,7 +18005,7 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     ai_reports?: AiReportUncheckedUpdateManyWithoutChapter_takenNestedInput
-    assessments?: AssessmentUncheckedUpdateManyWithoutChapter_takenNestedInput
+    assessments?: AssessmentUncheckedUpdateManyWithoutChapterTakenNestedInput
     user_progres?: UserProgresUncheckedUpdateManyWithoutChapter_takenNestedInput
   }
 
@@ -17547,6 +18061,7 @@ export namespace Prisma {
   export type SubChapterUpdateWithoutChapterInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     assessments?: AssessmentUpdateManyWithoutSub_chapterNestedInput
@@ -17556,6 +18071,7 @@ export namespace Prisma {
   export type SubChapterUncheckedUpdateWithoutChapterInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     assessments?: AssessmentUncheckedUpdateManyWithoutSub_chapterNestedInput
@@ -17565,18 +18081,57 @@ export namespace Prisma {
   export type SubChapterUncheckedUpdateManyWithoutChapterInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AssessmentUpdateWithoutChapterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
+    correct_answer?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    sub_chapter?: SubChapterUpdateOneWithoutAssessmentsNestedInput
+    questions?: QuestionUpdateManyWithoutAssessmentNestedInput
+    user_attempts?: UserAttemptUpdateManyWithoutAssessmentNestedInput
+    chapterTaken?: ChapterTakenUpdateOneWithoutAssessmentsNestedInput
+  }
+
+  export type AssessmentUncheckedUpdateWithoutChapterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sub_chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
+    correct_answer?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapterTakenId?: NullableStringFieldUpdateOperationsInput | string | null
+    questions?: QuestionUncheckedUpdateManyWithoutAssessmentNestedInput
+    user_attempts?: UserAttemptUncheckedUpdateManyWithoutAssessmentNestedInput
+  }
+
+  export type AssessmentUncheckedUpdateManyWithoutChapterInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sub_chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
+    type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
+    correct_answer?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapterTakenId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type AssessmentCreateManySub_chapterInput = {
     id: string
-    chapter_taken_id: string
+    chapter_id?: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
     created_at?: Date | string
     updated_at?: Date | string
+    chapterTakenId?: string | null
   }
 
   export type UserProgresCreateManySub_chapterInput = {
@@ -17596,31 +18151,34 @@ export namespace Prisma {
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    chapter_taken?: ChapterTakenUpdateOneRequiredWithoutAssessmentsNestedInput
+    chapter?: ChapterUpdateOneWithoutAssessmentsNestedInput
     questions?: QuestionUpdateManyWithoutAssessmentNestedInput
     user_attempts?: UserAttemptUpdateManyWithoutAssessmentNestedInput
+    chapterTaken?: ChapterTakenUpdateOneWithoutAssessmentsNestedInput
   }
 
   export type AssessmentUncheckedUpdateWithoutSub_chapterInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chapter_taken_id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapterTakenId?: NullableStringFieldUpdateOperationsInput | string | null
     questions?: QuestionUncheckedUpdateManyWithoutAssessmentNestedInput
     user_attempts?: UserAttemptUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
   export type AssessmentUncheckedUpdateManyWithoutSub_chapterInput = {
     id?: StringFieldUpdateOperationsInput | string
-    chapter_taken_id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    chapterTakenId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserProgresUpdateWithoutSub_chapterInput = {
@@ -17662,9 +18220,10 @@ export namespace Prisma {
     updated_at?: Date | string
   }
 
-  export type AssessmentCreateManyChapter_takenInput = {
+  export type AssessmentCreateManyChapterTakenInput = {
     id: string
-    sub_chapter_id: string
+    chapter_id?: string | null
+    sub_chapter_id?: string | null
     title: string
     type: $Enums.AssessmentType
     correct_answer: number
@@ -17709,21 +18268,23 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type AssessmentUpdateWithoutChapter_takenInput = {
+  export type AssessmentUpdateWithoutChapterTakenInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    sub_chapter?: SubChapterUpdateOneRequiredWithoutAssessmentsNestedInput
+    chapter?: ChapterUpdateOneWithoutAssessmentsNestedInput
+    sub_chapter?: SubChapterUpdateOneWithoutAssessmentsNestedInput
     questions?: QuestionUpdateManyWithoutAssessmentNestedInput
     user_attempts?: UserAttemptUpdateManyWithoutAssessmentNestedInput
   }
 
-  export type AssessmentUncheckedUpdateWithoutChapter_takenInput = {
+  export type AssessmentUncheckedUpdateWithoutChapterTakenInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sub_chapter_id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sub_chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
@@ -17733,9 +18294,10 @@ export namespace Prisma {
     user_attempts?: UserAttemptUncheckedUpdateManyWithoutAssessmentNestedInput
   }
 
-  export type AssessmentUncheckedUpdateManyWithoutChapter_takenInput = {
+  export type AssessmentUncheckedUpdateManyWithoutChapterTakenInput = {
     id?: StringFieldUpdateOperationsInput | string
-    sub_chapter_id?: StringFieldUpdateOperationsInput | string
+    chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sub_chapter_id?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     type?: EnumAssessmentTypeFieldUpdateOperationsInput | $Enums.AssessmentType
     correct_answer?: IntFieldUpdateOperationsInput | number
@@ -17776,7 +18338,9 @@ export namespace Prisma {
   export type QuestionCreateManyAssessmentInput = {
     id: string
     question: string
-    topic: number
+    options: JsonNullValueInput | InputJsonValue
+    key_answer: string
+    topic: string
     difficulty_level: $Enums.DifficultyLevel
     created_at?: Date | string
     updated_at?: Date | string
@@ -17794,7 +18358,9 @@ export namespace Prisma {
   export type QuestionUpdateWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17803,7 +18369,9 @@ export namespace Prisma {
   export type QuestionUncheckedUpdateWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17812,7 +18380,9 @@ export namespace Prisma {
   export type QuestionUncheckedUpdateManyWithoutAssessmentInput = {
     id?: StringFieldUpdateOperationsInput | string
     question?: StringFieldUpdateOperationsInput | string
-    topic?: IntFieldUpdateOperationsInput | number
+    options?: JsonNullValueInput | InputJsonValue
+    key_answer?: StringFieldUpdateOperationsInput | string
+    topic?: StringFieldUpdateOperationsInput | string
     difficulty_level?: EnumDifficultyLevelFieldUpdateOperationsInput | $Enums.DifficultyLevel
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string

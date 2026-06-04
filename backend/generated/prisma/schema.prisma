@@ -18,9 +18,9 @@ enum Role {
 }
 
 enum AssessmentType {
-  beginner
-  intermediate
-  advanced
+  placement
+  quiz
+  exam
 }
 
 enum DifficultyLevel {
@@ -46,11 +46,11 @@ enum ProgressStatus {
 // ========= MODELS =========
 
 model User {
-  id         String   @id @db.VarChar(30)
-  name       String   @db.VarChar(50)
-  role       Role
-  gmail      String   @db.VarChar(50)
-  password   String   @db.VarChar(50)
+  id         String   @id
+  name       String
+  role       Role     @default(student)
+  gmail      String   @unique
+  password   String
   birth_date DateTime @db.Date
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -65,8 +65,8 @@ model User {
 }
 
 model Chapter {
-  id                String   @id @db.VarChar(30)
-  name              String   @db.VarChar(100)
+  id                String   @id
+  name              String
   total_sub_chapter Int
   created_at        DateTime @default(now())
   updated_at        DateTime @updatedAt
@@ -76,14 +76,16 @@ model Chapter {
   prerequisites_base        Prerequisite[] @relation("ChapterBase")
   prerequisites_requirement Prerequisite[] @relation("ChapterPrerequisite")
   sub_chapters              SubChapter[]
+  assessments               Assessment[]
 
   @@map("chapters")
 }
 
 model SubChapter {
-  id         String   @id @db.VarChar(30)
-  chapter_id String   @db.VarChar(50)
-  name       String   @db.VarChar(100)
+  id         String   @id
+  chapter_id String
+  name       String
+  content    String   @db.Text
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -96,9 +98,9 @@ model SubChapter {
 }
 
 model ChapterTaken {
-  id         String   @id @db.VarChar(30)
-  user_id    String   @db.VarChar(30)
-  chapter_id String   @db.VarChar(30)
+  id         String   @id
+  user_id    String
+  chapter_id String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -113,28 +115,32 @@ model ChapterTaken {
 }
 
 model Assessment {
-  id               String         @id @db.VarChar(30)
-  chapter_taken_id String         @db.VarChar(30)
-  sub_chapter_id   String         @db.VarChar(30)
-  title            String         @db.VarChar(100)
-  type             AssessmentType
-  correct_answer   Int
-  created_at       DateTime       @default(now())
-  updated_at       DateTime       @updatedAt
+  id String @id
 
-  // Relations
-  chapter_taken ChapterTaken  @relation(fields: [chapter_taken_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  sub_chapter   SubChapter    @relation(fields: [sub_chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  questions     Question[]
-  user_attempts UserAttempt[]
+  chapter_id     String?
+  sub_chapter_id String?
+
+  title          String
+  type           AssessmentType
+  correct_answer Int
+  created_at     DateTime       @default(now())
+  updated_at     DateTime       @updatedAt
+
+  chapter     Chapter?    @relation(fields: [chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  sub_chapter SubChapter? @relation(fields: [sub_chapter_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  questions      Question[]
+  user_attempts  UserAttempt[]
+  chapterTaken   ChapterTaken? @relation(fields: [chapterTakenId], references: [id])
+  chapterTakenId String?
 
   @@map("assessments")
 }
 
 model AiReport {
-  id                 String   @id @db.VarChar(30)
-  user_id            String   @db.VarChar(30)
-  chapter_taken_id   String   @db.VarChar(100)
+  id                 String   @id
+  user_id            String
+  chapter_taken_id   String
   evaluation_text    String   @db.Text
   recomendation_list Json
   created_at         DateTime @default(now())
@@ -148,9 +154,9 @@ model AiReport {
 }
 
 model Prerequisite {
-  id                      String   @id @db.VarChar(30)
-  chapter_id              String   @db.VarChar(50)
-  prerequisite_chapter_id String   @db.VarChar(50)
+  id                      String   @id
+  chapter_id              String
+  prerequisite_chapter_id String
   created_at              DateTime @default(now())
   updated_at              DateTime @updatedAt
 
@@ -162,40 +168,41 @@ model Prerequisite {
 }
 
 model Question {
-  id               String          @id @db.VarChar(30)
-  assessment_id    String          @db.VarChar(50)
-  question         String          @db.VarChar(500)
-  topic            Int
+  id               String          @id
+  assessment_id    String
+  question         String          @db.Text
+  options          Json
+  key_answer       String
+  topic            String
   difficulty_level DifficultyLevel
   created_at       DateTime        @default(now())
   updated_at       DateTime        @updatedAt
 
-  // Relations
   assessment Assessment @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("questions")
 }
 
 model UserAttempt {
-  id             String     @id @db.VarChar(30)
-  user_id        String     @db.VarChar(30)
-  assessement_id String     @db.VarChar(30)
-  score          Float
-  completed_at   DateTime   @default(now())
-  created_at     DateTime   @default(now())
-  updated_at     DateTime   @updatedAt
+  id            String     @id
+  user_id       String
+  assessment_id String
+  score         Float
+  completed_at  DateTime   @default(now())
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
   // Relations
-  user           User       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-  assessment     Assessment @relation(fields: [assessement_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user          User       @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  assessment    Assessment @relation(fields: [assessment_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
   @@map("user_attempts")
 }
 
 model UserProgres {
-  id               String         @id @db.VarChar(30)
-  user_id          String         @db.VarChar(30)
-  sub_chapter_id   String         @db.VarChar(30)
-  chapter_taken_id String         @db.VarChar(50)
+  id               String         @id
+  user_id          String
+  sub_chapter_id   String
+  chapter_taken_id String
   current_level    CurrentLevel
   status           ProgressStatus
   created_at       DateTime       @default(now())

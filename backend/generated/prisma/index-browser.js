@@ -143,6 +143,7 @@ exports.Prisma.SubChapterScalarFieldEnum = {
   id: 'id',
   chapter_id: 'chapter_id',
   name: 'name',
+  content: 'content',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -157,13 +158,14 @@ exports.Prisma.ChapterTakenScalarFieldEnum = {
 
 exports.Prisma.AssessmentScalarFieldEnum = {
   id: 'id',
-  chapter_taken_id: 'chapter_taken_id',
+  chapter_id: 'chapter_id',
   sub_chapter_id: 'sub_chapter_id',
   title: 'title',
   type: 'type',
   correct_answer: 'correct_answer',
   created_at: 'created_at',
-  updated_at: 'updated_at'
+  updated_at: 'updated_at',
+  chapterTakenId: 'chapterTakenId'
 };
 
 exports.Prisma.AiReportScalarFieldEnum = {
@@ -188,6 +190,8 @@ exports.Prisma.QuestionScalarFieldEnum = {
   id: 'id',
   assessment_id: 'assessment_id',
   question: 'question',
+  options: 'options',
+  key_answer: 'key_answer',
   topic: 'topic',
   difficulty_level: 'difficulty_level',
   created_at: 'created_at',
@@ -197,7 +201,7 @@ exports.Prisma.QuestionScalarFieldEnum = {
 exports.Prisma.UserAttemptScalarFieldEnum = {
   id: 'id',
   user_id: 'user_id',
-  assessement_id: 'assessement_id',
+  assessment_id: 'assessment_id',
   score: 'score',
   completed_at: 'completed_at',
   created_at: 'created_at',
@@ -239,7 +243,8 @@ exports.Prisma.ChapterOrderByRelevanceFieldEnum = {
 exports.Prisma.SubChapterOrderByRelevanceFieldEnum = {
   id: 'id',
   chapter_id: 'chapter_id',
-  name: 'name'
+  name: 'name',
+  content: 'content'
 };
 
 exports.Prisma.ChapterTakenOrderByRelevanceFieldEnum = {
@@ -248,11 +253,17 @@ exports.Prisma.ChapterTakenOrderByRelevanceFieldEnum = {
   chapter_id: 'chapter_id'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.AssessmentOrderByRelevanceFieldEnum = {
   id: 'id',
-  chapter_taken_id: 'chapter_taken_id',
+  chapter_id: 'chapter_id',
   sub_chapter_id: 'sub_chapter_id',
-  title: 'title'
+  title: 'title',
+  chapterTakenId: 'chapterTakenId'
 };
 
 exports.Prisma.JsonNullValueFilter = {
@@ -282,13 +293,15 @@ exports.Prisma.PrerequisiteOrderByRelevanceFieldEnum = {
 exports.Prisma.QuestionOrderByRelevanceFieldEnum = {
   id: 'id',
   assessment_id: 'assessment_id',
-  question: 'question'
+  question: 'question',
+  key_answer: 'key_answer',
+  topic: 'topic'
 };
 
 exports.Prisma.UserAttemptOrderByRelevanceFieldEnum = {
   id: 'id',
   user_id: 'user_id',
-  assessement_id: 'assessement_id'
+  assessment_id: 'assessment_id'
 };
 
 exports.Prisma.UserProgresOrderByRelevanceFieldEnum = {
@@ -303,9 +316,9 @@ exports.Role = exports.$Enums.Role = {
 };
 
 exports.AssessmentType = exports.$Enums.AssessmentType = {
-  beginner: 'beginner',
-  intermediate: 'intermediate',
-  advanced: 'advanced'
+  placement: 'placement',
+  quiz: 'quiz',
+  exam: 'exam'
 };
 
 exports.DifficultyLevel = exports.$Enums.DifficultyLevel = {

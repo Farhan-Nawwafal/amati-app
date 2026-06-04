@@ -10,10 +10,10 @@ export const findChaptersTakenByUserId = async (userId) =>
 // 2. Menghitung Chapter In Progress
 export const countChaptersInProgressByUserId = async (userId) =>
   await prisma.userProgres.groupBy({
-    by: ['chapter_taken_id'],
+    by: ["chapter_taken_id"],
     where: {
       user_id: userId,
-      status: 'in_progres',
+      status: "in_progres",
     },
   });
 
@@ -24,52 +24,87 @@ export const countChaptersDoneByUserId = async (userId) => {
     where: { user_id: userId },
     select: {
       chapter_taken_id: true,
-      status: true
-    }
+      status: true,
+    },
   });
 
   const chapterMap = {};
-  allProgress.forEach(item => {
+  allProgress.forEach((item) => {
     if (!chapterMap[item.chapter_taken_id]) {
       chapterMap[item.chapter_taken_id] = [];
     }
     chapterMap[item.chapter_taken_id].push(item.status);
   });
 
-  const completedChapters = Object.keys(chapterMap).filter(chapterId => {
+  const completedChapters = Object.keys(chapterMap).filter((chapterId) => {
     const statuses = chapterMap[chapterId];
     // Pastikan semua status di dalam chapter ini bernilai 'done'
-    return statuses.every(status => status === 'done');
+    return statuses.every((status) => status === "done");
   });
 
   return completedChapters;
 };
 
-  // 4. Menghitung Sub Chapters Taken
-  export const countSubChaptersTakenByUserId = async (userId) =>
-    await prisma.userProgres.count({
-      where: {
-        user_id: userId,
-        status: {
-          in: ['in_progres', 'done'], // Menghitung yang sedang berjalan dan yang sudah selesai
+// 4. Menghitung Sub Chapters Taken
+export const countSubChaptersTakenByUserId = async (userId) =>
+  await prisma.userProgres.count({
+    where: {
+      user_id: userId,
+      status: {
+        in: ["in_progres", "done"], // Menghitung yang sedang berjalan dan yang sudah selesai
+      },
+    },
+  });
+
+// 5. Menghitung Sub Chapters In Progress
+export const countSubChaptersInProgressByUserId = async (userId) =>
+  await prisma.userProgres.count({
+    where: {
+      user_id: userId,
+      status: "in_progres",
+    },
+  });
+
+// 6. Menghitung Sub Chapters Done
+export const countSubChaptersDoneByUserId = async (userId) =>
+  await prisma.userProgres.count({
+    where: {
+      user_id: userId,
+      status: "done",
+    },
+  });
+
+export const findChapterProgressDetails = async (userId) => {
+  return await prisma.chapterTaken.findMany({
+    where: { user_id: userId },
+    include: {
+      chapter: {
+        select: { name: true }, // Mengambil nama bab
+      },
+      // Nama relasi ini bisa berbeda tergantung penamaan di schema.prisma kamu
+      // (biasanya camelCase seperti userProgres atau UserProgres)
+      user_progres: {
+        select: { status: true },
+      },
+    },
+    orderBy: { created_at: "asc" },
+  });
+};
+
+// 8. Mengambil satu aktivitas sub-bab yang paling terakhir disentuh siswa
+export const findRecentSubChapterProgress = async (userId) => {
+  return await prisma.userProgres.findFirst({
+    where: { user_id: userId },
+    include: {
+      sub_chapter: {
+        select: { name: true },
+      },
+      chapter_taken: {
+        include: {
+          chapter: { select: { name: true } },
         },
       },
-    });
-
-  // 5. Menghitung Sub Chapters In Progress
-  export const countSubChaptersInProgressByUserId = async (userId) =>
-    await prisma.userProgres.count({
-      where: {
-        user_id: userId,
-        status: 'in_progres', 
-      },
-    });
-
-  // 6. Menghitung Sub Chapters Done
-  export const countSubChaptersDoneByUserId = async (userId) =>
-    await prisma.userProgres.count({
-      where: {
-        user_id: userId,
-        status: 'done', 
-      },
-    });
+    },
+    orderBy: { updated_at: "desc" }, // 💡 KUNCI: Ambil yang paling baru diupdate
+  });
+};
