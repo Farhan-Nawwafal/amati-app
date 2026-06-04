@@ -1,16 +1,33 @@
-# React + Vite
+# 🚀 AMATI - Platform Adaptif Matematika
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AMATI adalah sebuah platform pembelajaran matematika adaptif yang dirancang khusus untuk memetakan potensi dan mengakselerasi pemahaman konsep dasar siswa. Proyek ini dikembangkan sebagai bagian dari Capstone Project / Tugas Akhir.
 
-Currently, two official plugins are available:
+## ✨ Fitur Utama (Frontend)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+* **Autentikasi Pengguna**: Halaman *Sign In* dan *Sign Up* interaktif dengan desain *split-screen* modern dan responsif.
+* **Manajemen Kata Sandi**: Alur pemulihan kata sandi (*Forgot Password*) 2 tahap menggunakan *modal pop-up* yang mulus tanpa memicu *reload* halaman.
+* **Diagnostic Pre-Test**: Modul kuis awal berbatas waktu (15 menit) untuk mengukur tingkat pemahaman dasar siswa sebelum masuk ke materi utama.
+* **Sistem Penilaian Otomatis**: Halaman hasil (*Result*) yang menampilkan skor akhir secara instan dan menentukan pesan kelulusan siswa.
+* **Dashboard Pembelajaran Adaptif**: Ruang kerja (*Workspace*) yang dinamis, terstruktur berdasarkan bab dan sub-bab materi, lengkap dengan elemen pelacakan progres.
 
-## React Compiler
+## 🛠️ Teknologi yang Digunakan
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Core Library**: [React.js](https://react.dev/)
+* **Build Tool**: [Vite](https://vitejs.dev/)
+* **Routing**: [React Router DOM](https://reactrouter.com/)
+* **Styling**: Inline CSS & Flexbox/Grid (Efisien dan mudah disesuaikan)
 
-## Expanding the ESLint configuration
+## 📂 Struktur Direktori Utama
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+src/
+├── assets/                   # Gambar, ikon, dan logo platform
+├── pages/
+│   ├── Login.jsx             # Gerbang Sign In & Modal Forgot Password
+│   ├── Register.jsx          # Gerbang Sign Up / Registrasi
+│   ├── PreTestQuiz.jsx       # Modul Workspace Diagnostik Pre-Test
+│   ├── PreTestQuizResult.jsx # Visualisasi Hasil Skor Pre-Test
+│   ├── Dashboard.jsx         # Menu Utama Pembelajaran Siswa
+│   ├── QuizWorkspace.jsx     # Ruang Kerja Kuis Latihan Materi
+│   └── QuizResult.jsx        # Visualisasi Hasil Kuis Latihan
+└── App.jsx                   # Konfigurasi Rute Aplikasi (Router)
