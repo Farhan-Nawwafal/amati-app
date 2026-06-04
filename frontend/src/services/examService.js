@@ -1,6 +1,7 @@
 import api from "./api.js";
 
-export const getStudentQuizListApi = async () => await api.get("/quiz/student-list");
+export const getStudentExamListApi = async () =>
+  await api.get("/exams/student-list");
 
 export const getAssessmentQuestionsApi = async (assessmentId) => {
   return await api.get(`/assessments/${assessmentId}/questions`);

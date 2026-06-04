@@ -5,6 +5,7 @@ import chaptersRouter from "./routes/chapterRoute.js";
 import subChapterRouter from "./routes/subChapterRoute.js";
 import courseRoute from "./routes/courseRoute.js";
 import quizRouter from "./routes/quizRoute.js";
+import examsRouter from "./routes/examRoute.js";
 import assessmentRoute from "./routes/assessmentRoute.js";
 import cors from "cors";
 
@@ -23,6 +24,7 @@ const createApp = () => {
   app.use("/api/assessments", assessmentRoute);
   app.use("/api/subchapters", subChapterRouter);
   app.use("/api/quiz", quizRouter);
+  app.use('/api/exams', examsRouter);
 
   return app;
 };

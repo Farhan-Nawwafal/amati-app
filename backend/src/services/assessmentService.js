@@ -23,7 +23,7 @@ export const submitAnswersAndCalculateScore = async (
   assessmentId,
   userAnswers,
 ) => {
-  // 1. Ambil data kuis beserta butir soal dari DB master untuk dicocokkan kuncinya
+  // Ambil data kuis beserta butir soal dari DB master untuk dicocokkan kuncinya
   const assessment = await assessmentRepo.findAssessmentWithQuestions(assessmentId);
   if (!assessment) {
     throw new Error("Assessment not found!");
@@ -36,7 +36,7 @@ export const submitAnswersAndCalculateScore = async (
 
   let totalCorrect = 0;
 
-  // 2. Cocokkan jawaban siswa dari frontend dengan key_answer asli di database
+  // Cocokkan jawaban siswa dari frontend dengan key_answer asli di database
   assessment.questions.forEach((question) => {
     const studentAnswer = userAnswers.find(
       (ans) => ans.questionId === question.id,
@@ -59,7 +59,7 @@ export const submitAnswersAndCalculateScore = async (
     score: parseFloat(finalScore.toFixed(2)),
   });
 
-  // 5. DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
+  // DETEKSI JENIS KUIS BERDASARKAN PREFIX ID
   const testType = assessmentId.substring(0, 3); 
   let extraData = {};
 

@@ -54,7 +54,7 @@ function App() {
 
         {/* Fitur Ujian */}
         <Route path="/exam" element={<ExamList />} />
-        <Route path="/exam/workspace" element={<ExamWorkspace />} />
+        <Route path="/exam/workspace/:assessmentId" element={<ExamWorkspace />} />
         <Route path="/exam/result" element={<ExamResult />} />
 
         {/* CMS Area Admin */}
