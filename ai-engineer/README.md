@@ -18,19 +18,35 @@ Repositori ini memuat layanan Kecerdasan Buatan (AI) dan Backend API untuk proye
 
 ## Persyaratan Sistem & Instalasi
 
-### 1. Setup Environment Variables
-Buat sebuah file bernama `.env` di dalam root folder `ai-engineer` dan masukkan API Key Gemini Anda:
+### 1. Struktur Direktori & File Wajib
+Agar backend dapat berjalan dengan normal, pastikan file model Machine Learning dan database materi sudah berada di direktori root yang sama dengan `main.py`. Struktur folder Anda harus terlihat seperti ini:
+
+```text
+├── .env                        # Berisi GEMINI_API_KEY
+├── main.py                     # Script utama FastAPI
+├── requirements.txt            # Daftar library Python
+├── amati_model.keras           # Model Deep Learning yang sudah di-train
+├── scaler_X.pkl                # Scaler untuk data input
+├── scaler_y.pkl                # Scaler untuk data output
+└── corpus_materi_rapi.json     # Database materi terstruktur
+```
+
+### 2. Setup Environment Variables
+Buat sebuah file bernama `.env` di dalam root folder (sejajar dengan `main.py`) dan masukkan API Key Gemini Anda:
+
 ```env
 GEMINI_API_KEY=masukkan_api_key_anda_disini
 ```
 
-### 2. Install Dependensi
+### 3. Install Dependensi
 Pastikan Anda sudah menginstal Python, kemudian jalankan perintah berikut di terminal:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Jalankan Server Secara Lokal
+### 4. Jalankan Server Secara Lokal
+
 ```bash
 uvicorn main:app --reload
 ```
@@ -84,8 +100,15 @@ Endpoint ini mengambil materi belajar spesifik dari corpus yang telah dirapikan 
   "status": "success",
   "data": {
     "judul": "Bilangan Rasional",
-    "url": "https://www.youtube.com/watch?v=NE2LrOhYgXs",
+    "url": "[https://www.youtube.com/watch?v=NE2LrOhYgXs](https://www.youtube.com/watch?v=NE2LrOhYgXs)",
     "materi_terstruktur": "Selamat datang di ringkasan materi...\n\n## I. Pengertian Bilangan Rasional\nBilangan rasional adalah..."
   }
 }
 ```
+
+---
+
+## Catatan untuk Production (Deployment)
+Secara *default*, konfigurasi CORS (Cross-Origin Resource Sharing) pada file `main.py` di-set ke `allow_origins=["*"]` untuk memudahkan tahap *development* secara lokal. 
+
+Sebelum melakukan *deployment* ke server publik (Production), pastikan untuk mengubah nilai tersebut dengan URL domain Frontend yang resmi (contoh: `https://amati-frontend.com`) untuk menjaga keamanan API.
