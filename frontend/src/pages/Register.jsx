@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userRegister } from "../services/authService";
+import bgRegister from '../assets/Register.png';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -78,12 +79,11 @@ const Register = () => {
     >
       {/* ================= SISI KIRI: BRANDING AREA (FULL BACKGROUND) ================= */}
       <div
-        style={{
-          flex: "1.1", // Sedikit lebih lebar untuk menyeimbangkan visual gambar
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80')", // Ganti dengan path lokal assets Anda nanti
-          backgroundSize: "cover", // KUNCI: Membuat gambar memenuhi seluruh area container
-          backgroundPosition: "center", // KUNCI: Gambar tetap berada di tengah saat di-resize
+style={{
+          flex: "1.1", // Menyeimbangkan visual gambar
+          backgroundImage: `url(${bgRegister})`, 
+          backgroundSize: "cover", 
+          backgroundPosition: "center", 
           padding: "50px",
           display: "flex",
           flexDirection: "column",
