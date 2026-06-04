@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+tensorflow
+scikit-learn
+numpy
+pydantic
+pydantic-settings
+python-dotenv
+requests
+joblib
