@@ -10,19 +10,45 @@ const AiMaterialView = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   useEffect(() => {
-    const fetchMateri = async () => {
+    let isMounted = true;
+    const MAX_RETRIES = 3;
+    const fetchMateri = async (retryCount = 0) => {
       try {
-        setLoading(true);
+        if (retryCount === 0) {
+          setLoading(true);
+        }
+
+        setError(null);
+
         const res = await getChapterMaterialApi(chapterId);
-        if (res.success) {
+
+        if (!isMounted) return;
+
+        if (res.status === "success" || res.success) {
           setMateri(res.data);
+          setLoading(false);
         } else {
-          setError(res.message);
+          setError(res.pesan || res.message || "Gagal menyusun materi.");
+          setLoading(false);
         }
       } catch (err) {
-        setError("Gagal memuat materi dari AI Tutor. Coba lagi nanti.");
-      } finally {
-        setLoading(false);
+        if (!isMounted) return;
+
+        if (retryCount < MAX_RETRIES) {
+          console.warn(
+            `[AI Tutor] Upaya ke-${retryCount + 1} gagal/timeout. Mencoba lagi dalam 5 detik...`,
+          );
+
+          setTimeout(() => {
+            if (isMounted) fetchMateri(retryCount + 1);
+          }, 5000);
+        } else {
+          // Jika sudah dicoba 3 kali dan tetap gagal total
+          setError(
+            "AI Tutor sedang sibuk atau koneksi melambat. Silakan klik tombol coba lagi.",
+          );
+          setLoading(false);
+        }
       }
     };
     if (chapterId) fetchMateri();

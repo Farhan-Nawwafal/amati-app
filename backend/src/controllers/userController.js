@@ -49,8 +49,6 @@ export const userLogin = async (req, res) => {
 
 export const getUserProfile = async (req, res) => {
   try {
-    // Mengambil userId yang lolos dari dekripsi authMiddleware kamu
-    // Jika middleware kamu menaruhnya di req.user.id, sesuaikan di sini
     const userId = req.user?.id || req.body.userId; 
 
     if (!userId) {

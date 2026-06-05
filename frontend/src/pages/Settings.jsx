@@ -2,6 +2,22 @@ import React, { useState, useRef, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
+const formatDateToIndonesia = (dateString) => {
+  if (!dateString) return "";
+
+  const date = new Date(dateString);
+
+  // Validasi jika string tanggal rusak/tidak valid
+  if (isNaN(date.getTime())) return dateString;
+
+  return new Intl.DateTimeFormat("id-ID", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(date);
+};
+
 const Settings = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,43 +54,45 @@ const Settings = () => {
   // State untuk status loading & pesan info
   const [isLoading, setIsLoading] = useState(false);
 
-  // ================= 1. FUNGSI GET: AMBIL DATA DARI BACKEND =================
-useEffect(() => {
+  // 1. FUNGSI GET: AMBIL DATA DARI BACKEND
+  useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const token = localStorage.getItem('token');
-        if (!token) throw new Error('Token tidak ditemukan di localStorage');
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("Token tidak ditemukan di localStorage");
 
         const response = await fetch("http://localhost:3000/api/auth/profile", {
           method: "GET",
           headers: {
-            'Content-Type': 'application/json',
-            // 'Authorization': `Bearer ${localStorage.getItem('token')}` // Buka jika pakai JWT Token
-          }
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
         });
 
         if (response.ok) {
           const data = await response.json();
           setFormData({
-            name: data.name || '',
-            birthDate: data.birthDate || '',
-            email: data.email || '',
-            password: '************' // Samarkan password demi keamanan
+            name: data.name || "",
+            birthDate: data.birthDate
+              ? formatDateToIndonesia(data.birthDate)
+              : "",
+            email: data.email || "",
           });
           setEmailNotif(data.emailNotif ?? true);
           setExamReminder(data.examReminder ?? true);
           setCourseUpdate(data.courseUpdate ?? true);
         } else {
-          throw new Error('Backend belum siap');
+          throw new Error("Backend belum siap");
         }
       } catch (error) {
-        console.log("⚠️ Backend belum merespons, mengaktifkan data dummy AMATI...");
+        console.log(
+          "⚠️ Backend belum merespons, mengaktifkan data dummy AMATI...",
+        );
         // CADANGAN: Data dummy otomatis aktif jika backend belum dibuat
         setFormData({
           name: "Anna Carescco",
           birthDate: "1999-08-21",
           email: "annacarescco@gmail.com",
-          password: "layerssecret",
         });
       }
     };
@@ -88,16 +106,16 @@ useEffect(() => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // ================= 2. FUNGSI PUT: SIMPAN PERUBAHAN PROFIL =================
-const handleSaveChanges = async (e) => {
+  // FUNGSI PUT: SIMPAN PERUBAHAN PROFIL
+  const handleSaveChanges = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5000/api/user/profile', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
+      const response = await fetch("http://localhost:3000/api/user/profile", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -108,22 +126,24 @@ const handleSaveChanges = async (e) => {
     } catch (error) {
       console.error(error);
       // Notifikasi fallback simulasi sukses lokal
-      alert(`⚙️ [Mode Simulasi] Perubahan profil untuk "${formData.name}" disimpan lokal.`);
+      alert(
+        `⚙️ [Mode Simulasi] Perubahan profil untuk "${formData.name}" disimpan lokal.`,
+      );
     } finally {
       setIsLoading(false);
     }
   };
 
-  // ================= 3. FUNGSI PATCH: SIMPAN PREFERENSI TOGGLE NOTIFIKASI =================
-const handleToggleNotif = async (type, currentValue, setStates) => {
+  // 3. FUNGSI PATCH: SIMPAN PREFERENSI TOGGLE NOTIFIKASI
+  const handleToggleNotif = async (type, currentValue, setStates) => {
     const newValue = !currentValue;
     setStates(newValue); // Update UI secara instan
 
     try {
-      await fetch('http://localhost:5000/api/user/settings', {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ [type]: newValue })
+      await fetch("http://localhost:3000/api/user/settings", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ [type]: newValue }),
       });
     } catch (error) {
       console.log(
@@ -139,7 +159,6 @@ const handleToggleNotif = async (type, currentValue, setStates) => {
     }
   };
 
-  // Mendeteksi perubahan query parameter URL (?view=...)
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const view = params.get("view");
@@ -177,7 +196,7 @@ const handleToggleNotif = async (type, currentValue, setStates) => {
           overflow: "hidden",
         }}
       >
-        {/* ================= AREA KONTEN SCROLLABLE SINGLE-CONTAINER ================= */}
+        {/* AREA KONTEN SCROLLABLE SINGLE-CONTAINER */}
         <div
           style={{
             flex: "1",
@@ -245,13 +264,46 @@ const handleToggleNotif = async (type, currentValue, setStates) => {
               </h3>
 
               {/* Bagian Edit Foto */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px' }}>
-                <div style={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: '#ffcc00', overflow: 'hidden' }}>
-                  <img src="https://via.placeholder.com/80" alt="Avatar" />
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "20px",
+                  marginBottom: "30px",
+                }}
+              >
+                <div>
+                  <img
+                    src="/profile.png"
+                    alt="Avatar"
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                    }}
+                  />
                 </div>
                 <div>
-                  <button type="button" style={{ padding: '8px 15px', backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '8px', cursor: 'pointer', fontSize: '0.85rem', marginBottom: '8px', display: 'block' }}>Edit Photo</button>
-                  <span style={{ fontSize: '0.75rem', color: '#aaa' }}>We suggest you to upload your photo with ratio 1:1. Please make sure the size is under 1 MB.</span>
+                  <button
+                    type="button"
+                    style={{
+                      padding: "8px 15px",
+                      backgroundColor: "#fff",
+                      border: "1px solid #ccc",
+                      borderRadius: "8px",
+                      cursor: "pointer",
+                      fontSize: "0.85rem",
+                      marginBottom: "8px",
+                      display: "block",
+                    }}
+                  >
+                    Edit Photo
+                  </button>
+                  <span style={{ fontSize: "0.75rem", color: "#aaa" }}>
+                    We suggest you to upload your photo with ratio 1:1. Please
+                    make sure the size is under 1 MB.
+                  </span>
                 </div>
               </div>
 
@@ -319,7 +371,7 @@ const handleToggleNotif = async (type, currentValue, setStates) => {
                     }}
                   />
                 </div>
-                <div>
+                <div style={{ gridColumn: "span 2"}}>
                   <label
                     style={{
                       display: "block",
@@ -346,62 +398,6 @@ const handleToggleNotif = async (type, currentValue, setStates) => {
                     }}
                     required
                   />
-                </div>
-                <div>
-                  <label
-                    style={{
-                      display: "block",
-                      marginBottom: "10px",
-                      fontSize: "0.9rem",
-                      fontWeight: "bold",
-                      color: "#333",
-                    }}
-                  >
-                    Password
-                  </label>
-                  <div
-                    style={{
-                      position: "relative",
-                      display: "flex",
-                      alignItems: "center",
-                    }}
-                  >
-                    <input
-                      type="password"
-                      name="password"
-                      value={formData.password}
-                      onChange={handleInputChange}
-                      style={{
-                        width: "100%",
-                        padding: "12px 40px 12px 15px",
-                        borderRadius: "10px",
-                        border: "1px solid #ccc",
-                        outline: "none",
-                        color: "#555",
-                      }}
-                    />
-                    <span
-                      style={{
-                        position: "absolute",
-                        right: "15px",
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                      }}
-                    >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#aaa"
-                        strokeWidth="2"
-                      >
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                        <circle cx="12" cy="12" r="3" />
-                      </svg>
-                    </span>
-                  </div>
                 </div>
               </div>
 

@@ -53,6 +53,13 @@ Pastikan berada di direktori data-science, lalu jalankan perintah berikut di ter
 pip install -r requirements.txt
 ```
 
+- Cara jalankan streamlit:
+```bash
+cd data-science
+cd dashboard
+streamlit run dashboard.py
+```
+
 ## 🚀 Alur Kerja (Workflow) Tim DS
 1. Data Generation: Mensimulasikan historis pengguna dengan relasi database kompleks menggunakan skrip synthetic_data.ipynb.
 

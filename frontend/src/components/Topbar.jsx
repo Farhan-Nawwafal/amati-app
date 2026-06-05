@@ -1,10 +1,30 @@
 // src/components/Topbar.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Topbar = () => {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
+
+  const [userData, setUserData] = useState({
+    name: "User AMATI",
+    gmail: "user@amati.id",
+  });
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setUserData({
+          name: parsedUser.name || parsedUser.username || "User AMATI",
+          gmail: parsedUser.gmail || "user@amati.id",
+        });
+      } catch (error) {
+        console.error("Gagal membaca data user dari localStorage:", error);
+      }
+    }
+  }, []);
 
   const handleLogout = async () => {
     const confirmLogout = window.confirm("Apakah kamu yakin ingin keluar?");
@@ -85,14 +105,13 @@ const Topbar = () => {
             width: "40px",
             height: "40px",
             borderRadius: "50%",
-            backgroundColor: "#ffcc00",
             cursor: "pointer",
             overflow: "hidden",
             border: "2px solid #007bff",
           }}
         >
           <img
-            src="https://via.placeholder.com/40"
+            src="/profile.png"
             alt="Avatar"
             style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
@@ -117,23 +136,24 @@ const Topbar = () => {
             }}
           >
             <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <div
-                style={{
-                  width: "45px",
-                  height: "45px",
-                  borderRadius: "50%",
-                  backgroundColor: "#ffcc00",
-                  overflow: "hidden",
-                }}
-              >
-                <img src="https://via.placeholder.com/45" alt="Avatar" />
+              <div>
+                <img
+                  src="/profile.png"
+                  alt="Avatar"
+                  style={{
+                    width: "45px",
+                    height: "45px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                  }}
+                />
               </div>
               <div style={{ textAlign: "left" }}>
                 <h4 style={{ margin: 0, fontSize: "0.95rem", color: "#333" }}>
-                  Anna Carescco
+                  {userData.name}
                 </h4>
                 <p style={{ margin: 0, fontSize: "0.8rem", color: "#888" }}>
-                  annacarescco@gmail.com
+                  {userData.gmail}
                 </p>
                 <span
                   style={{

@@ -105,10 +105,3 @@ Endpoint ini mengambil materi belajar spesifik dari corpus yang telah dirapikan 
   }
 }
 ```
-
----
-
-## Catatan untuk Production (Deployment)
-Secara *default*, konfigurasi CORS (Cross-Origin Resource Sharing) pada file `main.py` di-set ke `allow_origins=["*"]` untuk memudahkan tahap *development* secara lokal. 
-
-Sebelum melakukan *deployment* ke server publik (Production), pastikan untuk mengubah nilai tersebut dengan URL domain Frontend yang resmi (contoh: `https://amati-frontend.com`) untuk menjaga keamanan API.
