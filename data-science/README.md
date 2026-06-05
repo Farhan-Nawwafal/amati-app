@@ -90,3 +90,8 @@ Data akhir yang diproses dan diekspor ke tim AI telah terstandardisasi dengan at
 - score: Menggunakan rentang skala normal 0 - 100.
 
 - Rekomendasi Arsitektur: Sangat disarankan bagi tim AI untuk menggunakan layer bawaan tf.keras.layers (seperti Normalization atau StringLookup) di dalam urutan model awal agar pipeline tetap solid dan siap di-deploy.
+
+## Run steamlit app
+```
+streamlit run ./data-science/dashboard/dashboard.py
+```
